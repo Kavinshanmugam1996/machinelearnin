@@ -606,7 +606,7 @@
     }
 
     // ─── PAGE 2: LANDING ──────────────────────────────────────────────────────────
-    function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onSwitchClient, onLogout }) {
+    function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
       const stats = [
         { val: "500+", label: "Questions" },
         { val: "1000+", label: "Risks Mapped" },
@@ -614,7 +614,7 @@
       ];
       return (
         <div style={{ minHeight: "100vh", background: B.white, fontFamily: BODY }}>
-          <Nav clients={clients} activeClientId={activeClientId} onSwitchClient={onSwitchClient} onLogout={onLogout} onHome={() => setPage("landing")} />
+          <Nav clients={clients} activeClientId={activeClientId} onSwitchClient={onSwitchClient} onLogout={onLogout} onHome={onHome} />
           {/* Hero */}
           <div style={{
             background: `linear-gradient(170deg, #0D1F3C 0%, #1a3a6e 55%, #0D1F3C 100%)`,
@@ -734,7 +734,7 @@
     }
 
     // ─── PAGE 3: COMPANY PROFILE ──────────────────────────────────────────────────
-    function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLogout }) {
+    function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
       const [form, setForm] = useState({ companyName: "", industry: "", companySize: "", regulatory: "", techMaturity: "" });
       const [inventory, setInventory] = useState([
         { description: "", useCase: "" },
@@ -773,6 +773,7 @@
             activeClientId={activeClientId}
             onSwitchClient={onSwitchClient}
             onLogout={onLogout}
+            onHome={onHome}
           />
           <div style={{ maxWidth: 760, margin: "40px auto", padding: "0 24px 60px" }}>
             <div style={{ marginBottom: 32 }}>
