@@ -1,0 +1,25 @@
+{
+  "id": "c_1773053957265",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "Kavin",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "EU-CAN/QU",
+    "techMaturity": "1",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Developer or coding assistant"
+      }
+    ]
+  },
+  "answers": {
+    "AR_53": "Non-applicable",
+    "AR_55": "Non-applicable",
+    "AR_57": "Non-applicable",
+    "AR_58": "Maybe",
+    "AR_67": "Non-applicable"
+  },
+  "currentQuestionIndex": 5
+}

@@ -1,0 +1,19 @@
+{
+  "id": "c_1773095458408",
+  "name": "ajay",
+  "profile": {
+    "companyName": "ajay",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "EU",
+    "techMaturity": "1",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Customer chatbot"
+      }
+    ]
+  },
+  "answers": {},
+  "currentQuestionIndex": 0
+}
