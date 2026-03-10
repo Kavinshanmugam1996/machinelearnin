@@ -605,8 +605,9 @@
     // ─── PAGE 2: LANDING ──────────────────────────────────────────────────────────
     function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onSwitchClient, onLogout }) {
       const stats = [
-        { val: "160+", label: "Risk Questions" },
-        { val: "3", label: "Frameworks" },
+        { val: "500+", label: "Questions" },
+        { val: "1000+", label: "Risks Mapped" },
+        { val: "3+", label: "Frameworks" },
       ];
       return (
         <div style={{ minHeight: "100vh", background: B.white, fontFamily: BODY }}>
@@ -639,7 +640,7 @@
                 Avoid AI Failures Tomorrow
               </h2>
               <p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, margin: "0 auto 48px", fontSize: 18, lineHeight: 1.6, fontWeight: 400 }}>
-                Empower your Organization with a risk framework that is measurable, repeatable, and regulation-ready. Let's build AI that scales, excels, and is future-proof.
+                Empower your organisation with a risk framework that is measurable, repeatable, and regulation-ready. Build AI that scales, excels, and is future-proof.
               </p>
 
               <div style={{ display: "flex", gap: 16, justifyContent: "center", marginBottom: 56, flexWrap: "wrap" }}>
@@ -699,8 +700,8 @@
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, maxWidth: 1100, margin: "0 auto" }}>
               {[
-                { n: "01", t: "Company Profile", d: "Tell us about your Organization, industry, and the assessor." },
-                { n: "02", t: "AI Inventory", d: "Select the AI components your Organization actually uses." },
+                { n: "01", t: "Company Profile", d: "Tell us about your organisation, industry, and the assessor." },
+                { n: "02", t: "AI Inventory", d: "Select the AI components your organisation actually uses." },
                 { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your AI stack." },
                 { n: "04", t: "Risk Report", d: "Receive a scored risk profile with compliance gaps and actions." },
               ].map((s, i) => (
@@ -773,14 +774,14 @@
           <div style={{ maxWidth: 760, margin: "40px auto", padding: "0 24px 60px" }}>
             <div style={{ marginBottom: 32 }}>
               <h1 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 6px", letterSpacing: "-0.3px", fontFamily: DISPLAY }}>Company Profile</h1>
-              <p style={{ color: B.gray500, fontSize: 14, margin: 0 }}>Tell us about your Organization to personalise your assessment.</p>
+              <p style={{ color: B.gray500, fontSize: 14, margin: 0 }}>Tell us about your organisation to personalise your assessment.</p>
             </div>
 
-            {/* Section 1: Organization Details */}
+            {/* Section 1: organisation Details */}
             <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 12, padding: "32px", marginBottom: 20, boxShadow: B.shadow }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
                 <div style={{ width: 4, height: 20, background: B.red, borderRadius: 2 }} />
-                <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>I. Organization DETAILS</span>
+                <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>I. organisation DETAILS</span>
               </div>
 
               <div style={{ display: "grid", gap: 18 }}>
@@ -822,7 +823,7 @@
               </div>
               <div>
                 <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Select Jurisdiction *</label>
-                <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>Choose the primary regulatory framework applicable to your Organization's AI use.</p>
+                <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>Choose the primary regulatory framework applicable to your organisation's AI use.</p>
                 <select value={form.regulatory} onChange={e => setForm({ ...form, regulatory: e.target.value })} style={{ ...f(errors.regulatory), cursor: "pointer", maxWidth: 400 }}>
                   <option value="">Select jurisdiction...</option>
                   <option value="EU">EU (AI Act)</option>
@@ -846,7 +847,7 @@
               </div>
               <div>
                 <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Technological Maturity Level</label>
-                <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>How mature is your Organization's technology adoption? (1 = Initial &nbsp;→&nbsp; 5 = Fully Optimised)</p>
+                <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>How mature is your organisation's technology adoption? (1 = Initial &nbsp;→&nbsp; 5 = Fully Optimised)</p>
                 <select value={form.techMaturity} onChange={e => setForm({ ...form, techMaturity: e.target.value })} style={{ ...f(errors.techMaturity), cursor: "pointer", maxWidth: 320 }}>
                   <option value="">Select level...</option>
                   <option value="1">1 – Initial / Ad-hoc</option>
@@ -865,7 +866,7 @@
                 <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>AI INVENTORY</span>
               </div>
               <p style={{ color: B.gray500, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>
-                Describe how your Organization uses AI. Each entry drives targeted questions for your assessment.
+                Describe how your organisation uses AI. Each entry drives targeted questions for your assessment.
               </p>
 
               {errors.inventory && (
@@ -886,7 +887,7 @@
                       <div>
                         <label style={{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Description</label>
                         <input value={item.description} onChange={e => upd(i, "description", e.target.value)}
-                          placeholder="Briefly describe how your Organization uses this AI..."
+                          placeholder="Briefly describe how your organisation uses this AI..."
                           style={{ ...f(false), background: B.white }} />
                       </div>
                       <div>
