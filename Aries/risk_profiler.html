@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>AIRES Risk Profiler</title>
+  <title>AIRES™ Risk Profiler</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -333,18 +333,18 @@
         <nav style={{
           background: B.white, borderBottom: `1px solid ${B.border}`,
           padding: "0 40px", display: "flex", alignItems: "center",
-          justifyContent: "space-between", height: 72,
+          justifyContent: "space-between", height: 90,
           position: "sticky", top: 0, zIndex: 1000,
           boxShadow: "0 4px 12px rgba(0,0,0,0.03)"
         }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <BizcomLogo size={36} />
-            <div style={{ width: 1, height: 28, background: B.border }} />
+          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+            <BizcomLogo size={56} />
+            <div style={{ width: 1, height: 40, background: B.border }} />
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <div style={{ fontSize: 18, fontWeight: 900, color: B.black, letterSpacing: "-0.5px", lineHeight: 1, fontFamily: DISPLAY }}>
-                AIRES
+              <div style={{ fontSize: 20, fontWeight: 900, color: B.black, letterSpacing: "-0.5px", lineHeight: 1, fontFamily: DISPLAY }}>
+                AIRES™
               </div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: B.red, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 2 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: B.red, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 4 }}>
                 Risk Profiler
               </div>
             </div>
@@ -649,7 +649,7 @@
                   border: hasSaved ? `1.5px solid ${B.red}` : "none",
                   color: hasSaved ? B.red : B.white
                 }}>
-                  {hasSaved ? "START NEW ASSESSMENT" : "START AIRES AI RISK MAP →"}
+                  {hasSaved ? "START NEW ASSESSMENT" : "START AIRES™ AI RISK MAP →"}
                 </button>
                 {hasSaved && (
                   <button className="auth-btn" onClick={onResume} style={{

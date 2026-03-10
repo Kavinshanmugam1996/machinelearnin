@@ -23,7 +23,7 @@ def clean_text(text):
     # Fix the common utf-8 mojibake
     text = text.replace("â€”", "—").replace("â€™", "'").replace("â€˜", "'").replace("â€œ", '"').replace("â€", '"')
     # AIRES Rebranding - Use \b to prevent matching strings like "libraries"
-    text = re.sub(r'\bAries\b', 'AIRES', text, flags=re.IGNORECASE)
+    text = re.sub(r'\bAries\b', 'AIRES™', text, flags=re.IGNORECASE)
     text = re.sub(r'\bOrganisation\b', 'Organization', text, flags=re.IGNORECASE)
     return text.strip()
 

@@ -28,7 +28,7 @@ except Exception as e:
     producer = None
 # ----------------------------------------
 
-app = FastAPI(title="AIRES Risk Profiler Backend")
+app = FastAPI(title="AIRES™ Risk Profiler Backend")
 
 # Allow CORS for external access if needed in prod
 app.add_middleware(
