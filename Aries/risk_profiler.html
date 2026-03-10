@@ -210,8 +210,8 @@ function parseCSV(text) {
 
 // ─── DATA LOADER ──────────────────────────────────────────────────────────────
 async function loadAllData() {
-  // Load Question_mapper.csv → AI_USE_CASES + QUESTION_MAPPER
-  const mapperRes = await fetch("Data/Question_mapper.csv");
+  // Load Question_mapper.csv → AI_USE_CASES + QUESTION_MAPPER (Added cache buster)
+  const mapperRes = await fetch(`Data/Question_mapper.csv?v=${Date.now()}`);
   const mapperText = await mapperRes.text();
   const mapperLines = mapperText.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
   const componentHeaders = mapperLines[0].split(",").map(h => h.trim()).slice(1); // skip first col "AI systems"
@@ -234,12 +234,12 @@ async function loadAllData() {
     QUESTION_MAPPER[useCase] = groups;
   }
 
-  // Load questions.json → ALL_QUESTIONS
-  const questionsRes = await fetch("Data/questions.json");
+  // Load questions.json → ALL_QUESTIONS (Added cache buster)
+  const questionsRes = await fetch(`Data/questions.json?v=${Date.now()}`);
   ALL_QUESTIONS = await questionsRes.json();
 
-  // Load AR_Risk_DB.csv → RISK_DB (QID → array of risk descriptions)
-  const riskRes = await fetch("Data/AR_Risk_DB.csv");
+  // Load AR_Risk_DB.csv → RISK_DB (QID → array of risk descriptions) (Added cache buster)
+  const riskRes = await fetch(`Data/AR_Risk_DB.csv?v=${Date.now()}`);
   const riskText = await riskRes.text();
   const riskLines = riskText.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
   RISK_DB = {};
