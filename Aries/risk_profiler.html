@@ -263,7 +263,7 @@ function getRelevantQuestions(aiInventory) {
   aiInventory.forEach(({ useCase }) => {
     (QUESTION_MAPPER[useCase] || []).forEach(g => allGroups.add(g));
   });
-  return ALL_QUESTIONS.filter(q => allGroups.has(q.component_group));
+  return ALL_QUESTIONS.filter(q => q.is_universal || allGroups.has(q.component_group));
 }
 
 // ─── BIZCOM LOGO SVG ──────────────────────────────────────────────────────────
