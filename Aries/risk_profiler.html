@@ -1041,163 +1041,27 @@ function QuestionFlow({ profile, onBack, onFinish, initialIndex = 0, onIndexChan
 
 // ─── PAGE 5: RISK REPORT ──────────────────────────────────────────────────────
 function RiskReport({ profile, answers, questions }) {
-  const scored = questions.filter(q => answers[q.qid] && answers[q.qid] !== "Non-applicable");
-  const scoreMap = { "Yes": 100, "No": 0, "Maybe": 50 };
-  const totalScore = scored.length > 0
-    ? Math.round(scored.reduce((s, q) => s + (scoreMap[answers[q.qid]] || 0), 0) / scored.length)
-    : 0;
-
-  const risk = totalScore >= 75 ? { l: "Low Risk", c: "#16A34A", bg: "#F0FDF4", border: "#86EFAC" }
-    : totalScore >= 50 ? { l: "Moderate Risk", c: B.blue, bg: "#EFF6FF", border: "#93C5FD" }
-    : totalScore >= 25 ? { l: "High Risk", c: "#D97706", bg: "#FFFBEB", border: "#FDE68A" }
-    : { l: "Critical Risk", c: B.red, bg: "#FEF2F2", border: "#FECACA" };
-
-  const clusterStats = {};
-  questions.forEach(q => {
-    if (!clusterStats[q.cluster]) clusterStats[q.cluster] = { yes: 0, no: 0, maybe: 0, total: 0 };
-    clusterStats[q.cluster].total++;
-    const a = answers[q.qid];
-    if (a === "Yes") clusterStats[q.cluster].yes++;
-    else if (a === "No") clusterStats[q.cluster].no++;
-    else if (a === "Maybe") clusterStats[q.cluster].maybe++;
-  });
-
-  const gaps = questions.filter(q => answers[q.qid] === "No").slice(0, 5);
-
   return (
-    <div style={{ minHeight: "100vh", background: B.gray50, fontFamily: BODY }}>
-      <Nav steps={["Company Profile", "AI Inventory", "Questions", "Risk Report"]} current={3} />
+    <div style={{ minHeight: "100vh", background: B.gray50, fontFamily: BODY, display: "flex", flexDirection: "column" }}>
+      <Nav steps={["Company Profile", "AI Inventory", "Questions", "Complete"]} current={3} />
 
-      <div style={{ maxWidth: 860, margin: "40px auto", padding: "0 24px 60px" }}>
-        <div style={{ marginBottom: 32 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: B.red, letterSpacing: "0.1em", marginBottom: 8 }}>ASSESSMENT COMPLETE</div>
-          <h1 style={{ fontSize: 30, fontWeight: 800, color: B.black, margin: "0 0 4px", letterSpacing: "-0.3px" , fontFamily: DISPLAY}}>Your AI Risk Profile</h1>
-          <p style={{ color: B.gray500, fontSize: 14, margin: 0 }}>{profile.companyName} · {profile.industry} · {profile.companySize}</p>
-        </div>
-
-        {/* Score + Risk level */}
-        <div style={{
-          background: B.white, border: `1px solid ${B.border}`, borderRadius: 14,
-          padding: "36px", marginBottom: 20, boxShadow: B.shadow,
-          display: "grid", gridTemplateColumns: "auto 1fr", gap: 40, alignItems: "center"
-        }}>
-          {/* Dial */}
-          <div style={{ textAlign: "center" }}>
-            <svg width={130} height={130} viewBox="0 0 130 130">
-              <circle cx="65" cy="65" r="54" fill="none" stroke={B.gray100} strokeWidth="12" />
-              <circle cx="65" cy="65" r="54" fill="none" stroke={risk.c} strokeWidth="12"
-                strokeDasharray={`${(totalScore / 100) * 339.3} 339.3`}
-                strokeLinecap="round"
-                style={{ transform: "rotate(-90deg)", transformOrigin: "65px 65px" }} />
-              <text x="65" y="60" textAnchor="middle" fontSize="28" fontWeight="800" fill={B.black} fontFamily="Syne, sans-serif">{totalScore}</text>
-              <text x="65" y="78" textAnchor="middle" fontSize="11" fill={B.gray500} fontFamily="Syne, sans-serif">/ 100</text>
-            </svg>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: "56px 40px", maxWidth: 640, width: "100%", textAlign: "center", boxShadow: B.shadowLg }}>
+          <div style={{ width: 72, height: 72, background: "#F0FDF4", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}>
+            <span style={{ fontSize: 32, color: "#16A34A", fontWeight: "bold" }}>✓</span>
           </div>
-          <div>
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px",
-              background: risk.bg, border: `1px solid ${risk.border}`, borderRadius: 8, marginBottom: 12
-            }}>
-              <div style={{ width: 8, height: 8, borderRadius: "50%", background: risk.c }} />
-              <span style={{ fontSize: 16, fontWeight: 700, color: risk.c }}>{risk.l}</span>
-            </div>
-            <div style={{ color: B.gray700, fontSize: 14, lineHeight: 1.7 }}>
-              Answered <strong>{Object.keys(answers).length}</strong> of <strong>{questions.length}</strong> questions.{" "}
-              <strong style={{ color: B.red }}>{gaps.length} critical gaps</strong> identified requiring immediate attention.
-            </div>
-            <div style={{ marginTop: 16, display: "flex", gap: 16 }}>
-              {[
-                { l: "Yes", v: Object.values(answers).filter(a => a === "Yes").length, c: "#16A34A" },
-                { l: "No", v: Object.values(answers).filter(a => a === "No").length, c: B.red },
-                { l: "Maybe", v: Object.values(answers).filter(a => a === "Maybe").length, c: B.blue },
-              ].map(s => (
-                <div key={s.l} style={{ textAlign: "center", background: B.gray50, borderRadius: 8, padding: "10px 16px" }}>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: s.c }}>{s.v}</div>
-                  <div style={{ fontSize: 11, color: B.gray500, fontWeight: 600 }}>{s.l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Cluster breakdown */}
-        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 14, padding: "32px", marginBottom: 20, boxShadow: B.shadow }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
-            <div style={{ width: 4, height: 20, background: B.blue, borderRadius: 2 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>RISK BREAKDOWN BY DOMAIN</span>
-          </div>
-          {Object.entries(clusterStats).map(([cluster, stats]) => {
-            const cc = CLUSTER_COLORS[cluster] || B.blue;
-            const desc = CLUSTER_DESCRIPTIONS[cluster] || "";
-            const pct = Math.round((stats.yes / stats.total) * 100);
-            return (
-              <div key={cluster} style={{ marginBottom: 24 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
-                  <div style={{ flex: 1, paddingRight: 20 }}>
-                    <div style={{ fontSize: 14, color: B.black, fontWeight: 700, marginBottom: 4 }}>{cluster}</div>
-                    <div style={{ fontSize: 13, color: B.gray500, lineHeight: 1.5, fontWeight: 400 }}>{desc}</div>
-                  </div>
-                  <div style={{ textAlign: "right", minWidth: 100 }}>
-                    <div style={{ display: "flex", gap: 12, justifyContent: "flex-end", marginBottom: 4 }}>
-                      <span style={{ fontSize: 12, color: "#16A34A", fontWeight: 700 }}>✓ {stats.yes}</span>
-                      <span style={{ fontSize: 12, color: B.red, fontWeight: 700 }}>✗ {stats.no}</span>
-                    </div>
-                    <div style={{ fontSize: 11, color: B.gray500 }}>{pct}% Compliance</div>
-                  </div>
-                </div>
-                <div style={{ height: 8, background: B.gray100, borderRadius: 4, overflow: "hidden" }}>
-                  <div style={{ height: "100%", width: `${pct}%`, background: cc, borderRadius: 4, transition: "width 1s ease" }} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* AI Inventory */}
-        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 14, padding: "24px 32px", marginBottom: 20, boxShadow: B.shadow }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-            <div style={{ width: 4, height: 20, background: B.red, borderRadius: 2 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>AI INVENTORY ASSESSED</span>
-          </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-            {profile.inventory.map((item, i) => (
-              <span key={i} style={{
-                padding: "5px 12px", borderRadius: 20, fontSize: 12, fontWeight: 600,
-                background: B.blue + "15", color: B.blue, border: `1px solid ${B.blue}33`
-              }}>{item.useCase}</span>
-            ))}
-          </div>
-        </div>
-        {/* Gaps */}
-        {gaps.length > 0 && (
-          <div style={{ background: B.white, border: `1.5px solid #FECACA`, borderRadius: 14, padding: "32px", marginBottom: 24, boxShadow: B.shadow }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
-              <div style={{ width: 4, height: 20, background: B.red, borderRadius: 2 }} />
-              <span style={{ fontSize: 13, fontWeight: 700, color: B.red, letterSpacing: "0.06em" }}>TOP COMPLIANCE GAPS</span>
-            </div>
-            {gaps.map((q, i) => (
-              <div key={q.qid} style={{
-                background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: 8,
-                padding: "14px 16px", marginBottom: i < gaps.length - 1 ? 10 : 0,
-                borderLeft: `3px solid ${B.red}`
-              }}>
-                <div style={{ fontSize: 11, color: B.red, fontWeight: 700, marginBottom: 4 }}>
-                  {q.qid} · {q.component_group.replace(/_/g, " ").toUpperCase()}
-                </div>
-                <div style={{ fontSize: 13, color: B.gray700, lineHeight: 1.5 }}>{q.text}</div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div style={{ textAlign: "center" }}>
-          <p style={{ color: B.gray500, fontSize: 13, marginBottom: 20 }}>
-            Powered by Bizcom's AI Governance Platform · ISO 42001 · NIST-RMF · EU AI Act
+          <h1 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 16px", fontFamily: DISPLAY, letterSpacing: "-0.5px" }}>
+            Assessment Complete
+          </h1>
+          <p style={{ fontSize: 16, color: B.gray600, lineHeight: 1.6, margin: "0 0 40px" }}>
+            Thanks for completing the survey. We will get back to you with a complete report in <strong>24 - 48 hours</strong>.
           </p>
           <button onClick={() => window.location.reload()} style={{
-            padding: "13px 32px", background: B.red, border: "none", borderRadius: 8,
-            color: B.white, fontSize: 14, fontWeight: 700, cursor: "pointer"
-          }}>Start New Assessment</button>
+            padding: "15px 40px", background: B.red, border: "none", borderRadius: 8,
+            color: B.white, fontSize: 15, fontWeight: 700, cursor: "pointer"
+          }}>
+            Return Home
+          </button>
         </div>
       </div>
     </div>
