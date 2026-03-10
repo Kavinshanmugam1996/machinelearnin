@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 # --- KAFKA PRODUCER SETUP (AWS READY) ---
-KAFKA_TOPIC = "AIRES-assessment-events"
+KAFKA_TOPIC = os.environ.get('KAFKA_TOPIC', 'AIRES-assessment-events')
 try:
     from kafka import KafkaProducer
     # Defaults to localhost for dev, but configurable for AWS MSK via Env Var
