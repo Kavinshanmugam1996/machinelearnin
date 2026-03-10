@@ -1042,81 +1042,30 @@ function QuestionFlow({ profile, onBack, onFinish, initialIndex = 0, onIndexChan
 
 // ─── PAGE 5: RISK REPORT ──────────────────────────────────────────────────────
 function RiskReport({ profile, answers, questions }) {
-  const stats = questions.reduce((acc, q) => {
-    const ans = answers[q.qid];
-    if (!ans || ans === "Non-applicable") return acc;
-    
-    // Scoring logic: Is it a trigger point?
-    const isTrigger = q.trigger_points?.some(tp => ans.startsWith(tp));
-    const score = isTrigger ? 0 : 100;
-    
-    acc.totalScore += score;
-    acc.count++;
-    
-    if (!acc.clusters[q.cluster]) acc.clusters[q.cluster] = { total: 0, safe: 0, risk: 0 };
-    acc.clusters[q.cluster].total++;
-    if (isTrigger) acc.clusters[q.cluster].risk++;
-    else acc.clusters[q.cluster].safe++;
-    
-    return acc;
-  }, { totalScore: 0, count: 0, clusters: {} });
-
-  const finalScore = stats.count > 0 ? Math.round(stats.totalScore / stats.count) : 0;
-  const riskLevel = finalScore > 80 ? { label: "LOW RISK", color: "#16A34A" } : finalScore > 50 ? { label: "MEDIUM RISK", color: "#D97706" } : { label: "HIGH RISK", color: B.red };
-
   return (
     <div style={{ minHeight: "100vh", background: B.gray50, fontFamily: BODY, display: "flex", flexDirection: "column" }}>
       <Nav steps={["Company Profile", "AI Inventory", "Questions", "Complete"]} current={3} />
 
-      <div style={{ flex: 1, padding: "40px 24px" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
-          <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: "40px", textAlign: "center", boxShadow: B.shadowLg, marginBottom: 24 }}>
-            <div style={{ width: 72, height: 72, background: "#F0FDF4", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}>
-              <span style={{ fontSize: 32, color: "#16A34A", fontWeight: "bold" }}>✓</span>
-            </div>
-            
-            <h1 style={{ fontSize: 32, fontWeight: 800, color: B.black, margin: "0 0 8px", fontFamily: DISPLAY, letterSpacing: "-1px" }}>
-              Assessment Complete
-            </h1>
-            <p style={{ fontSize: 16, color: B.gray600, margin: "0 0 32px" }}>
-              {profile.companyName} · AI Governance Score
-            </p>
-
-            <div style={{ display: "inline-flex", flexDirection: "column", gap: 8, padding: "24px 48px", background: B.gray50, borderRadius: 12, border: `1px solid ${B.border}` }}>
-              <div style={{ fontSize: 56, fontWeight: 800, color: riskLevel.color, lineHeight: 1 }}>{finalScore}<span style={{ fontSize: 20, color: B.gray400 }}>/100</span></div>
-              <div style={{ fontSize: 14, fontWeight: 700, color: riskLevel.color, letterSpacing: "0.1em" }}>{riskLevel.label}</div>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 40, textAlign: "left" }}>
-               {Object.entries(stats.clusters).map(([cluster, cStats]) => {
-                  const pct = Math.round((cStats.safe / cStats.total) * 100);
-                  const clr = CLUSTER_COLORS[cluster] || B.blue;
-                  return (
-                    <div key={cluster} style={{ padding: 16, background: B.white, border: `1px solid ${B.border}`, borderRadius: 10 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: B.gray500, marginBottom: 8, textTransform: "uppercase" }}>{cluster.split(":")[0]}</div>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-                        <div style={{ fontSize: 20, fontWeight: 700, color: B.black }}>{pct}% Safe</div>
-                        <div style={{ fontSize: 12, color: B.gray400 }}>{cStats.safe}/{cStats.total} Questions</div>
-                      </div>
-                      <div style={{ height: 4, background: B.gray100, borderRadius: 2, marginTop: 8, overflow: "hidden" }}>
-                        <div style={{ height: "100%", width: `${pct}%`, background: clr, borderRadius: 2 }} />
-                      </div>
-                    </div>
-                  );
-               })}
-            </div>
-
-            <p style={{ fontSize: 14, color: B.gray500, marginTop: 40, fontStyle: "italic" }}>
-              A full detailed analysis will be sent to your email in <strong>24 - 48 hours</strong>.
-            </p>
-
-            <button onClick={() => window.location.reload()} style={{
-              marginTop: 32, padding: "15px 40px", background: B.red, border: "none", borderRadius: 8,
-              color: B.white, fontSize: 15, fontWeight: 700, cursor: "pointer", width: "100%"
-            }}>
-              Restart Assessment
-            </button>
+      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: "56px 40px", maxWidth: 640, width: "100%", textAlign: "center", boxShadow: B.shadowLg }}>
+          <div style={{ width: 72, height: 72, background: "#F0FDF4", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}>
+            <span style={{ fontSize: 32, color: "#16A34A", fontWeight: "bold" }}>✓</span>
           </div>
+          <h1 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 16px", fontFamily: DISPLAY, letterSpacing: "-0.5px" }}>
+            Assessment Complete
+          </h1>
+          <p style={{ fontSize: 18, color: B.gray700, lineHeight: 1.6, margin: "0 0 10px" }}>
+            Thank you for completing the assessment.
+          </p>
+          <p style={{ fontSize: 18, color: B.gray700, lineHeight: 1.6, margin: "0 0 40px" }}>
+            <strong>Bizcom will send you the detailed report within 24-48 Hours.</strong>
+          </p>
+          <button onClick={() => window.location.reload()} style={{
+            padding: "15px 40px", background: B.red, border: "none", borderRadius: 8,
+            color: B.white, fontSize: 15, fontWeight: 700, cursor: "pointer"
+          }}>
+            Return Home
+          </button>
         </div>
       </div>
     </div>
