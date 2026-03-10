@@ -22,9 +22,9 @@ def clean_text(text):
     if text == "nan": return ""
     # Fix the common utf-8 mojibake
     text = text.replace("â€”", "—").replace("â€™", "'").replace("â€˜", "'").replace("â€œ", '"').replace("â€", '"')
-    # AIRES Rebranding - Case Insensitive
-    text = re.sub(r'Aries', 'AIRES', text, flags=re.IGNORECASE)
-    text = re.sub(r'Organisation', 'Organization', text, flags=re.IGNORECASE)
+    # AIRES Rebranding - Use \b to prevent matching strings like "libraries"
+    text = re.sub(r'\bAries\b', 'AIRES', text, flags=re.IGNORECASE)
+    text = re.sub(r'\bOrganisation\b', 'Organization', text, flags=re.IGNORECASE)
     return text.strip()
 
 for r in raw:
