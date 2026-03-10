@@ -1,6 +1,6 @@
 [
   {
-    "qid": "AR_51",
+    "qid": "AR_01",
     "text": "Do u have strategy for Token Expiry vs. Long-Running AI Tasks?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -17,7 +17,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_52",
+    "qid": "AR_02",
     "text": "Do you distinguishing between a \"Human User\" and an \"Autonomous AI Agent\" in your federation logic?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -34,7 +34,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_53",
+    "qid": "AR_03",
     "text": "Do  you using \"Scoped\" Permissions, or does a valid login grant access to every model in the company?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -51,7 +51,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_54",
+    "qid": "AR_04",
     "text": "Does your Prompt Shield analyze the content of \"System Prompt\" injections versus \"User Prompt\" injections?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -68,7 +68,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_55",
+    "qid": "AR_05",
     "text": "Is your Output Filter capable of detecting \"Model Inversion\" or \"Membership Inference\" attacks?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -85,7 +85,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_56",
+    "qid": "AR_06",
     "text": "How does your gateway handle provider credentials (e.g., OpenAI API Keys) without exposing them to the \"Autonomous Agent\" or \"End-User\"?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -102,7 +102,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_57",
+    "qid": "AR_07",
     "text": "Does your API connectivity layer protect against Server-Side Request Forgery (SSRF) when the AI \"decides\" to call an external tool?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -119,7 +119,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_58",
+    "qid": "AR_08",
     "text": "Can your gateway restrict an AI Agent's API access based on the \"Task Context\" rather than a static permission?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -136,7 +136,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_59",
+    "qid": "AR_09",
     "text": "How are you validating the \"Integrity\" of the tools provided to the AI via protocols like MCP?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -153,7 +153,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_60",
+    "qid": "AR_10",
     "text": "How does your rate limiting distinguish between \"Input\" and \"Output\" tokens to prevent GPU starvation?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -170,7 +170,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_61",
+    "qid": "AR_11",
     "text": "Does your rate limiting logic enforce \"Global\" quotas while maintaining \"Per-Identity\" fairness?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -187,7 +187,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_62",
+    "qid": "AR_12",
     "text": "Does your gateway dynamically adjust rate limits based on the \"Token Cost\" of different models?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -204,7 +204,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_63",
+    "qid": "AR_13",
     "text": "How does the automated ingestion system verify that you have the legal rights or user consent to use this specific data for AI processing?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -221,7 +221,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_64",
+    "qid": "AR_14",
     "text": "Can the system provide a cryptographically verifiable 'birth certificate' for every data point used in the final model weights?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -238,7 +238,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_65",
+    "qid": "AR_15",
     "text": "For datasets sourced from 3rd parties or open-source (e.g., Hugging Face), do you  automated checks verify the license metadata and Terms of Service alignment to prevent legal \"poisoning\"?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -255,7 +255,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_66",
+    "qid": "AR_16",
     "text": "Is there a transparent 'audit trail' of every automated and manual modification made to the raw data before it became a feature?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -272,7 +272,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_67",
+    "qid": "AR_17",
     "text": "does the system architecture enforce a logical separation between 'System Instructions' and 'User-Provided Data' to prevent instruction overriding?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -289,7 +289,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_68",
+    "qid": "AR_18",
     "text": "Do u have any automated mechanisms are in place to classify and block user intent that specifically targets 'Jailbreaking' or safety-filter bypass?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -306,7 +306,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_69",
+    "qid": "AR_19",
     "text": "Do u consider \"Safe Failure\" protocol if a bouncer is bypassed?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -323,7 +323,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_70",
+    "qid": "AR_20",
     "text": "How is the AI system's input monitored for sensitive data exfiltration?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -340,7 +340,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_71",
+    "qid": "AR_21",
     "text": "Do u apply any \"Data Minimization\" are applied to the user's prompt?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -357,7 +357,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_72",
+    "qid": "AR_22",
     "text": "How do we handle \"Residual Risk\" if a piece of sensitive data bypasses the filter?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -374,7 +374,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_73",
+    "qid": "AR_23",
     "text": "does your system technically distinguish between 'Trusted Developer Instructions' and 'Untrusted User Input' at the token level?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -391,7 +391,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_74",
+    "qid": "AR_24",
     "text": "do your detectors handle instructions that aren't entered by the user, but are retrieved from external sources like RAG databases or web searches?",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -408,7 +408,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_75",
+    "qid": "AR_25",
     "text": "are the documented False Positive/Negative rates for your detector, and how does the system behave when a detection 'hit' occurs?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -425,7 +425,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_76",
+    "qid": "AR_26",
     "text": "Do you use automated statistical monitoring to detect and block \"outlier\" data batches that could purposefully bias or \"poison\" your model?",
     "component_group": "model_training",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -442,7 +442,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_77",
+    "qid": "AR_27",
     "text": "Is there a \"Privacy Buffer\" that automatically redacts PII (Sensitive Info) before it reaches your primary AI storage or RAG system?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -459,7 +459,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_78",
+    "qid": "AR_28",
     "text": "If you use AI Agents to fetch data, do you have an inspection proxy to ensure they aren't ingesting \"Indirect Prompt Injections\" from the web?",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -476,7 +476,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_79",
+    "qid": "AR_29",
     "text": "Do you have visibility into \"secondary\" ingestion (e.g., employees uploading proprietary PDFs or code to unsanctioned AI tools)?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -493,7 +493,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_80",
+    "qid": "AR_30",
     "text": "Does the system automatically quarantine data that violates your format (Schema Drift) rather than allowing \"Null\" or garbage values to pass?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -510,7 +510,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_81",
+    "qid": "AR_31",
     "text": "Are \"Circuit Breakers\" in place to kill the ingestion stream if the volume (and cloud cost) spikes unexpectedly?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -527,7 +527,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_82",
+    "qid": "AR_32",
     "text": "Are your model weights encrypted with \"Hold Your Own Key\" (HYOK) technology so the cloud provider cannot see them?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -544,7 +544,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_83",
+    "qid": "AR_33",
     "text": "Do you have hard-coded \"Geofencing\" that prevents AI data from being replicated to servers outside your legal jurisdiction?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -561,7 +561,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_84",
+    "qid": "AR_34",
     "text": "Does your storage layer support \"Identity-Based Decryption,\" where data is only decrypted at the moment a specific authorized user calls it?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -578,7 +578,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_85",
+    "qid": "AR_35",
     "text": "Are your \"Gold Standard\" training sets stored in \"WORM\" (Write Once, Read Many) storage to prevent accidental or malicious tampering?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -595,7 +595,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_86",
+    "qid": "AR_36",
     "text": "Is your Vector Database logically separated from your public-facing APIs to prevent \"Inference-Based Reconstruction\" attacks?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -612,7 +612,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_87",
+    "qid": "AR_37",
     "text": "Do you apply transformation steps (like scaling or normalization) separately to training and test sets to prevent \"Future Data\" from leaking into the training phase?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -629,7 +629,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_88",
+    "qid": "AR_38",
     "text": "Do you run automated \"Fairness Audits\" on your transformed features to ensure cleaning scripts haven't inadvertently removed or skewed minority group data?",
     "component_group": "bias_fairness",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -646,7 +646,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_89",
+    "qid": "AR_39",
     "text": "Have you tested if your transformed embeddings can be mathematically \"reversed\" to reconstruct the original sensitive PII?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -663,7 +663,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_90",
+    "qid": "AR_40",
     "text": "Is every \"missing value\" filled in by your processing logic tagged with metadata, so the model knows it is making a decision based on \"Synthetic\" data?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -680,7 +680,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_91",
+    "qid": "AR_41",
     "text": "Is the specific version of the transformation code (ETL) cryptographically linked to the specific version of the model it produced?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -697,7 +697,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_92",
+    "qid": "AR_42",
     "text": "Does your pipeline include an \"Input Sanitization\" layer that strips out hidden characters or noise designed to trigger an adversarial attack?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -714,7 +714,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_93",
+    "qid": "AR_43",
     "text": "Do you monitor for \"Information Entropy\" to ensure that your transformation (like PCA or compression) isn't stripping away the nuances required for safe decision-making?",
     "component_group": "model_training",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -731,7 +731,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_94",
+    "qid": "AR_44",
     "text": "Can you automatically trace a specific AI output back through the model version to the exact raw data used to train it?",
     "component_group": "development",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -748,7 +748,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_95",
+    "qid": "AR_45",
     "text": "Does the catalog automatically flag \"Stale Metadata\" if the underlying data source has changed its schema or volume in the last 24 hours?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -765,7 +765,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_96",
+    "qid": "AR_46",
     "text": "Is the \"Original Purpose\" of data collection (e.g., Marketing vs. Support) hard-coded into the metadata for every dataset?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -782,7 +782,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_97",
+    "qid": "AR_47",
     "text": "Is every AI-ready data asset assigned to a human \"Data Steward\" who is alerted when the asset's quality score drops?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -799,7 +799,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_98",
+    "qid": "AR_48",
     "text": "Does the catalog use AI to automatically discover and tag \"Shadow PII\" (hidden sensitive info) that humans might have missed?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -816,7 +816,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_99",
+    "qid": "AR_49",
     "text": "Are \"Usage Policies\" (e.g., \"Do not use for Credit Scoring\") embedded in the metadata and programmatically enforced?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -833,7 +833,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_100",
+    "qid": "AR_50",
     "text": "Do you have real-time alerts that trigger when the statistical distribution of your data \"drifts\" (changes) from the original training set?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -850,7 +850,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_101",
+    "qid": "AR_51",
     "text": "Can you programmatically prove\u2014within 72 hours\u2014exactly which data was used to train a specific model if a regulator audits you?",
     "component_group": "development",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -867,7 +867,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_102",
+    "qid": "AR_52",
     "text": "Do you have a \"Quality Gate\" that prevents AI-generated (synthetic) data from accidentally \"looping back\" into your training sets?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -884,7 +884,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_103",
+    "qid": "AR_53",
     "text": "Is there a mandatory human review for any data quality \"Exceptions\" before that data is allowed to enter a high-risk model?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -901,7 +901,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_104",
+    "qid": "AR_54",
     "text": "Are your data access policies \"Dynamic\" (checking user intent and risk level) rather than just \"Static\" (checking usernames)?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -918,7 +918,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_105",
+    "qid": "AR_55",
     "text": "Do you conduct \"Adversarial Bias Testing\" on your data quality rules to ensure they aren't accidentally deleting minority group data?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -935,7 +935,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_106",
+    "qid": "AR_56",
     "text": "Do your data tags (e.g., \"Secret,\" \"PII\") stay attached to the data even when it is moved between different cloud systems or APIs?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -952,7 +952,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_107",
+    "qid": "AR_57",
     "text": "Do you enforce \"Identity-Based Decryption\" where data is only decrypted when a verified user/service calls the API, rather than having it \"ready\" in plaintext?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -969,7 +969,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_108",
+    "qid": "AR_58",
     "text": "Do your AI Agents have their own unique, \"Least-Privilege\" API keys that restrict them to specific data rows rather than the entire database?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -986,7 +986,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_109",
+    "qid": "AR_59",
     "text": "Does your API automatically throttle or block requests if it detects an unusual pattern of \"Data Scraping\" (e.g., thousands of queries in a few seconds)?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1003,7 +1003,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_110",
+    "qid": "AR_60",
     "text": "Do you have a \"Prompt Firewall\" at the API level that inspects every request for \"Indirect Prompt Injections\" before it hits the data?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1020,7 +1020,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_111",
+    "qid": "AR_61",
     "text": "Are your API tokens \"Short-Lived\" (expiring in minutes) and restricted to specific IP addresses or geographic regions?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1037,7 +1037,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_112",
+    "qid": "AR_62",
     "text": "Do you use automated tools to scan for \"Ghost\" or \"Zombie\" APIs\u2014old endpoints that developers forgot to turn off but still have data access?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1054,7 +1054,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_113",
+    "qid": "AR_63",
     "text": "Does the API monitor where the data is being sent, blocking any attempts to send large datasets to unauthorized external IP addresses?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1071,7 +1071,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_114",
+    "qid": "AR_64",
     "text": "Do you have automated alerts for \"Input Drift\" (when the real-world data starts looking statistically different from your training data)?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1088,7 +1088,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_115",
+    "qid": "AR_65",
     "text": "Can your monitoring tools correlate a model's \"bad\" output back to a specific upstream data transformation or ingestion error?",
     "component_group": "development",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1105,7 +1105,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_116",
+    "qid": "AR_66",
     "text": "Do you monitor \"Token Velocity\" and cost-per-resolution in real-time to detect recursive agent loops or \"Retry Storms\"?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1122,7 +1122,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_117",
+    "qid": "AR_67",
     "text": "Does your system alert you when the \"Ground Truth\" data in your Vector Database (RAG) is older than your business's decision cycle?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1139,7 +1139,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_118",
+    "qid": "AR_68",
     "text": "Do you monitor the \"Intent\" of autonomous agents, flagging when an agent's actions deviate from its predefined \"Policy Envelope\"?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1156,7 +1156,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_119",
+    "qid": "AR_69",
     "text": "Do you automatically run a \"Gold Standard\" test suite against your pipeline every hour to ensure updates haven't introduced new biases?",
     "component_group": "development",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1173,7 +1173,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_120",
+    "qid": "AR_70",
     "text": "Is your AI data monitoring integrated into your central IT \"Single Pane of Glass\" (e.g., OpenTelemetry) rather than sitting in a siloed tool?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1190,7 +1190,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_121",
+    "qid": "AR_71",
     "text": "Do your AI accelerators have mitigations against \"GATEBLEED\" or similar side-channel attacks that leak training data via power-gating fluctuations?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1207,7 +1207,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_122",
+    "qid": "AR_72",
     "text": "Have you allocated at least 75% of your compute budget for Inference (serving) rather than just Training?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1224,7 +1224,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_123",
+    "qid": "AR_73",
     "text": "If your cloud provider faces a 3-month GPU shortage (like the \"2025 Crunch\"), can you switch to an alternative cluster or on-prem hardware in <48 hours?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1241,7 +1241,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_124",
+    "qid": "AR_74",
     "text": "Does your compute layer have hardware-level mitigations against power-fluctuation attacks (Side-Channel) that can \"leak\" training data?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1258,7 +1258,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_125",
+    "qid": "AR_75",
     "text": "Are you using \"Dynamic GPU Partitioning\" (sharing one GPU for many small tasks) rather than locking a full GPU for every job?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1275,7 +1275,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_126",
+    "qid": "AR_76",
     "text": "Does the infrastructure verify the cryptographic signature of the GPU/TPU firmware every time it reboots?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1292,7 +1292,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_127",
+    "qid": "AR_77",
     "text": "Does your compute layer have an automated \"Circuit Breaker\" to kill an AI Agent's session if it enters an infinite recursive loop?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1309,7 +1309,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_128",
+    "qid": "AR_78",
     "text": "Is your compute architecture optimized for Inference (low latency) separately from Training (high throughput)?",
     "component_group": "model_training",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1326,7 +1326,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_129",
+    "qid": "AR_79",
     "text": "Does your network use RDMA (Remote Direct Memory Access) to bypass the CPU and move data directly from storage to GPU memory?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1343,7 +1343,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_130",
+    "qid": "AR_80",
     "text": "Can your storage layer ingest a full model \"Checkpoint\" (terabytes of data) in under 60 seconds without pausing the training cluster?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1360,7 +1360,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_131",
+    "qid": "AR_81",
     "text": "Is your storage architecture \"Disaggregated,\" allowing you to scale capacity (Petabytes) independently of compute performance (IOPS)?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1377,7 +1377,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_132",
+    "qid": "AR_82",
     "text": "Do your training datasets and your production Vector Database (RAG) share a unified, searchable namespace?Yes / No",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -1394,7 +1394,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_133",
+    "qid": "AR_83",
     "text": "Do you have automated \"Egress Alerts\" that trigger if an AI agent or process begins moving more than 5TB of data to a different cloud region?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1411,7 +1411,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_134",
+    "qid": "AR_84",
     "text": "Are you using NVMe-over-Fabrics (NVMe-oF) for all \"Hot\" training data, with automated tiering to cold object storage for archived models?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1428,7 +1428,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_135",
+    "qid": "AR_85",
     "text": "Does your orchestrator automatically place distributed training jobs on nodes with the shortest physical \"interconnect\" distance?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1445,7 +1445,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_136",
+    "qid": "AR_86",
     "text": "Do you use admission controllers (like Kyverno or OPA) to automatically block any AI pod that lacks resource limits or approved security tags?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1462,7 +1462,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_137",
+    "qid": "AR_87",
     "text": "Does your cluster management tool alert you within 60 seconds if a manual change is made to a \"Golden\" configuration file?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1479,7 +1479,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_138",
+    "qid": "AR_88",
     "text": "Are you using Kata Containers or a similar VM-based isolation layer to ensure one tenant's AI job cannot \"see\" the memory of another job on the same GPU?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1496,7 +1496,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_139",
+    "qid": "AR_89",
     "text": "Does your orchestration layer automatically restart failed jobs from the last successful checkpoint without human intervention?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1513,7 +1513,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_140",
+    "qid": "AR_90",
     "text": "Are your AI workloads running in Trusted Execution Environments (hardware enclaves) to protect data and model weights from being viewed by the cloud provider or host OS?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1530,7 +1530,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_141",
+    "qid": "AR_91",
     "text": "Do you have automated infrastructure blocks that prevent any AI system from starting if it doesn't meet specific compliance tags (e.g., \"High-Risk AI\" per EU AI Act)?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1547,7 +1547,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_142",
+    "qid": "AR_92",
     "text": "Does every AI Agent and automated script have a unique, cryptographically verifiable identity that is rotated every 24 hours?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1564,7 +1564,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_143",
+    "qid": "AR_93",
     "text": "re your system logs (access, training, and inference) stored in an immutable, \"Write-Once\" vault that cannot be altered even by a System Administrator?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1581,7 +1581,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_144",
+    "qid": "AR_94",
     "text": "Is your AI cluster \"Microsegmented\" so that an infected GPU node cannot talk to your internal HR or Financial databases?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1598,7 +1598,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_145",
+    "qid": "AR_95",
     "text": "Do you perform monthly \"AI Red Teaming\" specifically on your infrastructure to test if your firewalls can detect Indirect Prompt Injections or Model Inversion?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1615,7 +1615,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_146",
+    "qid": "AR_96",
     "text": "Do you automatically re-index your Vector DB whenever the core LLM version is updated?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -1632,7 +1632,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_147",
+    "qid": "AR_97",
     "text": "Do you validate all data entering your knowledge base to prevent \"Adversarial Context\" (e.g., a doc that tricks the AI into giving illegal discounts)?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1649,7 +1649,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_148",
+    "qid": "AR_98",
     "text": "Is there an automated \"Cleaning Layer\" that strips PII from data before it is turned into vectors/embeddings?",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1666,7 +1666,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_149",
+    "qid": "AR_99",
     "text": "Does your DB flag \"outdated\" knowledge (e.g., 2024 tax laws) so the AI doesn't use it to answer 2026 queries?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1683,7 +1683,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_150",
+    "qid": "AR_100",
     "text": "In shared DB environments, do you use \"Metadata Filtering\" to ensure the AI only retrieves data the specific user is allowed to see?",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1700,7 +1700,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_151",
+    "qid": "AR_101",
     "text": "In multi\"\u2018team or multi\"\u2018tenant environments, missing metadata filters can cause the AI to blend data from different departments or clients. This can lead to accidental cross\"\u2018tenant retrieval, where one business unit gains visibility into another's documents, embeddings, or knowledge assets.",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1717,7 +1717,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_152",
+    "qid": "AR_102",
     "text": "Is your \"Prompt Logic\" version-controlled and peer-reviewed just like your Python/Java code?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -1734,7 +1734,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_153",
+    "qid": "AR_103",
     "text": "If a model's \"reasoning\" contradicts a hard business rule, does the system automatically default to the safest \"Fail-Closed\" state?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1751,7 +1751,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_154",
+    "qid": "AR_104",
     "text": "Do you test your business logic against \"Adversarial Prompts\" designed to find logical contradictions in your rules?",
     "component_group": "model_training",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -1768,7 +1768,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_155",
+    "qid": "AR_105",
     "text": "Does your AI act with the Least Privilege of the end-user, or does it use a \"Superuser\" service account?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1785,7 +1785,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_156",
+    "qid": "AR_106",
     "text": "Do your Domain Objects automatically mask \"Secret\" fields (like SSNs) before they are passed into the AI's \"Context Window\"?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1802,7 +1802,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_157",
+    "qid": "AR_107",
     "text": "Does your entitlement layer prevent the AI from \"inferring\" sensitive relationships (e.g., \"Who does User X report to?\")?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1819,7 +1819,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_158",
+    "qid": "AR_108",
     "text": "Are permissions re-checked at the moment of AI execution, or only when the user first logs in?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1836,7 +1836,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_159",
+    "qid": "AR_109",
     "text": "Can every AI-driven object modification be traced back to both the Model ID and the Authorizing Human?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1853,7 +1853,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_160",
+    "qid": "AR_110",
     "text": "Do you inspect the data leaving the repository to ensure the AI isn't pulling 1,000+ rows when it only asked for 1?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1870,7 +1870,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_161",
+    "qid": "AR_111",
     "text": "Is there a hard limit on how many \"Semantic Searches\" an agent can perform in a one-minute window?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -1887,7 +1887,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_162",
+    "qid": "AR_112",
     "text": "Are the embeddings and the raw data they point to encrypted with Customer-Managed Keys (CMK)?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -1904,7 +1904,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_163",
+    "qid": "AR_113",
     "text": "Is your AI Repo \"pinned\" to a specific data snapshot, preventing it from using \"live\" data during a training or fine-tuning run?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -1921,7 +1921,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_164",
+    "qid": "AR_114",
     "text": "Does your Repository support \"Private Information Retrieval\" where the database doesn't actually \"know\" what the AI is searching for?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -1938,7 +1938,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_165",
+    "qid": "AR_115",
     "text": "Do you have an automated shut-off if an AI service starts consuming 500% more tokens than its historical average?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1955,7 +1955,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_166",
+    "qid": "AR_116",
     "text": "Does your service manager run \"Shadow Tests\" (comparing a new model's logic against an old one) before a full rollout?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1972,7 +1972,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_167",
+    "qid": "AR_117",
     "text": "Does the Service Manager check if the AI's \"intended action\" (e.g., \"Send Email\") matches the original user's request?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -1989,7 +1989,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_168",
+    "qid": "AR_118",
     "text": "For high-impact actions, does the service manager \"pause\" and wait for a human \"O.K.\" in Slack/Teams before executing?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2006,7 +2006,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_169",
+    "qid": "AR_119",
     "text": "Can you instantly disable a specific AI service (e.g., \"Customer Support Bot\") without taking down your entire IT infrastructure?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2023,7 +2023,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_170",
+    "qid": "AR_120",
     "text": "If your primary AI API provider (e.g., OpenAI/Anthropic) goes offline for 4+ hours, can your system automatically \"fail over\" to a secondary provider or an internal open-source model?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2040,7 +2040,7 @@
     "is_universal": false
   },
   {
-    "qid": "AR_171",
+    "qid": "AR_121",
     "text": "Do you have a centralized cloud governance framework enforced across all business units and cloud environments?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2057,7 +2057,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_172",
+    "qid": "AR_122",
     "text": "Are ownership and accountability clearly defined for every cloud resource, including escalation paths during incidents?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2074,7 +2074,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_173",
+    "qid": "AR_123",
     "text": "Is there a formal process to review and escalate critical cloud infrastructure risks to executive leadership?",
     "component_group": "board_directors",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2091,7 +2091,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_174",
+    "qid": "AR_124",
     "text": "Do you have a formal third-party cloud provider risk management program covering dependency mapping and exit strategies?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2108,7 +2108,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_175",
+    "qid": "AR_125",
     "text": "Is there a standardized cloud architecture and policy framework (e.g., landing zones, guardrails) enforced automatically?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2125,7 +2125,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_176",
+    "qid": "AR_126",
     "text": "Do you have a formal capacity planning process to ensure compute resources can scale for AI and business workloads?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2142,7 +2142,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_177",
+    "qid": "AR_127",
     "text": "Are all compute environments (dev, staging, production) maintained with automated patch management and security hardening?",
     "component_group": "deployment_maintenance",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2159,7 +2159,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_178",
+    "qid": "AR_128",
     "text": "Are workloads logically and technically segregated across dev, staging, and production environments?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2176,7 +2176,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_179",
+    "qid": "AR_129",
     "text": "Do you have real-time compute performance monitoring with automated alerting for degradation?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2193,7 +2193,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_180",
+    "qid": "AR_130",
     "text": "Is there a formal lifecycle management process for compute resources including decommissioning of legacy and orphaned systems?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2210,7 +2210,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_181",
+    "qid": "AR_131",
     "text": "Is enterprise data encrypted at rest and in transit across all storage environments with customer-managed keys?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2227,7 +2227,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_182",
+    "qid": "AR_132",
     "text": "Are backup and recovery capabilities formally governed with tested recovery time objectives (RTOs) and recovery point objectives (RPOs)?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2244,7 +2244,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_183",
+    "qid": "AR_133",
     "text": "Is data availability ensured across multiple regions and platforms to prevent single points of failure?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2261,7 +2261,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_184",
+    "qid": "AR_134",
     "text": "Are all data assets formally classified and assigned ownership with appropriate protection controls enforced by classification level?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2278,7 +2278,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_185",
+    "qid": "AR_135",
     "text": "Is there a formal data lifecycle and retention governance program with automated enforcement and legal hold capabilities?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2295,7 +2295,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_186",
+    "qid": "AR_136",
     "text": "Is your network architecture designed with microsegmentation to isolate workloads and prevent lateral threat movement?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2312,7 +2312,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_187",
+    "qid": "AR_137",
     "text": "Are all external connections, APIs, and third-party integrations secured with mutual authentication and encrypted channels?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2329,7 +2329,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_188",
+    "qid": "AR_138",
     "text": "Do you have automated traffic management capabilities (e.g., load balancing, DDoS protection) to maintain availability during demand spikes?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2346,7 +2346,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_189",
+    "qid": "AR_139",
     "text": "Is comprehensive network visibility (e.g., flow logging, IDS/IPS) implemented to detect attacks in real time?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2363,7 +2363,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_190",
+    "qid": "AR_140",
     "text": "Are hybrid and remote connectivity risks (VPN, SD-WAN, Direct Connect) managed with formal security controls?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2380,7 +2380,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_191",
+    "qid": "AR_141",
     "text": "Is identity and access governance enforced across all cloud services with automated provisioning and de-provisioning?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2397,7 +2397,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_192",
+    "qid": "AR_142",
     "text": "Are all privileged accounts subject to just-in-time access, session recording, and behavioral monitoring?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2414,7 +2414,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_193",
+    "qid": "AR_143",
     "text": "Are machine identities and API credentials managed with short-lived tokens, automated rotation, and inventory tracking?",
     "component_group": "ai_technical",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2431,7 +2431,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_194",
+    "qid": "AR_144",
     "text": "Are access rights reviewed quarterly with automated detection of excessive permissions and privilege creep?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2448,7 +2448,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_195",
+    "qid": "AR_145",
     "text": "Does your authentication architecture enforce MFA for all users and implement phishing-resistant methods for privileged access?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2465,7 +2465,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_196",
+    "qid": "AR_146",
     "text": "Is end-to-end infrastructure health monitoring implemented with automated remediation for common failure scenarios?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2482,7 +2482,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_197",
+    "qid": "AR_147",
     "text": "Is there a formal incident management process with defined SLAs, war room protocols, and post-incident review requirements?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2499,7 +2499,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_198",
+    "qid": "AR_148",
     "text": "Are all configuration changes governed through change management with automated drift detection and rollback capabilities?",
     "component_group": "deployment_maintenance",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2516,7 +2516,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_199",
+    "qid": "AR_149",
     "text": "Are logs and operational data retained in tamper-proof storage with automated analysis and compliance reporting?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -2533,7 +2533,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_200",
+    "qid": "AR_150",
     "text": "Is there a formal operational maturity improvement program with regular reviews, KPIs, and investment in automation?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2550,7 +2550,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_201",
+    "qid": "AR_151",
     "text": "Is high availability engineered into all critical infrastructure layers with automated failover and no single points of failure?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2567,7 +2567,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_202",
+    "qid": "AR_152",
     "text": "Are disaster recovery strategies formally validated through tested drills with documented RTOs and RPOs?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2584,7 +2584,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_203",
+    "qid": "AR_153",
     "text": "Are failover and redundancy mechanisms fully automated with no manual dependency for initial failover activation?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2601,7 +2601,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_204",
+    "qid": "AR_154",
     "text": "Is there a formal large-scale outage coordination plan with defined roles, communication protocols, and external stakeholder management?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2618,7 +2618,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_205",
+    "qid": "AR_155",
     "text": "Is resilience regularly tested against modern threat scenarios including ransomware, DDoS, and cloud provider failure?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -2635,7 +2635,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_206",
+    "qid": "AR_156",
     "text": "Is cloud spending governed with formal budget controls, automated anomaly alerting, and executive-level financial reporting?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2652,7 +2652,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_207",
+    "qid": "AR_157",
     "text": "Are unused or inefficient cloud resources actively identified and removed through automated discovery and remediation?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2669,7 +2669,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_208",
+    "qid": "AR_158",
     "text": "Are auto-scaling policies aligned with financial controls to prevent unexpected cost spikes during demand events?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2686,7 +2686,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_209",
+    "qid": "AR_159",
     "text": "Is cloud cost accountability distributed to teams through internal showback or chargeback mechanisms?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2703,7 +2703,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_210",
+    "qid": "AR_160",
     "text": "Are long-term cloud investment risks evaluated including vendor lock-in, contract flexibility, and technology obsolescence?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2720,7 +2720,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_211",
+    "qid": "AR_161",
     "text": "Does the organization have a formally documented AI policy approved by senior management or the board, with a clearly designated owner?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2736,7 +2736,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_212",
+    "qid": "AR_162",
     "text": "Does the AI policy explicitly cover all key lifecycle areas (strategy, development, third-party, GenAI, data, fairness, oversight, incidents, decommissioning) and apply across all business units, geographies, subsidiaries, contractors, and third parties?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2752,7 +2752,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_213",
+    "qid": "AR_163",
     "text": "Is AI policy compliance enforced through formal mechanisms (e.g., deployment approvals, SDLC integration, audits, attestations), and is that enforcement effective in day-to-day operations?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2768,7 +2768,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_214",
+    "qid": "AR_164",
     "text": "When was the AI policy last reviewed or updated?",
     "component_group": "meta_cognitive_meta_governance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2785,7 +2785,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_215",
+    "qid": "AR_165",
     "text": "Does the organization have a formal process to update the AI policy in response to regulatory changes or new AI use cases?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2801,7 +2801,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_216",
+    "qid": "AR_166",
     "text": "Does the organization have a mandatory AI policy awareness and training programme for employees, and does the policy extend contractually to vendors and third-party AI providers?",
     "component_group": "staff_training_skill",
     "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
@@ -2817,7 +2817,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_217",
+    "qid": "AR_167",
     "text": "Has the organization formally defined and implemented an internal AI governance structure (e.g., board committee, executive steering committee, cross-functional risk committee)?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2833,7 +2833,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_218",
+    "qid": "AR_168",
     "text": "Are AI-related roles and responsibilities (including AI system owner, risk owner, human oversight, and compliance roles) formally documented, approved, and assigned to each in-scope AI system?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2849,7 +2849,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_219",
+    "qid": "AR_169",
     "text": "Is decision-making authority for AI system approval, deployment, modification, and decommissioning formally defined, with a clear escalation path for high-risk or high-impact AI systems?",
     "component_group": "board_directors",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2865,7 +2865,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_220",
+    "qid": "AR_170",
     "text": "Are human oversight roles formally assigned for AI systems that impact individuals, with clearly defined authority to review outputs, override decisions, escalate incidents, and approve model changes?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2881,7 +2881,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_221",
+    "qid": "AR_171",
     "text": "Are individuals assigned AI-related roles formally assessed for appropriate competence, skills, and training before taking on those responsibilities?",
     "component_group": "staff_training_skill",
     "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
@@ -2897,7 +2897,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_222",
+    "qid": "AR_172",
     "text": "Are communication and escalation paths for AI risks, incidents, and policy deviations formally defined and understood across the organization?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2913,7 +2913,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_223",
+    "qid": "AR_173",
     "text": "Are AI development, risk oversight, and approval responsibilities adequately segregated to avoid conflicts of interest, with no significant overlap between model development, risk assessment, and approval functions?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2929,7 +2929,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_224",
+    "qid": "AR_174",
     "text": "Are AI risk, compliance, or ethics oversight functions structurally independent from AI development and business ownership (e.g., via separate reporting lines, independent committees, or second-line functions)?",
     "component_group": "meta_cognitive_meta_governance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -2945,7 +2945,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_225",
+    "qid": "AR_175",
     "text": "Are conflicts of interest related to AI system design, approval, or oversight formally identified and actively managed?",
     "component_group": "ethical",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -2961,7 +2961,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_226",
+    "qid": "AR_176",
     "text": "Are backup or alternate personnel formally identified for critical AI governance, oversight, and risk roles to ensure continuity?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2977,7 +2977,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_227",
+    "qid": "AR_177",
     "text": "Are roles and responsibilities for responding to AI incidents, policy deviations, or harmful outcomes clearly defined and documented?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -2993,7 +2993,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_228",
+    "qid": "AR_178",
     "text": "Are AI-related roles and decision authorities aligned with the organization's defined AI risk tolerance?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3009,7 +3009,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_229",
+    "qid": "AR_179",
     "text": "Is audit-defensible documentation maintained for AI-related decisions (who approved what, when, and why) across all lifecycle stages including design, development, deployment, monitoring, changes, and decommissioning?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3025,7 +3025,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_230",
+    "qid": "AR_180",
     "text": "Are accountability and alternate decision authority clearly defined for exceptional scenarios (AI-caused harm, regulatory breaches, ethical failures), including when primary decision-makers are unavailable?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3041,7 +3041,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_231",
+    "qid": "AR_181",
     "text": "Overall, is it clear who is accountable for AI-related outcomes if harm, failure, or regulatory issues occur?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3057,7 +3057,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_232",
+    "qid": "AR_182",
     "text": "How would you rate the overall effectiveness of the organization's internal AI governance structure?",
     "component_group": "meta_cognitive_meta_governance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3075,7 +3075,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_233",
+    "qid": "AR_183",
     "text": "Has the organization formally established, approved, and implemented a structured AI resource management process within the AIMS, covering identification, documentation, review, and continuous management across all lifecycle stages?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3091,7 +3091,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_234",
+    "qid": "AR_184",
     "text": "Does the organization maintain a centralized, version-controlled inventory documenting all AI system resources (data, models, tooling, infrastructure, third-party dependencies, human resources), and does it cover all AI systems currently in active lifecycle stages?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3107,7 +3107,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_235",
+    "qid": "AR_185",
     "text": "Are all identified AI resources explicitly mapped to defined AI lifecycle phases (design, development, validation, deployment, monitoring, change management, decommissioning) for traceability and risk alignment?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3123,7 +3123,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_236",
+    "qid": "AR_186",
     "text": "Is there a formally documented governance structure for maintaining AI resource documentation, covering ownership, review frequency, approval mechanisms, change management, and audit verification?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3139,7 +3139,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_237",
+    "qid": "AR_187",
     "text": "When AI systems are decommissioned, is there a formally documented process covering access revocation, data disposal, dependency removal, and inventory update?",
     "component_group": "deployment_maintenance",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -3155,7 +3155,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_238",
+    "qid": "AR_188",
     "text": "Is the provenance of all datasets used in AI systems formally documented (source origin, ownership, acquisition, licensing, legal constraints), and does this cover all training, validation, testing, and production environments?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3171,7 +3171,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_239",
+    "qid": "AR_189",
     "text": "Are datasets clearly categorized, segregated, and version-controlled based on lifecycle purpose (training, validation, testing, production, archival) to prevent contamination or misuse?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3188,7 +3188,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_240",
+    "qid": "AR_190",
     "text": "Are potential or known bias risks, representational imbalances, and fairness concerns within datasets formally identified, documented, assessed, and linked to AI risk assessment activities?",
     "component_group": "bias_fairness",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3204,7 +3204,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_241",
+    "qid": "AR_191",
     "text": "How mature are the organization's data quality governance practices supporting AI systems (validation standards, cleansing procedures, monitoring controls, accountability mechanisms)?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3222,7 +3222,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_242",
+    "qid": "AR_192",
     "text": "Are legally compliant data retention, archival, and disposal rules formally defined and consistently applied to AI datasets across all environments and storage locations?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3238,7 +3238,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_243",
+    "qid": "AR_193",
     "text": "Are synthetic, augmented, brokered, or third-party datasets used in AI systems formally documented with justification, governance oversight, and applied risk mitigation measures?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3254,7 +3254,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_244",
+    "qid": "AR_194",
     "text": "Are third-party data providers, annotation vendors, and labeling services formally identified, assessed within the resource inventory, and subject to contractual controls, QA, audit, and bias monitoring?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3271,7 +3271,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_245",
+    "qid": "AR_195",
     "text": "Are AI models, algorithms, frameworks, and tooling components formally documented (architecture, configuration, versioning, dependencies, ownership, intended use), and is the organization aware of all models currently deployed in production?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3287,7 +3287,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_246",
+    "qid": "AR_196",
     "text": "Are externally sourced AI APIs, foundation models, or managed AI services formally documented with provider details, model versions, SLAs, data processing terms, and exit/portability considerations?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3304,7 +3304,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_247",
+    "qid": "AR_197",
     "text": "When personal, confidential, or regulated data is transmitted to external AI APIs or foundation model providers, are data minimisation, anonymisation, contractual data processing agreements, and jurisdictional controls formally applied?",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3321,7 +3321,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_248",
+    "qid": "AR_198",
     "text": "Are AI tooling components, including open-source libraries and development environments, subject to documented security review, vulnerability scanning, patch management, and compliance validation?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3337,7 +3337,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_249",
+    "qid": "AR_199",
     "text": "Are open-source AI libraries, frameworks, and tooling components formally reviewed for license compatibility, intellectual property obligations, attribution requirements, and commercial use restrictions before integration?",
     "component_group": "intellectual_property",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3353,7 +3353,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_250",
+    "qid": "AR_200",
     "text": "How would you assess the organization's concentration and lock-in risk resulting from dependency on a single AI tooling vendor, cloud provider, or model supplier?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3370,7 +3370,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_251",
+    "qid": "AR_201",
     "text": "Are AI system computing requirements (CPU, GPU, memory, storage, networking, scalability thresholds) formally defined, reviewed, and approved prior to deployment?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3386,7 +3386,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_252",
+    "qid": "AR_202",
     "text": "Has the organization identified the primary AI hosting environment(s) (on-premises, cloud, hybrid, edge) and formally evaluated associated vendor concentration, resilience, failover, and continuity risks?",
     "component_group": "cloud_provider_technical_environment",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3402,7 +3402,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_253",
+    "qid": "AR_203",
     "text": "Is there a formally documented and tested resilience, redundancy, and failover strategy to ensure continuity of AI services during infrastructure failures or service disruptions?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -3418,7 +3418,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_254",
+    "qid": "AR_204",
     "text": "Is current computing capacity sufficient to support AI workloads without degradation in performance, latency, reliability, or service quality?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -3436,7 +3436,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_255",
+    "qid": "AR_205",
     "text": "Is the environmental impact of AI workloads (energy, carbon emissions, hardware lifecycle, GPU efficiency) formally assessed, reviewed, and subject to defined sustainability monitoring and improvement targets?",
     "component_group": "environmental",
     "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
@@ -3452,7 +3452,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_256",
+    "qid": "AR_206",
     "text": "Are AI lifecycle roles, responsibilities, reporting lines, and accountability authorities formally defined and documented for all personnel involved in AI development, deployment, validation, oversight, and maintenance?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3468,7 +3468,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_257",
+    "qid": "AR_207",
     "text": "Are sufficient personnel formally assigned to cover all AI governance functions including development, risk assessment, validation, monitoring, and oversight?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3484,7 +3484,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_258",
+    "qid": "AR_208",
     "text": "For high-risk AI systems, is formal human oversight assigned with clearly defined authority to review, intervene, override, or suspend system outputs where necessary?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3501,7 +3501,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_259",
+    "qid": "AR_209",
     "text": "Are current organizational AI competencies and expertise sufficient to effectively manage AI risks, compliance obligations, and operational performance?",
     "component_group": "staff_training_skill",
     "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
@@ -3517,7 +3517,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_260",
+    "qid": "AR_210",
     "text": "Have AI skill gaps, workforce limitations, or competency deficiencies impacting AI governance, design, oversight, or regulatory compliance been formally identified and documented with a remediation plan?",
     "component_group": "staff_dislocation_retraining",
     "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
@@ -3533,7 +3533,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_261",
+    "qid": "AR_211",
     "text": "Are external AI contractors, consultants, offshore teams, or managed service providers formally included in AI resource documentation with defined roles, responsibilities, and oversight controls?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3550,7 +3550,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_262",
+    "qid": "AR_212",
     "text": "Are changes to AI models, datasets, infrastructure, tooling, or external AI providers subject to formal change management processes including version control, impact assessment, validation testing, and documented approval?",
     "component_group": "deployment_maintenance",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -3566,7 +3566,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_263",
+    "qid": "AR_213",
     "text": "Has the organization formally established and implemented a documented AI impact assessment process, and does it apply to all in-scope AI systems prior to deployment?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3582,7 +3582,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_264",
+    "qid": "AR_214",
     "text": "Are AI impact assessments conducted prior to initial deployment and formally updated following significant changes to models, datasets, infrastructure, third-party dependencies, or intended use cases?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3598,7 +3598,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_265",
+    "qid": "AR_215",
     "text": "Are AI systems formally categorized by defined impact severity levels (low/medium/high), with documented criteria consistently applied across all in-scope systems, and are identified impact categories (harm, bias, privacy, safety, regulatory, etc.) formally documented?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3614,7 +3614,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_266",
+    "qid": "AR_216",
     "text": "Does the AI impact assessment explicitly evaluate potential harm to individuals (discrimination, financial harm, safety, psychological harm) and formally identify all stakeholder groups that may be materially impacted?",
     "component_group": "bias_fairness",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3630,7 +3630,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_267",
+    "qid": "AR_217",
     "text": "Are potential societal, economic, environmental, systemic, or long-term downstream impacts of AI systems evaluated and documented?",
     "component_group": "ethical",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3646,7 +3646,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_268",
+    "qid": "AR_218",
     "text": "Where high-impact AI systems are identified, are additional safeguards formally defined and implemented, including human oversight, bias testing, privacy controls, explainability mechanisms, monitoring alerts, and kill-switch capability?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3663,7 +3663,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_269",
+    "qid": "AR_219",
     "text": "Are residual risks after mitigation clearly documented, formally approved by authorized decision-makers, and aligned with the organization's AI risk tolerance, with the overall residual risk level formally assessed?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3679,7 +3679,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_270",
+    "qid": "AR_220",
     "text": "Are AI impact assessments periodically reviewed at defined intervals and triggered for reassessment by key events such as model changes, incidents, new regulatory requirements, performance degradation, and stakeholder complaints (not just scheduled reviews)?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3695,7 +3695,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_271",
+    "qid": "AR_221",
     "text": "Are impact assessment outcomes formally integrated into the organization's AI risk register and enterprise risk management processes?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3711,7 +3711,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_272",
+    "qid": "AR_222",
     "text": "Are impact assessment documentation records maintained in a controlled repository with version control, ownership assignment, retention periods, and audit traceability?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3727,7 +3727,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_273",
+    "qid": "AR_223",
     "text": "Are affected stakeholders (including vulnerable populations) formally identified, consulted, or considered during impact assessments, especially for high-impact AI systems?",
     "component_group": "human_factors_social_psychographic",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3744,7 +3744,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_274",
+    "qid": "AR_224",
     "text": "Are incident learnings, complaints, user feedback, and adverse outcomes systematically analyzed and incorporated into future AI impact assessments?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3760,7 +3760,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_275",
+    "qid": "AR_225",
     "text": "Are actual operational impacts observed during deployment formally compared against originally assessed impacts to identify deviation, drift, or underestimated harm, and is the organization able to detect and respond to such deviations effectively?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3776,7 +3776,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_276",
+    "qid": "AR_226",
     "text": "Are impacts on vulnerable individuals or groups explicitly identified, evaluated, and documented during AI impact assessments, including disproportionate or indirect effects?",
     "component_group": "bias_fairness",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3793,7 +3793,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_277",
+    "qid": "AR_227",
     "text": "Are potential reputational, financial, legal, operational, or business continuity impacts resulting from AI system failure or misuse formally assessed?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3809,7 +3809,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_278",
+    "qid": "AR_228",
     "text": "For AI systems operating across multiple jurisdictions, are region-specific legal, regulatory, and compliance impacts evaluated and documented as part of impact assessments?",
     "component_group": "legal_regulatory",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3826,7 +3826,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_279",
+    "qid": "AR_229",
     "text": "Where AI systems materially influence or determine outcomes affecting individuals, are transparency, notification, or disclosure mechanisms implemented to inform affected parties?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3843,7 +3843,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_280",
+    "qid": "AR_230",
     "text": "Has the organization formally defined, documented, and governance-approved a comprehensive AI system lifecycle framework covering iterative development, experimentation, staged deployments, rollback procedures, continuous retraining pipelines, and formal retirement processes?",
     "component_group": "organizational_business_process",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -3859,7 +3859,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_281",
+    "qid": "AR_231",
     "text": "Has the organization formally defined materiality thresholds determining when AI model, dataset, or deployment changes require lifecycle reassessment or governance re-approval, and are these thresholds encoded into CI/CD pipelines and automated workflows?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3875,7 +3875,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_282",
+    "qid": "AR_232",
     "text": "Are lifecycle stage entry and exit criteria formally defined with mandatory evidence artifacts, validation checkpoints, and documentation requirements that prevent progression to subsequent stages without completion of required control activities?",
     "component_group": "development",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -3891,7 +3891,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_283",
+    "qid": "AR_233",
     "text": "Are explicit exception-handling and escalation protocols defined for scenarios where lifecycle controls or stage-gate requirements are bypassed or waived, including documentation of rationale, approving authority, and post-hoc review?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3907,7 +3907,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_284",
+    "qid": "AR_234",
     "text": "Are accountability roles formally assigned per AI system across the full lifecycle (lifecycle owner, development lead, independent validator, risk owner, deployment approver, monitoring owner, retirement authority) with documented reporting lines and decision rights?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3923,7 +3923,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_285",
+    "qid": "AR_235",
     "text": "Does dataset governance within the AI lifecycle explicitly assess source data provenance, representational adequacy, labeling quality, sampling bias, coverage gaps, and retention classification prior to model training or retraining?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -3939,7 +3939,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_286",
+    "qid": "AR_236",
     "text": "Are engineered features and data transformations independently reviewed for proxy variable risk, discrimination amplification, transformation bias, feature leakage, and indirect correlation effects prior to validation approval?",
     "component_group": "bias_fairness",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -3955,7 +3955,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_287",
+    "qid": "AR_237",
     "text": "Are model development activities fully reproducible through version-controlled management of training datasets, code, hyperparameters, feature configurations, environment dependencies, and infrastructure configurations such that any deployed model can be reconstructed for audit?",
     "component_group": "development",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -3971,7 +3971,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_288",
+    "qid": "AR_238",
     "text": "Is independent validation performed prior to production deployment, where validators are structurally or functionally separate from the development team \u2014 with high-risk systems validated by a separate risk function or external third party?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -3987,7 +3987,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_289",
+    "qid": "AR_239",
     "text": "Are secure MLOps controls implemented including environment segregation (dev/test/prod), role-based access controls, deployment approval workflows, immutable logging, rollback capability, and production promotion restrictions?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4003,7 +4003,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_290",
+    "qid": "AR_240",
     "text": "Are continuous monitoring mechanisms implemented to detect performance degradation, statistical drift, bias drift, and anomaly signals, including output-level fairness metrics with defined thresholds, alert mechanisms, and escalation protocols when discriminatory patterns are detected?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4019,7 +4019,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_291",
+    "qid": "AR_241",
     "text": "Are quantitative thresholds defined that trigger intervention actions (rollback, suspension, retraining, escalation) when monitoring metrics exceed defined tolerances?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4035,7 +4035,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_292",
+    "qid": "AR_242",
     "text": "Are human oversight roles formally defined across the lifecycle with documented authority to intervene, override, suspend, or escalate AI system operation, including logging of intervention decisions and post-incident review requirements?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4051,7 +4051,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_293",
+    "qid": "AR_243",
     "text": "For AI systems utilizing automated retraining pipelines, are retraining events governed by validation checkpoints, impact reassessment triggers, and formal approval prior to promoting newly trained models into production?",
     "component_group": "model_training",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4068,7 +4068,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_294",
+    "qid": "AR_244",
     "text": "Is AI system classification (High-Risk, Regulated, Generative AI, etc.) determined using documented criteria, formally approved, and subject to periodic independent review \u2014 and does the organization maintain a formal regulatory horizon-scanning process to identify AI-related regulatory changes that trigger lifecycle reassessment?",
     "component_group": "risk_management_liability_insurance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4084,7 +4084,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_295",
+    "qid": "AR_245",
     "text": "Are AI systems designated as High-Risk subject to enhanced lifecycle controls including executive approval, extended validation scope, stricter intervention thresholds, documented oversight accountability, and formal impact reassessment gating?",
     "component_group": "legal_regulatory",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4101,7 +4101,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_296",
+    "qid": "AR_246",
     "text": "Are structured technical documentation artifacts (model cards, system cards, dataset datasheets, architecture diagrams, risk documentation) required as formal lifecycle deliverables prior to production deployment?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4117,7 +4117,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_297",
+    "qid": "AR_247",
     "text": "For AI systems incorporating third-party or foundation models, is formal due diligence conducted covering licensing, update notification rights, training data transparency, contractual regulatory responsibilities, version management, and upstream dependency risk prior to deployment?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4134,7 +4134,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_298",
+    "qid": "AR_248",
     "text": "When third-party or foundation model providers release new model versions, patches, or safety updates, is a formal impact assessment performed prior to continued production use covering performance changes, safety, compliance, and contractual risk?",
     "component_group": "deployment_maintenance",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4150,7 +4150,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_299",
+    "qid": "AR_249",
     "text": "Are prompt templates, system instructions, guardrails, retrieval augmentation configurations, safety filters, and output constraints formally version-controlled, reviewed, and validated prior to deployment or modification in generative AI systems?",
     "component_group": "LLM/prompting",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4167,7 +4167,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_300",
+    "qid": "AR_250",
     "text": "Are adversarial testing, red-teaming, abuse-case simulation, or stress testing exercises conducted proportionate to system risk classification to evaluate robustness against manipulation, prompt injection, data poisoning, or adversarial misuse?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4184,7 +4184,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_301",
+    "qid": "AR_251",
     "text": "Upon formal retirement of an AI system, is governance approval obtained and documented prior to decommissioning, including confirmation that retirement rationale, risk implications, and stakeholder impact have been assessed?",
     "component_group": "deployment_maintenance",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4200,7 +4200,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_302",
+    "qid": "AR_252",
     "text": "Upon AI system retirement, are model artifacts securely archived or deleted per retention schedules, datasets disposed in compliance with legal and cross-jurisdictional obligations, API endpoints and credentials revoked, and downstream dependencies identified and assessed to prevent operational disruption?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4216,7 +4216,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_303",
+    "qid": "AR_253",
     "text": "Does the organization formally determine and document what AI system technical documentation must be prepared, maintained, and disclosed to defined categories of interested parties, including controlled disclosure procedures, format standards, version control, and access authorization?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4232,7 +4232,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_304",
+    "qid": "AR_254",
     "text": "Are AI system event logging requirements formally defined across the lifecycle, covering log content scope, integrity protection, retention duration, access controls, and periodic review of log completeness and accuracy?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4248,7 +4248,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_305",
+    "qid": "AR_255",
     "text": "Has the organization formally defined and implemented an AI-specific data management process covering all lifecycle stages, with formally assigned data asset ownership (data stewards, model owners, control functions), and differentiated governance controls for training, validation, operational inference, and repurposed operational data?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4264,7 +4264,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_306",
+    "qid": "AR_256",
     "text": "Has the organization defined formal criteria for AI data acquisition covering legal permissibility, licensing, privacy, IP rights, representativeness, and bias exposure \u2014 and for externally sourced or third-party data, does it document provenance, contractual restrictions, permitted uses, and risk assessments prior to integration?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4280,7 +4280,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_307",
+    "qid": "AR_257",
     "text": "Has the organization defined measurable data quality requirements for AI systems (accuracy, completeness, representativeness, bias thresholds), implemented validation mechanisms to verify data meets these thresholds before use, and defined an escalation process when data fails quality checks?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4296,7 +4296,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_308",
+    "qid": "AR_258",
     "text": "Has the organization defined a lifecycle-based data provenance process recording origin, transformations, labeling, preprocessing, version history, and usage across model iterations \u2014 and is this technically enforced via system-level logging, metadata tagging, or data lineage tooling rather than manual documentation alone?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4312,7 +4312,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_309",
+    "qid": "AR_259",
     "text": "Has the organization defined formal criteria for AI data preparation methods, evaluated preparation activities for unintended impacts (bias amplification, privacy risk), and established documented reproducibility capability for the full data preparation pipeline?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4328,7 +4328,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_310",
+    "qid": "AR_260",
     "text": "Has the organization established a formal AI data classification framework categorizing datasets by sensitivity and risk criticality, with data handling controls (access restriction, encryption, masking, monitoring) applied proportionally to each classification level?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4344,7 +4344,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_311",
+    "qid": "AR_261",
     "text": "Does the organization evaluate and document risks of data poisoning, malicious injection, and adversarial manipulation in training datasets \u2014 and are technical and procedural controls implemented to detect and mitigate these threats including integrity verification, anomaly detection, and dataset hashing?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4360,7 +4360,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_312",
+    "qid": "AR_262",
     "text": "For AI systems using synthetic or LLM-generated data, are generation methods documented, risks assessed, and quality validation controls implemented prior to use in model development or retraining?",
     "component_group": "model_training",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4377,7 +4377,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_313",
+    "qid": "AR_263",
     "text": "Is there a documented AI dataset retention and secure disposal policy ensuring training, validation, testing, and operational datasets are retained only for defined purposes and securely archived or deleted when no longer required, in alignment with legal and contractual requirements?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4393,7 +4393,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_314",
+    "qid": "AR_264",
     "text": "Are mechanisms in place to detect and govern shadow datasets \u2014 datasets used by AI teams outside formal registration, approval, or governance controls?",
     "component_group": "shadow_unauthorized_ai",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4409,7 +4409,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_315",
+    "qid": "AR_265",
     "text": "Does the organization monitor for data drift, distribution shift, or degradation in operational data used by AI systems, and reassess data quality and representativeness over time?",
     "component_group": "reliability",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4425,7 +4425,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_316",
+    "qid": "AR_266",
     "text": "Is there a formally defined retraining governance checkpoint that mandates re-validation of data acquisition, quality, provenance, and preparation controls before a retrained or fine-tuned AI model is approved and redeployed?",
     "component_group": "model_training",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -4441,7 +4441,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_317",
+    "qid": "AR_267",
     "text": "For cross-border or cross-jurisdictional data transfers used in AI systems, are legal basis, regulatory restrictions, and transfer safeguards documented and periodically reviewed?",
     "component_group": "legal_regulatory",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4458,7 +4458,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_318",
+    "qid": "AR_268",
     "text": "Does the organization apply data minimization principles to AI system design by restricting dataset size, feature inclusion, and attribute retention to what is necessary for the defined AI purpose?",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4474,7 +4474,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_319",
+    "qid": "AR_269",
     "text": "Where human labeling, annotation, or RLHF is used, has the organization defined quality standards, reviewer competence requirements, bias mitigation safeguards, and validation checks to ensure labeling integrity and consistency?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4491,7 +4491,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_320",
+    "qid": "AR_270",
     "text": "When integrating or fine-tuning third-party foundation or pretrained models, has the organization conducted a training data risk assessment focused on dataset lineage, provenance gaps, demographic underrepresentation, labeling quality, contamination risks (PII, copyright), and declared training data limitations?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4508,7 +4508,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_321",
+    "qid": "AR_271",
     "text": "Has the organization assessed and documented how data subject rights (access, correction, deletion, objection) may impact AI training datasets, model retraining obligations, or the feasibility of removing individual data from trained models?",
     "component_group": "privacy",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4524,7 +4524,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_322",
+    "qid": "AR_272",
     "text": "Where data originally collected for non-AI purposes is used for AI training or evaluation, has the organization conducted a purpose compatibility assessment, legal basis validation, and data subject expectation analysis to confirm secondary AI use complies with applicable obligations?",
     "component_group": "legal_regulatory",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4540,7 +4540,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_323",
+    "qid": "AR_273",
     "text": "Are access events to AI training, validation, and testing datasets, feature stores, and model artifacts logged, securely retained, and periodically reviewed to detect unauthorized or policy-violating access?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4556,7 +4556,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_324",
+    "qid": "AR_274",
     "text": "Has the organization defined governance criteria for selecting, validating, and bias-evaluating benchmark or evaluation datasets used to assess AI system performance, fairness, safety, or regulatory readiness prior to deployment?",
     "component_group": "bias_fairness",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4573,7 +4573,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_325",
+    "qid": "AR_275",
     "text": "For AI systems using RAG, dynamic retrieval, vector databases, or external document stores, are governance controls defined covering retrieval corpus curation, content provenance, update governance, bias validation, access controls, and output filtering to prevent injection of unauthorized or harmful content?",
     "component_group": "data_data_governance",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -4590,7 +4590,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_326",
+    "qid": "AR_276",
     "text": "Has the organization formally determined what information must be provided to AI system users, maintained version-controlled system-level disclosure documentation (e.g., model cards, datasheets), and differentiated user information requirements across operators, end users, developers, and affected individuals?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4606,7 +4606,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_327",
+    "qid": "AR_277",
     "text": "Does the organization formally document and communicate to users the known limitations, failure modes, performance boundaries, and misuse risks of each AI system \u2014 and are these disclosures provided proactively at deployment or interaction, not reactively after failures?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4622,7 +4622,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_328",
+    "qid": "AR_278",
     "text": "For AI systems that directly interact with or make decisions affecting individuals, does the organization disclose at the point of interaction that an AI system is involved, the individual's right to human review, and available recourse mechanisms?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4639,7 +4639,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_329",
+    "qid": "AR_279",
     "text": "Has the organization identified all interested parties with legitimate AI information needs, documented disclosure obligations, channels, and content requirements per category \u2014 and are these obligations reviewed and updated when AI systems change or new regulatory requirements emerge?",
     "component_group": "legal_regulatory",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4655,7 +4655,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_330",
+    "qid": "AR_280",
     "text": "Has the organization maintained a register of regulatory, statutory, and contractual AI disclosure obligations across all relevant jurisdictions, reviewed at defined intervals \u2014 and is there a documented process for responding to AI information requests from regulators within required timelines?",
     "component_group": "legal_regulatory",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4671,7 +4671,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_331",
+    "qid": "AR_281",
     "text": "Where third-party or foundation models are deployed, has the organization determined which user disclosure obligations remain its responsibility, identified vendor documentation gaps, and incorporated AI transparency obligations into supplier contracts?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4688,7 +4688,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_332",
+    "qid": "AR_282",
     "text": "Has the organization implemented accessible adverse impact reporting mechanisms across all deployment channels, with those mechanisms actively monitored, all reports formally logged and investigated within defined timelines, and a documented process for trend analysis and integration into risk reassessment?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4704,7 +4704,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_333",
+    "qid": "AR_283",
     "text": "Where AI systems influence decisions affecting individuals' rights, access to services, or material interests, does the organization provide meaningful plain-language explanations covering the AI system's role, influencing factors, recourse rights, and accountable human authority?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4721,7 +4721,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_334",
+    "qid": "AR_284",
     "text": "Has the organization documented a formal AI incident communication plan with severity-tiered triggers, notification timelines, required content, accountable roles, and escalation paths \u2014 and is this plan tested through exercises and updated following incidents or material system changes?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4737,7 +4737,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_335",
+    "qid": "AR_285",
     "text": "Has the organization defined AI-specific criteria for externally reportable incidents, including harm thresholds, population scale triggers, applicable regulatory frameworks, notification timelines, designated authority for notification decisions, and evidence preservation obligations?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4753,7 +4753,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_336",
+    "qid": "AR_286",
     "text": "Does the organization disclose to AI system users the level of system autonomy, the expected degree and nature of human oversight, who is responsible for oversight, and how users or operators can invoke oversight or override authority?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4769,7 +4769,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_337",
+    "qid": "AR_287",
     "text": "Where legally permissible and technically meaningful, does the organization disclose to AI system users the general categories of training data, population characteristics, temporal coverage, and known representativeness limitations?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4786,7 +4786,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_338",
+    "qid": "AR_288",
     "text": "Has the organization identified vulnerable user groups and ensured enhanced explanatory materials, simplified communication formats, additional safeguards, and appropriate escalation pathways are provided proportionate to their risk exposure?",
     "component_group": "human_factors_social_psychographic",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4802,7 +4802,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_339",
+    "qid": "AR_289",
     "text": "Is there a formally defined governance process ensuring all user-facing AI documentation is periodically reviewed, updated when AI systems are materially modified, subject to approval workflows, version-controlled, and communicated to users when material changes affect previously disclosed information?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4818,7 +4818,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_340",
+    "qid": "AR_290",
     "text": "Does the organization govern the use of disclaimers to ensure they accurately communicate genuine material limitations rather than transfer accountability to users, with disclaimer content reviewed by risk, legal, and governance functions prior to publication?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4834,7 +4834,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_341",
+    "qid": "AR_291",
     "text": "Does the organization conduct periodic trend analysis of adverse impact reports categorized by incident type, severity, and AI system \u2014 with findings reviewed by the governance function and integrated into risk reassessment and system improvement planning?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4850,7 +4850,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_342",
+    "qid": "AR_292",
     "text": "Where an AI incident may have caused users to receive materially affected or harmful outputs, does the organization have a documented obligation and process for notifying affected users in a timely manner, including retention of all notification and incident records?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4866,7 +4866,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_343",
+    "qid": "AR_293",
     "text": "Does the organization maintain a formally governed public transparency framework ensuring all externally facing AI communications are subject to pre-publication review by risk, legal, and compliance functions \u2014 prohibiting misleading capability claims and ensuring alignment with internal documentation?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4882,7 +4882,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_344",
+    "qid": "AR_294",
     "text": "Where bias or fairness limitations have been identified through testing or operational monitoring, does the organization disclose these limitations to relevant users and interested parties proportionate to materiality and risk classification?",
     "component_group": "bias_fairness",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4899,7 +4899,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_345",
+    "qid": "AR_295",
     "text": "Has the organization defined and implemented retention and archival requirements for all AI transparency artifacts \u2014 including historical user documentation, model cards, regulatory submissions, and incident communications \u2014 with integrity protection and version dating to demonstrate what was disclosed at any specific point in time?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4915,7 +4915,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_346",
+    "qid": "AR_296",
     "text": "Does the organization implement active controls to detect inconsistencies between AI system information disclosed across different channels (marketing, documentation, model cards, regulatory submissions) through periodic structured reconciliation reviews?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4931,7 +4931,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_347",
+    "qid": "AR_297",
     "text": "Has the organization defined and documented formal responsible AI use processes, integrated them into operational workflows and access controls (not just standalone policies), with a designated process owner accountable for currency and updates when systems change or incidents indicate inadequacy?",
     "component_group": "ethical",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -4947,7 +4947,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_348",
+    "qid": "AR_298",
     "text": "Does the organization provide role-differentiated responsible AI use training for all individuals involved in operating, deploying, or using AI systems \u2014 with completion recorded, training refreshed on material changes, and verified as a condition of access for high-risk roles?",
     "component_group": "staff_training_skill",
     "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
@@ -4963,7 +4963,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_349",
+    "qid": "AR_299",
     "text": "Has the organization documented a formal process for reporting, investigating, and escalating suspected misuse, out-of-scope use, or unexpected harmful AI system behaviour, with defined timelines, escalation criteria, accountability for remediation, and records retained?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -4979,7 +4979,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_350",
+    "qid": "AR_300",
     "text": "Has the organization defined actionable responsible AI use objectives with measurable indicators or behavioral criteria \u2014 used to inform training content and monitoring \u2014 and are these objectives reviewed and updated when the AI portfolio changes, regulatory requirements change, or monitoring data indicates they are not preventing harm?",
     "component_group": "meta_cognitive_meta_governance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -4995,7 +4995,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_351",
+    "qid": "AR_301",
     "text": "Has the organization formally defined and documented the intended use of each AI system including tasks, user populations, deployment environments, and explicit use boundaries (out-of-scope, prohibited), with jurisdiction-specific compliance assessed where systems are deployed across multiple jurisdictions?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -5011,7 +5011,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_352",
+    "qid": "AR_302",
     "text": "Does the organization implement operational controls to constrain or detect AI system use outside intended use documentation, require governance approval for proposed new use cases \u2014 and is there active monitoring to detect out-of-scope use with detected violations triggering a defined response process?",
     "component_group": "shadow_unauthorized_ai",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -5027,7 +5027,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_353",
+    "qid": "AR_303",
     "text": "Where AI systems are deployed to or through third parties, does the organization impose binding contractual requirements for use in accordance with intended use documentation, prohibition of out-of-boundary use, reporting of misuse, and compliance with responsible use policies?",
     "component_group": "third_party_supply_chain",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -5044,7 +5044,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_354",
+    "qid": "AR_304",
     "text": "Does the organization conduct periodic assessments evaluating whether AI systems are being used in practice in accordance with intended use documentation, reviewing operational logs, incident reports, and monitoring outputs to identify gaps or out-of-boundary use?",
     "component_group": "audit",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -5060,7 +5060,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_355",
+    "qid": "AR_305",
     "text": "Where AI systems support high-stakes decisions affecting individuals' rights, safety, or material interests, does the organization define and enforce minimum human oversight requirements specifying the nature, frequency, and accountability for human review prior to action?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -5077,7 +5077,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_356",
+    "qid": "AR_306",
     "text": "Has the organization assessed the risk of automation bias, and implemented countermeasures proportionate to system risk classification, including user guidance, interface design controls, mandatory review requirements, and periodic assessment of whether human oversight is exercised meaningfully?",
     "component_group": "human_factors_social_psychographic",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -5093,7 +5093,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_357",
+    "qid": "AR_307",
     "text": "Has the organization defined a policy governing use of unsanctioned AI tools and services \u2014 specifying categories requiring assessment, prohibited tools, and controls preventing sensitive data submission to unapproved systems \u2014 with the policy technically enforced, monitored, and subject to defined consequences for violations?",
     "component_group": "shadow_unauthorized_ai",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -5109,7 +5109,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_358",
+    "qid": "AR_308",
     "text": "Where AI systems are used in combination (pipelines, agentic architectures, chaining), has the organization assessed the combined use context as a distinct governance object with aggregate risk assessment and governance approval \u2014 and is this monitored for drift in constituent systems that would affect the combined risk profile?",
     "component_group": "agents and agent orchestration",
     "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
@@ -5126,7 +5126,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_359",
+    "qid": "AR_309",
     "text": "What proportion of individuals with operational AI system access have completed role-appropriate responsible use training in the current review period?",
     "component_group": "staff_training_skill",
     "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
@@ -5144,7 +5144,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_360",
+    "qid": "AR_310",
     "text": "What proportion of AI systems currently in operational use have a formally documented and governance-approved intended use specification?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -5162,7 +5162,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_361",
+    "qid": "AR_311",
     "text": "How would you characterize the volume of misuse incidents, out-of-scope use events, or unsanctioned AI tool violations reported and investigated in the current review period?",
     "component_group": "incident_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -5178,7 +5178,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_362",
+    "qid": "AR_312",
     "text": "What proportion of high-stakes AI-informed decisions subject to mandatory human oversight requirements received documented human review prior to action being taken in the current review period?",
     "component_group": "human_oversight",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -5196,7 +5196,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_363",
+    "qid": "AR_313",
     "text": "How would you assess progress against the organization's documented responsible use objectives in the current review period?",
     "component_group": "meta_cognitive_meta_governance",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
@@ -5213,7 +5213,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_364",
+    "qid": "AR_314",
     "text": "Does the organization define and enforce a documented consequence framework for violations of responsible AI use requirements, with graduated consequences integrated into HR disciplinary procedures and contractor agreements?",
     "component_group": "accountability",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
@@ -5229,7 +5229,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_365",
+    "qid": "AR_315",
     "text": "Does the organization implement documented mechanisms for restricting or revoking AI system access for individuals found in violation of responsible use requirements, with defined criteria, designated revocation authority, reinstatement process, and audit records?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
@@ -5245,7 +5245,7 @@
     "is_universal": true
   },
   {
-    "qid": "AR_366",
+    "qid": "AR_316",
     "text": "Has the organization defined criteria for suspending AI system operation (drift, safety incidents, regulatory inquiry, monitoring failure), with a designated authority empowered to invoke suspension immediately, a communication process for affected users, and defined reinstatement criteria?",
     "component_group": "operations_model_management",
     "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
@@ -5258,6 +5258,1808 @@
     "trigger_points": [
       "Partial \u2013 Criteria Defined but Authority or Communication Process Incomplete",
       "No \u2013 No Suspension Criteria Defined"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_317",
+    "text": "Do you measure and report the energy and water usage associated with major AI training or fine-tuning runs, and consider ESG targets when approving large-scale training jobs or provider choices?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_318",
+    "text": "Before training or retraining models, do you check that training data (a) covers new regulations or business rules and (b) reflects realistic class balances, rather than over-representing rare events compared to production reality?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_319",
+    "text": "Do you regularly review whether key business definitions (e.g., churn, risk grades, product hierarchies) and underlying training data remain current, and update or retire models when those definitions or behaviours change materially?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_320",
+    "text": "Before training or retraining models, do you validate that target labels are not leaking into features and that synthetic or AI-generated data is used in a controlled way (e.g., capped proportions, quality checks) so that models still reflect real-world behaviour?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_321",
+    "text": "For AI-assisted development, do you enforce secure coding standards that prevent hardcoded secrets and detect auto-generated 'spaghetti code' that is difficult to maintain or review?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_322",
+    "text": "For AI-related code and controls, do you review AI-generated tests for substance (not trivial `assert true` cases) and periodically test key AI controls (e.g., monitoring, access, fairness checks) for ongoing effectiveness?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_323",
+    "text": "Do you operate a controlled model release process that tracks versions from testing to production and validates that disaster-recovery or backup models match the approved versions before failover?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_324",
+    "text": "Are AI APIs and orchestration platforms managed with strong secret management (e.g., short-lived tokens, vaults, key rotation) and hardened container/orchestrator configurations to reduce the blast radius if an AI container or key is compromised?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_325",
+    "text": "For AI systems involved in pricing or market recommendations, do you monitor for patterns that may indicate algorithmic collusion or unlawful price discrimination across customer segments or devices?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_326",
+    "text": "Do your contracts and vendor due diligence for AI development explicitly address downstream labour practices (e.g., data labeling, content moderation) to avoid unethical or hidden sub-contracting?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_327",
+    "text": "Do your onboarding and credit processes include controls specifically designed to detect synthetic or AI-generated identities (e.g., deepfake checks, cross-channel verification, device fingerprinting)?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_328",
+    "text": "For AI meeting assistants and knowledge-search tools, do you (a) obtain and record consent where required, and (b) enforce ethical walls so that restricted or conflict-of-interest matters are not surfaced to unauthorized staff?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_329",
+    "text": "Is there a persistent, tamper-evident log of all material AI-assisted decisions and actions, including timestamp, model/version, input summary and (where applicable) the human approver?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_330",
+    "text": "Can you identify the specific knowledge base version or RAG source document referenced by the model? If an AI-generated decision is challenged, can you trace that output back to specific datasets or sources?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_331",
+    "text": "For high-risk AI systems, is there a named owner and a regulatory-ready documentation pack (design, training data sources, testing results, monitoring, change history, and key decisions) kept current?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_332",
+    "text": "For AI that targets offers, discounts or pricing, do you review outcomes for geographic or demographic bias and ensure they do not systematically disadvantage protected groups or breach fair-trade or anti-discrimination laws?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_333",
+    "text": "Is there a documented AI governance structure (e.g., Board committee or equivalent) with a clear mandate that requires major AI initiatives to pass through ethics/oversight review rather than 'fast-track' routes, and that assigns unambiguous accountability for AI risk decisions?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_334",
+    "text": "Have you assessed and tested your models and RAG pipelines against adversarial threats, such as crafted inputs, malicious context documents, or poisoned training data designed to manipulate model behaviour?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_335",
+    "text": "When training and validating models, do you enforce clean separation between training and test sets (including leakage from logs or replayed traffic) and periodically re-check that no training data has contaminated evaluation datasets?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_336",
+    "text": "Do you manage risks from third-party or embedded AI components (e.g., SaaS plugins) and enforce policies for AI-generated content labelling and watermarking, including detecting or responding when users attempt to strip watermarks?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_337",
+    "text": "Do you run structured AI failure scenario analysis or stress testing (e.g., tabletop exercises, red-teaming) so the organization is prepared for outages, misbehaviour, or attacks rather than reacting ad hoc when issues occur?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_338",
+    "text": "For AI-enabled interfaces (web, mobile, kiosks, chat), do you assess and remediate accessibility against standards such as WCAG, including support for assistive technologies and alternative interaction modes?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_339",
+    "text": "Do you review and adjust AI-driven performance or productivity metrics to ensure they do not unfairly penalize certain roles or employees, and can staff challenge AI-generated evaluations?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_340",
+    "text": "For AI systems that influence consumer decisions (e.g., credit scoring, offers, digital UI flows), do you test for discriminatory outcomes (e.g., redlining) and dark patterns, and ensure users can obtain meaningful explanations when they are denied key services?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_341",
+    "text": "Are there explicit policies AND technical controls preventing staff from using generative AI to create or alter evidence for audits, tests or regulatory submissions without independent verification?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_342",
+    "text": "When payment or other high-value actions are initiated based on voice/video instructions, do you require strong verification (e.g., call-back, multi-factor, out-of-band checks) to defend against deepfake impersonation?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_343",
+    "text": "Are AI systems that assist with billing codes or returns approvals monitored for abnormal patterns (e.g., systematic upcoding, unusually high refund approvals) with human review of exceptions?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_344",
+    "text": "Do you use controls (e.g., CAPTCHAs, device fingerprinting, velocity checks, identity verification) to detect and block automated creation of fake accounts or abuse of loyalty / sign-up bonuses?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_345",
+    "text": "For voice-based or call-centre authentication, do you use strong anti-spoofing and step-up verification (e.g., knowledge factors, device checks, callbacks) to protect against cloned or deepfaked voices?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_346",
+    "text": "Is there a clearly documented RACI (or equivalent) that specifies who is responsible, accountable, consulted and informed for high-impact AI decisions and for overriding model outputs?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_347",
+    "text": "Before approving or continuing a high-risk AI initiative, do you formally compare expected business benefits against compliance and governance costs (documentation, audits, monitoring)?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_348",
+    "text": "For custom or business-critical AI models, is technical and operational knowledge documented and distributed so that more than one named person can safely maintain and approve changes?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_349",
+    "text": "If you use AI to monitor employee behaviour (e.g., insider-threat analytics), have you explicitly tested and limited its impact on legitimate whistleblowing and protected activity, with clear escalation paths for concerns?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_350",
+    "text": "If AI systems provide content that could be perceived as legal, medical, or other regulated professional advice, do you enforce gating (e.g., disclaimers, jurisdiction checks, mandatory human review) before clients can rely on that advice?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_351",
+    "text": "For AI-driven monitoring and safety systems, do you regularly tune alert thresholds and policies to reduce false positives, group low-risk events, and ensure that important alerts are acted on rather than ignored due to alert or policy fatigue?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_352",
+    "text": "For customer-facing conversational AI used by vulnerable populations (e.g., financial hardship, mental health, chronic illness), have you assessed the risk of emotional dependence and put in place safeguards such as escalation to humans and limits on relationship-style interactions?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_353",
+    "text": "When AI chatbots or triage bots interact with people, do you clearly disclose that they are AI systems and provide appropriate notices or routing to human staff in contexts such as healthcare or sensitive services?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_354",
+    "text": "Do oversight bodies receive timely, comprehensible reporting on AI incidents and leading indicators, and do leaders have predefined criteria and authority to pause or shut down problematic AI systems even when there is commercial or political pressure not to?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_355",
+    "text": "When staff observe AI-related issues (e.g., unsafe behaviour, unfair outcomes, data leaks), do they know how and when to escalate, and is there a documented, non-retaliatory process for raising concerns outside normal line management?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_356",
+    "text": "Do you maintain a central register for AI systems and enforce policies that (a) block or regularize unapproved AI tools in production or client-facing channels, and (b) resolve conflicts between local business decisions and global AI governance?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_357",
+    "text": "When developers use AI-assisted coding tools, do you have policies and technical checks to prevent incorporation of GPL/Copyleft or incompatible open-source code into proprietary products?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_358",
+    "text": "Before launching AI-enabled features, do you perform IP review that covers both (a) rights to use training data (licenses, consents, fair-use analysis) and (b) patent clearance for key AI-driven functionality?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_359",
+    "text": "Do you enforce and monitor data-residency and routing rules (including backup, failover and analytics pipelines) to ensure personal and regulated data stays within approved jurisdictions, and are exceptions explicitly approved?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_360",
+    "text": "Before deploying foundation models or APIs, do you review and document license terms and regulatory limits (e.g., 'research only', prohibited AI Act categories) and enforce technical or policy controls to prevent banned or out-of-scope uses?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_361",
+    "text": "For AI systems operating across multiple jurisdictions, is there a single accountable owner or committee responsible for mapping applicable laws/regulations and ensuring consistent oversight across all regions?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_362",
+    "text": "For regulated communications (e.g., broker-dealer, FinRA), have AI-enabled systems such as chatbots, collaboration tools or auto-deletion rules been assessed to ensure required retention periods are met and logs are not deleted early?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_363",
+    "text": "Where AI software could qualify as a medical device or clinical decision support, do you have a documented determination of regulatory status (e.g., FDA/MDR) and, where applicable, evidence of clearance or a plan to obtain it before production use?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_364",
+    "text": "Before deploying significant AI systems, do you systematically review (a) AI-specific regulations, (b) model and tool license terms, and (c) client contract clauses on AI use, and implement controls to prevent non-compliant processing or service delivery?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_365",
+    "text": "When AI outputs conflict with human or consensus diagnoses, do you systematically track these disagreements and regularly review annotation quality (including error rates by annotator or vendor)?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_366",
+    "text": "For retrieval-augmented generation or search over client documents, do you have technical and contractual controls that prevent data sets of different classifcation levels and clients from being retrieved in responses to another client's queries?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_367",
+    "text": "Do you continuously monitor important AI models for performance or reasoning drift, and ensure that incidents (including regulatory reports drafted by AI) are reviewed with lessons translated into updated controls, playbooks, and training?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_368",
+    "text": "Where AI generates data or narratives used as evidence for financial reporting or controls (e.g., reconciliations, explanations, ICFR documentation), do you require human validation and maintain an audit trail to detect fabricated or unsupported outputs?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_369",
+    "text": "For AI recommender systems that suggest products or offers, do you monitor for patterns such as promoting out-of-stock items or low-margin products, and reconcile recommendations against actual inventory data?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_370",
+    "text": "Do you control and monitor situations where models are trained on their own or user-gamed outputs, and do you require human review or validation for AI-generated legal or regulatory content (e.g., citations, SAR narratives) to prevent fabricated references?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_371",
+    "text": "Do you monitor for technical failure modes such as code assistants importing non-existent or unsafe libraries, or models being repeatedly trained on their own or user-gamed outputs without quality controls?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_372",
+    "text": "For customer-facing assistants, do you monitor interactions to prevent aggressive or shaming responses to frustrated users and to ensure the system does not prioritize being agreeable over being accurate and transparent?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_373",
+    "text": "Where AI drafts contracts, policies, or other legally relevant documents, do you have controls (e.g., templates, human review, clause libraries) to detect hallucinated clauses or overconfident statements presented as fact?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_374",
+    "text": "When embedding models or vector databases are updated, do you follow a controlled process (e.g., re-indexing, validation queries, integrity checks) to prevent corrupted indexes and misaligned retrieval results?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_375",
+    "text": "Do you monitor and alert on API inference latency and upstream data-processing delays so that AI decisions are made within agreed SLAs and on up-to-date events, rather than acting on information that is already stale?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_376",
+    "text": "Do you monitor for stale or corrupted features in production (e.g., cached values, NaNs, or silent schema changes) and have automated checks to detect when upstream databases or feature stores change in ways that could break model inputs?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_377",
+    "text": "Do you manage AI infrastructure using Infrastructure-as-Code with drift detection, maintain secure and tested backups of models/data, and regularly assess serving platforms for critical vulnerabilities (including emergency patching and rollback plans)?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_378",
+    "text": "After AI controls are implemented, do you maintain an ongoing view of residual AI risk (e.g., metrics, dashboards, periodic reviews) rather than treating risk assessments as one-time exercises?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_379",
+    "text": "Do you routinely test important AI models for privacy attacks (e.g., model inversion which could allow an attacker to reverse engineer training data and indentify indivudal customers/patients.",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_380",
+    "text": "Where AI is trained or evaluated on identifiable personal or health data, do you maintain documented lawful bases and, where required, explicit consent and notices that clearly cover AI use, including cross-border processing?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_381",
+    "text": "Where AI is used to monitor employees (e.g., keystrokes, eye tracking, productivity scores), have you assessed necessity and proportionality, limited data collection to what is needed, and provided clear notices and opt-out/appeal mechanisms?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_382",
+    "text": "Do your AI training and inference pipelines support privacy-by-design controls such as (a) enforcing data minimization, (b) honouring deletion and right-to-be-forgotten requests, and (c) reducing re-identification risks when combining anonymized datasets?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_383",
+    "text": "For AI-enabled kiosks that use cameras or touchscreens, do you implement security and privacy controls for biometrics (e.g., anti-tampering, encryption, consent notices) and ensure accessibility features (e.g., voice or haptic modes) for disabled users?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_384",
+    "text": "Do you rely on a single AI provider or foundation-model family for most of your critical AI use cases without a tested fallback or exit strategy?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_385",
+    "text": "Do you monitor AI-driven pricing algorithms for unintended 'race to the bottom' behaviour (e.g., repeated undercutting, margin erosion) across products and channels?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_386",
+    "text": "Do you actively monitor AI models that influence markets or pricing (yours or competitors') for feedback-loop behaviour (e.g., sudden incoherence, cascading errors, or rapid price swings) and have documented triggers for human intervention or shutdown?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_387",
+    "text": "For critical AI services, do you both (a) assess dependency on any single provider/model and (b) maintain contracts that cover AI-specific errors (e.g., hallucinations, IP claims) and include a realistic migration/exit strategy?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_388",
+    "text": "Is there a single, up-to-date AI risk register with named owners for each major risk, and is it formally updated whenever models, vendors, or high-risk use cases change?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_389",
+    "text": "Have your cyber / professional liability policies and key customer contracts been reviewed to confirm whether AI-specific failures (e.g., hallucinated outputs, algorithmic decisions, indemnity clauses) are explicitly covered, excluded, or require additional endorsements?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_390",
+    "text": "For customer-facing chatbots that can discuss pricing, refunds, or contract terms, do you enforce rules and monitoring to prevent the bot from promising commitments that exceed policy (e.g., guardrail prompts, templates, human approval for exceptions)?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_391",
+    "text": "Are AI model assets (including weights and key configurations) stored in controlled, encrypted repositories and consistently referenced in a central AI risk register that is kept current when systems, risks or controls change?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_392",
+    "text": "Have you implemented controls and testing against adversarial prompt techniques (e.g., jailbreaks, prompt injection, resource-exhaustion \u201csponge\u201d inputs) that attempt to bypass safeguards or consume excessive compute?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_393",
+    "text": "Do you maintain an inventory and patching process for critical AI components (e.g., frameworks, libraries, GPU drivers), and assess the supply-chain risk of third-party packages used in your AI stack?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_394",
+    "text": "Are sensitive prompts and system instructions protected from exposure (e.g., redaction, access controls, log hygiene), and do you test against prompt-injection techniques that attempt to reveal or override hidden system prompts?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_395",
+    "text": "Have you evaluated hardware-level and side-channel risks for AI workloads (e.g., GPU driver vulnerabilities, power/timing analysis) and applied mitigations such as hardened images, isolation, and monitoring of unusual access patterns?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_396",
+    "text": "Do you control what inference data and training artefacts persist in caches, logs, or monitoring systems, and scrub or protect any residual data or hyperparameter information that could leak sensitive context or aid model reverse-engineering?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_397",
+    "text": "For AI APIs and endpoints, have you assessed threats such as man-in-the-middle interception and model extraction, and implemented protections like strong encryption, authentication, rate limiting, and anomaly detection on query patterns?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_398",
+    "text": "Are internal and external AI endpoints managed with certificate lifecycle processes and endpoint inventories so that TLS certificates and legacy 'zombie' APIs do not quietly expire or remain exposed?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_399",
+    "text": "Do you test models and data pipelines for adversarial techniques such as poisoned training samples, multimodal payloads (e.g., steganographic images/audio), or AI-generated polymorphic malware that could act as hidden triggers or bypass traditional detection?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_400",
+    "text": "Have you implemented controls to prevent abuse of AI channels for replay-style attacks (e.g., resubmitting signed requests) and for highly personalized phishing campaigns that use AI to generate convincing messages at scale?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_401",
+    "text": "Do you enforce policies and technical controls that restrict staff from (a) using AI to hide or generate malicious code, (b) installing unvetted plugins or extensions, and (c) pasting sensitive or regulated data into unsanctioned consumer AI tools?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_402",
+    "text": "Beyond the official AI register, do you actively search for and bring into governance any shadow AI tools, workflows, or automations (e.g., unsanctioned bots, spreadsheets with LLM calls) that could impact customers or regulated processes?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_403",
+    "text": "Do frontline users receive training that (a) explains cultural and contextual limits of AI outputs and (b) explicitly encourages them to challenge or override AI suggestions when they appear inappropriate or wrong?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_404",
+    "text": "Have you formally assessed and addressed the workforce impacts of AI (e.g., communication, retraining, redeployment plans) and do you periodically measure morale or productivity impacts related to fear of AI replacement?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_405",
+    "text": "For AI systems that can generate or route public-facing content, do you (a) define high-risk topics, (b) apply additional human review or fact-checking, and (c) monitor for amplification of false or harmful narratives across channels?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_406",
+    "text": "Do you have a documented approach to AI-assisted work that includes guardrails to preserve core skills (e.g., training, rotation, limits on AI use for juniors) and checks that staff can still perform key tasks without AI support?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_407",
+    "text": "Before adopting or renewing critical AI services, do you assess vendor financial stability and maintain a contingency plan (e.g., alternative provider, internal fallback) if that vendor fails or exits the market?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_408",
+    "text": "For your AI vendors, do you map the chain of custody for data passed to AI sub-processors, ensuring no data helps train third-party foundation models without consent?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_409",
+    "text": "When AI influences important decisions, do your policies and disclosures clearly assign human accountability rather than suggesting that responsibility lies with the tool or vendor, and are escalation paths defined when outcomes are disputed?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_410",
+    "text": "Do you have controls to prevent staff from pasting client-identifying or confidential data into public or consumer AI tools, and to manage conflicts of interest when AI is used across multiple clients or matters?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_411",
+    "text": "Before using internal HR or sensitive datasets to train or fine-tune AI models, do you (a) obtain appropriate approvals, (b) complete any required DPIA / AI impact assessment, and (c) confirm lawful bases and cross-border transfer compliance for that data?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_412",
+    "text": "Where AI supports or automates insurance or benefit claims decisions, have you validated that rules do not systematically deny valid claims, and do you provide clear escalation and human appeal mechanisms?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_413",
+    "text": "When AI influences important decisions, can you provide a meaningful explanation of the main factors, and are responsibilities defined so that staff are not held personally liable for errors they cannot see or technically prevent?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_414",
+    "text": "For high-impact AI models (e.g., credit, hiring, customer treatment), do you test performance and error rates across key demographic groups and remediate when one group is consistently disadvantaged?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_415",
+    "text": "Are employees explicitly restricted and monitored from using AI tools (internal or external) with material non-public information (MNPI) or trade secrets, with training and surveillance designed to detect and respond to misuse?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_416",
+    "text": "For AI used in recruiting or triage (e.g., CV screening, case prioritization), do you test for disparate impact across protected groups and adjust models or decision rules when bias is detected?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_417",
+    "text": "Do AI oversight bodies (e.g., AI committee, ethics lead, model risk lead) have (a) clearly defined authority to pause or stop deployments, (b) sufficient resourcing to review high-risk systems, and (c) regular reporting into the Board or equivalent?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_418",
+    "text": "Has the Board formally approved an AI strategy and risk appetite, and does it receive regular, candid reporting on AI risk exposure, incidents, and remediation progress?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_419",
+    "text": "Are AI oversight roles and committees independent from product and growth incentives (e.g., separate reporting lines, conflict-of-interest rules), and are executive KPIs balanced between AI growth and safe, compliant deployment?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_420",
+    "text": "Before training or fine-tuning models on internal or customer data, do you require governance approval and confirm that third-party providers (e.g., API vendors) are contractually barred from using your inputs to train their public base models?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_421",
+    "text": "Do you have a defined process to identify AI-related incidents (e.g., safety, discrimination, privacy), assess reportability, and notify regulators or clients within required timelines, with links to DPIA / AI impact assessments where applicable?",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": true
+  },
+  {
+    "qid": "AR_422",
+    "text": "Are robotics incidents independently investigate from a safety, legal, technological, union and community perspective and are results transparently communicated to stakeholders and regulators, as required.",
+    "component_group": "nan",
+    "cluster": "nan",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
     ],
     "is_universal": true
   }
