@@ -1,0 +1,968 @@
+[
+  {
+    "qid": "AR_51",
+    "text": "Do you have a strategy for Token Expiry vs. Long-Running AI Tasks?",
+    "component_group": "ai_technical",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_52",
+    "text": "Do you distinguish between a \"Human User\" and an \"Autonomous AI Agent\" in your federation logic?",
+    "component_group": "ai_technical",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_53",
+    "text": "Do you use \"Scoped\" Permissions, or does a valid login grant access to every model in the company?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_54",
+    "text": "Does your Prompt Shield analyze the content of \"System Prompt\" injections versus \"User Prompt\" injections?",
+    "component_group": "policies_procedures_documentation",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_55",
+    "text": "Is your Output Filter capable of detecting \"Model Inversion\" or \"Membership Inference\" attacks?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_56",
+    "text": "How does your gateway handle provider credentials without exposing them to the Autonomous Agent or End-User?",
+    "component_group": "ai_technical",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_57",
+    "text": "Does your API connectivity layer protect against Server-Side Request Forgery (SSRF) when the AI calls an external tool?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_58",
+    "text": "Can your gateway restrict an AI Agent's API access based on the \"Task Context\" rather than a static permission?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_59",
+    "text": "How are you validating the \"Integrity\" of the tools provided to the AI via protocols like MCP?",
+    "component_group": "ai_technical",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_60",
+    "text": "How does your rate limiting distinguish between \"Input\" and \"Output\" tokens to prevent GPU starvation?",
+    "component_group": "ai_technical",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_61",
+    "text": "Does your rate limiting logic enforce \"Global\" quotas while maintaining \"Per-Identity\" fairness?",
+    "component_group": "ai_technical",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_62",
+    "text": "Does your gateway dynamically adjust rate limits based on the \"Token Cost\" of different models?",
+    "component_group": "ai_technical",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_63",
+    "text": "How does the automated ingestion system verify that you have the legal rights or user consent to use this specific data for AI processing?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_64",
+    "text": "Can the system provide a cryptographically verifiable 'birth certificate' for every data point used in the final model weights?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_65",
+    "text": "For datasets sourced from 3rd parties or open-source, do automated checks verify the license metadata and Terms of Service alignment?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_66",
+    "text": "Is there a transparent 'audit trail' of every automated and manual modification made to the raw data before it became a feature?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_67",
+    "text": "Does the system architecture enforce a logical separation between 'System Instructions' and 'User-Provided Data' to prevent instruction overriding?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_68",
+    "text": "Do you have automated mechanisms to classify and block user intent that specifically targets 'Jailbreaking' or safety-filter bypass?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_69",
+    "text": "Do you consider a \"Safe Failure\" protocol if a security bouncer is bypassed?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_70",
+    "text": "How is the AI system's input monitored for sensitive data exfiltration?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_71",
+    "text": "Do you apply any \"Data Minimization\" to the user's prompt?",
+    "component_group": "policies_procedures_documentation",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_72",
+    "text": "Do you use differential privacy techniques to protect individuals when training on sensitive data?",
+    "component_group": "privacy",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_73",
+    "text": "Are there automated checks for PII in training data before model training begins?",
+    "component_group": "privacy",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_74",
+    "text": "Do your PII detectors handle instructions that aren't entered by the user, but are retrieved from external sources?",
+    "component_group": "privacy",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_75",
+    "text": "Do you enforce a \"Right to Erasure\" request by removing training data and retraining or fine-tuning affected models?",
+    "component_group": "privacy",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_76",
+    "text": "Do you use automated statistical monitoring to detect and block \"outlier\" data before it enters the training pipeline?",
+    "component_group": "model_training",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_77",
+    "text": "Is there a privacy-preserving method for employees to flag potentially sensitive training data without exposing it?",
+    "component_group": "privacy",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_78",
+    "text": "If you use AI Agents to fetch data, do you have an inspection proxy to ensure sensitive data isn't inadvertently stored in logs?",
+    "component_group": "privacy",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_79",
+    "text": "Is your data storage encryption 'at rest' using an algorithm that is resistant to quantum computing attacks?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_80",
+    "text": "Is your data-in-transit encryption using a TLS version and cipher suite that is resistant to current known attacks?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_81",
+    "text": "Do you use a Hardware Security Module (HSM) to manage the encryption keys that protect your most sensitive AI training data?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_82",
+    "text": "Do you employ a Zero Trust Architecture for all AI model access?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_83",
+    "text": "Do you use \"Context-Aware Access Control\" to grant permissions based on user identity, device health, and location combined?",
+    "component_group": "security",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_84",
+    "text": "Does your storage layer support \"Identity-Based Decryption,\" where data is only decrypted when a valid, policy-compliant identity requests it?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_85",
+    "text": "Is your data warehouse able to track and log every individual query made against the data?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_86",
+    "text": "Is your Vector Database logically separated from your public-facing APIs to prevent direct injection attacks?",
+    "component_group": "cloud_provider_technical_environment",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_87",
+    "text": "Is access to your Vector Database controlled via a dedicated service account with minimum necessary permissions?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_88",
+    "text": "Do you run automated \"Fairness Audits\" on your transformed features to ensure class imbalances haven't been introduced?",
+    "component_group": "bias_fairness",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_89",
+    "text": "Have you tested if your transformed embeddings can be mathematically \"reversed\" to expose original training data?",
+    "component_group": "audit",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_90",
+    "text": "Do you have a process to detect and remediate \"Data Drift\" in your feature store over time?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_91",
+    "text": "Do you have an automated process for \"Feature Versioning\" to ensure reproducibility of model training runs?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_92",
+    "text": "Can you generate a complete, automated \"Data Lineage\" report from raw data to final model prediction?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_93",
+    "text": "Do you monitor for \"Information Entropy\" to ensure that your transformation pipeline hasn't compressed away critical signal?",
+    "component_group": "model_training",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_94",
+    "text": "Can you automatically trace a specific AI output back through the model version, training data snapshot, and feature engineering pipeline?",
+    "component_group": "development",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_95",
+    "text": "Do you have a formal process to version, store, and retrieve every artifact produced by your MLOps pipeline?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_96",
+    "text": "Is there an automated gate in your CI/CD pipeline that blocks a model from being promoted if its fairness metrics fall below a defined threshold?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_97",
+    "text": "Do you use Conformal Prediction or another calibrated uncertainty estimation technique in your models?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_98",
+    "text": "Is there an automated process to detect if your model's predictions are \"Overconfident\" relative to a held-out validation set?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_99",
+    "text": "Do you have a formal \"Model Card\" or equivalent documentation published for every model in production?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_100",
+    "text": "Do you have real-time alerts that trigger when the statistical distribution of your model's inputs shifts significantly from training?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_101",
+    "text": "Can you programmatically prove \u00e2\u20ac\u201d within 72 hours \u00e2\u20ac\u201d exactly which data was used to train the model version that made a specific decision?",
+    "component_group": "development",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_102",
+    "text": "Do you have an automated process to scan model weights for embedded, memorized PII from training data?",
+    "component_group": "model_training",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_103",
+    "text": "Is there a mandatory human review for any data quality \"Exceptions\" before that data enters the training pipeline?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_104",
+    "text": "Is your model serving infrastructure architected to survive the complete failure of a single cloud availability zone?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_105",
+    "text": "Have you defined a formal Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for your AI systems?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_106",
+    "text": "Do you conduct automated Chaos Engineering experiments on your AI infrastructure to proactively discover failure modes?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_107",
+    "text": "Do you enforce \"Identity-Based Decryption\" where data is only decrypted when a valid, policy-compliant identity requests it?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_108",
+    "text": "Do you have a formal process for \"Explainability by Design\" that requires model developers to choose explainable architectures?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_109",
+    "text": "Can you generate a human-readable explanation for any individual prediction made by your AI system on demand?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_110",
+    "text": "Do you test your XAI explanations for \"Faithfulness\" \u00e2\u20ac\u201d i.e., do they accurately reflect what the model is actually doing?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_111",
+    "text": "Do you have a process to detect and alert on \"Explanation Drift\" \u00e2\u20ac\u201d when the same input begins generating different explanations over time?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_112",
+    "text": "Can a non-technical stakeholder access a simplified, role-appropriate explanation of any AI decision?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_113",
+    "text": "Do you have a formal process for \"Counterfactual Explanations\" \u00e2\u20ac\u201d telling users what would need to change to get a different outcome?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_114",
+    "text": "Is your explainability method robust to adversarial perturbations that could manipulate the explanation without changing the prediction?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_115",
+    "text": "Do you have a documented policy for when and how AI decisions can be appealed or overridden by a human?",
+    "component_group": "explainability_transparency",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_116",
+    "text": "Is there an automated system to detect when an AI Agent is operating outside its defined \"Scope of Authority\"?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_117",
+    "text": "Do you have a formal process for \"Human-in-the-Loop\" escalation when an AI Agent's confidence drops below a defined threshold?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_118",
+    "text": "Do you monitor the \"Intent\" of autonomous agents, flagging when an agent's actions deviate from its original assigned objective?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_119",
+    "text": "Is there a \"Kill Switch\" or override mechanism that allows a human operator to immediately halt any autonomous AI Agent?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_120",
+    "text": "Do you conduct regular \"Red Team\" exercises specifically designed to test the boundaries and failure modes of your AI Agents?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_121",
+    "text": "Is there a formal process for reviewing and approving any expansion of an AI Agent's permissions or capabilities?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_122",
+    "text": "Do you have automated monitoring for \"Goal Misgeneralization\" \u00e2\u20ac\u201d when an AI performs well in training but pursues unintended goals in deployment?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_123",
+    "text": "Is there a defined \"Minimum Viable Human Oversight\" policy specifying the minimum level of human supervision required for each AI system?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_124",
+    "text": "Do you have a process to detect and prevent \"Automation Bias\" \u00e2\u20ac\u201d where humans over-rely on AI recommendations?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_125",
+    "text": "Is there a formal accountability matrix (RACI) for every AI system in production, identifying who is responsible for its outputs?",
+    "component_group": "accountability",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_126",
+    "text": "Do you have a formal process to conduct and document AI impact assessments before deploying new AI systems?",
+    "component_group": "accountability",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_127",
+    "text": "Does your compute layer have an automated \"Circuit Breaker\" to kill an AI Agent's process if it exceeds pre-defined resource limits?",
+    "component_group": "human_oversight",
+    "cluster": "Cluster 3 \u00e2\u20ac\u201d Responsible AI & Ethics"
+  },
+  {
+    "qid": "AR_128",
+    "text": "Do you have a formal process for cataloguing and assessing all third-party AI models and APIs used in your systems?",
+    "component_group": "accountability",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_129",
+    "text": "Is there a defined process for securely decommissioning AI systems and purging their associated data?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_130",
+    "text": "Do you have a formal \"AI Risk Register\" that is regularly reviewed and updated?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_131",
+    "text": "Is there a process for employees to anonymously report concerns about AI system behaviour?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_132",
+    "text": "Do your training datasets and your production Vector Database (RAG) share a unified lineage tracking system?",
+    "component_group": "cloud_provider_technical_environment",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_133",
+    "text": "Can you perform a \"Model Rollback\" to a previous version in under 15 minutes if a critical failure is detected in production?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_134",
+    "text": "Do you have an automated process to test model performance specifically on minority subgroups before each deployment?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_135",
+    "text": "Is there a formal Service Level Agreement (SLA) for your AI systems that includes uptime, latency, and accuracy thresholds?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_136",
+    "text": "Do you conduct regular load testing to simulate peak traffic conditions on your AI model serving infrastructure?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_137",
+    "text": "Is there a formal process for conducting \"Post-Mortem\" analyses after every AI system incident or outage?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_138",
+    "text": "Do you use \"Shadow Mode\" deployment to test new model versions against real traffic before full promotion?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_139",
+    "text": "Is your model serving infrastructure capable of \"Graceful Degradation\" \u00e2\u20ac\u201d providing a reduced-quality but still functional service during outages?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_140",
+    "text": "Do you have a formal policy and automated tooling for managing the end-of-life of AI models and their associated infrastructure?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_141",
+    "text": "Is there a defined process for communicating AI system degradation or outages to internal and external stakeholders?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_142",
+    "text": "Do you have a formal process for tracking and remediating technical debt specifically related to AI infrastructure?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_143",
+    "text": "Is there an automated compliance check that flags if a new AI system deployment will violate existing data residency or sovereignty requirements?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_144",
+    "text": "Do you have a formal process for conducting AI model audits by independent third parties?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_145",
+    "text": "Is there a documented process for how AI systems handle edge cases and out-of-distribution inputs?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_146",
+    "text": "Do you have a formal process for obtaining and managing user consent for AI-driven personalization?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_147",
+    "text": "Is there a process to detect and mitigate \"Model Collapse\" \u00e2\u20ac\u201d where a model's quality degrades after being trained on AI-generated data?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_148",
+    "text": "Do you have a formal process for managing \"Prompt Injection\" attacks in customer-facing AI applications?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_149",
+    "text": "Is there a defined process for escalating AI system anomalies to senior management?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_150",
+    "text": "Do you have a formal process for reviewing and updating your AI governance policies at least annually?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_151",
+    "text": "Is there a process for tracking and managing AI-related regulatory changes and their impact on your systems?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_152",
+    "text": "Do you have a formal process for managing AI system changes that could impact data privacy?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_153",
+    "text": "Do you have a formal process for managing the security of AI APIs exposed to external parties?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_154",
+    "text": "Is there a process for testing AI systems for adversarial robustness before deployment?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_155",
+    "text": "Do you conduct regular penetration testing specifically targeting your AI infrastructure?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_156",
+    "text": "Is there a formal process to assess the environmental impact of your AI training and inference workloads?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_157",
+    "text": "Do you track and report on energy consumption and carbon emissions from your AI operations?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_158",
+    "text": "Is there a process for testing AI systems against synthetic adversarial datasets before deployment?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_159",
+    "text": "Do you have a formal process for identifying and mitigating \"Supply Chain\" risks in your AI tooling?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_160",
+    "text": "Is there an automated process to detect unauthorized models or shadow AI being used within the organization?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_161",
+    "text": "Do you have a formal process for assessing AI model robustness against distribution shift in production?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_162",
+    "text": "Is there a process for managing and securing AI model weights and other intellectual property?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_163",
+    "text": "Do you have a formal process for managing consent withdrawal requests in AI-driven personalization systems?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_164",
+    "text": "Is there a process for monitoring and managing the long-term accuracy of AI systems in production?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_165",
+    "text": "Do you have a formal process for assessing and managing \"Model Bias\" before and after deployment?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_166",
+    "text": "Is there a process for testing AI systems for robustness against known attack vectors?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_167",
+    "text": "Do you have a formal process for conducting AI system security reviews before deployment?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_168",
+    "text": "Is there a process for managing the lifecycle of AI models from development to decommissioning?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_169",
+    "text": "Do you have a formal process for managing AI system changes that could impact regulatory compliance?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_170",
+    "text": "Is there a process for ensuring the quality and representativeness of data used to train AI systems?",
+    "component_group": "reliability",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_171",
+    "text": "Do you have a centralized cloud governance framework enforced across all business units?",
+    "component_group": "organizational_business_process",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_172",
+    "text": "Are ownership and accountability clearly defined for every cloud resource, including AI workloads?",
+    "component_group": "accountability",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_173",
+    "text": "Is there a formal process to review and escalate critical cloud infrastructure risks to the board level?",
+    "component_group": "board_directors",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_174",
+    "text": "Do you have a formal third-party cloud provider risk management program covering AI workloads?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_175",
+    "text": "Are all critical AI workloads documented with clear disaster recovery runbooks?",
+    "component_group": "development",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_176",
+    "text": "Do you have a formal capacity planning process to ensure compute resources can support AI workload growth?",
+    "component_group": "operations_model_management",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_177",
+    "text": "Are all compute environments (dev, staging, production) maintained with automated configuration management tools?",
+    "component_group": "deployment_maintenance",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_178",
+    "text": "Do you monitor and enforce resource tagging standards for all cloud resources supporting AI systems?",
+    "component_group": "cloud_provider_technical_environment",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_179",
+    "text": "Is there an automated process to detect and remediate cloud resource misconfigurations?",
+    "component_group": "cloud_provider_technical_environment",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_180",
+    "text": "Is there a formal lifecycle management process for compute resources including decommissioning of unused resources?",
+    "component_group": "operations_model_management",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_181",
+    "text": "Is there an automated billing anomaly detection system to flag unexpected cost increases in AI compute?",
+    "component_group": "cloud_provider_technical_environment",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_182",
+    "text": "Do you enforce network segmentation to isolate AI training workloads from production serving infrastructure?",
+    "component_group": "cloud_provider_technical_environment",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_183",
+    "text": "Is there a process for regular security patching of all cloud instances used for AI workloads?",
+    "component_group": "cloud_provider_technical_environment",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_184",
+    "text": "Do you have an automated process to right-size compute instances to balance cost and performance for AI workloads?",
+    "component_group": "model_training",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  },
+  {
+    "qid": "AR_185",
+    "text": "Is there a formal process for managing shadow IT and unauthorized cloud resource provisioning for AI?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_186",
+    "text": "Do you have a formal process to manage and secure API credentials and service account keys used in AI pipelines?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_187",
+    "text": "Is there an automated process to monitor and enforce data residency requirements for AI training data?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_188",
+    "text": "Do you have a formal process for managing and securing container images used in AI model deployment?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_189",
+    "text": "Is there a process to review and approve all new cloud services before they are used for AI workloads?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_190",
+    "text": "Do you have a formal process for managing and securing infrastructure-as-code (IaC) templates used for AI environments?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_191",
+    "text": "Is there an automated process to detect and remediate open security groups or misconfigured network access controls?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_192",
+    "text": "Do you have a formal process for managing the security and integrity of AI model artifacts in your artifact registry?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_193",
+    "text": "Is there a process for managing and securing secrets used in AI pipeline automation?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_194",
+    "text": "Are access rights reviewed quarterly with automated detection of excessive permissions for AI system accounts?",
+    "component_group": "accountability",
+    "cluster": "Cluster 4 \u00e2\u20ac\u201d Governance, Compliance & Legal"
+  },
+  {
+    "qid": "AR_195",
+    "text": "Is there a process to ensure that AI model training pipelines comply with data retention and deletion policies?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_196",
+    "text": "Do you have a formal process to ensure AI workloads comply with applicable cloud security benchmarks (e.g., CIS Benchmarks)?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_197",
+    "text": "Is there a formal incident management process with defined SLAs, war room protocols, and post-mortem requirements for AI system failures?",
+    "component_group": "incident_management",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_198",
+    "text": "Are all configuration changes governed through change management with automated approval workflows for AI-critical infrastructure?",
+    "component_group": "deployment_maintenance",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_199",
+    "text": "Do you have a formal knowledge management process to capture and share operational lessons learned from AI system incidents?",
+    "component_group": "organizational_business_process",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_200",
+    "text": "Is there a formal operational maturity improvement program with regular reviews and benchmarking against industry standards?",
+    "component_group": "organizational_business_process",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_201",
+    "text": "Is there a formal process for managing AI system changes that could impact business continuity?",
+    "component_group": "operations_model_management",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_202",
+    "text": "Do you have a formal process for managing AI system vendor relationships and contracts?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_203",
+    "text": "Is there a formal process for managing AI system documentation and knowledge transfer?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_204",
+    "text": "Is there a formal large-scale outage coordination plan with defined roles, communications strategy, and recovery time objectives?",
+    "component_group": "incident_management",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_205",
+    "text": "Do you have a formal process for managing AI system budget and cost optimization?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_206",
+    "text": "Is there a formal process for managing AI system performance benchmarking and reporting?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_207",
+    "text": "Do you have a formal process for managing AI system licensing and intellectual property?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_208",
+    "text": "Is there a formal process for managing AI system user access provisioning and de-provisioning?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_209",
+    "text": "Do you have a formal process for managing AI system change requests from business stakeholders?",
+    "component_group": "data_data_governance",
+    "cluster": "Cluster 2 \u00e2\u20ac\u201d Data, Privacy & Information Assets"
+  },
+  {
+    "qid": "AR_210",
+    "text": "Are long-term cloud investment risks evaluated including vendor lock-in, contract renewal, and technology obsolescence?",
+    "component_group": "risk_management_liability_insurance",
+    "cluster": "Cluster 5 \u00e2\u20ac\u201d Operational & Infrastructure Risk"
+  },
+  {
+    "qid": "AR_211",
+    "text": "Do you have a formal process for managing AI system development methodology and standards?",
+    "component_group": "development",
+    "cluster": "Cluster 1 \u00e2\u20ac\u201d AI Technical & Model Integrity"
+  }
+]
