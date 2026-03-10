@@ -850,11 +850,11 @@
                 <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>How mature is your organisation's technology adoption? (1 = Initial &nbsp;→&nbsp; 5 = Fully Optimised)</p>
                 <select value={form.techMaturity} onChange={e => setForm({ ...form, techMaturity: e.target.value })} style={{ ...f(errors.techMaturity), cursor: "pointer", maxWidth: 320 }}>
                   <option value="">Select level...</option>
-                  <option value="1">1 – Initial / Ad-hoc</option>
-                  <option value="2">2 – Developing / Repeatable</option>
-                  <option value="3">3 – Defined / Managed</option>
-                  <option value="4">4 – Quantitatively Managed</option>
-                  <option value="5">5 – Optimising / Leading-edge</option>
+                  <option value="1">1 – Generic</option>
+                  <option value="2">2 – Good</option>
+                  <option value="3">3 – Strong</option>
+                  <option value="4">4 – Advanced</option>
+                  <option value="5">5 – Very Sophisticated</option>
                 </select>
               </div>
             </div>
