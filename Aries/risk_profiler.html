@@ -922,7 +922,7 @@
     }
 
     // ─── PAGE 4: QUESTION FLOW ────────────────────────────────────────────────────
-    function QuestionFlow({ profile, onBack, onFinish, initialIndex = 0, onIndexChange, initialAnswers = {}, onAnswersChange, clients, activeClientId, onSwitchClient, onLogout, onExit }) {
+    function QuestionFlow({ profile, onBack, onFinish, onExit, initialIndex, onIndexChange, initialAnswers, onAnswersChange, clients, activeClientId, onSwitchClient, onLogout }) {
       const questions = getRelevantQuestions(profile.inventory);
       const [current, setCurrent] = useState(initialIndex);
 
@@ -981,6 +981,7 @@
             activeClientId={activeClientId}
             onSwitchClient={onSwitchClient}
             onLogout={onLogout}
+            onHome={onExit}
           />
 
           {/* Progress header */}
@@ -1106,10 +1107,10 @@
     }
 
     // ─── PAGE 5: RISK REPORT ──────────────────────────────────────────────────────
-    function RiskReport({ profile, answers, questions }) {
+    function RiskReport({ profile, answers, questions, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
       return (
         <div style={{ minHeight: "100vh", background: B.gray50, fontFamily: BODY, display: "flex", flexDirection: "column" }}>
-          <Nav steps={["Company Profile", "AI Inventory", "Questions", "Complete"]} current={3} />
+          <Nav steps={["Company Profile", "AI Inventory", "Questions", "Complete"]} current={3} onHome={onHome} clients={clients} activeClientId={activeClientId} onSwitchClient={onSwitchClient} onLogout={onLogout} />
 
           <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
             <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: "56px 40px", maxWidth: 640, width: "100%", textAlign: "center", boxShadow: B.shadowLg }}>
