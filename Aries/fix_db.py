@@ -35,6 +35,20 @@ for r in raw:
             cluster_formatted = val + clean_text(cluster_raw.split(key)[-1]).strip(" -")
             break
             
+    # Extract and parse response options
+    response_raw = str(r.get('response_type', ''))
+    options = []
+    if response_raw and response_raw != 'nan':
+        # Split by | since that's what the DB uses
+        options = [clean_text(opt) for opt in response_raw.split('|')]
+    else:
+        # Fallback to defaults if missing
+        options = ["Yes", "No", "Maybe", "Non-applicable"]
+        
+    # Extract trigger points for scoring
+    trigger_raw = str(r.get('trigger_points', ''))
+    trigger_points = clean_text(trigger_raw) if trigger_raw != 'nan' else ""
+            
     # Clean the text properly
     text_clean = clean_text(r.get('question_text', ''))
             
@@ -43,6 +57,8 @@ for r in raw:
         'text': text_clean,
         'component_group': str(r.get('component_group', '')),
         'cluster': cluster_formatted.strip(),
+        'options': options,
+        'trigger_points': trigger_points,
         'is_universal': bool(r.get('is_universal', 0))
     })
 

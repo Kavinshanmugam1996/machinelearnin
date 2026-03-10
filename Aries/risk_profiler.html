@@ -1,676 +1,350 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Aries Risk Profiler</title>
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <style>
-    body { margin: 0; padding: 0; background: #0A0E1A; font-family: sans-serif; }
-    * { box-sizing: border-box; }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    
-    /* Modern UI Classes */
-    .auth-card {
-      background: white;
-      border-radius: 20px;
-      padding: 48px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
-      border: 1px solid rgba(226, 228, 233, 0.8);
-    }
-    .auth-input {
-      width: 100%;
-      padding: 14px 16px;
-      border: 1.5px solid #E2E4E9;
-      border-radius: 12px;
-      font-size: 15px;
-      color: #0D0D0D;
-      background: #FAFAFA;
-      outline: none;
-      font-family: inherit;
-      transition: all 0.2s ease;
-    }
-    .auth-input:focus {
-      border-color: #3B9BC8;
-      background: #FFFFFF;
-      box-shadow: 0 0 0 4px rgba(59, 155, 200, 0.15);
-    }
-    .auth-input.error {
-      border-color: #C8181E;
-      background: #FFF;
-    }
-    .auth-input.error:focus {
-      box-shadow: 0 0 0 4px rgba(200, 24, 30, 0.15);
-    }
-    .auth-btn {
-      margin-top: 12px;
-      padding: 16px;
-      background: linear-gradient(135deg, #C8181E 0%, #A51015 100%);
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 0.03em;
-      transition: all 0.2s ease;
-      box-shadow: 0 6px 16px rgba(200, 24, 30, 0.2);
-    }
-    .auth-btn:hover:not(:disabled) {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(200, 24, 30, 0.3);
-      background: linear-gradient(135deg, #dc1a21 0%, #b81218 100%);
-    }
-    .auth-btn:active:not(:disabled) {
-      transform: translateY(1px);
-      box-shadow: 0 2px 8px rgba(200, 24, 30, 0.2);
-    }
-    .auth-btn:disabled {
-      background: #C4C4C4;
-      box-shadow: none;
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
+<html lan
+import { useState, useEffect, useRef } from "react";
 
-    /* Left Panel Styles */
-    @keyframes float1 {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-      100% { transform: translateY(0px) rotate(0deg); }
-    }
-    @keyframes float2 {
-      0% { transform: translateY(0px) rotate(0deg) scale(1); }
-      50% { transform: translateY(-15px) rotate(-5deg) scale(1.05); }
-      100% { transform: translateY(0px) rotate(0deg) scale(1); }
-    }
-    .hero-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.6;
-      animation: float1 10s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .trust-badge {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 16px;
-      padding: 16px 20px;
-      text-align: center;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-width: 110px;
-    }
-    .trust-badge:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-  </style>
-</head>
-<body>
-  <script>
-    window.onerror = function(msg, url, lineNo, colNo, error) {
-      const errEl = document.createElement("div");
-      errEl.style = "position: fixed; top: 0; left: 0; right: 0; padding: 20px; background: red; color: white; z-index: 99999; font-size: 16px; font-family: sans-serif; opacity: 0.9;";
-      errEl.innerHTML = "<strong>CRITICAL ERROR:</strong> " + msg + "<br/>Line: " + lineNo + " Col: " + colNo;
-      document.body.prepend(errEl);
-    };
-    window.addEventListener('unhandledrejection', function(event) {
-      const errEl = document.createElement("div");
-      errEl.style = "position: fixed; bottom: 0; left: 0; right: 0; padding: 20px; background: darkred; color: white; z-index: 99999; font-size: 16px; font-family: sans-serif; opacity: 0.9;";
-      errEl.innerHTML = "<strong>PROMISE REJECTION:</strong> " + (event.reason && event.reason.message ? event.reason.message : event.reason);
-      document.body.appendChild(errEl);
-    });
-  </script>
-  <div id="root"></div>
-  <script type="text/babel" data-presets="react,env">
-const { useState, useEffect } = React;
+// ─── DATA ───────────────────────────────────────────────────────────────────
 
-// ─── FONT INJECTION ───────────────────────────────────────────────────────────
-const FONT_LINK = "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap";
+const MANDATORY_COMPONENT_GROUPS = ["privacy", "security", "reliability", "legal_regulatory"];
 
-function useFonts() {
-  useEffect(() => {
-    if (!document.querySelector(`link[href="${FONT_LINK}"]`)) {
-      const l = document.createElement("link");
-      l.rel = "stylesheet"; l.href = FONT_LINK;
-      document.head.appendChild(l);
-    }
-  }, []);
-}
+const AI_USE_CASES = [
+  "General AI assistant","Employee copilot","Customer chatbot","Search and question-answering",
+  "Document summarization","Content generation","Email or communications assistant",
+  "Meeting and productivity assistant","Knowledge assistant","Workflow automation",
+  "AI connected to internal systems","Data analysis and insights","Decision support",
+  "Recommendations or personalization","Developer or coding assistant","Sensitive-data AI use case",
+  "Model training or fine-tuning","Autonomous or multi-agent system","AI built into our product",
+  "AI embedded in third party software we use","AI used to research legal, scientific, medical topics",
+  "AI used to prepare legal or regulatory reporting","AI used in hiring, vetting staff",
+  "AI used in making \"harm-potential\" decisions about humans","Cloud/Other / not sure"
+];
 
-// Font stacks
-const DISPLAY = "'Plus Jakarta Sans', sans-serif";       // headings, brand names, stats
-const BODY    = "'Inter', sans-serif"; // body, labels, UI text
+const QUESTION_MAPPER = {"General AI assistant":["privacy","explainability_transparency","security","reliability","data_data_governance","policies_procedures_documentation","shadow_unauthorized_ai","LLM/prompting"],"Employee copilot":["privacy","security","reliability","data_data_governance","organizational_business_process","policies_procedures_documentation","shadow_unauthorized_ai","LLM/prompting"],"Customer chatbot":["privacy","explainability_transparency","security","reliability","human_oversight","legal_regulatory","customer_reputational","LLM/prompting"],"Search and question-answering":["privacy","explainability_transparency","security","reliability","data_data_governance","legal_regulatory","intellectual_property","LLM/prompting"],"Document summarization":["privacy","explainability_transparency","security","reliability","data_data_governance","legal_regulatory","intellectual_property","LLM/prompting"],"Content generation":["bias_fairness","explainability_transparency","human_oversight","ethical","legal_regulatory","customer_reputational","intellectual_property","LLM/prompting"],"Email or communications assistant":["privacy","security","human_oversight","organizational_business_process","policies_procedures_documentation","legal_regulatory","customer_reputational","LLM/prompting"],"Meeting and productivity assistant":["privacy","security","reliability","data_data_governance","organizational_business_process","policies_procedures_documentation","legal_regulatory","staff_training_skill"],"Knowledge assistant":["privacy","explainability_transparency","security","reliability","data_data_governance","intellectual_property","LLM/prompting"],"Workflow automation":["security","reliability","accountability","human_oversight","organizational_business_process","incident_management","legal_regulatory","cloud_provider_technical_environment"],"AI connected to internal systems":["privacy","security","data_data_governance","deployment_maintenance","third_party_supply_chain","incident_management","legal_regulatory"],"Data analysis and insights":["bias_fairness","privacy","security","accountability","reliability","data_data_governance","ai_technical","legal_regulatory"],"Decision support":["bias_fairness","explainability_transparency","security","accountability","reliability","human_oversight","legal_regulatory","risk_management_liability_insurance"],"Recommendations or personalization":["bias_fairness","privacy","reliability","data_data_governance","legal_regulatory","customer_reputational","human_factors_social_psychographic"],"Developer or coding assistant":["security","reliability","development","deployment_maintenance","intellectual_property","shadow_unauthorized_ai","LLM/prompting"],"Sensitive-data AI use case":["audit","privacy","security","accountability","data_data_governance","policies_procedures_documentation","incident_management","legal_regulatory"],"Model training or fine-tuning":["bias_fairness","data_data_governance","model_training","ai_technical","intellectual_property","legal_regulatory"],"Autonomous or multi-agent system":["security","accountability","human_oversight","cloud_provider_technical_environment","agents and agent orchestration"],"AI built into our product":["security","accountability","reliability","development","deployment_maintenance","legal_regulatory","customer_reputational","intellectual_property"],"AI embedded in third party software we use":["privacy","security","data_data_governance","third_party_supply_chain","policies_procedures_documentation","incident_management","shadow_unauthorized_ai","risk_management_liability_insurance"],"AI used to research legal, scientific, medical topics":["bias_fairness","explainability_transparency","security","accountability","reliability","human_oversight","legal_regulatory","intellectual_property"],"AI used to prepare legal or regulatory reporting":["audit","explainability_transparency","security","accountability","human_oversight","policies_procedures_documentation","legal_regulatory","risk_management_liability_insurance"],"AI used in hiring, vetting staff":["bias_fairness","privacy","accountability","human_oversight","ethical","legal_regulatory","human_factors_social_psychographic"],"AI used in making \"harm-potential\" decisions about humans":["bias_fairness","accountability","human_oversight","ethical","legal_regulatory"],"Cloud/Other / not sure":["privacy","security","data_data_governance","policies_procedures_documentation","incident_management","shadow_unauthorized_ai","risk_management_liability_insurance","cloud_provider_technical_environment"]};
 
-// ─── BRAND ───────────────────────────────────────────────────────────────────
-const B = {
-  red: "#C8181E",
-  redHover: "#A51015",
-  blue: "#3B9BC8",
-  blueDark: "#2577A0",
-  black: "#0D0D0D",
-  gray900: "#1A1A1A",
-  gray700: "#444",
-  gray500: "#777",
-  gray300: "#C4C4C4",
-  gray100: "#F4F5F7",
-  gray50: "#FAFAFA",
-  white: "#FFFFFF",
-  border: "#E2E4E9",
-  shadow: "0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06)",
-  shadowMd: "0 4px 24px rgba(0,0,0,0.1)",
+const ALL_QUESTIONS = [{"qid":"AR_51","text":"Do you have a strategy for Token Expiry vs. Long-Running AI Tasks?","component_group":"ai_technical","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_52","text":"Do you distinguish between a \"Human User\" and an \"Autonomous AI Agent\" in your federation logic?","component_group":"ai_technical","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_53","text":"Do you use \"Scoped\" Permissions, or does a valid login grant access to every model in the company?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_54","text":"Does your Prompt Shield analyze the content of \"System Prompt\" injections versus \"User Prompt\" injections?","component_group":"policies_procedures_documentation","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_55","text":"Is your Output Filter capable of detecting \"Model Inversion\" or \"Membership Inference\" attacks?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_56","text":"How does your gateway handle provider credentials (e.g., OpenAI API Keys) without exposing them to the \"Autonomous Agent\" or \"End-User\"?","component_group":"ai_technical","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_57","text":"Does your API connectivity layer protect against Server-Side Request Forgery (SSRF) when the AI \"decides\" to call an external tool?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_58","text":"Can your gateway restrict an AI Agent's API access based on the \"Task Context\" rather than a static permission?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_59","text":"How are you validating the \"Integrity\" of the tools provided to the AI via protocols like MCP?","component_group":"ai_technical","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_60","text":"How does your rate limiting distinguish between \"Input\" and \"Output\" tokens to prevent GPU starvation?","component_group":"ai_technical","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_61","text":"Does your rate limiting logic enforce \"Global\" quotas while maintaining \"Per-Identity\" fairness?","component_group":"ai_technical","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_62","text":"Does your gateway dynamically adjust rate limits based on the \"Token Cost\" of different models?","component_group":"ai_technical","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_63","text":"How does the automated ingestion system verify that you have the legal rights or user consent to use this specific data for AI processing?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_64","text":"Can the system provide a cryptographically verifiable 'birth certificate' for every data point used in the final model weights?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_65","text":"For datasets sourced from 3rd parties or open-source, do automated checks verify the license metadata and Terms of Service alignment?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_66","text":"Is there a transparent 'audit trail' of every automated and manual modification made to the raw data before it became a feature?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_67","text":"Does the system architecture enforce a logical separation between 'System Instructions' and 'User-Provided Data' to prevent instruction overriding?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_68","text":"Do you have automated mechanisms to classify and block user intent that specifically targets 'Jailbreaking' or safety-filter bypass?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_69","text":"Do you consider a \"Safe Failure\" protocol if a security bouncer is bypassed?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_70","text":"How is the AI system's input monitored for sensitive data exfiltration?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_71","text":"Do you apply any \"Data Minimization\" to the user's prompt?","component_group":"policies_procedures_documentation","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_72","text":"Do you use differential privacy techniques to protect individuals when training on sensitive data?","component_group":"privacy","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_73","text":"Are there automated checks for PII in training data before model training begins?","component_group":"privacy","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_74","text":"Do your PII detectors handle instructions that aren't entered by the user, but are retrieved from external sources?","component_group":"privacy","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_75","text":"Do you enforce a \"Right to Erasure\" request by removing training data and retraining or fine-tuning affected models?","component_group":"privacy","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_76","text":"Do you use automated statistical monitoring to detect and block \"outlier\" data before it enters the training pipeline?","component_group":"model_training","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_77","text":"Is there a privacy-preserving method for employees to flag potentially sensitive training data without exposing it?","component_group":"privacy","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_78","text":"If you use AI Agents to fetch data, do you have an inspection proxy to ensure sensitive data isn't inadvertently stored in logs?","component_group":"privacy","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_79","text":"Is your data storage encryption 'at rest' using an algorithm that is resistant to quantum computing attacks?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_80","text":"Is your data-in-transit encryption using a TLS version and cipher suite that is resistant to current known attacks?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_81","text":"Do you use a Hardware Security Module (HSM) to manage the encryption keys that protect your most sensitive AI training data?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_82","text":"Do you employ a Zero Trust Architecture for all AI model access?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_83","text":"Do you use \"Context-Aware Access Control\" to grant permissions based on user identity, device health, and location combined?","component_group":"security","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_84","text":"Does your storage layer support \"Identity-Based Decryption,\" where data is only decrypted when a valid, policy-compliant identity requests it?","component_group":"explainability_transparency","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_85","text":"Is your data warehouse able to track and log every individual query made against the data?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_86","text":"Is your Vector Database logically separated from your public-facing APIs to prevent direct injection attacks?","component_group":"cloud_provider_technical_environment","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_87","text":"Is access to your Vector Database controlled via a dedicated service account with minimum necessary permissions?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_88","text":"Do you run automated \"Fairness Audits\" on your transformed features to ensure class imbalances haven't been introduced?","component_group":"bias_fairness","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_89","text":"Have you tested if your transformed embeddings can be mathematically \"reversed\" to expose original training data?","component_group":"audit","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_90","text":"Do you have a process to detect and remediate \"Data Drift\" in your feature store over time?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_91","text":"Do you have an automated process for \"Feature Versioning\" to ensure reproducibility of model training runs?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_92","text":"Can you generate a complete, automated \"Data Lineage\" report from raw data to final model prediction?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_93","text":"Do you monitor for \"Information Entropy\" to ensure that your transformation pipeline hasn't compressed away critical signal?","component_group":"model_training","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_94","text":"Can you automatically trace a specific AI output back through the model version, training data snapshot, and feature engineering pipeline?","component_group":"development","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_95","text":"Do you have a formal process to version, store, and retrieve every artifact produced by your MLOps pipeline?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_96","text":"Is there an automated gate in your CI/CD pipeline that blocks a model from being promoted if its fairness metrics fall below a defined threshold?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_97","text":"Do you use Conformal Prediction or another calibrated uncertainty estimation technique in your models?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_98","text":"Is there an automated process to detect if your model's predictions are \"Overconfident\" relative to a held-out validation set?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_99","text":"Do you have a formal \"Model Card\" or equivalent documentation published for every model in production?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_100","text":"Do you have real-time alerts that trigger when the statistical distribution of your model's inputs shifts significantly from training?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_101","text":"Can you programmatically prove — within 72 hours — exactly which data was used to train the model version that made a specific decision?","component_group":"development","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_102","text":"Do you have an automated process to scan model weights for embedded, memorized PII from training data?","component_group":"model_training","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_103","text":"Is there a mandatory human review for any data quality \"Exceptions\" before that data enters the training pipeline?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_104","text":"Is your model serving infrastructure architected to survive the complete failure of a single cloud availability zone?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_105","text":"Have you defined a formal Recovery Time Objective (RTO) and Recovery Point Objective (RPO) for your AI systems?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_106","text":"Do you conduct automated Chaos Engineering experiments on your AI infrastructure to proactively discover failure modes?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_107","text":"Do you enforce \"Identity-Based Decryption\" where data is only decrypted when a valid, policy-compliant identity requests it?","component_group":"explainability_transparency","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_108","text":"Do you have a formal process for \"Explainability by Design\" that requires model developers to choose explainable architectures?","component_group":"explainability_transparency","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_109","text":"Can you generate a human-readable explanation for any individual prediction made by your AI system on demand?","component_group":"explainability_transparency","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_110","text":"Do you test your XAI explanations for \"Faithfulness\" — i.e., do they accurately reflect what the model is actually doing?","component_group":"explainability_transparency","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_111","text":"Do you have a process to detect and alert on \"Explanation Drift\" — when the same input begins generating different explanations over time?","component_group":"explainability_transparency","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_112","text":"Can a non-technical stakeholder access a simplified, role-appropriate explanation of any AI decision?","component_group":"explainability_transparency","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_113","text":"Do you have a formal process for \"Counterfactual Explanations\" — telling users what would need to change to get a different outcome?","component_group":"explainability_transparency","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_114","text":"Is your explainability method robust to adversarial perturbations that could manipulate the explanation without changing the prediction?","component_group":"explainability_transparency","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_115","text":"Do you have a documented policy for when and how AI decisions can be appealed or overridden by a human?","component_group":"explainability_transparency","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_116","text":"Is there an automated system to detect when an AI Agent is operating outside its defined \"Scope of Authority\"?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_117","text":"Do you have a formal process for \"Human-in-the-Loop\" escalation when an AI Agent's confidence drops below a defined threshold?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_118","text":"Do you monitor the \"Intent\" of autonomous agents, flagging when an agent's actions deviate from its original assigned objective?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_119","text":"Is there a \"Kill Switch\" or override mechanism that allows a human operator to immediately halt any autonomous AI Agent?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_120","text":"Do you conduct regular \"Red Team\" exercises specifically designed to test the boundaries and failure modes of your AI Agents?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_121","text":"Is there a formal process for reviewing and approving any expansion of an AI Agent's permissions or capabilities?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_122","text":"Do you have automated monitoring for \"Goal Misgeneralization\" — when an AI performs well in training but pursues unintended goals in deployment?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_123","text":"Is there a defined \"Minimum Viable Human Oversight\" policy specifying the minimum level of human supervision required for each AI system?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_124","text":"Do you have a process to detect and prevent \"Automation Bias\" — where humans over-rely on AI recommendations?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_125","text":"Is there a formal accountability matrix (RACI) for every AI system in production, identifying who is responsible for its outputs?","component_group":"accountability","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_126","text":"Do you have a formal process to conduct and document AI impact assessments before deploying new AI systems?","component_group":"accountability","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_127","text":"Does your compute layer have an automated \"Circuit Breaker\" to kill an AI Agent's process if it exceeds pre-defined resource limits?","component_group":"human_oversight","cluster":"Cluster 3 — Responsible AI & Ethics","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_128","text":"Do you have a formal process for cataloguing and assessing all third-party AI models and APIs used in your systems?","component_group":"accountability","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_129","text":"Is there a defined process for securely decommissioning AI systems and purging their associated data?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_130","text":"Do you have a formal \"AI Risk Register\" that is regularly reviewed and updated?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_131","text":"Is there a process for employees to anonymously report concerns about AI system behaviour?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_132","text":"Do your training datasets and your production Vector Database (RAG) share a unified lineage tracking system?","component_group":"cloud_provider_technical_environment","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_133","text":"Can you perform a \"Model Rollback\" to a previous version in under 15 minutes if a critical failure is detected in production?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_134","text":"Do you have an automated process to test model performance specifically on minority subgroups before each deployment?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_135","text":"Is there a formal Service Level Agreement (SLA) for your AI systems that includes uptime, latency, and accuracy thresholds?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_136","text":"Do you conduct regular load testing to simulate peak traffic conditions on your AI model serving infrastructure?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_137","text":"Is there a formal process for conducting \"Post-Mortem\" analyses after every AI system incident or outage?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_138","text":"Do you use \"Shadow Mode\" deployment to test new model versions against real traffic before full promotion?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_139","text":"Is your model serving infrastructure capable of \"Graceful Degradation\" — providing a reduced-quality but still functional service during outages?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_140","text":"Do you have a formal policy and automated tooling for managing the end-of-life of AI models and their associated infrastructure?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_141","text":"Is there a defined process for communicating AI system degradation or outages to internal and external stakeholders?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_142","text":"Do you have a formal process for tracking and remediating technical debt specifically related to AI infrastructure?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_143","text":"Is there an automated compliance check that flags if a new AI system deployment will violate existing data residency or sovereignty requirements?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_144","text":"Do you have a formal process for conducting AI model audits by independent third parties?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_145","text":"Is there a documented process for how AI systems handle edge cases and out-of-distribution inputs?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_146","text":"Do you have a formal process for obtaining and managing user consent for AI-driven personalization?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_147","text":"Is there a process to detect and mitigate \"Model Collapse\" — where a model's quality degrades after being trained on AI-generated data?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_148","text":"Do you have a formal process for managing \"Prompt Injection\" attacks in customer-facing AI applications?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_149","text":"Is there a defined process for escalating AI system anomalies to senior management?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_150","text":"Do you have a formal process for reviewing and updating your AI governance policies at least annually?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_151","text":"Is there a process for tracking and managing AI-related regulatory changes and their impact on your systems?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_152","text":"Do you have a formal process for managing AI system changes that could impact data privacy?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_153","text":"Do you have a formal process for managing the security of AI APIs exposed to external parties?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_154","text":"Is there a process for testing AI systems for adversarial robustness before deployment?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_155","text":"Do you conduct regular penetration testing specifically targeting your AI infrastructure?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_156","text":"Is there a formal process to assess the environmental impact (carbon footprint) of your AI training and inference workloads?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_157","text":"Do you track and report on energy consumption and carbon emissions from your AI operations?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_158","text":"Is there a process for testing AI systems against synthetic adversarial datasets before deployment?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_159","text":"Do you have a formal process for identifying and mitigating \"Supply Chain\" risks in your AI tooling?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_160","text":"Is there an automated process to detect unauthorized models or shadow AI being used within the organization?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_161","text":"Do you have a formal process for assessing AI model robustness against distribution shift in production?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_162","text":"Is there a process for managing and securing AI model weights and other intellectual property?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_163","text":"Do you have a formal process for managing consent withdrawal requests in AI-driven personalization systems?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_164","text":"Is there a process for monitoring and managing the long-term accuracy of AI systems in production?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_165","text":"Do you have a formal process for assessing and managing \"Model Bias\" before and after deployment?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_166","text":"Is there a process for testing AI systems for robustness against known attack vectors?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_167","text":"Do you have a formal process for conducting AI system security reviews before deployment?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_168","text":"Is there a process for managing the lifecycle of AI models from development to decommissioning?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_169","text":"Do you have a formal process for managing AI system changes that could impact regulatory compliance?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_170","text":"Is there a process for ensuring the quality and representativeness of data used to train AI systems?","component_group":"reliability","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_171","text":"Do you have a centralized cloud governance framework enforced across all business units?","component_group":"organizational_business_process","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_172","text":"Are ownership and accountability clearly defined for every cloud resource, including AI workloads?","component_group":"accountability","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_173","text":"Is there a formal process to review and escalate critical cloud infrastructure risks to the board level?","component_group":"board_directors","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_174","text":"Do you have a formal third-party cloud provider risk management program covering AI workloads?","component_group":"third_party_supply_chain","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_175","text":"Are all critical AI workloads documented with clear disaster recovery runbooks?","component_group":"development","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_176","text":"Do you have a formal capacity planning process to ensure compute resources can support AI workload growth?","component_group":"operations_model_management","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_177","text":"Are all compute environments (dev, staging, production) maintained with automated configuration management tools?","component_group":"deployment_maintenance","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_178","text":"Do you monitor and enforce resource tagging standards for all cloud resources supporting AI systems?","component_group":"cloud_provider_technical_environment","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_179","text":"Is there an automated process to detect and remediate cloud resource misconfigurations?","component_group":"cloud_provider_technical_environment","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_180","text":"Is there a formal lifecycle management process for compute resources including decommissioning of unused resources?","component_group":"operations_model_management","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_181","text":"Is there an automated billing anomaly detection system to flag unexpected cost increases in AI compute?","component_group":"cloud_provider_technical_environment","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_182","text":"Do you enforce network segmentation to isolate AI training workloads from production serving infrastructure?","component_group":"cloud_provider_technical_environment","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_183","text":"Is there a process for regular security patching of all cloud instances used for AI workloads?","component_group":"cloud_provider_technical_environment","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_184","text":"Do you have an automated process to right-size compute instances to balance cost and performance for AI workloads?","component_group":"model_training","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_185","text":"Is there a formal process for managing shadow IT and unauthorized cloud resource provisioning for AI?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_186","text":"Do you have a formal process to manage and secure API credentials and service account keys used in AI pipelines?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_187","text":"Is there an automated process to monitor and enforce data residency requirements for AI training data?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_188","text":"Do you have a formal process for managing and securing container images used in AI model deployment?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_189","text":"Is there a process to review and approve all new cloud services before they are used for AI workloads?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_190","text":"Do you have a formal process for managing and securing infrastructure-as-code (IaC) templates used for AI environments?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_191","text":"Is there an automated process to detect and remediate open security groups or misconfigured network access controls?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_192","text":"Do you have a formal process for managing the security and integrity of AI model artifacts in your artifact registry?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_193","text":"Is there a process for managing and securing secrets (API keys, credentials) used in AI pipeline automation?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_194","text":"Are access rights reviewed quarterly with automated detection of excessive permissions for AI system accounts?","component_group":"accountability","cluster":"Cluster 4 — Governance, Compliance & Legal","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_195","text":"Is there a process to ensure that AI model training pipelines comply with data retention and deletion policies?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_196","text":"Do you have a formal process to ensure AI workloads comply with applicable cloud security benchmarks (e.g., CIS Benchmarks)?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_197","text":"Is there a formal incident management process with defined SLAs, war room protocols, and post-mortem requirements for AI system failures?","component_group":"incident_management","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_198","text":"Are all configuration changes governed through change management with automated approval workflows for AI-critical infrastructure?","component_group":"deployment_maintenance","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_199","text":"Do you have a formal knowledge management process to capture and share operational lessons learned from AI system incidents?","component_group":"organizational_business_process","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_200","text":"Is there a formal operational maturity improvement program with regular reviews and benchmarking against industry standards?","component_group":"organizational_business_process","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_201","text":"Is there a formal process for managing AI system changes that could impact business continuity?","component_group":"operations_model_management","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_202","text":"Do you have a formal process for managing AI system vendor relationships and contracts?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_203","text":"Is there a formal process for managing AI system documentation and knowledge transfer?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_204","text":"Is there a formal large-scale outage coordination plan with defined roles, communications strategy, and recovery time objectives?","component_group":"incident_management","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_205","text":"Do you have a formal process for managing AI system budget and cost optimization?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_206","text":"Is there a formal process for managing AI system performance benchmarking and reporting?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_207","text":"Do you have a formal process for managing AI system licensing and intellectual property?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_208","text":"Is there a formal process for managing AI system user access provisioning and de-provisioning?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_209","text":"Do you have a formal process for managing AI system change requests from business stakeholders?","component_group":"data_data_governance","cluster":"Cluster 2 — Data, Privacy & Information Assets","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_210","text":"Are long-term cloud investment risks evaluated including vendor lock-in, contract renewal, and technology obsolescence?","component_group":"risk_management_liability_insurance","cluster":"Cluster 5 — Operational & Infrastructure Risk","response_type":"Yes/No/maybe/Non-applicable"},{"qid":"AR_211","text":"Do you have a formal process for managing AI system development methodology and standards?","component_group":"development","cluster":"Cluster 1 — AI Technical & Model Integrity","response_type":"Yes/No/maybe/Non-applicable"}];
+
+// ─── STYLES ──────────────────────────────────────────────────────────────────
+
+const colors = {
+  bg: "#0A0E1A",
+  bgCard: "#111827",
+  bgCardHover: "#1a2235",
+  gold: "#C9972A",
+  goldLight: "#E8B84B",
+  goldDim: "#8B6A1E",
+  text: "#E8EAF0",
+  textMuted: "#8B9BB4",
+  border: "#1E2D45",
+  borderGold: "#C9972A44",
+  success: "#22C55E",
+  error: "#EF4444",
+  info: "#3B82F6",
 };
 
 const CLUSTER_COLORS = {
-  "Domain 1: AI Technical & Model Integrity": "#3B9BC8",
-  "Domain 2: Data, Privacy & Information Assets": "#8B5CF6",
-  "Domain 3: Responsible AI & Ethics": "#16A34A",
-  "Domain 4: Governance, Compliance & Legal": "#D97706",
-  "Domain 5: Operational & Infrastructure Risk": "#C8181E",
+  "Cluster 1 — AI Technical & Model Integrity": "#3B82F6",
+  "Cluster 2 — Data, Privacy & Information Assets": "#8B5CF6",
+  "Cluster 3 — Responsible AI & Ethics": "#22C55E",
+  "Cluster 4 — Governance, Compliance & Legal": "#F59E0B",
+  "Cluster 5 — Operational & Infrastructure Risk": "#EF4444",
 };
 
-const CLUSTER_DESCRIPTIONS = {
-  "Domain 1: AI Technical & Model Integrity": "Evaluates the 'engine room' of your AI. Focuses on technical architecture, MLOps security, model weight integrity scans for PII, and automated lineage/traceability to ensure the AI's foundation is structurally sound.",
-  "Domain 2: Data, Privacy & Information Assets": "Assesses how information is ingested, stored, and protected. Covers data lineage, differential privacy during training, differential access controls for vector databases (RAG), and cryptographic birth certificates for data points.",
-  "Domain 3: Responsible AI & Ethics": "Focuses on human oversight and societal impact. Includes mechanisms for 'Human-in-the-loop' escalation, bias/fairness auditing in feature stores, and robust explainability (XAI) to ensure decisions are justifiable and fair.",
-  "Domain 4: Governance, Compliance & Legal": "Examines the regulatory and policy framework. Covers AI impact assessments, alignment with EU AI Act/NIST-RMF, intellectual property protection, and formal accountability matrices (RACI) for AI deployments.",
-  "Domain 5: Operational & Infrastructure Risk": "Evaluates uptime and systemic resilience. Covers resource starvation (GPU/Token) prevention, multi-cloud failover strategies, chaos engineering for AI systems, and disaster recovery runbooks (RTO/RPO).",
-};
-
-// ─── DATA ─────────────────────────────────────────────────────────────────────
-const MANDATORY_COMPONENT_GROUPS = ["privacy", "security", "reliability", "legal_regulatory"];
-
-// These will be populated dynamically from CSV/JSON files
-let AI_USE_CASES = [];
-let QUESTION_MAPPER = {};
-let ALL_QUESTIONS = [];
-let RISK_DB = {};
-
-// ─── CSV PARSER ───────────────────────────────────────────────────────────────
-function parseCSV(text) {
-  const lines = text.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
-  if (lines.length === 0) return [];
-  const headers = lines[0].split(",").map(h => h.trim());
-  return lines.slice(1).map(line => {
-    const vals = line.split(",").map(v => v.trim().replace(/^"|"$/g, ""));
-    const obj = {};
-    headers.forEach((h, i) => { obj[h] = vals[i] || ""; });
-    return obj;
-  });
-}
-
-// ─── DATA LOADER ──────────────────────────────────────────────────────────────
-async function loadAllData() {
-  // Load Question_mapper.csv → AI_USE_CASES + QUESTION_MAPPER (Added cache buster)
-  const mapperRes = await fetch(`Data/Question_mapper.csv?v=${Date.now()}`);
-  const mapperText = await mapperRes.text();
-  const mapperLines = mapperText.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
-  const componentHeaders = mapperLines[0].split(",").map(h => h.trim()).slice(1); // skip first col "AI systems"
-  
-  AI_USE_CASES = [];
-  QUESTION_MAPPER = {};
-  for (let i = 1; i < mapperLines.length; i++) {
-    const vals = mapperLines[i].split(",").map(v => v.trim());
-    const useCase = vals[0].trim();
-    if (!useCase) continue;
-    AI_USE_CASES.push(useCase);
-    // Collect component groups where the weight is non-zero
-    const groups = [];
-    for (let j = 1; j < vals.length; j++) {
-      const weight = parseFloat(vals[j]);
-      if (weight && weight > 0 && componentHeaders[j - 1]) {
-        groups.push(componentHeaders[j - 1]);
-      }
-    }
-    QUESTION_MAPPER[useCase] = groups;
-  }
-
-  // Load questions.json → ALL_QUESTIONS (Added cache buster)
-  const questionsRes = await fetch(`Data/questions.json?v=${Date.now()}`);
-  ALL_QUESTIONS = await questionsRes.json();
-
-  // Load AR_Risk_DB.csv → RISK_DB (QID → array of risk descriptions) (Added cache buster)
-  const riskRes = await fetch(`Data/AR_Risk_DB.csv?v=${Date.now()}`);
-  const riskText = await riskRes.text();
-  const riskLines = riskText.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
-  RISK_DB = {};
-  for (let i = 1; i < riskLines.length; i++) {
-    // CSV may have commas inside quoted fields, simple parse for first 3 columns
-    const match = riskLines[i].match(/^([^,]+),([^,]+),"?(.*?)"?(?:,|$)/);
-    if (match) {
-      const qid = match[1].trim();
-      const riskId = match[2].trim();
-      const desc = match[3].trim();
-      if (!RISK_DB[qid]) RISK_DB[qid] = [];
-      RISK_DB[qid].push({ riskId, desc });
-    }
-  }
-
-  console.log("[Aries] Data loaded:", AI_USE_CASES.length, "use cases,", ALL_QUESTIONS.length, "questions,", Object.keys(RISK_DB).length, "risk entries");
-}
+// ─── UTILS ───────────────────────────────────────────────────────────────────
 
 function getRelevantQuestions(aiInventory) {
   const allGroups = new Set(MANDATORY_COMPONENT_GROUPS);
   aiInventory.forEach(({ useCase }) => {
-    (QUESTION_MAPPER[useCase] || []).forEach(g => allGroups.add(g));
+    const groups = QUESTION_MAPPER[useCase] || [];
+    groups.forEach(g => allGroups.add(g));
   });
-  return ALL_QUESTIONS.filter(q => q.is_universal || allGroups.has(q.component_group));
+  return ALL_QUESTIONS.filter(q => allGroups.has(q.component_group));
 }
 
-// ─── BIZCOM LOGO SVG ──────────────────────────────────────────────────────────
-function BizcomLogo({ size = 28 }) {
-  const s = size;
+// ─── COMPONENTS ──────────────────────────────────────────────────────────────
+
+function ProgressBar({ current, total, label }) {
+  const pct = total > 0 ? Math.round((current / total) * 100) : 0;
   return (
-    <img src="bizcom.jpg" style={{ height: s, width: "auto" }} alt="Bizcom" />
+    <div style={{ width: "100%" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+        <span style={{ color: colors.textMuted, fontSize: 12 }}>{label}</span>
+        <span style={{ color: colors.gold, fontSize: 12, fontWeight: 600 }}>{current}/{total}</span>
+      </div>
+      <div style={{ height: 4, background: colors.border, borderRadius: 4, overflow: "hidden" }}>
+        <div style={{
+          height: "100%", width: `${pct}%`, background: `linear-gradient(90deg, ${colors.gold}, ${colors.goldLight})`,
+          borderRadius: 4, transition: "width 0.5s ease"
+        }} />
+      </div>
+    </div>
   );
 }
 
-// ─── NAV ──────────────────────────────────────────────────────────────────────
-function Nav({ steps, current, clients = [], activeClientId, onSwitchClient, onLogout }) {
-  const [showMenu, setShowMenu] = useState(false);
-  const activeClient = clients.find(c => c.id === activeClientId);
-
+function Badge({ label, color = colors.gold }) {
   return (
-    <nav style={{
-      background: B.white, borderBottom: `1px solid ${B.border}`,
-      padding: "0 40px", display: "flex", alignItems: "center",
-      justifyContent: "space-between", height: 60,
-      position: "sticky", top: 0, zIndex: 1000,
-      boxShadow: "0 1px 0 #E2E4E9"
-    }}>
-      <BizcomLogo size={22} />
-      
-      {steps ? (
-        <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-          {steps.map((s, i) => (
-            <div key={s} style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "4px 12px" }}>
-                <div style={{
-                  width: 22, height: 22, borderRadius: "50%",
-                  background: i < current ? B.red : i === current ? B.red : B.gray100,
-                  border: `2px solid ${i <= current ? B.red : B.border}`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 11, fontWeight: 700,
-                  color: i <= current ? B.white : B.gray500
-                }}>
-                  {i < current ? "✓" : i + 1}
-                </div>
-                <span style={{
-                  fontSize: 12, fontWeight: i === current ? 600 : 400,
-                  color: i === current ? B.black : B.gray500
-                }}>{s}</span>
-              </div>
-              {i < steps.length - 1 && (
-                <div style={{ width: 24, height: 1, background: i < current ? B.red : B.border }} />
-              )}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div style={{ fontSize: 13, fontWeight: 600, color: B.gray700 }}>Aries Risk Profiler</div>
-      )}
-
-      <div style={{ position: "relative" }}>
-        <button 
-          onClick={() => setShowMenu(!showMenu)}
-          style={{ 
-            display: "flex", alignItems: "center", gap: 8, background: B.gray50, 
-            border: `1px solid ${B.border}`, padding: "6px 12px", borderRadius: 8, cursor: "pointer",
-            transition: "all 0.2s"
-          }}
-          onMouseOver={e => e.currentTarget.style.borderColor = B.blue}
-          onMouseOut={e => e.currentTarget.style.borderColor = B.border}
-        >
-          <div style={{ width: 24, height: 24, borderRadius: "50%", background: B.red, display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: 12, fontWeight: 800 }}>
-            {activeClient?.name?.[0] || "U"}
-          </div>
-          <span style={{ fontSize: 13, fontWeight: 600, color: B.black }}>{activeClient?.name || "Select Client"}</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ transform: showMenu ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>
-            <path d="m6 9 6 6 6-6"/>
-          </svg>
-        </button>
-
-        {showMenu && (
-          <>
-            <div style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, zIndex: 999 }} onClick={() => setShowMenu(false)} />
-            <div style={{ 
-              position: "absolute", top: "calc(100% + 8px)", right: 0, width: 220, 
-              background: "white", borderRadius: 12, padding: "8px", zIndex: 1001,
-              boxShadow: "0 10px 25px rgba(0,0,0,0.15)", border: `1px solid ${B.border}`
-            }}>
-              <div style={{ padding: "8px 12px 12px", borderBottom: `1px solid ${B.border}`, marginBottom: 8 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: B.gray400, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>Assessing Client</div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: B.black }}>{activeClient?.name || "None Selected"}</div>
-              </div>
-              
-              <div style={{ maxHeight: 200, overflowY: "auto" }}>
-                {clients.map(c => (
-                  <button key={c.id} onClick={() => { onSwitchClient(c.id); setShowMenu(false); }} style={{
-                    width: "100%", padding: "10px 12px", textAlign: "left", background: c.id === activeClientId ? B.gray50 : "none",
-                    border: "none", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: c.id === activeClientId ? 700 : 500,
-                    display: "flex", alignItems: "center", gap: 10, color: c.id === activeClientId ? B.blue : B.gray700
-                  }} onMouseOver={e => e.currentTarget.style.background = B.gray50} onMouseOut={e => e.currentTarget.style.background = c.id === activeClientId ? B.gray50 : "none"}>
-                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: c.id === activeClientId ? B.blue : B.gray300 }} />
-                    {c.name}
-                  </button>
-                ))}
-              </div>
-
-              <div style={{ marginTop: 8, paddingTop: 8, borderTop: `1px solid ${B.border}` }}>
-                <button onClick={() => { 
-                  const name = prompt("Enter Client Name:");
-                  if (name) onSwitchClient("new", name);
-                  setShowMenu(false);
-                }} style={{
-                  width: "100%", padding: "10px 12px", textAlign: "left", background: "none",
-                  border: "none", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: 600,
-                  display: "flex", alignItems: "center", gap: 10, color: B.red
-                }} onMouseOver={e => e.currentTarget.style.background = B.gray50} onMouseOut={e => e.currentTarget.style.background = "none"}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14m-7-7v14"/>
-                  </svg>
-                  New Assessment
-                </button>
-                <button onClick={onLogout} style={{
-                  width: "100%", padding: "10px 12px", textAlign: "left", background: "none",
-                  border: "none", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: 600,
-                  display: "flex", alignItems: "center", gap: 10, color: B.gray500
-                }} onMouseOver={e => e.currentTarget.style.background = B.gray50} onMouseOut={e => e.currentTarget.style.background = "none"}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4m7 14 5-5-5-5m5 5H9"/>
-                  </svg>
-                  Logout
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-    </nav>
+    <span style={{
+      display: "inline-flex", alignItems: "center", padding: "2px 10px",
+      background: color + "22", color, borderRadius: 20,
+      fontSize: 11, fontWeight: 600, letterSpacing: "0.04em",
+      border: `1px solid ${color}44`
+    }}>{label}</span>
   );
 }
 
 // ─── PAGE 1: ADMIN LOGIN ──────────────────────────────────────────────────────
+
 function AdminLogin({ onLogin }) {
   const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const doLogin = () => {
+  const handleLogin = () => {
     setLoading(true);
     setTimeout(() => {
-      const emailLower = email.toLowerCase();
-      if ((emailLower === "kavin@bizcomgrp.com" || emailLower === "jerry@bizcomgrp.com") && pw === "Bizcom@123") {
+      if (email === "admin@aries.ai" && password === "Admin@123") {
         onLogin();
       } else {
-        setError("Invalid email or password.");
+        setError("Invalid credentials. Use admin@aries.ai / Admin@123");
       }
       setLoading(false);
-    }, 700);
+    }, 800);
   };
 
   return (
     <div style={{
-      minHeight: "100vh", background: B.gray50,
-      display: "flex", fontFamily: BODY
+      minHeight: "100vh", background: colors.bg,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontFamily: "'Georgia', 'Times New Roman', serif",
+      position: "relative", overflow: "hidden"
     }}>
-      {/* Left panel */}
+      {/* Background grid */}
       <div style={{
-        width: "48%", background: `linear-gradient(145deg, #0A0F1D 0%, #112240 50%, #0A0F1D 100%)`,
-        display: "flex", flexDirection: "column", justifyContent: "space-between",
-        padding: "64px 72px", position: "relative", overflow: "hidden",
-        borderRight: "1px solid rgba(255,255,255,0.05)",
-        boxShadow: "inset -10px 0 20px rgba(0,0,0,0.2)"
-      }}>
-        {/* Animated Glows */}
-        <div className="hero-glow" style={{ top: "-10%", left: "-10%", width: "60vh", height: "60vh", background: "rgba(59, 155, 200, 0.15)", animationDuration: "15s" }} />
-        <div className="hero-glow" style={{ bottom: "-20%", right: "-10%", width: "70vh", height: "70vh", background: "rgba(200, 24, 30, 0.1)", animationDuration: "18s", animationDelay: "-5s" }} />
-        
-        {/* Decorative Grid */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: "40px 40px", opacity: 0.5, pointerEvents: "none" }} />
-
-        {/* Top Branding (Optional, currently logo is on right) */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px", background: "rgba(255,255,255,0.05)", borderRadius: 100, border: "1px solid rgba(255,255,255,0.1)", marginBottom: 40 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: B.blue, boxShadow: `0 0 10px ${B.blue}` }} />
-            <span style={{ color: "white", fontSize: 12, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>Enterprise Grade</span>
-          </div>
-        </div>
-
-        {/* Hero copy */}
-        <div style={{ position: "relative", zIndex: 1, marginTop: "auto", marginBottom: "80px" }}>
-          <h1 style={{ color: B.white, fontSize: 52, fontWeight: 800, lineHeight: 1.1, margin: "0 0 24px", letterSpacing: "-1px" , fontFamily: DISPLAY}}>
-            Assess Risk.<br />Ensure Trust.<br />
-            <span style={{ background: "linear-gradient(90deg, #3B9BC8, #89C4E1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Govern AI</span><br />
-            with Confidence.
-          </h1>
-          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 18, lineHeight: 1.6, margin: 0, maxWidth: 440, fontWeight: 400 }}>
-            Helping you meet the regulatory compliance challenges of today and tomorrow. Monitor, assess, and deploy AI securely.
-          </p>
-        </div>
-
-        {/* Trust badges */}
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 16 }}>Built for Compliance</div>
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            {[
-              { icon: "🛡", label: "ISO 42001" },
-              { icon: "📋", label: "NIST RMF" },
-              { icon: "⚖", label: "EU AI Act" },
-            ].map((b, i) => (
-              <div key={b.label} className="trust-badge" style={{ animation: `float2 ${10 + i * 2}s ease-in-out infinite alternate` }}>
-                <div style={{ fontSize: 24, marginBottom: 8, filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))" }}>{b.icon}</div>
-                <div style={{ color: "rgba(255,255,255,0.9)", fontSize: 12, fontWeight: 700, letterSpacing: "0.02em" }}>{b.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Right panel */}
+        position: "absolute", inset: 0,
+        backgroundImage: `linear-gradient(${colors.border}33 1px, transparent 1px), linear-gradient(90deg, ${colors.border}33 1px, transparent 1px)`,
+        backgroundSize: "60px 60px", opacity: 0.4
+      }} />
+      {/* Glow */}
       <div style={{
-        flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
-        padding: "40px", background: "#f8f9fa", position: "relative"
+        position: "absolute", width: 500, height: 500, borderRadius: "50%",
+        background: `radial-gradient(circle, ${colors.gold}15 0%, transparent 70%)`,
+        top: "50%", left: "50%", transform: "translate(-50%, -50%)", pointerEvents: "none"
+      }} />
+
+      <div style={{
+        position: "relative", width: 420, padding: "48px 40px",
+        background: colors.bgCard, border: `1px solid ${colors.borderGold}`,
+        borderRadius: 16, boxShadow: `0 0 60px ${colors.gold}15`
       }}>
-        {/* Subtle background blob */}
-        <div style={{ position: "absolute", top: "10%", right: "10%", width: 400, height: 400, background: "radial-gradient(circle, rgba(59,155,200,0.06) 0%, transparent 60%)", pointerEvents: "none" }} />
-        
-        <div className="auth-card" style={{ width: "100%", maxWidth: 440, position: "relative", zIndex: 10 }}>
-          <div style={{ marginBottom: 32, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <img src="bizcom.jpg" style={{ height: 64, width: "auto", marginBottom: 24 }} alt="Bizcom Logo" />
-            <h2 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 8px", letterSpacing: "-0.5px" , textAlign: "center", fontFamily: DISPLAY}}>
-              Welcome back
-            </h2>
-            <p style={{ color: B.gray500, fontSize: 15, margin: 0, textAlign: "center" }}>Sign in to your admin account</p>
+        {/* Logo */}
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            background: `${colors.gold}15`, border: `1px solid ${colors.gold}44`,
+            borderRadius: 8, padding: "6px 16px", marginBottom: 20
+          }}>
+            <span style={{ color: colors.gold, fontSize: 11, letterSpacing: "0.15em", fontFamily: "monospace" }}>
+              AI GOVERNANCE DIAGNOSTIC
+            </span>
+          </div>
+          <div style={{ fontSize: 28, fontWeight: 700, color: colors.text, marginBottom: 4 }}>
+            AI Oversight
+          </div>
+          <div style={{ fontSize: 22, fontWeight: 700, color: colors.gold }}>Risk Profiler</div>
+          <div style={{ marginTop: 12, color: colors.textMuted, fontSize: 13 }}>
+            Secure Administrator Access
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div>
+            <label style={{ color: colors.textMuted, fontSize: 12, display: "block", marginBottom: 6, letterSpacing: "0.05em" }}>
+              EMAIL ADDRESS
+            </label>
+            <input
+              type="email" value={email}
+              onChange={e => { setEmail(e.target.value); setError(""); }}
+              onKeyDown={e => e.key === "Enter" && handleLogin()}
+              placeholder="admin@aries.ai"
+              style={{
+                width: "100%", padding: "12px 16px", background: colors.bg,
+                border: `1px solid ${error ? colors.error : colors.border}`,
+                borderRadius: 8, color: colors.text, fontSize: 14, outline: "none",
+                boxSizing: "border-box", transition: "border-color 0.2s",
+                fontFamily: "inherit"
+              }}
+            />
+          </div>
+          <div>
+            <label style={{ color: colors.textMuted, fontSize: 12, display: "block", marginBottom: 6, letterSpacing: "0.05em" }}>
+              PASSWORD
+            </label>
+            <input
+              type="password" value={password}
+              onChange={e => { setPassword(e.target.value); setError(""); }}
+              onKeyDown={e => e.key === "Enter" && handleLogin()}
+              placeholder="••••••••"
+              style={{
+                width: "100%", padding: "12px 16px", background: colors.bg,
+                border: `1px solid ${error ? colors.error : colors.border}`,
+                borderRadius: 8, color: colors.text, fontSize: 14, outline: "none",
+                boxSizing: "border-box", fontFamily: "inherit"
+              }}
+            />
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 700, color: B.gray700, display: "block", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.03em" }}>Email</label>
-              <input
-                className={`auth-input ${error ? 'error' : ''}`}
-                type="email" value={email}
-                onChange={e => { setEmail(e.target.value); setError(""); }}
-                onKeyDown={e => e.key === "Enter" && doLogin()}
-                placeholder="kavin@bizcomgrp.com"
-              />
-            </div>
-            <div>
-              <label style={{ fontSize: 13, fontWeight: 700, color: B.gray700, display: "block", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.03em" }}>Password</label>
-              <input
-                className={`auth-input ${error ? 'error' : ''}`}
-                type="password" value={pw}
-                onChange={e => { setPw(e.target.value); setError(""); }}
-                onKeyDown={e => e.key === "Enter" && doLogin()}
-                placeholder="••••••••"
-              />
-            </div>
+          {error && (
+            <div style={{
+              background: `${colors.error}15`, border: `1px solid ${colors.error}44`,
+              borderRadius: 8, padding: "10px 14px", color: colors.error, fontSize: 13
+            }}>{error}</div>
+          )}
 
-            {error && (
-              <div style={{
-                background: "#FEF2F2", border: "1px solid #FECACA",
-                borderRadius: 10, padding: "12px 14px", color: B.red, fontSize: 14,
-                display: "flex", alignItems: "center", gap: 8, marginTop: -4
-              }}>
-                <span style={{ fontWeight: 800 }}>!</span> {error}
-              </div>
-            )}
+          <button
+            onClick={handleLogin} disabled={loading || !email || !password}
+            style={{
+              marginTop: 8, padding: "14px", background: loading ? colors.goldDim : `linear-gradient(135deg, ${colors.gold}, ${colors.goldLight})`,
+              border: "none", borderRadius: 8, color: "#000", fontSize: 14, fontWeight: 700,
+              cursor: loading || !email || !password ? "not-allowed" : "pointer",
+              letterSpacing: "0.05em", transition: "all 0.2s",
+              opacity: !email || !password ? 0.5 : 1
+            }}
+          >
+            {loading ? "Authenticating..." : "Access Dashboard →"}
+          </button>
+        </div>
 
-            <button
-              className="auth-btn"
-              onClick={doLogin} disabled={loading || !email || !pw}
-            >
-              {loading ? "Signing in..." : "Sign In →"}
-            </button>
-          </div>
-
-          {/* Removed demo credentials section */}
+        <div style={{ marginTop: 20, textAlign: "center", color: colors.textMuted, fontSize: 11 }}>
+          Demo: admin@aries.ai / Admin@123
         </div>
       </div>
     </div>
   );
 }
 
-// ─── PAGE 2: LANDING ──────────────────────────────────────────────────────────
-function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onSwitchClient, onLogout }) {
-  const stats = [
-    { val: "160+", label: "Risk Questions" },
-    { val: "3", label: "Frameworks" },
+// ─── PAGE 2: LANDING / INTRO ──────────────────────────────────────────────────
+
+function LandingPage({ onBegin }) {
+  const steps = [
+    { num: "01", title: "Company Profile", desc: "Tell us about your organisation, industry, and the assessor." },
+    { num: "02", title: "AI Inventory", desc: "Select the AI components your organisation actually uses." },
+    { num: "03", title: "Targeted Questions", desc: "Answer only the questions relevant to your AI stack." },
+    { num: "04", title: "Risk Report", desc: "Receive a scored risk profile with compliance gaps and actions." },
   ];
+
   return (
-    <div style={{ minHeight: "100vh", background: B.white, fontFamily: BODY }}>
-      <Nav clients={clients} activeClientId={activeClientId} onSwitchClient={onSwitchClient} onLogout={onLogout} />
-      {/* Hero */}
+    <div style={{
+      minHeight: "100vh", background: colors.bg, color: colors.text,
+      fontFamily: "'Georgia', 'Times New Roman', serif",
+      position: "relative", overflow: "hidden"
+    }}>
+      {/* Grid bg */}
       <div style={{
-        background: `linear-gradient(170deg, #0D1F3C 0%, #1a3a6e 55%, #0D1F3C 100%)`,
-        padding: "80px 40px 100px", textAlign: "center", position: "relative", overflow: "hidden"
+        position: "absolute", inset: 0,
+        backgroundImage: `linear-gradient(${colors.border}44 1px, transparent 1px), linear-gradient(90deg, ${colors.border}44 1px, transparent 1px)`,
+        backgroundSize: "60px 60px", opacity: 0.3
+      }} />
+      {/* Radial glow */}
+      <div style={{
+        position: "absolute", width: 800, height: 800, borderRadius: "50%",
+        background: `radial-gradient(circle, ${colors.gold}08 0%, transparent 65%)`,
+        top: "20%", left: "50%", transform: "translateX(-50%)", pointerEvents: "none"
+      }} />
+
+      {/* Nav */}
+      <nav style={{
+        position: "relative", display: "flex", justifyContent: "space-between", alignItems: "center",
+        padding: "20px 48px", borderBottom: `1px solid ${colors.border}`
       }}>
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(59,155,200,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-        
-        {/* Animated Glows */}
-        <div className="hero-glow" style={{ top: "0%", left: "10%", width: "40vh", height: "40vh", background: "rgba(59, 155, 200, 0.2)", animationDuration: "12s" }} />
-        <div className="hero-glow" style={{ bottom: "10%", right: "10%", width: "50vh", height: "50vh", background: "rgba(200, 24, 30, 0.15)", animationDuration: "16s", animationDelay: "-3s" }} />
-
-        <div style={{ position: "relative", zIndex: 10, width: "100%", maxWidth: "none", margin: "0", padding: "80px 40px", background: "rgba(255,255,255,0.02)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.06)", boxShadow: "0 30px 60px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)" }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(200,24,30,0.1)", border: "1px solid rgba(200,24,30,0.3)",
-            borderRadius: 100, padding: "8px 20px", marginBottom: 32
-          }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: B.red, boxShadow: `0 0 10px ${B.red}` }} />
-            <span style={{ color: "#FCA5A5", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>AI GOVERNANCE DIAGNOSTIC</span>
-          </div>
-
-          <h1 style={{ color: B.white, fontSize: 64, fontWeight: 800, margin: "0 0 8px", letterSpacing: "-1.5px", lineHeight: 1.1, fontFamily: DISPLAY}}>
-            Assess AI Risks Today.
-          </h1>
-          <h2 style={{ background: "linear-gradient(90deg, #3B9BC8, #89C4E1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: 56, fontWeight: 800, margin: "0 0 32px", letterSpacing: "-1.5px", lineHeight: 1.1, fontFamily: DISPLAY}}>
-            Avoid AI Failures Tomorrow.
-          </h2>
-          <p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, margin: "0 auto 48px", fontSize: 18, lineHeight: 1.6, fontWeight: 400 }}>
-            Empower your organisation with a risk framework that is measurable, repeatable, and regulation-ready. Let's build AI that scales, excels, and is future-proof.
-          </p>
-
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", marginBottom: 56, flexWrap: "wrap" }}>
-            <button className="auth-btn" onClick={() => { if(hasSaved && !confirm("Starting new will clear your previous progress. Continue?")) return; onBegin(); }} style={{
-              padding: "16px 40px", fontSize: 16, marginTop: 0,
-              background: hasSaved ? "transparent" : B.red,
-              border: hasSaved ? `1.5px solid ${B.red}` : "none",
-              color: hasSaved ? B.red : B.white
-            }}>
-              {hasSaved ? "START NEW ASSESSMENT" : "START ARIES AI RISK MAP →"}
-            </button>
-            {hasSaved && (
-              <button className="auth-btn" onClick={onResume} style={{
-                padding: "16px 40px", fontSize: 16, marginTop: 0
-              }}>
-                CONTINUE ASSESSMENT →
-              </button>
-            )}
-          </div>
-
-          {/* Stats */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap", marginTop: 20 }}>
-            {stats.map((s, i) => (
-              <div key={s.val} style={{ 
-                textAlign: "center",
-                background: "rgba(255, 255, 255, 0.03)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: 16,
-                padding: "20px 32px",
-                minWidth: 160,
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                transition: "all 0.3s ease",
-                cursor: "default"
-              }} onMouseOver={e => { e.currentTarget.style.background = "rgba(255, 255, 255, 0.06)"; e.currentTarget.style.transform = "translateY(-2px)"; }} onMouseOut={e => { e.currentTarget.style.background = "rgba(255, 255, 255, 0.03)"; e.currentTarget.style.transform = "translateY(0)"; }}>
-                <div style={{ 
-                  fontSize: 36, 
-                  fontWeight: 800, 
-                  background: i === 0 ? "linear-gradient(90deg, #FCA5A5, #C8181E)" : i === 1 ? "linear-gradient(90deg, #89C4E1, #3B9BC8)" : "linear-gradient(90deg, #E2E4E9, #FFF)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  fontFamily: DISPLAY,
-                  lineHeight: 1
-                }}>{s.val}</div>
-                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.9)", marginTop: 8, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ width: 8, height: 8, background: colors.gold, borderRadius: "50%" }} />
+          <span style={{ color: colors.text, fontSize: 14, fontWeight: 600 }}>Aries</span>
         </div>
+        <button onClick={onBegin} style={{
+          padding: "8px 20px", background: colors.gold, border: "none",
+          borderRadius: 6, color: "#000", fontSize: 13, fontWeight: 700, cursor: "pointer"
+        }}>Contact Us</button>
+      </nav>
+
+      {/* Hero */}
+      <div style={{ position: "relative", textAlign: "center", padding: "100px 24px 60px" }}>
+        <div style={{
+          display: "inline-flex", alignItems: "center",
+          background: `${colors.gold}15`, border: `1px solid ${colors.gold}44`,
+          borderRadius: 20, padding: "6px 18px", marginBottom: 28
+        }}>
+          <span style={{ color: colors.gold, fontSize: 11, letterSpacing: "0.15em" }}>AI GOVERNANCE DIAGNOSTIC</span>
+        </div>
+
+        <h1 style={{ fontSize: 56, fontWeight: 800, margin: "0 0 4px", lineHeight: 1.1 }}>AI Oversight</h1>
+        <h2 style={{ fontSize: 52, fontWeight: 800, color: colors.gold, margin: "0 0 28px", lineHeight: 1.1 }}>Risk Profiler</h2>
+
+        <p style={{ maxWidth: 560, margin: "0 auto 40px", color: colors.textMuted, fontSize: 16, lineHeight: 1.7 }}>
+          A structured diagnostic built on ISO 42001 and NIST-RMF — assessing your organisation's AI oversight maturity across your actual AI stack. Tell us what AI components you use and we'll ask only the questions that matter.
+        </p>
+
+        <div style={{ display: "flex", justifyContent: "center", gap: 12, marginBottom: 40, flexWrap: "wrap" }}>
+          {["Tailored to Your AI Stack", "13 Component Groups", "ISO 42001 + NIST RMF + EU AI Act", "Instant Risk Report"].map(t => (
+            <span key={t} style={{
+              padding: "6px 14px", border: `1px solid ${colors.border}`,
+              borderRadius: 20, color: colors.textMuted, fontSize: 12
+            }}>{t}</span>
+          ))}
+        </div>
+
+        <button onClick={onBegin} style={{
+          padding: "16px 40px", background: `linear-gradient(135deg, ${colors.gold}, ${colors.goldLight})`,
+          border: "none", borderRadius: 8, color: "#000", fontSize: 15, fontWeight: 700,
+          cursor: "pointer", letterSpacing: "0.03em", boxShadow: `0 0 30px ${colors.gold}44`
+        }}>
+          Begin Assessment →
+        </button>
+
+        <div style={{ marginTop: 12, color: colors.textMuted, fontSize: 12 }}>All information is private · No data stored</div>
       </div>
 
-      {/* Steps */}
-      <div style={{ padding: "80px 40px", background: B.gray50 }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: B.red, letterSpacing: "0.12em", marginBottom: 10 }}>HOW IT WORKS</div>
-          <h3 style={{ fontSize: 30, fontWeight: 800, color: B.black, margin: 0, letterSpacing: "-0.3px" , fontFamily: DISPLAY}}>Four Steps to Your Risk Profile</h3>
+      {/* How it works */}
+      <div style={{ position: "relative", padding: "60px 48px", borderTop: `1px solid ${colors.border}` }}>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div style={{ color: colors.gold, fontSize: 11, letterSpacing: "0.15em", marginBottom: 10 }}>HOW IT WORKS</div>
+          <h3 style={{ fontSize: 28, fontWeight: 700, margin: 0 }}>Four Steps to Your Risk Profile</h3>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, maxWidth: 1100, margin: "0 auto" }}>
-          {[
-            { n: "01", t: "Company Profile", d: "Tell us about your organisation, industry, and the assessor." },
-            { n: "02", t: "AI Inventory", d: "Select the AI components your organisation actually uses." },
-            { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your AI stack." },
-            { n: "04", t: "Risk Report", d: "Receive a scored risk profile with compliance gaps and actions." },
-          ].map((s, i) => (
-            <div key={s.n} style={{
-              background: B.white, border: `1px solid ${B.border}`, borderRadius: 16,
-              padding: "32px 28px", position: "relative", overflow: "hidden",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.03)", transition: "transform 0.2s ease", cursor: "default"
-            }} onMouseOver={e => e.currentTarget.style.transform = "translateY(-4px)"} onMouseOut={e => e.currentTarget.style.transform = "translateY(0)"}>
-              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: i === 0 ? B.red : i === 1 ? B.blue : i === 2 ? B.blueDark : B.gray900 }} />
-              <div style={{ fontSize: 40, fontWeight: 800, color: i === 0 ? B.red : i === 1 ? B.blue : i === 2 ? B.blueDark : B.gray900, marginBottom: 16, fontFamily: DISPLAY, letterSpacing: "-1px", opacity: 0.85 }}>{s.n}</div>
-              <div style={{ fontWeight: 800, fontSize: 18, color: B.black, marginBottom: 12, fontFamily: DISPLAY, letterSpacing: "-0.5px" }}>{s.t}</div>
-              <div style={{ fontSize: 14, color: B.gray500, lineHeight: 1.6, fontWeight: 400 }}>{s.d}</div>
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, maxWidth: 960, margin: "0 auto" }}>
+          {steps.map(s => (
+            <div key={s.num} style={{
+              padding: "24px 20px", background: colors.bgCard,
+              border: `1px solid ${colors.border}`, borderRadius: 12,
+              borderTop: `3px solid ${colors.gold}`
+            }}>
+              <div style={{ color: colors.gold, fontSize: 20, fontWeight: 700, marginBottom: 10 }}>{s.num}</div>
+              <div style={{ fontWeight: 700, marginBottom: 8, fontSize: 15 }}>{s.title}</div>
+              <div style={{ color: colors.textMuted, fontSize: 13, lineHeight: 1.5 }}>{s.desc}</div>
             </div>
           ))}
         </div>
       </div>
 
+      {/* Footer */}
       <footer style={{
-        background: "#0D1F3C", padding: "24px 40px",
+        borderTop: `1px solid ${colors.border}`, padding: "20px 48px",
         display: "flex", justifyContent: "space-between", alignItems: "center"
       }}>
-        <img src="bizcom.jpg" style={{ height: 32, width: "auto" }} alt="Bizcom" />
-        <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>© 2026 Bizcom · AI Governance Platform</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+          <div style={{ width: 6, height: 6, background: colors.gold, borderRadius: "50%" }} />
+          <span style={{ color: colors.textMuted, fontSize: 12 }}>© 2026 Aries · Building AI Governance Frameworks for Tomorrow</span>
+        </div>
+        <span style={{ color: colors.gold, fontSize: 12 }}>ariesgrp.com →</span>
       </footer>
     </div>
   );
 }
 
-// ─── PAGE 3: COMPANY PROFILE ──────────────────────────────────────────────────
-function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLogout }) {
-  const [form, setForm] = useState({ companyName: "", industry: "", companySize: "", regulatory: "", techMaturity: "" });
+// ─── PAGE 3: COMPANY PROFILE + AI INVENTORY ───────────────────────────────────
+
+function CompanyProfile({ onNext }) {
+  const [form, setForm] = useState({
+    companyName: "", industry: "", companySize: "",
+  });
   const [inventory, setInventory] = useState([
     { description: "", useCase: "" },
     { description: "", useCase: "" },
@@ -678,161 +352,171 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
   ]);
   const [errors, setErrors] = useState({});
 
-  const f = (err) => ({
-    width: "100%", padding: "11px 14px",
-    border: `1.5px solid ${err ? B.red : B.border}`,
-    borderRadius: 8, fontSize: 14, color: B.black, background: B.white,
-    outline: "none", boxSizing: "border-box", fontFamily: "inherit",
-    appearance: "none", WebkitAppearance: "none"
-  });
+  const industries = ["Healthcare", "Banking", "Retail", "E-Commerce", "Education"];
+  const sizes = [
+    { label: "Small (1–100)", value: "small" },
+    { label: "Medium (100–1,000)", value: "medium" },
+    { label: "Large (1,000–2,500)", value: "large" },
+    { label: "Enterprise (2,500+)", value: "enterprise" },
+  ];
+
+  const updateInventory = (i, field, val) => {
+    const next = [...inventory];
+    next[i] = { ...next[i], [field]: val };
+    setInventory(next);
+  };
 
   const validate = () => {
     const e = {};
     if (!form.companyName.trim()) e.companyName = "Required";
     if (!form.industry) e.industry = "Required";
     if (!form.companySize) e.companySize = "Required";
-    if (!form.regulatory) e.regulatory = "Required";
-    if (!inventory.some(i => i.useCase)) e.inventory = "Select at least one AI use case";
+    const filledInventory = inventory.filter(i => i.useCase);
+    if (filledInventory.length === 0) e.inventory = "At least one AI use case is required";
     setErrors(e);
-    return !Object.keys(e).length;
+    return Object.keys(e).length === 0;
   };
 
-  const upd = (i, k, v) => { const n = [...inventory]; n[i] = { ...n[i], [k]: v }; setInventory(n); };
+  const handleNext = () => {
+    if (validate()) {
+      onNext({ ...form, inventory: inventory.filter(i => i.useCase) });
+    }
+  };
+
+  const inputStyle = (err) => ({
+    width: "100%", padding: "12px 16px", background: colors.bg,
+    border: `1px solid ${err ? colors.error : colors.border}`,
+    borderRadius: 8, color: colors.text, fontSize: 14, outline: "none",
+    boxSizing: "border-box", fontFamily: "inherit",
+    appearance: "none", WebkitAppearance: "none"
+  });
 
   return (
-    <div style={{ minHeight: "100vh", background: B.gray50, fontFamily: BODY }}>
-      <Nav 
-        steps={["Company Profile", "AI Inventory", "Questions", "Risk Report"]} 
-        current={0} 
-        clients={clients} 
-        activeClientId={activeClientId} 
-        onSwitchClient={onSwitchClient} 
-        onLogout={onLogout}
-      />
-      <div style={{ maxWidth: 760, margin: "40px auto", padding: "0 24px 60px" }}>
-        <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 6px", letterSpacing: "-0.3px" , fontFamily: DISPLAY}}>Company Profile</h1>
-          <p style={{ color: B.gray500, fontSize: 14, margin: 0 }}>Tell us about your organisation to personalise your assessment.</p>
+    <div style={{
+      minHeight: "100vh", background: colors.bg, color: colors.text,
+      fontFamily: "'Georgia', 'Times New Roman', serif",
+      padding: "48px 24px"
+    }}>
+      <div style={{ maxWidth: 720, margin: "0 auto" }}>
+        {/* Header */}
+        <div style={{ marginBottom: 40 }}>
+          <div style={{
+            display: "inline-flex", background: `${colors.gold}15`,
+            border: `1px solid ${colors.gold}44`, borderRadius: 20,
+            padding: "4px 14px", marginBottom: 16
+          }}>
+            <span style={{ color: colors.gold, fontSize: 11, letterSpacing: "0.12em" }}>STEP 1 OF 4</span>
+          </div>
+          <h1 style={{ fontSize: 32, fontWeight: 700, margin: "0 0 8px" }}>Company Profile</h1>
+          <p style={{ color: colors.textMuted, margin: 0 }}>Tell us about your organisation to personalise your risk assessment.</p>
         </div>
 
-        {/* Section 1: Organisation Details */}
-        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 12, padding: "32px", marginBottom: 20, boxShadow: B.shadow }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
-            <div style={{ width: 4, height: 20, background: B.red, borderRadius: 2 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>I. ORGANISATION DETAILS</span>
-          </div>
-
-          <div style={{ display: "grid", gap: 18 }}>
+        {/* Company Info */}
+        <div style={{
+          background: colors.bgCard, border: `1px solid ${colors.border}`,
+          borderRadius: 12, padding: "32px", marginBottom: 24
+        }}>
+          <h3 style={{ margin: "0 0 24px", fontSize: 16, color: colors.gold, letterSpacing: "0.05em" }}>
+            ORGANISATION DETAILS
+          </h3>
+          <div style={{ display: "grid", gap: 20 }}>
             <div>
-              <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Company Name *</label>
-              <input value={form.companyName} onChange={e => setForm({ ...form, companyName: e.target.value })}
-                placeholder="e.g. Acme Corporation" style={f(errors.companyName)} />
-              {errors.companyName && <span style={{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>{errors.companyName}</span>}
+              <label style={{ color: colors.textMuted, fontSize: 12, display: "block", marginBottom: 8, letterSpacing: "0.05em" }}>
+                COMPANY NAME *
+              </label>
+              <input
+                value={form.companyName}
+                onChange={e => setForm({ ...form, companyName: e.target.value })}
+                placeholder="e.g. Acme Corporation"
+                style={inputStyle(errors.companyName)}
+              />
+              {errors.companyName && <div style={{ color: colors.error, fontSize: 12, marginTop: 4 }}>{errors.companyName}</div>}
             </div>
+
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <div>
-                <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Industry *</label>
-                <select value={form.industry} onChange={e => setForm({ ...form, industry: e.target.value })} style={{ ...f(errors.industry), cursor: "pointer" }}>
+                <label style={{ color: colors.textMuted, fontSize: 12, display: "block", marginBottom: 8, letterSpacing: "0.05em" }}>
+                  INDUSTRY *
+                </label>
+                <select
+                  value={form.industry}
+                  onChange={e => setForm({ ...form, industry: e.target.value })}
+                  style={{ ...inputStyle(errors.industry), cursor: "pointer" }}
+                >
                   <option value="">Select industry...</option>
-                  {["Healthcare", "Banking", "Retail", "E-Commerce", "Education"].map(i => <option key={i}>{i}</option>)}
+                  {industries.map(i => <option key={i} value={i}>{i}</option>)}
                 </select>
-                {errors.industry && <span style={{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>{errors.industry}</span>}
+                {errors.industry && <div style={{ color: colors.error, fontSize: 12, marginTop: 4 }}>{errors.industry}</div>}
               </div>
+
               <div>
-                <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Company Size *</label>
-                <select value={form.companySize} onChange={e => setForm({ ...form, companySize: e.target.value })} style={{ ...f(errors.companySize), cursor: "pointer" }}>
+                <label style={{ color: colors.textMuted, fontSize: 12, display: "block", marginBottom: 8, letterSpacing: "0.05em" }}>
+                  COMPANY SIZE *
+                </label>
+                <select
+                  value={form.companySize}
+                  onChange={e => setForm({ ...form, companySize: e.target.value })}
+                  style={{ ...inputStyle(errors.companySize), cursor: "pointer" }}
+                >
                   <option value="">Select size...</option>
-                  <option value="small">Small (1–100 employees)</option>
-                  <option value="medium">Medium (100–1,000 employees)</option>
-                  <option value="large">Large (1,000–2,500 employees)</option>
-                  <option value="enterprise">Enterprise (2,500+ employees)</option>
+                  {sizes.map(s => <option key={s.value} value={s.value}>{s.label}</option>)}
                 </select>
-                {errors.companySize && <span style={{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>{errors.companySize}</span>}
+                {errors.companySize && <div style={{ color: colors.error, fontSize: 12, marginTop: 4 }}>{errors.companySize}</div>}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Section 2: Regulatory Jurisdiction */}
-        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 12, padding: "32px", marginBottom: 20, boxShadow: B.shadow }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
-            <div style={{ width: 4, height: 20, background: B.red, borderRadius: 2 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>II. REGULATORY JURISDICTION</span>
-          </div>
-          <div>
-            <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Select Jurisdiction *</label>
-            <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>Choose the primary regulatory framework applicable to your organisation's AI use.</p>
-            <select value={form.regulatory} onChange={e => setForm({ ...form, regulatory: e.target.value })} style={{ ...f(errors.regulatory), cursor: "pointer", maxWidth: 400 }}>
-              <option value="">Select jurisdiction...</option>
-              <option value="EU">EU (AI Act)</option>
-              <option value="EU-CA/ON">Canada / Ontario</option>
-              <option value="EU-CAN/QU">Canada / Quebec</option>
-              <option value="EU-CAN/OTHR">Canada / Other</option>
-              <option value="USA-CA">USA – California</option>
-              <option value="USA-IL">USA – Illinois</option>
-              <option value="USA-A">USA – Framework A</option>
-              <option value="USA-B">USA – Framework B</option>
-            </select>
-            {errors.regulatory && <span style={{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>{errors.regulatory}</span>}
-          </div>
-        </div>
-
-        {/* Section 3: Technological Maturity */}
-        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 12, padding: "32px", marginBottom: 20, boxShadow: B.shadow }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
-            <div style={{ width: 4, height: 20, background: B.red, borderRadius: 2 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>III. MATURITY ASSESSMENT</span>
-          </div>
-          <div>
-            <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Technological Maturity Level</label>
-            <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>How mature is your organisation's technology adoption? (1 = Initial &nbsp;→&nbsp; 5 = Fully Optimised)</p>
-            <select value={form.techMaturity} onChange={e => setForm({ ...form, techMaturity: e.target.value })} style={{ ...f(errors.techMaturity), cursor: "pointer", maxWidth: 320 }}>
-              <option value="">Select level...</option>
-              <option value="1">1 – Initial / Ad-hoc</option>
-              <option value="2">2 – Developing / Repeatable</option>
-              <option value="3">3 – Defined / Managed</option>
-              <option value="4">4 – Quantitatively Managed</option>
-              <option value="5">5 – Optimising / Leading-edge</option>
-            </select>
-          </div>
-        </div>
-
-        {/* AI Inventory Card */}
-        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 12, padding: "32px", boxShadow: B.shadow }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-            <div style={{ width: 4, height: 20, background: B.blue, borderRadius: 2 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>AI INVENTORY</span>
-          </div>
-          <p style={{ color: B.gray500, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>
-            Describe how your organisation uses AI. Each entry drives targeted questions for your assessment.
+        {/* AI Inventory */}
+        <div style={{
+          background: colors.bgCard, border: `1px solid ${colors.border}`,
+          borderRadius: 12, padding: "32px"
+        }}>
+          <h3 style={{ margin: "0 0 8px", fontSize: 16, color: colors.gold, letterSpacing: "0.05em" }}>
+            AI INVENTORY
+          </h3>
+          <p style={{ color: colors.textMuted, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>
+            Describe how your organisation uses AI. Add up to 3 AI use cases. Each entry drives the questions you'll be asked.
           </p>
 
           {errors.inventory && (
-            <div style={{ background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: 7, padding: "10px 12px", color: B.red, fontSize: 13, marginBottom: 16 }}>
-              {errors.inventory}
-            </div>
+            <div style={{
+              background: `${colors.error}15`, border: `1px solid ${colors.error}44`,
+              borderRadius: 8, padding: "10px 14px", color: colors.error, fontSize: 13, marginBottom: 16
+            }}>{errors.inventory}</div>
           )}
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {inventory.map((item, i) => (
               <div key={i} style={{
-                background: B.gray50, border: `1px solid ${B.border}`, borderRadius: 10, padding: "20px"
+                background: colors.bg, border: `1px solid ${colors.border}`,
+                borderRadius: 10, padding: "20px"
               }}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: i === 0 ? B.red : B.blue, marginBottom: 14, letterSpacing: "0.08em" }}>
-                  AI USE CASE {i + 1}{i === 0 ? " *" : " (optional)"}
+                <div style={{ color: colors.gold, fontSize: 11, fontWeight: 600, marginBottom: 14, letterSpacing: "0.1em" }}>
+                  AI USE CASE {i + 1} {i === 0 ? "*" : "(optional)"}
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                   <div>
-                    <label style={{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Description</label>
-                    <input value={item.description} onChange={e => upd(i, "description", e.target.value)}
-                      placeholder="Briefly describe how your organisation uses this AI..."
-                      style={{ ...f(false), background: B.white }} />
+                    <label style={{ color: colors.textMuted, fontSize: 11, display: "block", marginBottom: 6, letterSpacing: "0.05em" }}>
+                      GENERAL DESCRIPTION
+                    </label>
+                    <input
+                      value={item.description}
+                      onChange={e => updateInventory(i, "description", e.target.value)}
+                      placeholder="e.g. We use AI to assist our support team..."
+                      style={inputStyle(false)}
+                    />
                   </div>
                   <div>
-                    <label style={{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Use Case Type</label>
-                    <select value={item.useCase} onChange={e => upd(i, "useCase", e.target.value)}
-                      style={{ ...f(false), background: B.white, cursor: "pointer" }}>
-                      <option value="">Select type...</option>
+                    <label style={{ color: colors.textMuted, fontSize: 11, display: "block", marginBottom: 6, letterSpacing: "0.05em" }}>
+                      AI USE CASE TYPE
+                    </label>
+                    <select
+                      value={item.useCase}
+                      onChange={e => updateInventory(i, "useCase", e.target.value)}
+                      style={{ ...inputStyle(false), cursor: "pointer" }}
+                    >
+                      <option value="">Select use case type...</option>
                       {AI_USE_CASES.map(uc => <option key={uc} value={uc}>{uc}</option>)}
                     </select>
                   </div>
@@ -842,13 +526,13 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
           </div>
         </div>
 
-        <div style={{ marginTop: 28, display: "flex", justifyContent: "flex-end" }}>
-          <button onClick={() => validate() && onNext({ ...form, inventory: inventory.filter(i => i.useCase) })}
-            style={{
-              padding: "13px 36px", background: B.red, border: "none", borderRadius: 8,
-              color: B.white, fontSize: 14, fontWeight: 700, cursor: "pointer", letterSpacing: "0.03em"
-            }}>
-            Continue →
+        <div style={{ marginTop: 32, display: "flex", justifyContent: "flex-end" }}>
+          <button onClick={handleNext} style={{
+            padding: "14px 40px", background: `linear-gradient(135deg, ${colors.gold}, ${colors.goldLight})`,
+            border: "none", borderRadius: 8, color: "#000", fontSize: 14, fontWeight: 700,
+            cursor: "pointer", letterSpacing: "0.04em"
+          }}>
+            Continue to Assessment →
           </button>
         </div>
       </div>
@@ -857,180 +541,157 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
 }
 
 // ─── PAGE 4: QUESTION FLOW ────────────────────────────────────────────────────
-function QuestionFlow({ profile, onBack, onFinish, initialIndex = 0, onIndexChange, initialAnswers = {}, onAnswersChange, clients, activeClientId, onSwitchClient, onLogout, onExit }) {
+
+function QuestionFlow({ profile, onFinish }) {
   const questions = getRelevantQuestions(profile.inventory);
-  const [current, setCurrent] = useState(initialIndex);
-  
-  useEffect(() => {
-    if (onIndexChange) onIndexChange(current);
-  }, [current]);
-
-  const [answers, setAnswers] = useState(initialAnswers);
-  const [fade, setFade] = useState(false);
-
-  useEffect(() => {
-    if (onAnswersChange) onAnswersChange(answers);
-  }, [answers]);
+  const [current, setCurrent] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [animating, setAnimating] = useState(false);
 
   const q = questions[current];
-  const pct = Math.round(((current + 1) / questions.length) * 100);
-  const clusterColor = CLUSTER_COLORS[q?.cluster] || B.blue;
+  const progress = current / questions.length;
   const isMandatory = MANDATORY_COMPONENT_GROUPS.includes(q?.component_group);
 
-  const go = (val) => {
-    if (fade) return;
-    const next = { ...answers, [q.qid]: val };
-    setAnswers(next);
-    setFade(true);
+  const responseOptions = q?.options?.length > 0 ? q.options : ["Yes", "No", "Maybe", "Non-applicable"];
+
+  const handleAnswer = (val) => {
+    if (animating) return;
+    const newAnswers = { ...answers, [q.qid]: val };
+    setAnswers(newAnswers);
+    setAnimating(true);
     setTimeout(() => {
-      if (current < questions.length - 1) setCurrent(c => c + 1);
-      else onFinish(next, questions);
-      setFade(false);
-    }, 220);
+      if (current < questions.length - 1) {
+        setCurrent(c => c + 1);
+      } else {
+        onFinish(newAnswers, questions);
+      }
+      setAnimating(false);
+    }, 300);
   };
 
-  const prev = () => {
-    if (fade) return;
-    setFade(true);
-    setTimeout(() => {
-      if (current > 0) setCurrent(c => c - 1);
-      else onBack();
-      setFade(false);
-    }, 220);
+  const handleBack = () => {
+    if (current > 0) setCurrent(c => c - 1);
   };
 
-  const opts = [
-    { label: "Yes", color: "#16A34A", bg: "#F0FDF4", border: "#86EFAC" },
-    { label: "No", color: B.red, bg: "#FEF2F2", border: "#FECACA" },
-    { label: "Maybe", color: B.blue, bg: "#EFF6FF", border: "#93C5FD" },
-    { label: "Non-applicable", color: B.gray500, bg: B.gray50, border: B.gray300 },
-  ];
+  const clusterColor = CLUSTER_COLORS[q?.cluster] || colors.gold;
 
   return (
-    <div style={{ minHeight: "100vh", background: B.gray50, fontFamily: BODY }}>
-      <Nav 
-        steps={["Company Profile", "AI Inventory", "Questions", "Risk Report"]} 
-        current={2} 
-        clients={clients} 
-        activeClientId={activeClientId} 
-        onSwitchClient={onSwitchClient} 
-        onLogout={onLogout}
-      />
-
-      {/* Progress header */}
-      <div style={{ background: B.white, borderBottom: `1px solid ${B.border}`, padding: "16px 40px" }}>
-        <div style={{ maxWidth: 760, margin: "0 auto", display: "flex", alignItems: "center", gap: 20 }}>
-          <button onClick={prev} style={{
-            background: "none", border: `1.5px solid ${B.border}`, borderRadius: 8,
-            padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
-            fontSize: 13, fontWeight: 600, color: B.gray600, transition: "all 0.2s"
-          }} onMouseOver={e => { e.currentTarget.style.borderColor = B.gray400; e.currentTarget.style.background = B.gray50; }}
-             onMouseOut={e => { e.currentTarget.style.borderColor = B.border; e.currentTarget.style.background = "none"; }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            Back
-          </button>
-          <div style={{ flex: 1 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <span style={{ fontSize: 13, fontWeight: 600, color: B.black }}>
-                Question {current + 1} <span style={{ color: B.gray400 }}>of {questions.length}</span>
-              </span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: B.red }}>{pct}% complete</span>
+    <div style={{
+      minHeight: "100vh", background: colors.bg, color: colors.text,
+      fontFamily: "'Georgia', 'Times New Roman', serif",
+      display: "flex", flexDirection: "column"
+    }}>
+      {/* Top progress */}
+      <div style={{
+        padding: "20px 48px", borderBottom: `1px solid ${colors.border}`,
+        background: colors.bgCard
+      }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 6, height: 6, background: colors.gold, borderRadius: "50%" }} />
+              <span style={{ color: colors.text, fontSize: 13, fontWeight: 600 }}>AI Risk Assessment</span>
             </div>
-            <div style={{ height: 6, background: B.gray100, borderRadius: 4, overflow: "hidden" }}>
-              <div style={{
-                height: "100%", width: `${pct}%`,
-                background: `linear-gradient(90deg, ${B.red}, #E85558)`,
-                borderRadius: 4, transition: "width 0.4s ease"
-              }} />
-            </div>
+            <span style={{ color: colors.textMuted, fontSize: 12 }}>
+              Question {current + 1} of {questions.length}
+            </span>
+          </div>
+          <div style={{ height: 4, background: colors.border, borderRadius: 4, overflow: "hidden" }}>
+            <div style={{
+              height: "100%", width: `${((current + 1) / questions.length) * 100}%`,
+              background: `linear-gradient(90deg, ${colors.gold}, ${colors.goldLight})`,
+              borderRadius: 4, transition: "width 0.4s ease"
+            }} />
           </div>
         </div>
       </div>
 
-      {/* Question card */}
-      <div style={{ maxWidth: 760, margin: "40px auto", padding: "0 24px" }}>
+      {/* Question */}
+      <div style={{
+        flex: 1, display: "flex", alignItems: "center", justifyContent: "center",
+        padding: "48px 24px"
+      }}>
         <div style={{
-          opacity: fade ? 0 : 1, transform: fade ? "translateY(6px)" : "translateY(0)",
-          transition: "opacity 0.2s, transform 0.2s"
+          width: "100%", maxWidth: 680,
+          opacity: animating ? 0 : 1, transform: animating ? "translateY(8px)" : "translateY(0)",
+          transition: "opacity 0.25s, transform 0.25s"
         }}>
-          {/* Metadata row */}
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-            <span style={{
-              display: "inline-flex", alignItems: "center", gap: 5,
-              padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600,
-              background: clusterColor + "15", color: clusterColor, border: `1px solid ${clusterColor}33`
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: clusterColor }} />
-              {q?.cluster?.replace("Cluster ", "").replace(" — ", " · ")}
-            </span>
-            {isMandatory && (
-              <span style={{
-                padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 700,
-                background: "#FEF9C3", color: "#A16207", border: "1px solid #FDE047"
-              }}>⚡ Mandatory</span>
-            )}
-            <span style={{ padding: "4px 10px", borderRadius: 20, fontSize: 11, background: B.gray100, color: B.gray500, border: `1px solid ${B.border}` }}>
-              {q?.qid}
-            </span>
+          {/* Cluster + mandatory badges */}
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
+            <Badge label={q?.cluster?.replace("Cluster ", "C").replace(" — ", " · ")} color={clusterColor} />
+            {isMandatory && <Badge label="● Mandatory" color={colors.goldLight} />}
+            <Badge label={q?.component_group?.replace(/_/g, " ").toUpperCase()} color={colors.textMuted} />
           </div>
 
-          {/* Question */}
+          {/* Question text */}
           <div style={{
-            background: B.white, border: `1px solid ${B.border}`, borderRadius: 14,
-            padding: "36px 36px 28px", boxShadow: B.shadowMd,
+            background: colors.bgCard, border: `1px solid ${colors.border}`,
+            borderRadius: 16, padding: "40px 40px 32px",
             borderLeft: `4px solid ${clusterColor}`
           }}>
-            <p style={{ fontSize: 19, fontWeight: 600, color: B.black, lineHeight: 1.6, margin: "0 0 32px", letterSpacing: "-0.1px" }}>
+            <div style={{ fontSize: 11, color: colors.textMuted, letterSpacing: "0.1em", marginBottom: 16 }}>
+              {q?.qid}
+            </div>
+            <h2 style={{ fontSize: 20, fontWeight: 600, lineHeight: 1.6, margin: "0 0 36px", color: colors.text }}>
               {q?.text}
-            </p>
+            </h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-              {opts.map(opt => {
-                const selected = answers[q?.qid] === opt.label;
+            {/* Answer buttons */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              {responseOptions.map(opt => {
+                const isSelected = answers[q?.qid] === opt;
+                const optColor = opt === "Yes" ? colors.success : opt === "No" ? colors.error : opt === "Maybe" ? colors.info : colors.textMuted;
                 return (
-                  <button key={opt.label} onClick={() => go(opt.label)} style={{
-                    padding: "14px 20px", cursor: "pointer",
-                    background: selected ? opt.bg : B.white,
-                    border: `1.5px solid ${selected ? opt.color : B.border}`,
-                    borderRadius: 10, fontSize: 14, fontWeight: selected ? 700 : 500,
-                    color: selected ? opt.color : B.gray700,
-                    transition: "all 0.12s", textAlign: "left",
-                    display: "flex", alignItems: "center", gap: 10
-                  }}>
+                  <button
+                    key={opt}
+                    onClick={() => handleAnswer(opt)}
+                    style={{
+                      padding: "16px 24px", background: isSelected ? `${optColor}25` : colors.bg,
+                      border: `1px solid ${isSelected ? optColor : colors.border}`,
+                      borderRadius: 10, color: isSelected ? optColor : colors.textMuted,
+                      fontSize: 14, fontWeight: isSelected ? 700 : 500,
+                      cursor: "pointer", transition: "all 0.15s", textAlign: "left",
+                      display: "flex", alignItems: "center", gap: 10
+                    }}
+                  >
                     <span style={{
-                      width: 18, height: 18, borderRadius: "50%", flexShrink: 0,
-                      border: `2px solid ${selected ? opt.color : B.gray300}`,
-                      background: selected ? opt.color : "transparent",
-                      display: "flex", alignItems: "center", justifyContent: "center"
+                      width: 20, height: 20, borderRadius: "50%",
+                      border: `2px solid ${isSelected ? optColor : colors.border}`,
+                      background: isSelected ? optColor : "transparent",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      flexShrink: 0
                     }}>
-                      {selected && <span style={{ width: 7, height: 7, borderRadius: "50%", background: B.white }} />}
+                      {isSelected && <span style={{ width: 8, height: 8, background: "#000", borderRadius: "50%" }} />}
                     </span>
-                    {opt.label}
+                    {opt}
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Nav row */}
-          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
-            <button onClick={() => current > 0 && setCurrent(c => c - 1)} disabled={current === 0}
+          {/* Navigation */}
+          <div style={{ display: "flex", justifyContent: "space-between", marginTop: 20 }}>
+            <button
+              onClick={handleBack} disabled={current === 0}
               style={{
-                padding: "10px 20px", background: "transparent",
-                border: `1px solid ${B.border}`, borderRadius: 8,
-                color: current === 0 ? B.gray300 : B.gray700, cursor: current === 0 ? "not-allowed" : "pointer",
-                fontSize: 13, fontWeight: 500
-              }}>
+                padding: "10px 24px", background: "transparent",
+                border: `1px solid ${colors.border}`, borderRadius: 8,
+                color: current === 0 ? colors.border : colors.textMuted,
+                cursor: current === 0 ? "not-allowed" : "pointer", fontSize: 13
+              }}
+            >
               ← Back
             </button>
-            <button onClick={() => onExit ? onExit() : null} style={{
-              padding: "10px 20px", background: "transparent",
-              border: `1px solid ${B.border}`, borderRadius: 8,
-              color: B.red, cursor: "pointer", fontSize: 13, fontWeight: 600
-            }}>
-              Save & Exit
+            <button
+              onClick={() => handleAnswer("Non-applicable")}
+              style={{
+                padding: "10px 24px", background: "transparent",
+                border: `1px solid ${colors.border}`, borderRadius: 8,
+                color: colors.textMuted, cursor: "pointer", fontSize: 13
+              }}
+            >
+              Skip →
             </button>
           </div>
         </div>
@@ -1039,28 +700,196 @@ function QuestionFlow({ profile, onBack, onFinish, initialIndex = 0, onIndexChan
   );
 }
 
-// ─── PAGE 5: RISK REPORT ──────────────────────────────────────────────────────
-function RiskReport({ profile, answers, questions }) {
-  return (
-    <div style={{ minHeight: "100vh", background: B.gray50, fontFamily: BODY, display: "flex", flexDirection: "column" }}>
-      <Nav steps={["Company Profile", "AI Inventory", "Questions", "Complete"]} current={3} />
+// ─── PAGE 5: RESULTS ──────────────────────────────────────────────────────────
 
-      <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
-        <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: "56px 40px", maxWidth: 640, width: "100%", textAlign: "center", boxShadow: B.shadowLg }}>
-          <div style={{ width: 72, height: 72, background: "#F0FDF4", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 28px" }}>
-            <span style={{ fontSize: 32, color: "#16A34A", fontWeight: "bold" }}>✓</span>
-          </div>
-          <h1 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 16px", fontFamily: DISPLAY, letterSpacing: "-0.5px" }}>
-            Assessment Complete
-          </h1>
-          <p style={{ fontSize: 16, color: B.gray600, lineHeight: 1.6, margin: "0 0 40px" }}>
-            Thanks for completing the survey. We will get back to you with a complete report in <strong>24 - 48 hours</strong>.
-          </p>
-          <button onClick={() => window.location.reload()} style={{
-            padding: "15px 40px", background: B.red, border: "none", borderRadius: 8,
-            color: B.white, fontSize: 15, fontWeight: 700, cursor: "pointer"
+function RiskReport({ profile, answers, questions }) {
+  const total = questions.length;
+  const answered = Object.keys(answers).length;
+
+  // New Scoring Logic based on trigger_points
+  const scored = questions.filter(q => answers[q.qid] && answers[q.qid] !== "Non-applicable" && answers[q.qid] !== "Not Applicable");
+  const totalScore = scored.length > 0
+    ? Math.round(scored.reduce((sum, q) => {
+        const ans = answers[q.qid];
+        // If it's a legacy Yes/No question, Yes = 100, No = 0, Maybe = 50
+        if (!q.trigger_points) {
+           return sum + (ans === "Yes" ? 100 : ans === "Maybe" ? 50 : 0);
+        }
+        
+        // If it has trigger points, find if the answer is a trigger point
+        // Trigger points mean risk = bad score.
+        // The DB might specify "Partial | No" as triggers.
+        // We will grant 100 points for non-triggers, 0 for triggers.
+        const triggers = q.trigger_points.split('|').map(t => t.trim());
+        // Simple heuristic: Does the chosen answer match or start with a trigger string?
+        const isTrigger = triggers.some(t => ans.startsWith(t));
+        return sum + (isTrigger ? 0 : 100);
+      }, 0) / scored.length)
+    : 0;
+
+  const riskLevel = totalScore >= 75 ? { label: "Low Risk", color: colors.success } :
+    totalScore >= 50 ? { label: "Moderate Risk", color: colors.info } :
+    totalScore >= 25 ? { label: "High Risk", color: colors.gold } :
+    { label: "Critical Risk", color: colors.error };
+
+  // Group by cluster
+  const clusterStats = {};
+  questions.forEach(q => {
+    if (!clusterStats[q.cluster]) clusterStats[q.cluster] = { total: 0, safe: 0, risk: 0, skipped: 0 };
+    const a = answers[q.qid];
+    clusterStats[q.cluster].total++;
+    
+    if (!a || a === "Non-applicable" || a === "Not Applicable") {
+      clusterStats[q.cluster].skipped++;
+    } else {
+      if (!q.trigger_points) {
+         if (a === "Yes") clusterStats[q.cluster].safe++;
+         else if (a === "No") clusterStats[q.cluster].risk++;
+      } else {
+         const triggers = q.trigger_points.split('|').map(t => t.trim());
+         const isTrigger = triggers.some(t => a.startsWith(t));
+         if (isTrigger) clusterStats[q.cluster].risk++;
+         else clusterStats[q.cluster].safe++;
+      }
+    }
+  });
+
+  const gaps = questions.filter(q => {
+     const a = answers[q.qid];
+     if (!a) return false;
+     if (!q.trigger_points) return a === "No";
+     const triggers = q.trigger_points.split('|').map(t => t.trim());
+     return triggers.some(t => a.startsWith(t));
+  }).slice(0, 5);
+
+  return (
+    <div style={{
+      minHeight: "100vh", background: colors.bg, color: colors.text,
+      fontFamily: "'Georgia', 'Times New Roman', serif", padding: "48px 24px"
+    }}>
+      <div style={{ maxWidth: 820, margin: "0 auto" }}>
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{
+            display: "inline-flex", background: `${colors.gold}15`,
+            border: `1px solid ${colors.gold}44`, borderRadius: 20,
+            padding: "4px 14px", marginBottom: 16
           }}>
-            Return Home
+            <span style={{ color: colors.gold, fontSize: 11, letterSpacing: "0.12em" }}>ASSESSMENT COMPLETE</span>
+          </div>
+          <h1 style={{ fontSize: 36, fontWeight: 700, margin: "0 0 8px" }}>Your AI Risk Profile</h1>
+          <p style={{ color: colors.textMuted }}>{profile.companyName} · {profile.industry} · {profile.companySize}</p>
+        </div>
+
+        {/* Score card */}
+        <div style={{
+          background: colors.bgCard, border: `1px solid ${colors.borderGold}`,
+          borderRadius: 16, padding: "40px", marginBottom: 24, textAlign: "center"
+        }}>
+          <div style={{
+            width: 140, height: 140, borderRadius: "50%",
+            background: `conic-gradient(${riskLevel.color} ${totalScore * 3.6}deg, ${colors.border} 0deg)`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            margin: "0 auto 20px", position: "relative"
+          }}>
+            <div style={{
+              width: 110, height: 110, borderRadius: "50%",
+              background: colors.bgCard, display: "flex", flexDirection: "column",
+              alignItems: "center", justifyContent: "center"
+            }}>
+              <span style={{ fontSize: 32, fontWeight: 800, color: riskLevel.color }}>{totalScore}</span>
+              <span style={{ fontSize: 11, color: colors.textMuted }}>/ 100</span>
+            </div>
+          </div>
+          <div style={{ fontSize: 20, fontWeight: 700, color: riskLevel.color, marginBottom: 8 }}>{riskLevel.label}</div>
+          <div style={{ color: colors.textMuted, fontSize: 14 }}>
+            Answered {answered} of {total} questions · {gaps.length} critical gaps identified
+          </div>
+        </div>
+
+        {/* Cluster breakdown */}
+        <div style={{
+          background: colors.bgCard, border: `1px solid ${colors.border}`,
+          borderRadius: 16, padding: "32px", marginBottom: 24
+        }}>
+          <h3 style={{ margin: "0 0 24px", color: colors.gold, fontSize: 14, letterSpacing: "0.1em" }}>BREAKDOWN BY DOMAIN</h3>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {Object.entries(clusterStats).map(([cluster, stats]) => {
+              const clr = CLUSTER_COLORS[cluster] || colors.gold;
+              const pct = stats.total > stats.skipped ? Math.round((stats.safe / (stats.total - stats.skipped)) * 100) : 0;
+              return (
+                <div key={cluster}>
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                    <span style={{ fontSize: 13, color: colors.text }}>{cluster}</span>
+                    <div style={{ display: "flex", gap: 8 }}>
+                      <span style={{ fontSize: 11, color: colors.success }}>✓ {stats.safe}</span>
+                      <span style={{ fontSize: 11, color: colors.error }}>✗ {stats.risk}</span>
+                      <span style={{ fontSize: 11, color: colors.textMuted }}>{stats.total} total</span>
+                    </div>
+                  </div>
+                  <div style={{ height: 6, background: colors.border, borderRadius: 4, overflow: "hidden" }}>
+                    <div style={{
+                      height: "100%", width: `${pct}%`,
+                      background: `linear-gradient(90deg, ${clr}, ${clr}99)`,
+                      borderRadius: 4, transition: "width 0.8s ease"
+                    }} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* AI Inventory used */}
+        <div style={{
+          background: colors.bgCard, border: `1px solid ${colors.border}`,
+          borderRadius: 16, padding: "32px", marginBottom: 24
+        }}>
+          <h3 style={{ margin: "0 0 16px", color: colors.gold, fontSize: 14, letterSpacing: "0.1em" }}>AI INVENTORY ASSESSED</h3>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+            {profile.inventory.map((item, i) => (
+              <Badge key={i} label={item.useCase} color={colors.info} />
+            ))}
+          </div>
+        </div>
+
+        {/* Critical gaps */}
+        {gaps.length > 0 && (
+          <div style={{
+            background: colors.bgCard, border: `1px solid ${colors.error}44`,
+            borderRadius: 16, padding: "32px", marginBottom: 24
+          }}>
+            <h3 style={{ margin: "0 0 16px", color: colors.error, fontSize: 14, letterSpacing: "0.1em" }}>
+              ⚠ TOP COMPLIANCE GAPS
+            </h3>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {gaps.map(q => (
+                <div key={q.qid} style={{
+                  background: `${colors.error}08`, border: `1px solid ${colors.error}22`,
+                  borderRadius: 8, padding: "14px 16px",
+                  borderLeft: `3px solid ${colors.error}`
+                }}>
+                  <div style={{ fontSize: 11, color: colors.error, marginBottom: 4 }}>{q.qid} · {q.component_group.replace(/_/g, " ")}</div>
+                  <div style={{ fontSize: 13, color: colors.text, lineHeight: 1.5 }}>{q.text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div style={{ textAlign: "center", paddingTop: 16 }}>
+          <p style={{ color: colors.textMuted, fontSize: 13, marginBottom: 20 }}>
+            This report is based on ISO 42001, NIST-RMF, and EU AI Act frameworks.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            style={{
+              padding: "14px 36px", background: `linear-gradient(135deg, ${colors.gold}, ${colors.goldLight})`,
+              border: "none", borderRadius: 8, color: "#000", fontSize: 14,
+              fontWeight: 700, cursor: "pointer"
+            }}
+          >
+            Start New Assessment
           </button>
         </div>
       </div>
@@ -1068,237 +897,40 @@ function RiskReport({ profile, answers, questions }) {
   );
 }
 
-// ─── APP ──────────────────────────────────────────────────────────────────────
-function App() {
+// ─── APP ROOT ─────────────────────────────────────────────────────────────────
 
-  useFonts();
-  const [page, setPage] = useState("loading");
-  
-  // Client Management
-  const [clients, setClients] = useState([]);
-  const [activeClientId, setActiveClientId] = useState(() => {
-    return localStorage.getItem("aries_active_client") || "default";
-  });
-
-  // Client-specific persistences
+export default function App() {
+  const [page, setPage] = useState("login"); // login | landing | profile | questions | results
   const [profile, setProfile] = useState(null);
   const [answers, setAnswers] = useState({});
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
   const [questions, setQuestions] = useState([]);
-  const [loadError, setLoadError] = useState("");
-
-  // Server Sync Logic
-  const syncToServer = async () => {
-    if (!profile) return;
-    try {
-      const activeClient = clients.find(c => c.id === activeClientId);
-      const payload = {
-        id: activeClientId,
-        name: activeClient ? activeClient.name : "Default Client",
-        profile,
-        answers,
-        currentQuestionIndex
-      };
-      await fetch("/api/save", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      console.log("[Aries] Synced to server:", activeClientId);
-    } catch (err) {
-      console.error("[Aries] Failed to sync to server:", err);
-    }
-  };
-
-  // Initial load: Data + Clients
-  useEffect(() => {
-    const init = async () => {
-      try {
-        await loadAllData();
-        
-        // Load clients from server
-        const res = await fetch("/api/clients");
-        const serverClients = await res.json();
-        
-        if (serverClients.length > 0) {
-          setClients(serverClients);
-        } else {
-          setClients([{ id: "default", name: "Default Client" }]);
-        }
-        
-        setPage("login");
-      } catch (err) {
-        console.error("[Aries] Failed to initialize:", err);
-        setLoadError("Failed to load data. Make sure you are running via the local server (python server.py) and opening http://localhost:3000/risk_profiler.html");
-      }
-    };
-    init();
-  }, []);
-
-  // Load active client data when client switches
-  useEffect(() => {
-    const pKey = `aries_client_${activeClientId}_profile`;
-    const aKey = `aries_client_${activeClientId}_answers`;
-    const iKey = `aries_client_${activeClientId}_q_index`;
-
-    const savedP = localStorage.getItem(pKey);
-    const savedA = localStorage.getItem(aKey);
-    const savedI = localStorage.getItem(iKey);
-
-    setProfile(savedP ? JSON.parse(savedP) : null);
-    setAnswers(savedA ? JSON.parse(savedA) : {});
-    setCurrentQuestionIndex(savedI ? parseInt(savedI) : 0);
-    
-    localStorage.setItem("aries_active_client", activeClientId);
-  }, [activeClientId]);
-
-  // Sync state to keyed localStorage AND Server
-  useEffect(() => {
-    if (profile) {
-      localStorage.setItem(`aries_client_${activeClientId}_profile`, JSON.stringify(profile));
-      syncToServer();
-    } else {
-      localStorage.removeItem(`aries_client_${activeClientId}_profile`);
-    }
-  }, [profile, activeClientId]);
-
-  useEffect(() => {
-    localStorage.setItem(`aries_client_${activeClientId}_answers`, JSON.stringify(answers));
-    syncToServer();
-  }, [answers, activeClientId]);
-
-  useEffect(() => {
-    localStorage.setItem(`aries_client_${activeClientId}_q_index`, currentQuestionIndex.toString());
-    syncToServer();
-  }, [currentQuestionIndex, activeClientId]);
-
-  useEffect(() => {
-    localStorage.setItem("aries_clients", JSON.stringify(clients));
-  }, [clients]);
-
-  const switchClient = (id, name) => {
-    if (id === "new") {
-      const nid = "c_" + Date.now();
-      const updatedClients = [...clients, { id: nid, name }];
-      setClients(updatedClients);
-      setActiveClientId(nid);
-      setPage("landing");
-    } else {
-      setActiveClientId(id);
-      setPage("landing");
-    }
-  };
-
-  const logout = () => {
-    setPage("login");
-  };
-
-  if (loadError) {
-    return (
-      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#0A0F1D", fontFamily: BODY }}>
-        <div style={{ textAlign: "center", maxWidth: 560, padding: 40 }}>
-          <div style={{ fontSize: 48, marginBottom: 24 }}>⚠️</div>
-          <h2 style={{ color: "white", fontSize: 24, fontWeight: 800, marginBottom: 16, fontFamily: DISPLAY }}>Data Loading Error</h2>
-          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 15, lineHeight: 1.6, marginBottom: 32 }}>{loadError}</p>
-          <button onClick={() => window.location.reload()} className="auth-btn" style={{ padding: "14px 32px", fontSize: 15 }}>Retry</button>
-        </div>
-      </div>
-    );
-  }
-
-  if (page === "loading") {
-    return (
-      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#0A0F1D", fontFamily: BODY }}>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ width: 48, height: 48, border: "4px solid rgba(255,255,255,0.1)", borderTopColor: B.blue, borderRadius: "50%", animation: "spin 1s linear infinite", margin: "0 auto 24px" }} />
-          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 15, fontWeight: 500 }}>Loading data...</p>
-        </div>
-      </div>
-    );
-  }
-
-  const cleanReset = () => {
-    localStorage.removeItem(`aries_client_${activeClientId}_profile`);
-    localStorage.removeItem(`aries_client_${activeClientId}_answers`);
-    localStorage.removeItem(`aries_client_${activeClientId}_q_index`);
-    setProfile(null);
-    setAnswers({});
-    setCurrentQuestionIndex(0);
-    setPage("profile");
-  };
-
-  const resume = () => {
-    if (profile && Object.keys(answers).length > 0) setPage("questions");
-    else setPage("profile");
-  };
 
   return (
-    <div style={{ fontFamily: BODY }}>
+    <div>
       {page === "login" && <AdminLogin onLogin={() => setPage("landing")} />}
-      {page === "landing" && (
-        <LandingPage 
-          onBegin={cleanReset} 
-          onResume={resume}
-          hasSaved={!!profile} 
-          clients={clients}
-          activeClientId={activeClientId}
-          onSwitchClient={switchClient}
-          onLogout={logout}
-        />
+      {page === "landing" && <LandingPage onBegin={() => setPage("profile")} />}
+      {page === "profile" && (
+        <CompanyProfile onNext={(p) => {
+          setProfile(p);
+          setPage("questions");
+        }} />
       )}
-      {page === "profile" && <CompanyProfile 
-        onNext={p => { 
-          setProfile(p); 
-          if (p.companyName) {
-            setClients(prev => prev.map(c => c.id === activeClientId ? { ...c, name: p.companyName } : c));
-          }
-          setPage("questions"); 
-        }} 
-        clients={clients}
-        activeClientId={activeClientId}
-        onSwitchClient={switchClient}
-        onLogout={logout}
-      />}
       {page === "questions" && profile && (
-        <QuestionFlow 
-          profile={profile} 
-          onBack={() => setPage("profile")}
-          onFinish={(a, q) => { 
-            setAnswers(a); 
-            setQuestions(q); 
+        <QuestionFlow
+          profile={profile}
+          onFinish={(a, q) => {
+            setAnswers(a);
+            setQuestions(q);
             setPage("results");
-            // Clear storage on successful finish for THIS client
-            localStorage.removeItem(`aries_client_${activeClientId}_profile`);
-            localStorage.removeItem(`aries_client_${activeClientId}_answers`);
-            localStorage.removeItem(`aries_client_${activeClientId}_q_index`);
           }}
-          onExit={() => setPage("landing")}
-          initialIndex={currentQuestionIndex}
-          onIndexChange={setCurrentQuestionIndex}
-          initialAnswers={answers}
-          onAnswersChange={setAnswers}
-          clients={clients}
-          activeClientId={activeClientId}
-          onSwitchClient={switchClient}
-          onLogout={logout}
         />
       )}
       {page === "results" && profile && (
-        <RiskReport 
-          profile={profile} 
-          answers={answers} 
-          questions={questions} 
-          clients={clients}
-          activeClientId={activeClientId}
-          onSwitchClient={switchClient}
-          onLogout={logout}
-        />
+        <RiskReport profile={profile} answers={answers} questions={questions} />
       )}
     </div>
   );
 }
-
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<App />);
