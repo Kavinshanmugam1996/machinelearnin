@@ -837,7 +837,6 @@
                 <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>Choose the primary regulatory framework applicable to your organisation's AI use.</p>
                 <select value={form.regulatory} onChange={e => setForm({ ...form, regulatory: e.target.value })} style={{ ...f(errors.regulatory), cursor: "pointer", maxWidth: 400 }}>
                   <option value="">Select jurisdiction...</option>
-                  <option value="EU">EU (AI Act)</option>
                   <option value="EU-CA/ON">Canada / Ontario</option>
                   <option value="EU-CAN/QU">Canada / Quebec</option>
                   <option value="EU-CAN/OTHR">Canada / Other</option>
@@ -845,6 +844,7 @@
                   <option value="USA-IL">USA – Illinois</option>
                   <option value="USA-A">USA – Framework A</option>
                   <option value="USA-B">USA – Framework B</option>
+                  <option value="EU">EU (AI Act)</option>
                 </select>
                 {errors.regulatory && <span style={{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>{errors.regulatory}</span>}
               </div>
