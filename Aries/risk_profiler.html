@@ -305,12 +305,19 @@
 
     }
 
-    function getRelevantQuestions(aiInventory) {
+    function getRelevantQuestions(aiInventory, industry) {
       const allGroups = new Set(MANDATORY_COMPONENT_GROUPS);
       aiInventory.forEach(({ useCase }) => {
         (QUESTION_MAPPER[useCase] || []).forEach(g => allGroups.add(g));
       });
-      return ALL_QUESTIONS.filter(q => q.is_universal || allGroups.has(q.component_group));
+      return ALL_QUESTIONS.filter(q => {
+        const isUniversal = q.is_universal;
+        const belongsToIndustry = industry && q.industry === industry;
+        const matchesUseCase = allGroups.has(q.component_group);
+        
+        // Include if it's a universal question OR if it matches the industry and the user's selected use case groups
+        return isUniversal || (belongsToIndustry && matchesUseCase);
+      });
     }
 
     function BizcomLogo({ size = 28, style = {} }) {
@@ -924,7 +931,7 @@
 
     // ─── PAGE 4: QUESTION FLOW ────────────────────────────────────────────────────
     function QuestionFlow({ profile, onBack, onFinish, onExit, initialIndex, onIndexChange, initialAnswers, onAnswersChange, clients, activeClientId, onSwitchClient, onLogout }) {
-      const questions = getRelevantQuestions(profile.inventory);
+      const questions = getRelevantQuestions(profile.inventory, profile.industry);
       const [current, setCurrent] = useState(initialIndex);
 
       useEffect(() => {
