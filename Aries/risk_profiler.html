@@ -266,11 +266,14 @@ function getRelevantQuestions(aiInventory) {
   return ALL_QUESTIONS.filter(q => q.is_universal || allGroups.has(q.component_group));
 }
 
-// ─── BIZCOM LOGO SVG ──────────────────────────────────────────────────────────
-function BizcomLogo({ size = 28 }) {
-  const s = size;
+function BizcomLogo({ size = 28, style = {} }) {
   return (
-    <img src="bizcom.jpg" style={{ height: s, width: "auto" }} alt="Bizcom" />
+    <img 
+      src="bizcom.jpg" 
+      style={{ height: size, width: "auto", ...style }} 
+      alt="Bizcom Logo" 
+      onError={(e) => { e.target.style.display = 'none'; console.error("Logo failed to load"); }}
+    />
   );
 }
 
@@ -283,11 +286,22 @@ function Nav({ steps, current, clients = [], activeClientId, onSwitchClient, onL
     <nav style={{
       background: B.white, borderBottom: `1px solid ${B.border}`,
       padding: "0 40px", display: "flex", alignItems: "center",
-      justifyContent: "space-between", height: 60,
+      justifyContent: "space-between", height: 72,
       position: "sticky", top: 0, zIndex: 1000,
-      boxShadow: "0 1px 0 #E2E4E9"
+      boxShadow: "0 4px 12px rgba(0,0,0,0.03)"
     }}>
-      <BizcomLogo size={22} />
+      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <BizcomLogo size={36} />
+        <div style={{ width: 1, height: 28, background: B.border }} />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ fontSize: 18, fontWeight: 900, color: B.black, letterSpacing: "-0.5px", lineHeight: 1, fontFamily: DISPLAY }}>
+            AIRES
+          </div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: B.red, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 2 }}>
+            Risk Profiler
+          </div>
+        </div>
+      </div>
       
       {steps ? (
         <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
@@ -295,29 +309,29 @@ function Nav({ steps, current, clients = [], activeClientId, onSwitchClient, onL
             <div key={s} style={{ display: "flex", alignItems: "center" }}>
               <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "4px 12px" }}>
                 <div style={{
-                  width: 22, height: 22, borderRadius: "50%",
-                  background: i < current ? B.red : i === current ? B.red : B.gray100,
+                  width: 24, height: 24, borderRadius: "50%",
+                  background: i < current ? B.red : i === current ? B.red : B.white,
                   border: `2px solid ${i <= current ? B.red : B.border}`,
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 11, fontWeight: 700,
-                  color: i <= current ? B.white : B.gray500
+                  fontSize: 11, fontWeight: 800,
+                  color: i <= current ? (i < current ? B.white : B.white) : B.gray400,
+                  boxShadow: i === current ? `0 0 10px ${B.red}44` : "none"
                 }}>
                   {i < current ? "✓" : i + 1}
                 </div>
                 <span style={{
-                  fontSize: 12, fontWeight: i === current ? 600 : 400,
-                  color: i === current ? B.black : B.gray500
+                  fontSize: 12, fontWeight: i === current ? 700 : 500,
+                  color: i === current ? B.black : B.gray400,
+                  display: window.innerWidth < 1000 && i !== current ? "none" : "block"
                 }}>{s}</span>
               </div>
               {i < steps.length - 1 && (
-                <div style={{ width: 24, height: 1, background: i < current ? B.red : B.border }} />
+                <div style={{ width: 32, height: 2, background: i < current ? B.red : B.border, borderRadius: 1 }} />
               )}
             </div>
           ))}
         </div>
-      ) : (
-        <div style={{ fontSize: 13, fontWeight: 600, color: B.gray700 }}>AIRES Risk Profiler</div>
-      )}
+      ) : null}
 
       <div style={{ position: "relative" }}>
         <button 
@@ -487,7 +501,7 @@ function AdminLogin({ onLogin }) {
         
         <div className="auth-card" style={{ width: "100%", maxWidth: 440, position: "relative", zIndex: 10 }}>
           <div style={{ marginBottom: 32, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <img src="bizcom.jpg" style={{ height: 64, width: "auto", marginBottom: 24 }} alt="Bizcom Logo" />
+            <BizcomLogo size={64} style={{ marginBottom: 24 }} />
             <h2 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 8px", letterSpacing: "-0.5px" , textAlign: "center", fontFamily: DISPLAY}}>
               Welcome back
             </h2>
@@ -562,6 +576,8 @@ function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onS
         <div className="hero-glow" style={{ bottom: "10%", right: "10%", width: "50vh", height: "50vh", background: "rgba(200, 24, 30, 0.15)", animationDuration: "16s", animationDelay: "-3s" }} />
 
         <div style={{ position: "relative", zIndex: 10, width: "100%", maxWidth: "none", margin: "0", padding: "80px 40px", background: "rgba(255,255,255,0.02)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.06)", boxShadow: "0 30px 60px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)" }}>
+          <BizcomLogo size={80} style={{ marginBottom: 40, filter: "drop-shadow(0 0 20px rgba(255,255,255,0.2))" }} />
+          
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(200,24,30,0.1)", border: "1px solid rgba(200,24,30,0.3)",
@@ -1058,8 +1074,12 @@ function RiskReport({ profile, answers, questions }) {
             Thank you for completing the assessment.
           </p>
           <p style={{ fontSize: 18, color: B.gray700, lineHeight: 1.6, margin: "0 0 40px" }}>
-            <strong>Bizcom will send you the detailed report within 24-48 Hours.</strong>
+            <strong>Our team will send you the detailed report within 24-48 Hours.</strong>
           </p>
+          <div style={{ borderTop: `1px solid ${B.border}`, paddingTop: 32, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+            <BizcomLogo size={40} />
+            <div style={{ fontSize: 12, fontWeight: 700, color: B.gray400, textTransform: "uppercase", letterSpacing: "0.1em" }}>Powered by Bizcom AI</div>
+          </div>
           <button onClick={() => window.location.reload()} style={{
             padding: "15px 40px", background: B.red, border: "none", borderRadius: 8,
             color: B.white, fontSize: 15, fontWeight: 700, cursor: "pointer"
