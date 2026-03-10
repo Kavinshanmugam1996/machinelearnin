@@ -1205,7 +1205,7 @@
             setPage("login");
           } catch (err) {
             console.error("[AIRES] Failed to initialize:", err);
-            setLoadError("Failed to load data. Make sure you are running via the local server (python server.py) and opening http://localhost:3000/risk_profiler.html");
+            setLoadError("Failed to load data. Make sure the server is running and you are accessing the correct URL.");
           }
         };
         init();
