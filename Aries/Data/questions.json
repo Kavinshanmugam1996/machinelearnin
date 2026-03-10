@@ -10,7 +10,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -24,7 +27,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -38,7 +44,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -52,7 +61,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -66,7 +78,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -80,7 +95,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -94,7 +112,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -108,7 +129,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -122,7 +146,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -136,7 +163,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -150,7 +180,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -164,7 +197,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -178,7 +214,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -192,7 +231,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -206,7 +248,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -220,7 +265,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -234,7 +282,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -248,7 +299,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -262,7 +316,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -276,7 +333,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -290,7 +350,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -304,7 +367,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -318,7 +384,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -332,7 +401,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -346,7 +418,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -360,7 +435,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -374,7 +452,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -388,7 +469,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -402,7 +486,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -416,7 +503,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -430,7 +520,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -444,7 +537,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -458,7 +554,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -472,7 +571,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -486,7 +588,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -500,7 +605,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -514,7 +622,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -528,7 +639,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -542,7 +656,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -556,7 +673,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -570,7 +690,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -584,7 +707,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -598,7 +724,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -612,7 +741,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -626,7 +758,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -640,7 +775,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -654,7 +792,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -668,7 +809,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -682,7 +826,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -696,7 +843,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -710,7 +860,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -724,7 +877,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -738,7 +894,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -752,7 +911,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -766,7 +928,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -780,7 +945,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -794,7 +962,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -808,7 +979,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -822,7 +996,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -836,7 +1013,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -850,7 +1030,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -864,7 +1047,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -878,7 +1064,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -892,7 +1081,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -906,7 +1098,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -920,7 +1115,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -934,7 +1132,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -948,7 +1149,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -962,7 +1166,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -976,7 +1183,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -990,7 +1200,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1004,7 +1217,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1018,7 +1234,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1032,7 +1251,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1046,7 +1268,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1060,7 +1285,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1074,7 +1302,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1088,7 +1319,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1102,7 +1336,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1116,7 +1353,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1130,7 +1370,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1144,7 +1387,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1158,7 +1404,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1172,7 +1421,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1186,7 +1438,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1200,7 +1455,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1214,7 +1472,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1228,7 +1489,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1242,7 +1506,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1256,7 +1523,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1270,7 +1540,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1284,7 +1557,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1298,7 +1574,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1312,7 +1591,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1326,7 +1608,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1340,7 +1625,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1354,7 +1642,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1368,7 +1659,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1382,7 +1676,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1396,7 +1693,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1410,7 +1710,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1424,7 +1727,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1438,7 +1744,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1452,7 +1761,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1466,7 +1778,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1480,7 +1795,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1494,7 +1812,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1508,7 +1829,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1522,7 +1846,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1536,7 +1863,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1550,7 +1880,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1564,7 +1897,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1578,7 +1914,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1592,7 +1931,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1606,7 +1948,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1620,7 +1965,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1634,7 +1982,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1648,7 +1999,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1662,7 +2016,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1676,7 +2033,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": false
   },
   {
@@ -1690,7 +2050,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1704,7 +2067,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1718,7 +2084,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1732,7 +2101,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1746,7 +2118,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1760,7 +2135,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1774,7 +2152,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1788,7 +2169,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1802,7 +2186,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1816,7 +2203,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1830,7 +2220,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1844,7 +2237,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1858,7 +2254,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1872,7 +2271,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1886,7 +2288,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1900,7 +2305,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1914,7 +2322,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1928,7 +2339,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1942,7 +2356,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1956,7 +2373,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1970,7 +2390,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1984,7 +2407,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -1998,7 +2424,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2012,7 +2441,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2026,7 +2458,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2040,7 +2475,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2054,7 +2492,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2068,7 +2509,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2082,7 +2526,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2096,7 +2543,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2110,7 +2560,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2124,7 +2577,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2138,7 +2594,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2152,7 +2611,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2166,7 +2628,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2180,7 +2645,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2194,7 +2662,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2208,7 +2679,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2222,7 +2696,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2236,7 +2713,10 @@
       "Partial",
       "Not Applicable"
     ],
-    "trigger_points": "Partial | No",
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
     "is_universal": true
   },
   {
@@ -2249,7 +2729,10 @@
       "Partial \u2013 Approved but No Formal Owner",
       "No \u2013 Policy Not Documented"
     ],
-    "trigger_points": "Partial \u2013 Approved but No Formal Owner | No \u2013 Policy Not Documented",
+    "trigger_points": [
+      "Partial \u2013 Approved but No Formal Owner",
+      "No \u2013 Policy Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -2262,7 +2745,10 @@
       "Partial \u2013 Coverage or Scope Gaps Exist",
       "No \u2013 Limited Coverage or Undefined Scope"
     ],
-    "trigger_points": "Partial \u2013 Coverage or Scope Gaps Exist | No \u2013 Limited Coverage or Undefined Scope",
+    "trigger_points": [
+      "Partial \u2013 Coverage or Scope Gaps Exist",
+      "No \u2013 Limited Coverage or Undefined Scope"
+    ],
     "is_universal": true
   },
   {
@@ -2275,7 +2761,10 @@
       "Partial \u2013 Mechanisms Exist but Inconsistently Applied",
       "No \u2013 No Formal Enforcement Mechanism"
     ],
-    "trigger_points": "Partial \u2013 Mechanisms Exist but Inconsistently Applied | No \u2013 No Formal Enforcement Mechanism",
+    "trigger_points": [
+      "Partial \u2013 Mechanisms Exist but Inconsistently Applied",
+      "No \u2013 No Formal Enforcement Mechanism"
+    ],
     "is_universal": true
   },
   {
@@ -2289,7 +2778,10 @@
       "Over 12 Months Ago",
       "Never Reviewed Since Creation"
     ],
-    "trigger_points": "Over 12 Months Ago | Never Reviewed Since Creation",
+    "trigger_points": [
+      "Over 12 Months Ago",
+      "Never Reviewed Since Creation"
+    ],
     "is_universal": true
   },
   {
@@ -2302,7 +2794,10 @@
       "Partial \u2013 Informal or Reactive Process",
       "No \u2013 No Update Process Defined"
     ],
-    "trigger_points": "Partial \u2013 Informal or Reactive Process | No \u2013 No Update Process Defined",
+    "trigger_points": [
+      "Partial \u2013 Informal or Reactive Process",
+      "No \u2013 No Update Process Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2315,7 +2810,10 @@
       "Partial \u2013 Training or Vendor Coverage Missing",
       "No \u2013 No Awareness Programme or Vendor Coverage"
     ],
-    "trigger_points": "Partial \u2013 Training or Vendor Coverage Missing | No \u2013 No Awareness Programme or Vendor Coverage",
+    "trigger_points": [
+      "Partial \u2013 Training or Vendor Coverage Missing",
+      "No \u2013 No Awareness Programme or Vendor Coverage"
+    ],
     "is_universal": true
   },
   {
@@ -2328,7 +2826,10 @@
       "Partial \u2013 Informal or Ad Hoc Structure",
       "No \u2013 Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Informal or Ad Hoc Structure | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Informal or Ad Hoc Structure",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2341,7 +2842,10 @@
       "Partial \u2013 Some Roles Defined or Not Assigned Per System",
       "No \u2013 Roles Not Documented or Assigned"
     ],
-    "trigger_points": "Partial \u2013 Some Roles Defined or Not Assigned Per System | No \u2013 Roles Not Documented or Assigned",
+    "trigger_points": [
+      "Partial \u2013 Some Roles Defined or Not Assigned Per System",
+      "No \u2013 Roles Not Documented or Assigned"
+    ],
     "is_universal": true
   },
   {
@@ -2354,7 +2858,10 @@
       "Partial \u2013 Authority Defined but Escalation Unclear",
       "No \u2013 Authority Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Authority Defined but Escalation Unclear | No \u2013 Authority Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Authority Defined but Escalation Unclear",
+      "No \u2013 Authority Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2367,7 +2874,10 @@
       "Partial \u2013 Assigned but with Limited or Advisory Authority Only",
       "No \u2013 No Human Oversight Formally Assigned"
     ],
-    "trigger_points": "Partial \u2013 Assigned but with Limited or Advisory Authority Only | No \u2013 No Human Oversight Formally Assigned",
+    "trigger_points": [
+      "Partial \u2013 Assigned but with Limited or Advisory Authority Only",
+      "No \u2013 No Human Oversight Formally Assigned"
+    ],
     "is_universal": true
   },
   {
@@ -2380,7 +2890,10 @@
       "Partial \u2013 Informal Assessment Only",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Informal Assessment Only | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Informal Assessment Only",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -2393,7 +2906,10 @@
       "Partial \u2013 Defined but Not Consistently Applied",
       "No \u2013 Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Defined but Not Consistently Applied | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Defined but Not Consistently Applied",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2406,7 +2922,10 @@
       "Partial \u2013 Some Overlaps Identified and Managed",
       "No \u2013 Significant Overlapping Responsibilities"
     ],
-    "trigger_points": "Partial \u2013 Some Overlaps Identified and Managed | No \u2013 Significant Overlapping Responsibilities",
+    "trigger_points": [
+      "Partial \u2013 Some Overlaps Identified and Managed",
+      "No \u2013 Significant Overlapping Responsibilities"
+    ],
     "is_universal": true
   },
   {
@@ -2419,7 +2938,10 @@
       "Partial \u2013 Advisory Independence Only",
       "No \u2013 Not Independent"
     ],
-    "trigger_points": "Partial \u2013 Advisory Independence Only | No \u2013 Not Independent",
+    "trigger_points": [
+      "Partial \u2013 Advisory Independence Only",
+      "No \u2013 Not Independent"
+    ],
     "is_universal": true
   },
   {
@@ -2432,7 +2954,10 @@
       "Partial \u2013 Informally Managed",
       "No \u2013 Not Identified or Managed"
     ],
-    "trigger_points": "Partial \u2013 Informally Managed | No \u2013 Not Identified or Managed",
+    "trigger_points": [
+      "Partial \u2013 Informally Managed",
+      "No \u2013 Not Identified or Managed"
+    ],
     "is_universal": true
   },
   {
@@ -2445,7 +2970,10 @@
       "Partial \u2013 Informally Identified",
       "No \u2013 Not Identified"
     ],
-    "trigger_points": "Partial \u2013 Informally Identified | No \u2013 Not Identified",
+    "trigger_points": [
+      "Partial \u2013 Informally Identified",
+      "No \u2013 Not Identified"
+    ],
     "is_universal": true
   },
   {
@@ -2458,7 +2986,10 @@
       "Partial \u2013 Partially Defined",
       "No \u2013 Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Partially Defined | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Partially Defined",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2471,7 +3002,10 @@
       "Partial \u2013 Some Misalignment",
       "No \u2013 Not Aligned or Risk Tolerance Undefined"
     ],
-    "trigger_points": "Partial \u2013 Some Misalignment | No \u2013 Not Aligned or Risk Tolerance Undefined",
+    "trigger_points": [
+      "Partial \u2013 Some Misalignment",
+      "No \u2013 Not Aligned or Risk Tolerance Undefined"
+    ],
     "is_universal": true
   },
   {
@@ -2484,7 +3018,10 @@
       "Partial \u2013 Some Stages Documented",
       "No \u2013 Not Documented"
     ],
-    "trigger_points": "Partial \u2013 Some Stages Documented | No \u2013 Not Documented",
+    "trigger_points": [
+      "Partial \u2013 Some Stages Documented",
+      "No \u2013 Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -2497,7 +3034,10 @@
       "Partial \u2013 Partially Defined or Alternates Not Named",
       "No \u2013 Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Partially Defined or Alternates Not Named | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Partially Defined or Alternates Not Named",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2510,7 +3050,10 @@
       "Partial \u2013 Some Ambiguity Exists",
       "No \u2013 Accountability Unclear"
     ],
-    "trigger_points": "Partial \u2013 Some Ambiguity Exists | No \u2013 Accountability Unclear",
+    "trigger_points": [
+      "Partial \u2013 Some Ambiguity Exists",
+      "No \u2013 Accountability Unclear"
+    ],
     "is_universal": true
   },
   {
@@ -2524,7 +3067,11 @@
       "Partially Effective \u2013 Significant Gaps",
       "Not Effective or Not Established"
     ],
-    "trigger_points": "Mostly Effective \u2013 Minor Gaps | Partially Effective \u2013 Significant Gaps | Not Effective or Not Established",
+    "trigger_points": [
+      "Mostly Effective \u2013 Minor Gaps",
+      "Partially Effective \u2013 Significant Gaps",
+      "Not Effective or Not Established"
+    ],
     "is_universal": true
   },
   {
@@ -2537,7 +3084,10 @@
       "Partial \u2013 Partially Established",
       "No \u2013 Not Established"
     ],
-    "trigger_points": "Partial \u2013 Partially Established | No \u2013 Not Established",
+    "trigger_points": [
+      "Partial \u2013 Partially Established",
+      "No \u2013 Not Established"
+    ],
     "is_universal": true
   },
   {
@@ -2550,7 +3100,10 @@
       "Partial \u2013 Inventory Exists but Coverage Incomplete",
       "No \u2013 No Centralized Inventory"
     ],
-    "trigger_points": "Partial \u2013 Inventory Exists but Coverage Incomplete | No \u2013 No Centralized Inventory",
+    "trigger_points": [
+      "Partial \u2013 Inventory Exists but Coverage Incomplete",
+      "No \u2013 No Centralized Inventory"
+    ],
     "is_universal": true
   },
   {
@@ -2563,7 +3116,10 @@
       "Partial \u2013 Key Gaps in Mapping",
       "No \u2013 Not Mapped"
     ],
-    "trigger_points": "Partial \u2013 Key Gaps in Mapping | No \u2013 Not Mapped",
+    "trigger_points": [
+      "Partial \u2013 Key Gaps in Mapping",
+      "No \u2013 Not Mapped"
+    ],
     "is_universal": true
   },
   {
@@ -2576,7 +3132,10 @@
       "Partial \u2013 Partially Defined",
       "No \u2013 No Governance Structure"
     ],
-    "trigger_points": "Partial \u2013 Partially Defined | No \u2013 No Governance Structure",
+    "trigger_points": [
+      "Partial \u2013 Partially Defined",
+      "No \u2013 No Governance Structure"
+    ],
     "is_universal": true
   },
   {
@@ -2589,7 +3148,10 @@
       "Partial \u2013 Process Exists but Incomplete",
       "No \u2013 No Formal Decommissioning Process"
     ],
-    "trigger_points": "Partial \u2013 Process Exists but Incomplete | No \u2013 No Formal Decommissioning Process",
+    "trigger_points": [
+      "Partial \u2013 Process Exists but Incomplete",
+      "No \u2013 No Formal Decommissioning Process"
+    ],
     "is_universal": true
   },
   {
@@ -2602,7 +3164,10 @@
       "Partial \u2013 Documented but Not All Datasets or Environments",
       "No \u2013 Provenance Not Documented"
     ],
-    "trigger_points": "Partial \u2013 Documented but Not All Datasets or Environments | No \u2013 Provenance Not Documented",
+    "trigger_points": [
+      "Partial \u2013 Documented but Not All Datasets or Environments",
+      "No \u2013 Provenance Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -2616,7 +3181,10 @@
       "No \u2013 Not Categorized or Segregated",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Environments Not Segregated | No \u2013 Not Categorized or Segregated",
+    "trigger_points": [
+      "Partial \u2013 Some Environments Not Segregated",
+      "No \u2013 Not Categorized or Segregated"
+    ],
     "is_universal": true
   },
   {
@@ -2629,7 +3197,10 @@
       "Partial \u2013 Informal or Incomplete Assessment",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Informal or Incomplete Assessment | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Informal or Incomplete Assessment",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -2643,7 +3214,11 @@
       "Partially Mature \u2013 Significant Gaps",
       "Immature or Not Established"
     ],
-    "trigger_points": "Mostly Mature \u2013 Minor Gaps | Partially Mature \u2013 Significant Gaps | Immature or Not Established",
+    "trigger_points": [
+      "Mostly Mature \u2013 Minor Gaps",
+      "Partially Mature \u2013 Significant Gaps",
+      "Immature or Not Established"
+    ],
     "is_universal": true
   },
   {
@@ -2656,7 +3231,10 @@
       "Partial \u2013 Defined but Inconsistently Applied",
       "No \u2013 Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Defined but Inconsistently Applied | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Defined but Inconsistently Applied",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2669,7 +3247,10 @@
       "Partial \u2013 Some Documented, Controls Inconsistent",
       "No \u2013 Not Documented or No Controls Applied"
     ],
-    "trigger_points": "Partial \u2013 Some Documented, Controls Inconsistent | No \u2013 Not Documented or No Controls Applied",
+    "trigger_points": [
+      "Partial \u2013 Some Documented, Controls Inconsistent",
+      "No \u2013 Not Documented or No Controls Applied"
+    ],
     "is_universal": true
   },
   {
@@ -2683,7 +3264,10 @@
       "No \u2013 Not Identified or Assessed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Identified but Controls Incomplete | No \u2013 Not Identified or Assessed",
+    "trigger_points": [
+      "Partial \u2013 Identified but Controls Incomplete",
+      "No \u2013 Not Identified or Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -2696,7 +3280,10 @@
       "Partial \u2013 Documentation or Inventory Incomplete",
       "No \u2013 Not Documented or No Production Inventory"
     ],
-    "trigger_points": "Partial \u2013 Documentation or Inventory Incomplete | No \u2013 Not Documented or No Production Inventory",
+    "trigger_points": [
+      "Partial \u2013 Documentation or Inventory Incomplete",
+      "No \u2013 Not Documented or No Production Inventory"
+    ],
     "is_universal": true
   },
   {
@@ -2710,7 +3297,10 @@
       "No \u2013 Not Documented",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Key Details Missing | No \u2013 Not Documented",
+    "trigger_points": [
+      "Partial \u2013 Key Details Missing",
+      "No \u2013 Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -2724,7 +3314,10 @@
       "No \u2013 Controls Not Applied",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Controls Missing | No \u2013 Controls Not Applied",
+    "trigger_points": [
+      "Partial \u2013 Some Controls Missing",
+      "No \u2013 Controls Not Applied"
+    ],
     "is_universal": true
   },
   {
@@ -2737,7 +3330,10 @@
       "Partial \u2013 Key Tools Reviewed, Others Not",
       "No \u2013 No Security Review Process"
     ],
-    "trigger_points": "Partial \u2013 Key Tools Reviewed, Others Not | No \u2013 No Security Review Process",
+    "trigger_points": [
+      "Partial \u2013 Key Tools Reviewed, Others Not",
+      "No \u2013 No Security Review Process"
+    ],
     "is_universal": true
   },
   {
@@ -2750,7 +3346,10 @@
       "Partial \u2013 Reviewed Case by Case",
       "No \u2013 Not Reviewed"
     ],
-    "trigger_points": "Partial \u2013 Reviewed Case by Case | No \u2013 Not Reviewed",
+    "trigger_points": [
+      "Partial \u2013 Reviewed Case by Case",
+      "No \u2013 Not Reviewed"
+    ],
     "is_universal": true
   },
   {
@@ -2764,7 +3363,10 @@
       "High Risk \u2013 Significant Single-Vendor Dependency",
       "Critical Risk \u2013 Full Lock-In, No Mitigation"
     ],
-    "trigger_points": "High Risk \u2013 Significant Single-Vendor Dependency | Critical Risk \u2013 Full Lock-In, No Mitigation",
+    "trigger_points": [
+      "High Risk \u2013 Significant Single-Vendor Dependency",
+      "Critical Risk \u2013 Full Lock-In, No Mitigation"
+    ],
     "is_universal": true
   },
   {
@@ -2777,7 +3379,10 @@
       "Partial \u2013 Not Defined for All Systems",
       "No \u2013 Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Not Defined for All Systems | No \u2013 Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Not Defined for All Systems",
+      "No \u2013 Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2790,7 +3395,10 @@
       "Partial \u2013 Environment Identified but Risks Not Fully Evaluated",
       "No \u2013 No Formal Evaluation Conducted"
     ],
-    "trigger_points": "Partial \u2013 Environment Identified but Risks Not Fully Evaluated | No \u2013 No Formal Evaluation Conducted",
+    "trigger_points": [
+      "Partial \u2013 Environment Identified but Risks Not Fully Evaluated",
+      "No \u2013 No Formal Evaluation Conducted"
+    ],
     "is_universal": true
   },
   {
@@ -2803,7 +3411,10 @@
       "Documented but Not Tested",
       "No \u2013 Not Documented"
     ],
-    "trigger_points": "Documented but Not Tested | No \u2013 Not Documented",
+    "trigger_points": [
+      "Documented but Not Tested",
+      "No \u2013 Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -2817,7 +3428,11 @@
       "Partially Sufficient \u2013 Notable Degradation",
       "Insufficient \u2013 Frequent Performance Issues"
     ],
-    "trigger_points": "Mostly Sufficient \u2013 Minor Constraints | Partially Sufficient \u2013 Notable Degradation | Insufficient \u2013 Frequent Performance Issues",
+    "trigger_points": [
+      "Mostly Sufficient \u2013 Minor Constraints",
+      "Partially Sufficient \u2013 Notable Degradation",
+      "Insufficient \u2013 Frequent Performance Issues"
+    ],
     "is_universal": true
   },
   {
@@ -2830,7 +3445,10 @@
       "Partial \u2013 Assessed but No Monitoring or Targets",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Assessed but No Monitoring or Targets | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Assessed but No Monitoring or Targets",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -2843,7 +3461,10 @@
       "Partial \u2013 Key Roles Only or Gaps Exist",
       "No \u2013 Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Key Roles Only or Gaps Exist | No \u2013 Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Key Roles Only or Gaps Exist",
+      "No \u2013 Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -2856,7 +3477,10 @@
       "Partial \u2013 Some Functions Under-Resourced",
       "No \u2013 Insufficient or No Formal Headcount Assigned"
     ],
-    "trigger_points": "Partial \u2013 Some Functions Under-Resourced | No \u2013 Insufficient or No Formal Headcount Assigned",
+    "trigger_points": [
+      "Partial \u2013 Some Functions Under-Resourced",
+      "No \u2013 Insufficient or No Formal Headcount Assigned"
+    ],
     "is_universal": true
   },
   {
@@ -2870,7 +3494,10 @@
       "No \u2013 Not Assigned",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Assigned but Authority Not Clearly Defined | No \u2013 Not Assigned",
+    "trigger_points": [
+      "Partial \u2013 Assigned but Authority Not Clearly Defined",
+      "No \u2013 Not Assigned"
+    ],
     "is_universal": true
   },
   {
@@ -2883,7 +3510,10 @@
       "Partial \u2013 Minor Skill Gaps",
       "No \u2013 Significant Competency Deficiencies"
     ],
-    "trigger_points": "Partial \u2013 Minor Skill Gaps | No \u2013 Significant Competency Deficiencies",
+    "trigger_points": [
+      "Partial \u2013 Minor Skill Gaps",
+      "No \u2013 Significant Competency Deficiencies"
+    ],
     "is_universal": true
   },
   {
@@ -2896,7 +3526,10 @@
       "Partial \u2013 Gaps Identified but No Remediation Plan",
       "No \u2013 Gaps Not Formally Identified"
     ],
-    "trigger_points": "Partial \u2013 Gaps Identified but No Remediation Plan | No \u2013 Gaps Not Formally Identified",
+    "trigger_points": [
+      "Partial \u2013 Gaps Identified but No Remediation Plan",
+      "No \u2013 Gaps Not Formally Identified"
+    ],
     "is_universal": true
   },
   {
@@ -2910,7 +3543,10 @@
       "No \u2013 Not Documented",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Key Contractors Only | No \u2013 Not Documented",
+    "trigger_points": [
+      "Partial \u2013 Key Contractors Only",
+      "No \u2013 Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -2923,7 +3559,10 @@
       "Partial \u2013 Major Changes Only",
       "No \u2013 No Formal Change Management"
     ],
-    "trigger_points": "Partial \u2013 Major Changes Only | No \u2013 No Formal Change Management",
+    "trigger_points": [
+      "Partial \u2013 Major Changes Only",
+      "No \u2013 No Formal Change Management"
+    ],
     "is_universal": true
   },
   {
@@ -2936,7 +3575,10 @@
       "Partial \u2013 Process Exists but Not Applied to All Systems",
       "No \u2013 No Formal Impact Assessment Process"
     ],
-    "trigger_points": "Partial \u2013 Process Exists but Not Applied to All Systems | No \u2013 No Formal Impact Assessment Process",
+    "trigger_points": [
+      "Partial \u2013 Process Exists but Not Applied to All Systems",
+      "No \u2013 No Formal Impact Assessment Process"
+    ],
     "is_universal": true
   },
   {
@@ -2949,7 +3591,10 @@
       "Partial \u2013 Pre-Deployment Only or Updates Inconsistent",
       "No \u2013 Not Conducted"
     ],
-    "trigger_points": "Partial \u2013 Pre-Deployment Only or Updates Inconsistent | No \u2013 Not Conducted",
+    "trigger_points": [
+      "Partial \u2013 Pre-Deployment Only or Updates Inconsistent",
+      "No \u2013 Not Conducted"
+    ],
     "is_universal": true
   },
   {
@@ -2962,7 +3607,10 @@
       "Partial \u2013 Criteria or Coverage Inconsistent",
       "No \u2013 Systems Not Categorized by Impact Severity"
     ],
-    "trigger_points": "Partial \u2013 Criteria or Coverage Inconsistent | No \u2013 Systems Not Categorized by Impact Severity",
+    "trigger_points": [
+      "Partial \u2013 Criteria or Coverage Inconsistent",
+      "No \u2013 Systems Not Categorized by Impact Severity"
+    ],
     "is_universal": true
   },
   {
@@ -2975,7 +3623,10 @@
       "Partial \u2013 Harm Assessed but Stakeholder Coverage Incomplete",
       "No \u2013 Individual Harm Not Explicitly Assessed"
     ],
-    "trigger_points": "Partial \u2013 Harm Assessed but Stakeholder Coverage Incomplete | No \u2013 Individual Harm Not Explicitly Assessed",
+    "trigger_points": [
+      "Partial \u2013 Harm Assessed but Stakeholder Coverage Incomplete",
+      "No \u2013 Individual Harm Not Explicitly Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -2988,7 +3639,10 @@
       "Partial \u2013 Limited Scope Evaluated",
       "No \u2013 Not Evaluated"
     ],
-    "trigger_points": "Partial \u2013 Limited Scope Evaluated | No \u2013 Not Evaluated",
+    "trigger_points": [
+      "Partial \u2013 Limited Scope Evaluated",
+      "No \u2013 Not Evaluated"
+    ],
     "is_universal": true
   },
   {
@@ -3002,7 +3656,10 @@
       "No \u2013 No Enhanced Safeguards Implemented",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Safeguards in Place | No \u2013 No Enhanced Safeguards Implemented",
+    "trigger_points": [
+      "Partial \u2013 Some Safeguards in Place",
+      "No \u2013 No Enhanced Safeguards Implemented"
+    ],
     "is_universal": true
   },
   {
@@ -3015,7 +3672,10 @@
       "Partial \u2013 Documented but Not Formally Approved or Assessed",
       "No \u2013 Residual Risks Not Documented"
     ],
-    "trigger_points": "Partial \u2013 Documented but Not Formally Approved or Assessed | No \u2013 Residual Risks Not Documented",
+    "trigger_points": [
+      "Partial \u2013 Documented but Not Formally Approved or Assessed",
+      "No \u2013 Residual Risks Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -3028,7 +3688,10 @@
       "Partial \u2013 Scheduled Reviews Only or Triggers Incomplete",
       "No \u2013 No Periodic Review or Reassessment Triggers"
     ],
-    "trigger_points": "Partial \u2013 Scheduled Reviews Only or Triggers Incomplete | No \u2013 No Periodic Review or Reassessment Triggers",
+    "trigger_points": [
+      "Partial \u2013 Scheduled Reviews Only or Triggers Incomplete",
+      "No \u2013 No Periodic Review or Reassessment Triggers"
+    ],
     "is_universal": true
   },
   {
@@ -3041,7 +3704,10 @@
       "Partial \u2013 Informal Links Only",
       "No \u2013 Not Integrated"
     ],
-    "trigger_points": "Partial \u2013 Informal Links Only | No \u2013 Not Integrated",
+    "trigger_points": [
+      "Partial \u2013 Informal Links Only",
+      "No \u2013 Not Integrated"
+    ],
     "is_universal": true
   },
   {
@@ -3054,7 +3720,10 @@
       "Partial \u2013 Some Controls Missing",
       "No \u2013 Not Controlled"
     ],
-    "trigger_points": "Partial \u2013 Some Controls Missing | No \u2013 Not Controlled",
+    "trigger_points": [
+      "Partial \u2013 Some Controls Missing",
+      "No \u2013 Not Controlled"
+    ],
     "is_universal": true
   },
   {
@@ -3068,7 +3737,10 @@
       "No \u2013 Not Identified or Considered",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Identified but Not Consulted | No \u2013 Not Identified or Considered",
+    "trigger_points": [
+      "Partial \u2013 Identified but Not Consulted",
+      "No \u2013 Not Identified or Considered"
+    ],
     "is_universal": true
   },
   {
@@ -3081,7 +3753,10 @@
       "Partial \u2013 Ad Hoc Incorporation",
       "No \u2013 Not Incorporated"
     ],
-    "trigger_points": "Partial \u2013 Ad Hoc Incorporation | No \u2013 Not Incorporated",
+    "trigger_points": [
+      "Partial \u2013 Ad Hoc Incorporation",
+      "No \u2013 Not Incorporated"
+    ],
     "is_universal": true
   },
   {
@@ -3094,7 +3769,10 @@
       "Partial \u2013 Informal or Infrequent Comparison",
       "No \u2013 Not Compared or Monitored"
     ],
-    "trigger_points": "Partial \u2013 Informal or Infrequent Comparison | No \u2013 Not Compared or Monitored",
+    "trigger_points": [
+      "Partial \u2013 Informal or Infrequent Comparison",
+      "No \u2013 Not Compared or Monitored"
+    ],
     "is_universal": true
   },
   {
@@ -3108,7 +3786,10 @@
       "No \u2013 Not Assessed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Limited Scope | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Limited Scope",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -3121,7 +3802,10 @@
       "Partial \u2013 Some Dimensions Assessed",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Some Dimensions Assessed | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Some Dimensions Assessed",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -3135,7 +3819,10 @@
       "No \u2013 Not Evaluated",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Key Jurisdictions Only | No \u2013 Not Evaluated",
+    "trigger_points": [
+      "Partial \u2013 Key Jurisdictions Only",
+      "No \u2013 Not Evaluated"
+    ],
     "is_universal": true
   },
   {
@@ -3149,7 +3836,10 @@
       "No \u2013 Not Implemented",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Limited Scope | No \u2013 Not Implemented",
+    "trigger_points": [
+      "Partial \u2013 Limited Scope",
+      "No \u2013 Not Implemented"
+    ],
     "is_universal": true
   },
   {
@@ -3162,7 +3852,10 @@
       "Partial \u2013 Framework Defined but Gaps in Coverage or Operationalization",
       "No \u2013 No Formal Lifecycle Framework"
     ],
-    "trigger_points": "Partial \u2013 Framework Defined but Gaps in Coverage or Operationalization | No \u2013 No Formal Lifecycle Framework",
+    "trigger_points": [
+      "Partial \u2013 Framework Defined but Gaps in Coverage or Operationalization",
+      "No \u2013 No Formal Lifecycle Framework"
+    ],
     "is_universal": true
   },
   {
@@ -3175,7 +3868,10 @@
       "Partial \u2013 Thresholds Defined but Not Technically Enforced",
       "No \u2013 No Materiality Thresholds Defined"
     ],
-    "trigger_points": "Partial \u2013 Thresholds Defined but Not Technically Enforced | No \u2013 No Materiality Thresholds Defined",
+    "trigger_points": [
+      "Partial \u2013 Thresholds Defined but Not Technically Enforced",
+      "No \u2013 No Materiality Thresholds Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3188,7 +3884,10 @@
       "Partial \u2013 Criteria Defined but Not Consistently Enforced",
       "No \u2013 No Formal Stage-Gate Criteria"
     ],
-    "trigger_points": "Partial \u2013 Criteria Defined but Not Consistently Enforced | No \u2013 No Formal Stage-Gate Criteria",
+    "trigger_points": [
+      "Partial \u2013 Criteria Defined but Not Consistently Enforced",
+      "No \u2013 No Formal Stage-Gate Criteria"
+    ],
     "is_universal": true
   },
   {
@@ -3201,7 +3900,10 @@
       "Partial \u2013 Informal Exception Handling Only",
       "No \u2013 No Exception Protocols"
     ],
-    "trigger_points": "Partial \u2013 Informal Exception Handling Only | No \u2013 No Exception Protocols",
+    "trigger_points": [
+      "Partial \u2013 Informal Exception Handling Only",
+      "No \u2013 No Exception Protocols"
+    ],
     "is_universal": true
   },
   {
@@ -3214,7 +3916,10 @@
       "Partial \u2013 Key Roles Missing or Insufficiently Documented",
       "No \u2013 Roles Not Assigned"
     ],
-    "trigger_points": "Partial \u2013 Key Roles Missing or Insufficiently Documented | No \u2013 Roles Not Assigned",
+    "trigger_points": [
+      "Partial \u2013 Key Roles Missing or Insufficiently Documented",
+      "No \u2013 Roles Not Assigned"
+    ],
     "is_universal": true
   },
   {
@@ -3227,7 +3932,10 @@
       "Partial \u2013 Some Dimensions Not Assessed",
       "No \u2013 No Formal Dataset Governance Assessment"
     ],
-    "trigger_points": "Partial \u2013 Some Dimensions Not Assessed | No \u2013 No Formal Dataset Governance Assessment",
+    "trigger_points": [
+      "Partial \u2013 Some Dimensions Not Assessed",
+      "No \u2013 No Formal Dataset Governance Assessment"
+    ],
     "is_universal": true
   },
   {
@@ -3240,7 +3948,10 @@
       "Partial \u2013 Review Conducted for Some Features Only",
       "No \u2013 No Independent Feature Review"
     ],
-    "trigger_points": "Partial \u2013 Review Conducted for Some Features Only | No \u2013 No Independent Feature Review",
+    "trigger_points": [
+      "Partial \u2013 Review Conducted for Some Features Only",
+      "No \u2013 No Independent Feature Review"
+    ],
     "is_universal": true
   },
   {
@@ -3253,7 +3964,10 @@
       "Partial \u2013 Key Reproducibility Gaps Exist",
       "No \u2013 Not Reproducible"
     ],
-    "trigger_points": "Partial \u2013 Key Reproducibility Gaps Exist | No \u2013 Not Reproducible",
+    "trigger_points": [
+      "Partial \u2013 Key Reproducibility Gaps Exist",
+      "No \u2013 Not Reproducible"
+    ],
     "is_universal": true
   },
   {
@@ -3266,7 +3980,10 @@
       "Partial \u2013 Partially Independent (Same Function, Separate Team)",
       "No \u2013 No Independent Validation (Same Team)"
     ],
-    "trigger_points": "Partial \u2013 Partially Independent (Same Function, Separate Team) | No \u2013 No Independent Validation (Same Team)",
+    "trigger_points": [
+      "Partial \u2013 Partially Independent (Same Function, Separate Team)",
+      "No \u2013 No Independent Validation (Same Team)"
+    ],
     "is_universal": true
   },
   {
@@ -3279,7 +3996,10 @@
       "Partial \u2013 Some Controls Missing or Inconsistent",
       "No \u2013 No Secure MLOps Controls"
     ],
-    "trigger_points": "Partial \u2013 Some Controls Missing or Inconsistent | No \u2013 No Secure MLOps Controls",
+    "trigger_points": [
+      "Partial \u2013 Some Controls Missing or Inconsistent",
+      "No \u2013 No Secure MLOps Controls"
+    ],
     "is_universal": true
   },
   {
@@ -3292,7 +4012,10 @@
       "Partial \u2013 Performance Monitoring Only or Fairness Metrics Absent",
       "No \u2013 No Continuous Monitoring"
     ],
-    "trigger_points": "Partial \u2013 Performance Monitoring Only or Fairness Metrics Absent | No \u2013 No Continuous Monitoring",
+    "trigger_points": [
+      "Partial \u2013 Performance Monitoring Only or Fairness Metrics Absent",
+      "No \u2013 No Continuous Monitoring"
+    ],
     "is_universal": true
   },
   {
@@ -3305,7 +4028,10 @@
       "Partial \u2013 Some Thresholds Defined but Incomplete",
       "No \u2013 No Intervention Thresholds Defined"
     ],
-    "trigger_points": "Partial \u2013 Some Thresholds Defined but Incomplete | No \u2013 No Intervention Thresholds Defined",
+    "trigger_points": [
+      "Partial \u2013 Some Thresholds Defined but Incomplete",
+      "No \u2013 No Intervention Thresholds Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3318,7 +4044,10 @@
       "Partial \u2013 Roles Defined but Authority or Logging Incomplete",
       "No \u2013 Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Roles Defined but Authority or Logging Incomplete | No \u2013 Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Roles Defined but Authority or Logging Incomplete",
+      "No \u2013 Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3332,7 +4061,10 @@
       "No \u2013 Retraining Not Governed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Controls Missing | No \u2013 Retraining Not Governed",
+    "trigger_points": [
+      "Partial \u2013 Some Controls Missing",
+      "No \u2013 Retraining Not Governed"
+    ],
     "is_universal": true
   },
   {
@@ -3345,7 +4077,10 @@
       "Partial \u2013 Classification Defined but No Formal Regulatory Scanning",
       "No \u2013 Neither Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Classification Defined but No Formal Regulatory Scanning | No \u2013 Neither Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Classification Defined but No Formal Regulatory Scanning",
+      "No \u2013 Neither Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3359,7 +4094,10 @@
       "No \u2013 Not Applied",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Enhanced Controls Missing | No \u2013 Not Applied",
+    "trigger_points": [
+      "Partial \u2013 Some Enhanced Controls Missing",
+      "No \u2013 Not Applied"
+    ],
     "is_universal": true
   },
   {
@@ -3372,7 +4110,10 @@
       "Partial \u2013 Some Artifacts Required Inconsistently",
       "No \u2013 Not Required"
     ],
-    "trigger_points": "Partial \u2013 Some Artifacts Required Inconsistently | No \u2013 Not Required",
+    "trigger_points": [
+      "Partial \u2013 Some Artifacts Required Inconsistently",
+      "No \u2013 Not Required"
+    ],
     "is_universal": true
   },
   {
@@ -3386,7 +4127,10 @@
       "No \u2013 No Formal Due Diligence",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Partial Due Diligence Only | No \u2013 No Formal Due Diligence",
+    "trigger_points": [
+      "Partial \u2013 Partial Due Diligence Only",
+      "No \u2013 No Formal Due Diligence"
+    ],
     "is_universal": true
   },
   {
@@ -3399,7 +4143,10 @@
       "Partial \u2013 Assessed for Major Updates Only",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Assessed for Major Updates Only | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Assessed for Major Updates Only",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -3413,7 +4160,10 @@
       "No \u2013 Not Controlled",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Components Not Controlled | No \u2013 Not Controlled",
+    "trigger_points": [
+      "Partial \u2013 Some Components Not Controlled",
+      "No \u2013 Not Controlled"
+    ],
     "is_universal": true
   },
   {
@@ -3427,7 +4177,10 @@
       "No \u2013 Not Conducted",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Conducted for Some Systems Only | No \u2013 Not Conducted",
+    "trigger_points": [
+      "Partial \u2013 Conducted for Some Systems Only",
+      "No \u2013 Not Conducted"
+    ],
     "is_universal": true
   },
   {
@@ -3440,7 +4193,10 @@
       "Partial \u2013 Informal Approval or Assessment Incomplete",
       "No \u2013 No Governance Approval for Retirement"
     ],
-    "trigger_points": "Partial \u2013 Informal Approval or Assessment Incomplete | No \u2013 No Governance Approval for Retirement",
+    "trigger_points": [
+      "Partial \u2013 Informal Approval or Assessment Incomplete",
+      "No \u2013 No Governance Approval for Retirement"
+    ],
     "is_universal": true
   },
   {
@@ -3453,7 +4209,10 @@
       "Partial \u2013 Some Controls Missing or Inconsistently Applied",
       "No \u2013 Retirement Controls Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Some Controls Missing or Inconsistently Applied | No \u2013 Retirement Controls Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Some Controls Missing or Inconsistently Applied",
+      "No \u2013 Retirement Controls Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3466,7 +4225,10 @@
       "Partial \u2013 Partially Defined or Inconsistently Applied",
       "No \u2013 Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Partially Defined or Inconsistently Applied | No \u2013 Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Partially Defined or Inconsistently Applied",
+      "No \u2013 Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3479,7 +4241,10 @@
       "Partial \u2013 Defined but Gaps in Scope or Review",
       "No \u2013 Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Defined but Gaps in Scope or Review | No \u2013 Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Defined but Gaps in Scope or Review",
+      "No \u2013 Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3492,7 +4257,10 @@
       "Partial \u2013 Process Exists but Ownership or Data Categories Inadequately Governed",
       "No \u2013 No Formal AI Data Management Process"
     ],
-    "trigger_points": "Partial \u2013 Process Exists but Ownership or Data Categories Inadequately Governed | No \u2013 No Formal AI Data Management Process",
+    "trigger_points": [
+      "Partial \u2013 Process Exists but Ownership or Data Categories Inadequately Governed",
+      "No \u2013 No Formal AI Data Management Process"
+    ],
     "is_universal": true
   },
   {
@@ -3505,7 +4273,10 @@
       "Partial \u2013 Criteria Exist but External Data Assessment Incomplete",
       "No \u2013 No Formal Acquisition Criteria"
     ],
-    "trigger_points": "Partial \u2013 Criteria Exist but External Data Assessment Incomplete | No \u2013 No Formal Acquisition Criteria",
+    "trigger_points": [
+      "Partial \u2013 Criteria Exist but External Data Assessment Incomplete",
+      "No \u2013 No Formal Acquisition Criteria"
+    ],
     "is_universal": true
   },
   {
@@ -3518,7 +4289,10 @@
       "Partial \u2013 Requirements Defined but Validation or Escalation Incomplete",
       "No \u2013 No Formal Data Quality Requirements"
     ],
-    "trigger_points": "Partial \u2013 Requirements Defined but Validation or Escalation Incomplete | No \u2013 No Formal Data Quality Requirements",
+    "trigger_points": [
+      "Partial \u2013 Requirements Defined but Validation or Escalation Incomplete",
+      "No \u2013 No Formal Data Quality Requirements"
+    ],
     "is_universal": true
   },
   {
@@ -3531,7 +4305,10 @@
       "Partial \u2013 Process Defined but Relies on Manual Documentation",
       "No \u2013 No Provenance Process"
     ],
-    "trigger_points": "Partial \u2013 Process Defined but Relies on Manual Documentation | No \u2013 No Provenance Process",
+    "trigger_points": [
+      "Partial \u2013 Process Defined but Relies on Manual Documentation",
+      "No \u2013 No Provenance Process"
+    ],
     "is_universal": true
   },
   {
@@ -3544,7 +4321,10 @@
       "Partial \u2013 Some Elements Missing",
       "No \u2013 No Formal Data Preparation Governance"
     ],
-    "trigger_points": "Partial \u2013 Some Elements Missing | No \u2013 No Formal Data Preparation Governance",
+    "trigger_points": [
+      "Partial \u2013 Some Elements Missing",
+      "No \u2013 No Formal Data Preparation Governance"
+    ],
     "is_universal": true
   },
   {
@@ -3557,7 +4337,10 @@
       "Partial \u2013 Framework Exists but Controls Not Fully Proportional",
       "No \u2013 No Data Classification Framework"
     ],
-    "trigger_points": "Partial \u2013 Framework Exists but Controls Not Fully Proportional | No \u2013 No Data Classification Framework",
+    "trigger_points": [
+      "Partial \u2013 Framework Exists but Controls Not Fully Proportional",
+      "No \u2013 No Data Classification Framework"
+    ],
     "is_universal": true
   },
   {
@@ -3570,7 +4353,10 @@
       "Partial \u2013 Risks Assessed but Controls Partial or Documentation Only",
       "No \u2013 Not Assessed or Controlled"
     ],
-    "trigger_points": "Partial \u2013 Risks Assessed but Controls Partial or Documentation Only | No \u2013 Not Assessed or Controlled",
+    "trigger_points": [
+      "Partial \u2013 Risks Assessed but Controls Partial or Documentation Only",
+      "No \u2013 Not Assessed or Controlled"
+    ],
     "is_universal": true
   },
   {
@@ -3584,7 +4370,10 @@
       "No \u2013 Not Documented or Controlled",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Partially Documented or Validated | No \u2013 Not Documented or Controlled",
+    "trigger_points": [
+      "Partial \u2013 Partially Documented or Validated",
+      "No \u2013 Not Documented or Controlled"
+    ],
     "is_universal": true
   },
   {
@@ -3597,7 +4386,10 @@
       "Partial \u2013 Policy Exists but Inconsistently Applied",
       "No \u2013 No Retention or Disposal Policy"
     ],
-    "trigger_points": "Partial \u2013 Policy Exists but Inconsistently Applied | No \u2013 No Retention or Disposal Policy",
+    "trigger_points": [
+      "Partial \u2013 Policy Exists but Inconsistently Applied",
+      "No \u2013 No Retention or Disposal Policy"
+    ],
     "is_universal": true
   },
   {
@@ -3610,7 +4402,10 @@
       "Partial \u2013 Informal Controls Only",
       "No \u2013 No Mechanism to Detect Shadow Datasets"
     ],
-    "trigger_points": "Partial \u2013 Informal Controls Only | No \u2013 No Mechanism to Detect Shadow Datasets",
+    "trigger_points": [
+      "Partial \u2013 Informal Controls Only",
+      "No \u2013 No Mechanism to Detect Shadow Datasets"
+    ],
     "is_universal": true
   },
   {
@@ -3623,7 +4418,10 @@
       "Partial \u2013 Periodic Reviews Only, No Continuous Monitoring",
       "No \u2013 Not Monitored"
     ],
-    "trigger_points": "Partial \u2013 Periodic Reviews Only, No Continuous Monitoring | No \u2013 Not Monitored",
+    "trigger_points": [
+      "Partial \u2013 Periodic Reviews Only, No Continuous Monitoring",
+      "No \u2013 Not Monitored"
+    ],
     "is_universal": true
   },
   {
@@ -3636,7 +4434,10 @@
       "Partial \u2013 Checkpoint Exists but Not All Controls Re-Validated",
       "No \u2013 No Retraining Governance Checkpoint"
     ],
-    "trigger_points": "Partial \u2013 Checkpoint Exists but Not All Controls Re-Validated | No \u2013 No Retraining Governance Checkpoint",
+    "trigger_points": [
+      "Partial \u2013 Checkpoint Exists but Not All Controls Re-Validated",
+      "No \u2013 No Retraining Governance Checkpoint"
+    ],
     "is_universal": true
   },
   {
@@ -3650,7 +4451,10 @@
       "No \u2013 Not Documented",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Documented but Not Periodically Reviewed | No \u2013 Not Documented",
+    "trigger_points": [
+      "Partial \u2013 Documented but Not Periodically Reviewed",
+      "No \u2013 Not Documented"
+    ],
     "is_universal": true
   },
   {
@@ -3663,7 +4467,10 @@
       "Partial \u2013 Applied Inconsistently",
       "No \u2013 Not Applied"
     ],
-    "trigger_points": "Partial \u2013 Applied Inconsistently | No \u2013 Not Applied",
+    "trigger_points": [
+      "Partial \u2013 Applied Inconsistently",
+      "No \u2013 Not Applied"
+    ],
     "is_universal": true
   },
   {
@@ -3677,7 +4484,10 @@
       "No \u2013 Not Defined",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Standards Missing | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Some Standards Missing",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3691,7 +4501,10 @@
       "No \u2013 Not Assessed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Partial Assessment Only | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Partial Assessment Only",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -3704,7 +4517,10 @@
       "Partial \u2013 Assessed but Not All Rights Addressed",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Assessed but Not All Rights Addressed | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Assessed but Not All Rights Addressed",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -3717,7 +4533,10 @@
       "Partial \u2013 Some Assessment Conducted",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Some Assessment Conducted | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Some Assessment Conducted",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -3730,7 +4549,10 @@
       "Partial \u2013 Logging Exists but No Periodic Review",
       "No \u2013 Not Logged or Reviewed"
     ],
-    "trigger_points": "Partial \u2013 Logging Exists but No Periodic Review | No \u2013 Not Logged or Reviewed",
+    "trigger_points": [
+      "Partial \u2013 Logging Exists but No Periodic Review",
+      "No \u2013 Not Logged or Reviewed"
+    ],
     "is_universal": true
   },
   {
@@ -3744,7 +4566,10 @@
       "No \u2013 Not Defined",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Criteria Partially Defined | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Criteria Partially Defined",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3758,7 +4583,10 @@
       "No \u2013 Not Governed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Some Controls Missing | No \u2013 Not Governed",
+    "trigger_points": [
+      "Partial \u2013 Some Controls Missing",
+      "No \u2013 Not Governed"
+    ],
     "is_universal": true
   },
   {
@@ -3771,7 +4599,10 @@
       "Partial \u2013 Framework or Documentation Incomplete or Audiences Not Differentiated",
       "No \u2013 No Formal User Information Framework"
     ],
-    "trigger_points": "Partial \u2013 Framework or Documentation Incomplete or Audiences Not Differentiated | No \u2013 No Formal User Information Framework",
+    "trigger_points": [
+      "Partial \u2013 Framework or Documentation Incomplete or Audiences Not Differentiated",
+      "No \u2013 No Formal User Information Framework"
+    ],
     "is_universal": true
   },
   {
@@ -3784,7 +4615,10 @@
       "Partial \u2013 Documented but Disclosed Reactively or Incompletely",
       "No \u2013 Limitations Not Formally Disclosed"
     ],
-    "trigger_points": "Partial \u2013 Documented but Disclosed Reactively or Incompletely | No \u2013 Limitations Not Formally Disclosed",
+    "trigger_points": [
+      "Partial \u2013 Documented but Disclosed Reactively or Incompletely",
+      "No \u2013 Limitations Not Formally Disclosed"
+    ],
     "is_universal": true
   },
   {
@@ -3798,7 +4632,10 @@
       "No \u2013 Not Disclosed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Partial Disclosure Only | No \u2013 Not Disclosed",
+    "trigger_points": [
+      "Partial \u2013 Partial Disclosure Only",
+      "No \u2013 Not Disclosed"
+    ],
     "is_universal": true
   },
   {
@@ -3811,7 +4648,10 @@
       "Partial \u2013 Parties or Obligations Incompletely Identified or Rarely Updated",
       "No \u2013 Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Parties or Obligations Incompletely Identified or Rarely Updated | No \u2013 Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Parties or Obligations Incompletely Identified or Rarely Updated",
+      "No \u2013 Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3824,7 +4664,10 @@
       "Partial \u2013 Register Exists but Incomplete or Response Process Informal",
       "No \u2013 Neither Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Register Exists but Incomplete or Response Process Informal | No \u2013 Neither Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Register Exists but Incomplete or Response Process Informal",
+      "No \u2013 Neither Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3838,7 +4681,10 @@
       "No \u2013 Not Addressed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Partially Addressed | No \u2013 Not Addressed",
+    "trigger_points": [
+      "Partial \u2013 Partially Addressed",
+      "No \u2013 Not Addressed"
+    ],
     "is_universal": true
   },
   {
@@ -3851,7 +4697,10 @@
       "Partial \u2013 Mechanism Exists but Monitoring, Investigation, or Trend Analysis Incomplete",
       "No \u2013 No Adverse Impact Reporting Mechanism"
     ],
-    "trigger_points": "Partial \u2013 Mechanism Exists but Monitoring, Investigation, or Trend Analysis Incomplete | No \u2013 No Adverse Impact Reporting Mechanism",
+    "trigger_points": [
+      "Partial \u2013 Mechanism Exists but Monitoring, Investigation, or Trend Analysis Incomplete",
+      "No \u2013 No Adverse Impact Reporting Mechanism"
+    ],
     "is_universal": true
   },
   {
@@ -3865,7 +4714,10 @@
       "No \u2013 Not Provided",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Partial Explanations Only | No \u2013 Not Provided",
+    "trigger_points": [
+      "Partial \u2013 Partial Explanations Only",
+      "No \u2013 Not Provided"
+    ],
     "is_universal": true
   },
   {
@@ -3878,7 +4730,10 @@
       "Partial \u2013 Plan Exists but Tiering, Testing, or Maintenance Incomplete",
       "No \u2013 No Formal Incident Communication Plan"
     ],
-    "trigger_points": "Partial \u2013 Plan Exists but Tiering, Testing, or Maintenance Incomplete | No \u2013 No Formal Incident Communication Plan",
+    "trigger_points": [
+      "Partial \u2013 Plan Exists but Tiering, Testing, or Maintenance Incomplete",
+      "No \u2013 No Formal Incident Communication Plan"
+    ],
     "is_universal": true
   },
   {
@@ -3891,7 +4746,10 @@
       "Partial \u2013 Partially Defined",
       "No \u2013 Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Partially Defined | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Partially Defined",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -3904,7 +4762,10 @@
       "Partial \u2013 Partial Disclosure Only",
       "No \u2013 Not Disclosed"
     ],
-    "trigger_points": "Partial \u2013 Partial Disclosure Only | No \u2013 Not Disclosed",
+    "trigger_points": [
+      "Partial \u2013 Partial Disclosure Only",
+      "No \u2013 Not Disclosed"
+    ],
     "is_universal": true
   },
   {
@@ -3918,7 +4779,10 @@
       "No \u2013 Not Disclosed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Limited or Incomplete Disclosure | No \u2013 Not Disclosed",
+    "trigger_points": [
+      "Partial \u2013 Limited or Incomplete Disclosure",
+      "No \u2013 Not Disclosed"
+    ],
     "is_universal": true
   },
   {
@@ -3931,7 +4795,10 @@
       "Partial \u2013 Groups Identified but Materials Incomplete",
       "No \u2013 Not Identified or Addressed"
     ],
-    "trigger_points": "Partial \u2013 Groups Identified but Materials Incomplete | No \u2013 Not Identified or Addressed",
+    "trigger_points": [
+      "Partial \u2013 Groups Identified but Materials Incomplete",
+      "No \u2013 Not Identified or Addressed"
+    ],
     "is_universal": true
   },
   {
@@ -3944,7 +4811,10 @@
       "Partial \u2013 Reviews Conducted but Inconsistently or Without Formal Approval",
       "No \u2013 No Formal Documentation Review Process"
     ],
-    "trigger_points": "Partial \u2013 Reviews Conducted but Inconsistently or Without Formal Approval | No \u2013 No Formal Documentation Review Process",
+    "trigger_points": [
+      "Partial \u2013 Reviews Conducted but Inconsistently or Without Formal Approval",
+      "No \u2013 No Formal Documentation Review Process"
+    ],
     "is_universal": true
   },
   {
@@ -3957,7 +4827,10 @@
       "Partial \u2013 Reviewed Inconsistently",
       "No \u2013 No Governance of Disclaimers"
     ],
-    "trigger_points": "Partial \u2013 Reviewed Inconsistently | No \u2013 No Governance of Disclaimers",
+    "trigger_points": [
+      "Partial \u2013 Reviewed Inconsistently",
+      "No \u2013 No Governance of Disclaimers"
+    ],
     "is_universal": true
   },
   {
@@ -3970,7 +4843,10 @@
       "Partial \u2013 Analysis Conducted Informally",
       "No \u2013 No Trend Analysis"
     ],
-    "trigger_points": "Partial \u2013 Analysis Conducted Informally | No \u2013 No Trend Analysis",
+    "trigger_points": [
+      "Partial \u2013 Analysis Conducted Informally",
+      "No \u2013 No Trend Analysis"
+    ],
     "is_universal": true
   },
   {
@@ -3983,7 +4859,10 @@
       "Partial \u2013 Process Informal or Records Not Retained",
       "No \u2013 No User Notification Obligation"
     ],
-    "trigger_points": "Partial \u2013 Process Informal or Records Not Retained | No \u2013 No User Notification Obligation",
+    "trigger_points": [
+      "Partial \u2013 Process Informal or Records Not Retained",
+      "No \u2013 No User Notification Obligation"
+    ],
     "is_universal": true
   },
   {
@@ -3996,7 +4875,10 @@
       "Partial \u2013 Reviews Conducted Inconsistently",
       "No \u2013 No Public Transparency Governance"
     ],
-    "trigger_points": "Partial \u2013 Reviews Conducted Inconsistently | No \u2013 No Public Transparency Governance",
+    "trigger_points": [
+      "Partial \u2013 Reviews Conducted Inconsistently",
+      "No \u2013 No Public Transparency Governance"
+    ],
     "is_universal": true
   },
   {
@@ -4010,7 +4892,10 @@
       "No \u2013 Not Disclosed",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Partial Disclosure Only | No \u2013 Not Disclosed",
+    "trigger_points": [
+      "Partial \u2013 Partial Disclosure Only",
+      "No \u2013 Not Disclosed"
+    ],
     "is_universal": true
   },
   {
@@ -4023,7 +4908,10 @@
       "Partial \u2013 Partially Implemented",
       "No \u2013 Not Defined"
     ],
-    "trigger_points": "Partial \u2013 Partially Implemented | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Partially Implemented",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -4036,7 +4924,10 @@
       "Partial \u2013 Periodic Reviews but Informal",
       "No \u2013 No Cross-Channel Consistency Controls"
     ],
-    "trigger_points": "Partial \u2013 Periodic Reviews but Informal | No \u2013 No Cross-Channel Consistency Controls",
+    "trigger_points": [
+      "Partial \u2013 Periodic Reviews but Informal",
+      "No \u2013 No Cross-Channel Consistency Controls"
+    ],
     "is_universal": true
   },
   {
@@ -4049,7 +4940,10 @@
       "Partial \u2013 Processes Exist but Not Integrated or Poorly Maintained",
       "No \u2013 No Formal Responsible Use Processes"
     ],
-    "trigger_points": "Partial \u2013 Processes Exist but Not Integrated or Poorly Maintained | No \u2013 No Formal Responsible Use Processes",
+    "trigger_points": [
+      "Partial \u2013 Processes Exist but Not Integrated or Poorly Maintained",
+      "No \u2013 No Formal Responsible Use Processes"
+    ],
     "is_universal": true
   },
   {
@@ -4062,7 +4956,10 @@
       "Partial \u2013 Training Exists but Not Role-Differentiated or Completion Not Enforced",
       "No \u2013 No Responsible Use Training"
     ],
-    "trigger_points": "Partial \u2013 Training Exists but Not Role-Differentiated or Completion Not Enforced | No \u2013 No Responsible Use Training",
+    "trigger_points": [
+      "Partial \u2013 Training Exists but Not Role-Differentiated or Completion Not Enforced",
+      "No \u2013 No Responsible Use Training"
+    ],
     "is_universal": true
   },
   {
@@ -4075,7 +4972,10 @@
       "Partial \u2013 Process Exists but Incomplete or Informal",
       "No \u2013 No Misuse Reporting Process"
     ],
-    "trigger_points": "Partial \u2013 Process Exists but Incomplete or Informal | No \u2013 No Misuse Reporting Process",
+    "trigger_points": [
+      "Partial \u2013 Process Exists but Incomplete or Informal",
+      "No \u2013 No Misuse Reporting Process"
+    ],
     "is_universal": true
   },
   {
@@ -4088,7 +4988,10 @@
       "Partial \u2013 Objectives Defined but Aspirational or Rarely Updated",
       "No \u2013 No Responsible Use Objectives"
     ],
-    "trigger_points": "Partial \u2013 Objectives Defined but Aspirational or Rarely Updated | No \u2013 No Responsible Use Objectives",
+    "trigger_points": [
+      "Partial \u2013 Objectives Defined but Aspirational or Rarely Updated",
+      "No \u2013 No Responsible Use Objectives"
+    ],
     "is_universal": true
   },
   {
@@ -4101,7 +5004,10 @@
       "Partial \u2013 Intended Use Defined but Boundaries or Jurisdictions Incomplete",
       "No \u2013 Intended Use Not Formally Defined"
     ],
-    "trigger_points": "Partial \u2013 Intended Use Defined but Boundaries or Jurisdictions Incomplete | No \u2013 Intended Use Not Formally Defined",
+    "trigger_points": [
+      "Partial \u2013 Intended Use Defined but Boundaries or Jurisdictions Incomplete",
+      "No \u2013 Intended Use Not Formally Defined"
+    ],
     "is_universal": true
   },
   {
@@ -4114,7 +5020,10 @@
       "Partial \u2013 Controls Exist but Monitoring Absent or Incomplete",
       "No \u2013 No Operational Controls or Monitoring"
     ],
-    "trigger_points": "Partial \u2013 Controls Exist but Monitoring Absent or Incomplete | No \u2013 No Operational Controls or Monitoring",
+    "trigger_points": [
+      "Partial \u2013 Controls Exist but Monitoring Absent or Incomplete",
+      "No \u2013 No Operational Controls or Monitoring"
+    ],
     "is_universal": true
   },
   {
@@ -4128,7 +5037,10 @@
       "No \u2013 No Contractual Requirements",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Requirements Exist but Not Consistently Enforced | No \u2013 No Contractual Requirements",
+    "trigger_points": [
+      "Partial \u2013 Requirements Exist but Not Consistently Enforced",
+      "No \u2013 No Contractual Requirements"
+    ],
     "is_universal": true
   },
   {
@@ -4141,7 +5053,10 @@
       "Partial \u2013 Informal or Infrequent Reviews Only",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Informal or Infrequent Reviews Only | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Informal or Infrequent Reviews Only",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -4155,7 +5070,10 @@
       "No \u2013 Not Defined",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Requirements Defined but Not Consistently Enforced | No \u2013 Not Defined",
+    "trigger_points": [
+      "Partial \u2013 Requirements Defined but Not Consistently Enforced",
+      "No \u2013 Not Defined"
+    ],
     "is_universal": true
   },
   {
@@ -4168,7 +5086,10 @@
       "Partial \u2013 Risk Assessed but Countermeasures Incomplete",
       "No \u2013 Not Assessed"
     ],
-    "trigger_points": "Partial \u2013 Risk Assessed but Countermeasures Incomplete | No \u2013 Not Assessed",
+    "trigger_points": [
+      "Partial \u2013 Risk Assessed but Countermeasures Incomplete",
+      "No \u2013 Not Assessed"
+    ],
     "is_universal": true
   },
   {
@@ -4181,7 +5102,10 @@
       "Partial \u2013 Policy Exists but Not Technically Enforced or Monitored",
       "No \u2013 No Unsanctioned AI Policy"
     ],
-    "trigger_points": "Partial \u2013 Policy Exists but Not Technically Enforced or Monitored | No \u2013 No Unsanctioned AI Policy",
+    "trigger_points": [
+      "Partial \u2013 Policy Exists but Not Technically Enforced or Monitored",
+      "No \u2013 No Unsanctioned AI Policy"
+    ],
     "is_universal": true
   },
   {
@@ -4195,7 +5119,10 @@
       "No \u2013 Not Governed as Distinct Object",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Assessed but Not Monitored or Approval Informal | No \u2013 Not Governed as Distinct Object",
+    "trigger_points": [
+      "Partial \u2013 Assessed but Not Monitored or Approval Informal",
+      "No \u2013 Not Governed as Distinct Object"
+    ],
     "is_universal": true
   },
   {
@@ -4209,7 +5136,11 @@
       "50\u201369% \u2013 Partial Coverage",
       "Below 50% \u2013 Insufficient Coverage"
     ],
-    "trigger_points": "70\u201389% \u2013 Majority Covered | 50\u201369% \u2013 Partial Coverage | Below 50% \u2013 Insufficient Coverage",
+    "trigger_points": [
+      "70\u201389% \u2013 Majority Covered",
+      "50\u201369% \u2013 Partial Coverage",
+      "Below 50% \u2013 Insufficient Coverage"
+    ],
     "is_universal": true
   },
   {
@@ -4223,7 +5154,11 @@
       "50\u201369% \u2013 Partial Coverage",
       "Below 50% \u2013 Insufficient Coverage"
     ],
-    "trigger_points": "70\u201389% \u2013 Majority Covered | 50\u201369% \u2013 Partial Coverage | Below 50% \u2013 Insufficient Coverage",
+    "trigger_points": [
+      "70\u201389% \u2013 Majority Covered",
+      "50\u201369% \u2013 Partial Coverage",
+      "Below 50% \u2013 Insufficient Coverage"
+    ],
     "is_universal": true
   },
   {
@@ -4237,7 +5172,9 @@
       "Moderate Volume \u2013 Patterns Under Review",
       "High Volume or Zero with No Confidence in Reporting"
     ],
-    "trigger_points": "High Volume or Zero with No Confidence in Reporting",
+    "trigger_points": [
+      "High Volume or Zero with No Confidence in Reporting"
+    ],
     "is_universal": true
   },
   {
@@ -4251,7 +5188,11 @@
       "50\u201369% \u2013 Partial Compliance",
       "Below 50% \u2013 Material Non-Compliance"
     ],
-    "trigger_points": "70\u201389% \u2013 Mostly Compliant | 50\u201369% \u2013 Partial Compliance | Below 50% \u2013 Material Non-Compliance",
+    "trigger_points": [
+      "70\u201389% \u2013 Mostly Compliant",
+      "50\u201369% \u2013 Partial Compliance",
+      "Below 50% \u2013 Material Non-Compliance"
+    ],
     "is_universal": true
   },
   {
@@ -4265,7 +5206,10 @@
       "Some Objectives Met \u2013 Material Gaps Identified",
       "Most or All Objectives Not Met"
     ],
-    "trigger_points": "Some Objectives Met \u2013 Material Gaps Identified | Most or All Objectives Not Met",
+    "trigger_points": [
+      "Some Objectives Met \u2013 Material Gaps Identified",
+      "Most or All Objectives Not Met"
+    ],
     "is_universal": true
   },
   {
@@ -4278,7 +5222,10 @@
       "Partial \u2013 Framework Exists but Inconsistently Applied",
       "No \u2013 No Consequence Framework"
     ],
-    "trigger_points": "Partial \u2013 Framework Exists but Inconsistently Applied | No \u2013 No Consequence Framework",
+    "trigger_points": [
+      "Partial \u2013 Framework Exists but Inconsistently Applied",
+      "No \u2013 No Consequence Framework"
+    ],
     "is_universal": true
   },
   {
@@ -4291,7 +5238,10 @@
       "Partial \u2013 Mechanisms Exist but Not Formally Documented or Inconsistently Applied",
       "No \u2013 No Access Revocation Mechanism"
     ],
-    "trigger_points": "Partial \u2013 Mechanisms Exist but Not Formally Documented or Inconsistently Applied | No \u2013 No Access Revocation Mechanism",
+    "trigger_points": [
+      "Partial \u2013 Mechanisms Exist but Not Formally Documented or Inconsistently Applied",
+      "No \u2013 No Access Revocation Mechanism"
+    ],
     "is_universal": true
   },
   {
@@ -4305,7 +5255,10 @@
       "No \u2013 No Suspension Criteria Defined",
       "Not Applicable"
     ],
-    "trigger_points": "Partial \u2013 Criteria Defined but Authority or Communication Process Incomplete | No \u2013 No Suspension Criteria Defined",
+    "trigger_points": [
+      "Partial \u2013 Criteria Defined but Authority or Communication Process Incomplete",
+      "No \u2013 No Suspension Criteria Defined"
+    ],
     "is_universal": true
   }
 ]

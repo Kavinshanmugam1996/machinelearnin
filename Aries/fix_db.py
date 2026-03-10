@@ -47,7 +47,12 @@ for r in raw:
         
     # Extract trigger points for scoring
     trigger_raw = str(r.get('trigger_points', ''))
-    trigger_points = clean_text(trigger_raw) if trigger_raw != 'nan' else ""
+    trigger_points = []
+    if trigger_raw and trigger_raw != 'nan':
+        trigger_points = [clean_text(tp) for tp in trigger_raw.split('|')]
+    else:
+        # Default triggers for safety
+        trigger_points = ["No", "Maybe", "Partial", "Non-compliant"]
             
     # Clean the text properly
     text_clean = clean_text(r.get('question_text', ''))
@@ -56,7 +61,7 @@ for r in raw:
         'qid': str(r.get('qid_code')),
         'text': text_clean,
         'component_group': str(r.get('component_group', '')),
-        'cluster': cluster_formatted.strip(),
+        'cluster': cluster_formatted.strip().replace("\u2014", "—"),
         'options': options,
         'trigger_points': trigger_points,
         'is_universal': bool(r.get('is_universal', 0))
