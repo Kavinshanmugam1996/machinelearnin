@@ -1081,7 +1081,7 @@ function App() {
   // Client Management
   const [clients, setClients] = useState([]);
   const [activeClientId, setActiveClientId] = useState(() => {
-    return localStorage.getItem("AIRES_active_client") || "default";
+    return localStorage.getItem("Aries_active_client") || "default";
   });
 
   // Client-specific persistences
@@ -1154,7 +1154,7 @@ function App() {
     setAnswers(savedA ? JSON.parse(savedA) : {});
     setCurrentQuestionIndex(savedI ? parseInt(savedI) : 0);
     
-    localStorage.setItem("AIRES_active_client", activeClientId);
+    localStorage.setItem("Aries_active_client", activeClientId);
   }, [activeClientId]);
 
   // Sync state to keyed localStorage AND Server

@@ -2737,7 +2737,7 @@
   },
   {
     "qid": "AR_212",
-    "text": "Does the AI policy explicitly cover all key lifecycle areas (strategy, development, third-party, GenAI, data, fairness, oversight, incidents, decommissioning) and apply across all business units, geographies, subsidiAIRES, contractors, and third parties?",
+    "text": "Does the AI policy explicitly cover all key lifecycle areas (strategy, development, third-party, GenAI, data, fairness, oversight, incidents, decommissioning) and apply across all business units, geographies, subsidiaries, contractors, and third parties?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
     "options": [
@@ -3322,7 +3322,7 @@
   },
   {
     "qid": "AR_248",
-    "text": "Are AI tooling components, including open-source librAIRES and development environments, subject to documented security review, vulnerability scanning, patch management, and compliance validation?",
+    "text": "Are AI tooling components, including open-source libraries and development environments, subject to documented security review, vulnerability scanning, patch management, and compliance validation?",
     "component_group": "security",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
     "options": [
@@ -3338,7 +3338,7 @@
   },
   {
     "qid": "AR_249",
-    "text": "Are open-source AI librAIRES, frameworks, and tooling components formally reviewed for license compatibility, intellectual property obligations, attribution requirements, and commercial use restrictions before integration?",
+    "text": "Are open-source AI libraries, frameworks, and tooling components formally reviewed for license compatibility, intellectual property obligations, attribution requirements, and commercial use restrictions before integration?",
     "component_group": "intellectual_property",
     "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
     "options": [
@@ -4607,7 +4607,7 @@
   },
   {
     "qid": "AR_327",
-    "text": "Does the organization formally document and communicate to users the known limitations, failure modes, performance boundAIRES, and misuse risks of each AI system \u2014 and are these disclosures provided proactively at deployment or interaction, not reactively after failures?",
+    "text": "Does the organization formally document and communicate to users the known limitations, failure modes, performance boundaries, and misuse risks of each AI system \u2014 and are these disclosures provided proactively at deployment or interaction, not reactively after failures?",
     "component_group": "explainability_transparency",
     "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
     "options": [
@@ -4996,16 +4996,16 @@
   },
   {
     "qid": "AR_351",
-    "text": "Has the organization formally defined and documented the intended use of each AI system including tasks, user populations, deployment environments, and explicit use boundAIRES (out-of-scope, prohibited), with jurisdiction-specific compliance assessed where systems are deployed across multiple jurisdictions?",
+    "text": "Has the organization formally defined and documented the intended use of each AI system including tasks, user populations, deployment environments, and explicit use boundaries (out-of-scope, prohibited), with jurisdiction-specific compliance assessed where systems are deployed across multiple jurisdictions?",
     "component_group": "policies_procedures_documentation",
     "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
     "options": [
-      "Yes \u2013 Intended Use & BoundAIRES Fully Documented, Jurisdictions Assessed",
-      "Partial \u2013 Intended Use Defined but BoundAIRES or Jurisdictions Incomplete",
+      "Yes \u2013 Intended Use & Boundaries Fully Documented, Jurisdictions Assessed",
+      "Partial \u2013 Intended Use Defined but Boundaries or Jurisdictions Incomplete",
       "No \u2013 Intended Use Not Formally Defined"
     ],
     "trigger_points": [
-      "Partial \u2013 Intended Use Defined but BoundAIRES or Jurisdictions Incomplete",
+      "Partial \u2013 Intended Use Defined but Boundaries or Jurisdictions Incomplete",
       "No \u2013 Intended Use Not Formally Defined"
     ],
     "is_universal": true
