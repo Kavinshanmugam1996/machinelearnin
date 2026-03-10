@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
 # --- KAFKA PRODUCER SETUP (AWS READY) ---
-KAFKA_TOPIC = "aries-assessment-events"
+KAFKA_TOPIC = "AIRES-assessment-events"
 try:
     from kafka import KafkaProducer
     # Defaults to localhost for dev, but configurable for AWS MSK via Env Var
@@ -28,7 +28,7 @@ except Exception as e:
     producer = None
 # ----------------------------------------
 
-app = FastAPI(title="Aries Risk Profiler Backend")
+app = FastAPI(title="AIRES Risk Profiler Backend")
 
 # Allow CORS for external access if needed in prod
 app.add_middleware(
