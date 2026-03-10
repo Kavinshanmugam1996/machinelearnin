@@ -302,7 +302,7 @@
         }
       }
 
-      console.log("[AIRES] Data loaded:", AI_USE_CASES.length, "use cases,", ALL_QUESTIONS.length, "questions,", Object.keys(RISK_DB).length, "risk entries");
+
     }
 
     function getRelevantQuestions(aiInventory) {
@@ -1180,7 +1180,7 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
           });
-          console.log("[AIRES] Synced to server:", activeClientId);
+
         } catch (err) {
           console.error("[AIRES] Failed to sync to server:", err);
         }
