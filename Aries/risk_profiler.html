@@ -796,7 +796,7 @@
                     <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Industry *</label>
                     <select value={form.industry} onChange={e => setForm({ ...form, industry: e.target.value })} style={{ ...f(errors.industry), cursor: "pointer" }}>
                       <option value="">Select industry...</option>
-                      {["Healthcare", "Banking", "Retail", "E-Commerce", "Education"].map(i => <option key={i}>{i}</option>)}
+                      {["Healthcare", "Banking", "Retail", "E-Commerce", "Education", "Other"].map(i => <option key={i}>{i}</option>)}
                     </select>
                     {errors.industry && <span style={{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>{errors.industry}</span>}
                   </div>
