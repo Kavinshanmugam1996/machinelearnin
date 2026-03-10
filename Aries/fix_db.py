@@ -66,7 +66,7 @@ for r in raw:
         'qid': str(r.get('qid_code')),
         'text': text_clean,
         'component_group': str(r.get('component_group', '')),
-        'cluster': cluster_formatted.strip().replace("\u2014", "—").replace("Aries", "AIRES").replace("Organisation", "Organization"),
+        'cluster': cluster_formatted.strip().replace("\u2014", "—"),
         'options': options,
         'trigger_points': trigger_points,
         'is_universal': bool(r.get('is_universal', 0))
