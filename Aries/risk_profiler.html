@@ -576,8 +576,6 @@ function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onS
         <div className="hero-glow" style={{ bottom: "10%", right: "10%", width: "50vh", height: "50vh", background: "rgba(200, 24, 30, 0.15)", animationDuration: "16s", animationDelay: "-3s" }} />
 
         <div style={{ position: "relative", zIndex: 10, width: "100%", maxWidth: "none", margin: "0", padding: "80px 40px", background: "rgba(255,255,255,0.02)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.06)", boxShadow: "0 30px 60px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)" }}>
-          <BizcomLogo size={80} style={{ marginBottom: 40, filter: "drop-shadow(0 0 20px rgba(255,255,255,0.2))" }} />
-          
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(200,24,30,0.1)", border: "1px solid rgba(200,24,30,0.3)",
@@ -587,11 +585,11 @@ function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onS
             <span style={{ color: "#FCA5A5", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>AI GOVERNANCE DIAGNOSTIC</span>
           </div>
 
-          <h1 style={{ color: B.white, fontSize: 64, fontWeight: 800, margin: "0 0 8px", letterSpacing: "-1.5px", lineHeight: 1.1, fontFamily: DISPLAY}}>
-            Assess AI Risks Today.
+          <h1 style={{ color: B.white, fontSize: 64, fontWeight: 800, margin: "0 0 8px", letterSpacing: "-1px", lineHeight: 1.1, fontFamily: DISPLAY}}>
+            Assess AI Risks Today
           </h1>
-          <h2 style={{ background: "linear-gradient(90deg, #3B9BC8, #89C4E1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: 56, fontWeight: 800, margin: "0 0 32px", letterSpacing: "-1.5px", lineHeight: 1.1, fontFamily: DISPLAY}}>
-            Avoid AI Failures Tomorrow.
+          <h2 style={{ background: "linear-gradient(90deg, #3B9BC8, #89C4E1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: 56, fontWeight: 800, margin: "0 0 32px", letterSpacing: "-1px", lineHeight: 1.1, fontFamily: DISPLAY}}>
+            Avoid AI Failures Tomorrow
           </h2>
           <p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, margin: "0 auto 48px", fontSize: 18, lineHeight: 1.6, fontWeight: 400 }}>
             Empower your Organization with a risk framework that is measurable, repeatable, and regulation-ready. Let's build AI that scales, excels, and is future-proof.
@@ -1101,7 +1099,7 @@ function App() {
   // Client Management
   const [clients, setClients] = useState([]);
   const [activeClientId, setActiveClientId] = useState(() => {
-    return localStorage.getItem("Aries_active_client") || "default";
+    return localStorage.getItem("AIRES_active_client") || "default";
   });
 
   // Client-specific persistences
@@ -1174,7 +1172,7 @@ function App() {
     setAnswers(savedA ? JSON.parse(savedA) : {});
     setCurrentQuestionIndex(savedI ? parseInt(savedI) : 0);
     
-    localStorage.setItem("Aries_active_client", activeClientId);
+    localStorage.setItem("AIRES_active_client", activeClientId);
   }, [activeClientId]);
 
   // Sync state to keyed localStorage AND Server
