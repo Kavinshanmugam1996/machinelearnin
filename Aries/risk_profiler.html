@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Aries Risk Profiler</title>
+  <title>AIRES Risk Profiler</title>
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -255,7 +255,7 @@ async function loadAllData() {
     }
   }
 
-  console.log("[Aries] Data loaded:", AI_USE_CASES.length, "use cases,", ALL_QUESTIONS.length, "questions,", Object.keys(RISK_DB).length, "risk entries");
+  console.log("[AIRES] Data loaded:", AI_USE_CASES.length, "use cases,", ALL_QUESTIONS.length, "questions,", Object.keys(RISK_DB).length, "risk entries");
 }
 
 function getRelevantQuestions(aiInventory) {
@@ -316,7 +316,7 @@ function Nav({ steps, current, clients = [], activeClientId, onSwitchClient, onL
           ))}
         </div>
       ) : (
-        <div style={{ fontSize: 13, fontWeight: 600, color: B.gray700 }}>Aries Risk Profiler</div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: B.gray700 }}>AIRES Risk Profiler</div>
       )}
 
       <div style={{ position: "relative" }}>
@@ -578,7 +578,7 @@ function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onS
             Avoid AI Failures Tomorrow.
           </h2>
           <p style={{ color: "rgba(255,255,255,0.7)", maxWidth: 640, margin: "0 auto 48px", fontSize: 18, lineHeight: 1.6, fontWeight: 400 }}>
-            Empower your organisation with a risk framework that is measurable, repeatable, and regulation-ready. Let's build AI that scales, excels, and is future-proof.
+            Empower your Organization with a risk framework that is measurable, repeatable, and regulation-ready. Let's build AI that scales, excels, and is future-proof.
           </p>
 
           <div style={{ display: "flex", gap: 16, justifyContent: "center", marginBottom: 56, flexWrap: "wrap" }}>
@@ -588,7 +588,7 @@ function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onS
               border: hasSaved ? `1.5px solid ${B.red}` : "none",
               color: hasSaved ? B.red : B.white
             }}>
-              {hasSaved ? "START NEW ASSESSMENT" : "START ARIES AI RISK MAP →"}
+              {hasSaved ? "START NEW ASSESSMENT" : "START AIRES AI RISK MAP →"}
             </button>
             {hasSaved && (
               <button className="auth-btn" onClick={onResume} style={{
@@ -638,8 +638,8 @@ function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onS
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, maxWidth: 1100, margin: "0 auto" }}>
           {[
-            { n: "01", t: "Company Profile", d: "Tell us about your organisation, industry, and the assessor." },
-            { n: "02", t: "AI Inventory", d: "Select the AI components your organisation actually uses." },
+            { n: "01", t: "Company Profile", d: "Tell us about your Organization, industry, and the assessor." },
+            { n: "02", t: "AI Inventory", d: "Select the AI components your Organization actually uses." },
             { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your AI stack." },
             { n: "04", t: "Risk Report", d: "Receive a scored risk profile with compliance gaps and actions." },
           ].map((s, i) => (
@@ -712,14 +712,14 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
       <div style={{ maxWidth: 760, margin: "40px auto", padding: "0 24px 60px" }}>
         <div style={{ marginBottom: 32 }}>
           <h1 style={{ fontSize: 28, fontWeight: 800, color: B.black, margin: "0 0 6px", letterSpacing: "-0.3px" , fontFamily: DISPLAY}}>Company Profile</h1>
-          <p style={{ color: B.gray500, fontSize: 14, margin: 0 }}>Tell us about your organisation to personalise your assessment.</p>
+          <p style={{ color: B.gray500, fontSize: 14, margin: 0 }}>Tell us about your Organization to personalise your assessment.</p>
         </div>
 
-        {/* Section 1: Organisation Details */}
+        {/* Section 1: Organization Details */}
         <div style={{ background: B.white, border: `1px solid ${B.border}`, borderRadius: 12, padding: "32px", marginBottom: 20, boxShadow: B.shadow }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24 }}>
             <div style={{ width: 4, height: 20, background: B.red, borderRadius: 2 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>I. ORGANISATION DETAILS</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>I. Organization DETAILS</span>
           </div>
 
           <div style={{ display: "grid", gap: 18 }}>
@@ -761,7 +761,7 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
           </div>
           <div>
             <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Select Jurisdiction *</label>
-            <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>Choose the primary regulatory framework applicable to your organisation's AI use.</p>
+            <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>Choose the primary regulatory framework applicable to your Organization's AI use.</p>
             <select value={form.regulatory} onChange={e => setForm({ ...form, regulatory: e.target.value })} style={{ ...f(errors.regulatory), cursor: "pointer", maxWidth: 400 }}>
               <option value="">Select jurisdiction...</option>
               <option value="EU">EU (AI Act)</option>
@@ -785,7 +785,7 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
           </div>
           <div>
             <label style={{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Technological Maturity Level</label>
-            <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>How mature is your organisation's technology adoption? (1 = Initial &nbsp;→&nbsp; 5 = Fully Optimised)</p>
+            <p style={{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>How mature is your Organization's technology adoption? (1 = Initial &nbsp;→&nbsp; 5 = Fully Optimised)</p>
             <select value={form.techMaturity} onChange={e => setForm({ ...form, techMaturity: e.target.value })} style={{ ...f(errors.techMaturity), cursor: "pointer", maxWidth: 320 }}>
               <option value="">Select level...</option>
               <option value="1">1 – Initial / Ad-hoc</option>
@@ -804,7 +804,7 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
             <span style={{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>AI INVENTORY</span>
           </div>
           <p style={{ color: B.gray500, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>
-            Describe how your organisation uses AI. Each entry drives targeted questions for your assessment.
+            Describe how your Organization uses AI. Each entry drives targeted questions for your assessment.
           </p>
 
           {errors.inventory && (
@@ -825,7 +825,7 @@ function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLog
                   <div>
                     <label style={{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Description</label>
                     <input value={item.description} onChange={e => upd(i, "description", e.target.value)}
-                      placeholder="Briefly describe how your organisation uses this AI..."
+                      placeholder="Briefly describe how your Organization uses this AI..."
                       style={{ ...f(false), background: B.white }} />
                   </div>
                   <div>
@@ -1081,7 +1081,7 @@ function App() {
   // Client Management
   const [clients, setClients] = useState([]);
   const [activeClientId, setActiveClientId] = useState(() => {
-    return localStorage.getItem("aries_active_client") || "default";
+    return localStorage.getItem("AIRES_active_client") || "default";
   });
 
   // Client-specific persistences
@@ -1109,9 +1109,9 @@ function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
-      console.log("[Aries] Synced to server:", activeClientId);
+      console.log("[AIRES] Synced to server:", activeClientId);
     } catch (err) {
-      console.error("[Aries] Failed to sync to server:", err);
+      console.error("[AIRES] Failed to sync to server:", err);
     }
   };
 
@@ -1133,7 +1133,7 @@ function App() {
         
         setPage("login");
       } catch (err) {
-        console.error("[Aries] Failed to initialize:", err);
+        console.error("[AIRES] Failed to initialize:", err);
         setLoadError("Failed to load data. Make sure you are running via the local server (python server.py) and opening http://localhost:3000/risk_profiler.html");
       }
     };
@@ -1142,9 +1142,9 @@ function App() {
 
   // Load active client data when client switches
   useEffect(() => {
-    const pKey = `aries_client_${activeClientId}_profile`;
-    const aKey = `aries_client_${activeClientId}_answers`;
-    const iKey = `aries_client_${activeClientId}_q_index`;
+    const pKey = `AIRES_client_${activeClientId}_profile`;
+    const aKey = `AIRES_client_${activeClientId}_answers`;
+    const iKey = `AIRES_client_${activeClientId}_q_index`;
 
     const savedP = localStorage.getItem(pKey);
     const savedA = localStorage.getItem(aKey);
@@ -1154,31 +1154,31 @@ function App() {
     setAnswers(savedA ? JSON.parse(savedA) : {});
     setCurrentQuestionIndex(savedI ? parseInt(savedI) : 0);
     
-    localStorage.setItem("aries_active_client", activeClientId);
+    localStorage.setItem("AIRES_active_client", activeClientId);
   }, [activeClientId]);
 
   // Sync state to keyed localStorage AND Server
   useEffect(() => {
     if (profile) {
-      localStorage.setItem(`aries_client_${activeClientId}_profile`, JSON.stringify(profile));
+      localStorage.setItem(`AIRES_client_${activeClientId}_profile`, JSON.stringify(profile));
       syncToServer();
     } else {
-      localStorage.removeItem(`aries_client_${activeClientId}_profile`);
+      localStorage.removeItem(`AIRES_client_${activeClientId}_profile`);
     }
   }, [profile, activeClientId]);
 
   useEffect(() => {
-    localStorage.setItem(`aries_client_${activeClientId}_answers`, JSON.stringify(answers));
+    localStorage.setItem(`AIRES_client_${activeClientId}_answers`, JSON.stringify(answers));
     syncToServer();
   }, [answers, activeClientId]);
 
   useEffect(() => {
-    localStorage.setItem(`aries_client_${activeClientId}_q_index`, currentQuestionIndex.toString());
+    localStorage.setItem(`AIRES_client_${activeClientId}_q_index`, currentQuestionIndex.toString());
     syncToServer();
   }, [currentQuestionIndex, activeClientId]);
 
   useEffect(() => {
-    localStorage.setItem("aries_clients", JSON.stringify(clients));
+    localStorage.setItem("AIRES_clients", JSON.stringify(clients));
   }, [clients]);
 
   const switchClient = (id, name) => {
@@ -1223,9 +1223,9 @@ function App() {
   }
 
   const cleanReset = () => {
-    localStorage.removeItem(`aries_client_${activeClientId}_profile`);
-    localStorage.removeItem(`aries_client_${activeClientId}_answers`);
-    localStorage.removeItem(`aries_client_${activeClientId}_q_index`);
+    localStorage.removeItem(`AIRES_client_${activeClientId}_profile`);
+    localStorage.removeItem(`AIRES_client_${activeClientId}_answers`);
+    localStorage.removeItem(`AIRES_client_${activeClientId}_q_index`);
     setProfile(null);
     setAnswers({});
     setCurrentQuestionIndex(0);
@@ -1273,9 +1273,9 @@ function App() {
             setQuestions(q); 
             setPage("results");
             // Clear storage on successful finish for THIS client
-            localStorage.removeItem(`aries_client_${activeClientId}_profile`);
-            localStorage.removeItem(`aries_client_${activeClientId}_answers`);
-            localStorage.removeItem(`aries_client_${activeClientId}_q_index`);
+            localStorage.removeItem(`AIRES_client_${activeClientId}_profile`);
+            localStorage.removeItem(`AIRES_client_${activeClientId}_answers`);
+            localStorage.removeItem(`AIRES_client_${activeClientId}_q_index`);
           }}
           onExit={() => setPage("landing")}
           initialIndex={currentQuestionIndex}

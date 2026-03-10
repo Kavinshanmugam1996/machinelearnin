@@ -15,11 +15,16 @@ domain_map = {
     "Cluster 7": "Domain 7: "
 }
 
+import re
+
 def clean_text(text):
     text = str(text)
     if text == "nan": return ""
     # Fix the common utf-8 mojibake
     text = text.replace("â€”", "—").replace("â€™", "'").replace("â€˜", "'").replace("â€œ", '"').replace("â€", '"')
+    # AIRES Rebranding - Case Insensitive
+    text = re.sub(r'Aries', 'AIRES', text, flags=re.IGNORECASE)
+    text = re.sub(r'Organisation', 'Organization', text, flags=re.IGNORECASE)
     return text.strip()
 
 for r in raw:
@@ -61,7 +66,7 @@ for r in raw:
         'qid': str(r.get('qid_code')),
         'text': text_clean,
         'component_group': str(r.get('component_group', '')),
-        'cluster': cluster_formatted.strip().replace("\u2014", "—"),
+        'cluster': cluster_formatted.strip().replace("\u2014", "—").replace("Aries", "AIRES").replace("Organisation", "Organization"),
         'options': options,
         'trigger_points': trigger_points,
         'is_universal': bool(r.get('is_universal', 0))
