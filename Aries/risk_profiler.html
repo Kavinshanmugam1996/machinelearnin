@@ -704,8 +704,8 @@
             <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, maxWidth: 1100, margin: "0 auto" }}>
               {[
                 { n: "01", t: "Company Profile", d: "Tell us about your organisation, industry, and the assessor." },
-                { n: "02", t: "AI Inventory", d: "Select the AI components your organisation actually uses." },
-                { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your AI stack." },
+                { n: "02", t: "AI Inventory", d: "Tell us about your AI use case." },
+                { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your AI risks." },
                 { n: "04", t: "Risk Report", d: "Receive a scored risk profile with compliance gaps and actions." },
               ].map((s, i) => (
                 <div key={s.n} style={{
@@ -1320,6 +1320,7 @@
               activeClientId={activeClientId}
               onSwitchClient={switchClient}
               onLogout={logout}
+              onHome={() => setPage("landing")}
             />
           )}
           {page === "profile" && <CompanyProfile
@@ -1334,6 +1335,7 @@
             activeClientId={activeClientId}
             onSwitchClient={switchClient}
             onLogout={logout}
+            onHome={() => setPage("landing")}
           />}
           {page === "questions" && profile && (
             <QuestionFlow
@@ -1368,6 +1370,8 @@
               activeClientId={activeClientId}
               onSwitchClient={switchClient}
               onLogout={logout}
+              onHome={() => setPage("landing")}
+            />
             />
           )}
         </div>
