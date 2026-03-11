@@ -13,7 +13,6 @@ AIRES™ (AI Risk Evaluation System) is an enterprise-grade AI governance and ri
 - **Multi-Tenant Login**: Secure admin access for designated users (e.g., Kavin, Jerry, Asifa).
 - **Dynamic Risk Profiling**: Tailored question sets based on industry (Finance, Healthcare, Tech, etc.) and specific AI use cases.
 - **AI Inventory Management**: Tracking and categorizing AI assets within an organization.
-- **Interactive Dashboards**: Visual representation of risk profiles and domain breakdowns.
 - **Manual Expert Reporting**: A detailed, human-reviewed risk report generated and sent to the client within 24-48 hours.
 - **Assessment Persistence**: Automatic saving and retrieval of assessment data in JSON format.
 - **Event Streaming**: Integration with Kafka for streaming assessment events to enterprise data lakes.
@@ -32,6 +31,7 @@ AIRES™ (AI Risk Evaluation System) is an enterprise-grade AI governance and ri
 - **Containerized Environment**: Backend is optimized for deployment on AWS App Runner or ECS.
 
 ## 6. Out of Scope (Initial Version)
+- **Interactive Dashboards**: Live radar charts and visual scorecards (Planned for Phase 2).
 - **External User Registration**: Self-service signup for non-admin users.
 - **Advanced Predictive Analytics**: AI-driven risk prediction (beyond framework-based scoring).
 - **Direct Database Integration**: Use of relational databases (PostgreSQL/MySQL) instead of file-based storage.
