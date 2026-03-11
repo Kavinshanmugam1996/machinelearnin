@@ -1,0 +1,41 @@
+# AIRES™ Project Scope Document
+
+## 1. Introduction
+AIRES™ (AI Risk Evaluation System) is an enterprise-grade AI governance and risk assessment platform developed for Bizcom. It provides a structured methodology for organizations to evaluate their AI systems against regulatory requirements, technical standards, and ethical considerations.
+
+## 2. Project Objectives
+- **Standardize AI Assessment**: Provide a repeatable framework for evaluating AI risks across various industries.
+- **Regulatory Alignment**: Ensure AI systems align with emerging standards such as the EU AI Act, NIST RMF, and ISO 42001.
+- **Risk Mitigation**: Identify specific governance gaps and provide actionable mitigation priorities.
+- **Scalability**: Support enterprise-level data management and real-time event streaming.
+
+## 3. Functional Scope (Features)
+- **Multi-Tenant Login**: Secure admin access for designated users (e.g., Kavin, Jerry, Asifa).
+- **Dynamic Risk Profiling**: Tailored question sets based on industry (Finance, Healthcare, Tech, etc.) and specific AI use cases.
+- **AI Inventory Management**: Tracking and categorizing AI assets within an organization.
+- **Interactive Dashboards**: Visual representation of risk profiles and domain breakdowns.
+- **Manual Expert Reporting**: A detailed, human-reviewed risk report generated and sent to the client within 24-48 hours.
+- **Assessment Persistence**: Automatic saving and retrieval of assessment data in JSON format.
+- **Event Streaming**: Integration with Kafka for streaming assessment events to enterprise data lakes.
+
+## 4. Technology Stack
+- **Backend**: Python 3.11, FastAPI (High-performance API framework).
+- **Frontend**: React 18, Babel (CDN-loaded for rapid development/iteration).
+- **Styling**: Vanilla CSS (Custom premium aesthetics).
+- **Data Layer**: JSON (Assessments), CSV/XLSX (Risk Models & QA DB).
+- **Messaging**: Kafka (Event-driven architecture).
+- **DevOps**: Docker (Containerization).
+
+## 5. Deployment Architecture
+- **In-Browser Transformation**: Uses Babel Standalone to transform JSX in the browser, simplifying the build process.
+- **Stateless API**: FastAPI backend serves static files and handles data operations.
+- **Containerized Environment**: Backend is optimized for deployment on AWS App Runner or ECS.
+
+## 6. Out of Scope (Initial Version)
+- **External User Registration**: Self-service signup for non-admin users.
+- **Advanced Predictive Analytics**: AI-driven risk prediction (beyond framework-based scoring).
+- **Direct Database Integration**: Use of relational databases (PostgreSQL/MySQL) instead of file-based storage.
+- **Third-Party API Integrations**: Direct hooks into external CRM or ERP systems.
+
+---
+*Confidentiality: For Bizcom Internal Use Only*
