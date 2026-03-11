@@ -14,7 +14,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_02",
@@ -31,7 +32,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_03",
@@ -48,7 +50,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_04",
@@ -65,7 +68,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_05",
@@ -82,7 +86,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_06",
@@ -99,7 +104,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_07",
@@ -116,7 +122,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_08",
@@ -133,7 +140,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_09",
@@ -150,7 +158,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_10",
@@ -167,7 +176,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_11",
@@ -184,7 +194,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_12",
@@ -201,7 +212,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_13",
@@ -218,7 +230,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_14",
@@ -235,7 +248,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_15",
@@ -252,7 +266,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_16",
@@ -269,7 +284,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_17",
@@ -286,7 +302,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_18",
@@ -303,7 +320,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_19",
@@ -320,7 +338,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_20",
@@ -337,7 +356,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_21",
@@ -354,7 +374,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_22",
@@ -371,7 +392,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_23",
@@ -388,7 +410,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_24",
@@ -405,7 +428,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_25",
@@ -422,7 +446,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_26",
@@ -439,7 +464,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_27",
@@ -456,7 +482,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_28",
@@ -473,7 +500,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_29",
@@ -490,7 +518,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_30",
@@ -507,7 +536,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_31",
@@ -524,7 +554,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_32",
@@ -541,7 +572,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_33",
@@ -558,7 +590,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_34",
@@ -575,7 +608,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_35",
@@ -592,7 +626,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_36",
@@ -609,7 +644,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_37",
@@ -626,7 +662,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_38",
@@ -643,7 +680,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_39",
@@ -660,7 +698,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_40",
@@ -677,7 +716,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_41",
@@ -694,7 +734,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_42",
@@ -711,7 +752,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_43",
@@ -728,7 +770,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_44",
@@ -745,7 +788,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_45",
@@ -762,7 +806,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_46",
@@ -779,7 +824,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_47",
@@ -796,7 +842,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_48",
@@ -813,7 +860,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_49",
@@ -830,7 +878,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_50",
@@ -847,7 +896,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_51",
@@ -864,7 +914,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_52",
@@ -881,7 +932,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_53",
@@ -898,7 +950,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_54",
@@ -915,7 +968,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_55",
@@ -932,7 +986,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_56",
@@ -949,7 +1004,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_57",
@@ -966,7 +1022,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_58",
@@ -983,7 +1040,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_59",
@@ -1000,7 +1058,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_60",
@@ -1017,7 +1076,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_61",
@@ -1034,7 +1094,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_62",
@@ -1051,7 +1112,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_63",
@@ -1068,7 +1130,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_64",
@@ -1085,7 +1148,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_65",
@@ -1102,7 +1166,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_66",
@@ -1119,7 +1184,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_67",
@@ -1136,7 +1202,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_68",
@@ -1153,7 +1220,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_69",
@@ -1170,7 +1238,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_70",
@@ -1187,7 +1256,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_71",
@@ -1204,7 +1274,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_72",
@@ -1221,7 +1292,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_73",
@@ -1238,7 +1310,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_74",
@@ -1255,7 +1328,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_75",
@@ -1272,7 +1346,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_76",
@@ -1289,7 +1364,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_77",
@@ -1306,7 +1382,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_78",
@@ -1323,7 +1400,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_79",
@@ -1340,7 +1418,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_80",
@@ -1357,7 +1436,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_81",
@@ -1374,7 +1454,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_82",
@@ -1391,7 +1472,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_83",
@@ -1408,7 +1490,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_84",
@@ -1425,7 +1508,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_85",
@@ -1442,7 +1526,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_86",
@@ -1459,7 +1544,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_87",
@@ -1476,7 +1562,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_88",
@@ -1493,7 +1580,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_89",
@@ -1510,7 +1598,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_90",
@@ -1527,7 +1616,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_91",
@@ -1544,7 +1634,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_92",
@@ -1561,7 +1652,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_93",
@@ -1578,7 +1670,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_94",
@@ -1595,7 +1688,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_95",
@@ -1612,7 +1706,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_96",
@@ -1629,7 +1724,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_97",
@@ -1646,7 +1742,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_98",
@@ -1663,7 +1760,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_99",
@@ -1680,7 +1778,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_100",
@@ -1697,7 +1796,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_101",
@@ -1714,7 +1814,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_102",
@@ -1731,7 +1832,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_103",
@@ -1748,7 +1850,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_104",
@@ -1765,7 +1868,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_105",
@@ -1782,7 +1886,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_106",
@@ -1799,7 +1904,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_107",
@@ -1816,7 +1922,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_108",
@@ -1833,7 +1940,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_109",
@@ -1850,7 +1958,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_110",
@@ -1867,7 +1976,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_111",
@@ -1884,7 +1994,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_112",
@@ -1901,7 +2012,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_113",
@@ -1918,7 +2030,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_114",
@@ -1935,7 +2048,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_115",
@@ -1952,7 +2066,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_116",
@@ -1969,7 +2084,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_117",
@@ -1986,7 +2102,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_118",
@@ -2003,7 +2120,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_119",
@@ -2020,7 +2138,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_120",
@@ -2037,7 +2156,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": false
+    "is_universal": false,
+    "industry": "Universal"
   },
   {
     "qid": "AR_121",
@@ -2054,7 +2174,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_122",
@@ -2071,7 +2192,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_123",
@@ -2088,7 +2210,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_124",
@@ -2105,7 +2228,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_125",
@@ -2122,7 +2246,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_126",
@@ -2139,7 +2264,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_127",
@@ -2156,7 +2282,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_128",
@@ -2173,7 +2300,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_129",
@@ -2190,7 +2318,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_130",
@@ -2207,7 +2336,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_131",
@@ -2224,7 +2354,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_132",
@@ -2241,7 +2372,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_133",
@@ -2258,7 +2390,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_134",
@@ -2275,7 +2408,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_135",
@@ -2292,7 +2426,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_136",
@@ -2309,7 +2444,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_137",
@@ -2326,7 +2462,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_138",
@@ -2343,7 +2480,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_139",
@@ -2360,7 +2498,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_140",
@@ -2377,7 +2516,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_141",
@@ -2394,7 +2534,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_142",
@@ -2411,7 +2552,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_143",
@@ -2428,7 +2570,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_144",
@@ -2445,7 +2588,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_145",
@@ -2462,7 +2606,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_146",
@@ -2479,7 +2624,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_147",
@@ -2496,7 +2642,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_148",
@@ -2513,7 +2660,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_149",
@@ -2530,7 +2678,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_150",
@@ -2547,7 +2696,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_151",
@@ -2564,7 +2714,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_152",
@@ -2581,7 +2732,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_153",
@@ -2598,7 +2750,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_154",
@@ -2615,7 +2768,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_155",
@@ -2632,7 +2786,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_156",
@@ -2649,7 +2804,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_157",
@@ -2666,7 +2822,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_158",
@@ -2683,7 +2840,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_159",
@@ -2700,7 +2858,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_160",
@@ -2717,7 +2876,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_161",
@@ -2733,7 +2893,8 @@
       "Partial \u2013 Approved but No Formal Owner",
       "No \u2013 Policy Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_162",
@@ -2749,7 +2910,8 @@
       "Partial \u2013 Coverage or Scope Gaps Exist",
       "No \u2013 Limited Coverage or Undefined Scope"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_163",
@@ -2765,7 +2927,8 @@
       "Partial \u2013 Mechanisms Exist but Inconsistently Applied",
       "No \u2013 No Formal Enforcement Mechanism"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_164",
@@ -2782,7 +2945,8 @@
       "Over 12 Months Ago",
       "Never Reviewed Since Creation"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_165",
@@ -2798,7 +2962,8 @@
       "Partial \u2013 Informal or Reactive Process",
       "No \u2013 No Update Process Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_166",
@@ -2814,7 +2979,8 @@
       "Partial \u2013 Training or Vendor Coverage Missing",
       "No \u2013 No Awareness Programme or Vendor Coverage"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_167",
@@ -2830,7 +2996,8 @@
       "Partial \u2013 Informal or Ad Hoc Structure",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_168",
@@ -2846,7 +3013,8 @@
       "Partial \u2013 Some Roles Defined or Not Assigned Per System",
       "No \u2013 Roles Not Documented or Assigned"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_169",
@@ -2862,7 +3030,8 @@
       "Partial \u2013 Authority Defined but Escalation Unclear",
       "No \u2013 Authority Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_170",
@@ -2878,7 +3047,8 @@
       "Partial \u2013 Assigned but with Limited or Advisory Authority Only",
       "No \u2013 No Human Oversight Formally Assigned"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_171",
@@ -2894,7 +3064,8 @@
       "Partial \u2013 Informal Assessment Only",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_172",
@@ -2910,7 +3081,8 @@
       "Partial \u2013 Defined but Not Consistently Applied",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_173",
@@ -2926,7 +3098,8 @@
       "Partial \u2013 Some Overlaps Identified and Managed",
       "No \u2013 Significant Overlapping Responsibilities"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_174",
@@ -2942,7 +3115,8 @@
       "Partial \u2013 Advisory Independence Only",
       "No \u2013 Not Independent"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_175",
@@ -2958,7 +3132,8 @@
       "Partial \u2013 Informally Managed",
       "No \u2013 Not Identified or Managed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_176",
@@ -2974,7 +3149,8 @@
       "Partial \u2013 Informally Identified",
       "No \u2013 Not Identified"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_177",
@@ -2990,7 +3166,8 @@
       "Partial \u2013 Partially Defined",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_178",
@@ -3006,7 +3183,8 @@
       "Partial \u2013 Some Misalignment",
       "No \u2013 Not Aligned or Risk Tolerance Undefined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_179",
@@ -3022,7 +3200,8 @@
       "Partial \u2013 Some Stages Documented",
       "No \u2013 Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_180",
@@ -3038,7 +3217,8 @@
       "Partial \u2013 Partially Defined or Alternates Not Named",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_181",
@@ -3054,7 +3234,8 @@
       "Partial \u2013 Some Ambiguity Exists",
       "No \u2013 Accountability Unclear"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_182",
@@ -3072,7 +3253,8 @@
       "Partially Effective \u2013 Significant Gaps",
       "Not Effective or Not Established"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_183",
@@ -3088,7 +3270,8 @@
       "Partial \u2013 Partially Established",
       "No \u2013 Not Established"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_184",
@@ -3104,7 +3287,8 @@
       "Partial \u2013 Inventory Exists but Coverage Incomplete",
       "No \u2013 No Centralized Inventory"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_185",
@@ -3120,7 +3304,8 @@
       "Partial \u2013 Key Gaps in Mapping",
       "No \u2013 Not Mapped"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_186",
@@ -3136,7 +3321,8 @@
       "Partial \u2013 Partially Defined",
       "No \u2013 No Governance Structure"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_187",
@@ -3152,7 +3338,8 @@
       "Partial \u2013 Process Exists but Incomplete",
       "No \u2013 No Formal Decommissioning Process"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_188",
@@ -3168,7 +3355,8 @@
       "Partial \u2013 Documented but Not All Datasets or Environments",
       "No \u2013 Provenance Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_189",
@@ -3185,7 +3373,8 @@
       "Partial \u2013 Some Environments Not Segregated",
       "No \u2013 Not Categorized or Segregated"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_190",
@@ -3201,7 +3390,8 @@
       "Partial \u2013 Informal or Incomplete Assessment",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_191",
@@ -3219,7 +3409,8 @@
       "Partially Mature \u2013 Significant Gaps",
       "Immature or Not Established"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_192",
@@ -3235,7 +3426,8 @@
       "Partial \u2013 Defined but Inconsistently Applied",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_193",
@@ -3251,7 +3443,8 @@
       "Partial \u2013 Some Documented, Controls Inconsistent",
       "No \u2013 Not Documented or No Controls Applied"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_194",
@@ -3268,7 +3461,8 @@
       "Partial \u2013 Identified but Controls Incomplete",
       "No \u2013 Not Identified or Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_195",
@@ -3284,7 +3478,8 @@
       "Partial \u2013 Documentation or Inventory Incomplete",
       "No \u2013 Not Documented or No Production Inventory"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_196",
@@ -3301,7 +3496,8 @@
       "Partial \u2013 Key Details Missing",
       "No \u2013 Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_197",
@@ -3318,7 +3514,8 @@
       "Partial \u2013 Some Controls Missing",
       "No \u2013 Controls Not Applied"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_198",
@@ -3334,7 +3531,8 @@
       "Partial \u2013 Key Tools Reviewed, Others Not",
       "No \u2013 No Security Review Process"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_199",
@@ -3350,7 +3548,8 @@
       "Partial \u2013 Reviewed Case by Case",
       "No \u2013 Not Reviewed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_200",
@@ -3367,7 +3566,8 @@
       "High Risk \u2013 Significant Single-Vendor Dependency",
       "Critical Risk \u2013 Full Lock-In, No Mitigation"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_201",
@@ -3383,7 +3583,8 @@
       "Partial \u2013 Not Defined for All Systems",
       "No \u2013 Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_202",
@@ -3399,7 +3600,8 @@
       "Partial \u2013 Environment Identified but Risks Not Fully Evaluated",
       "No \u2013 No Formal Evaluation Conducted"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_203",
@@ -3415,7 +3617,8 @@
       "Documented but Not Tested",
       "No \u2013 Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_204",
@@ -3433,7 +3636,8 @@
       "Partially Sufficient \u2013 Notable Degradation",
       "Insufficient \u2013 Frequent Performance Issues"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_205",
@@ -3449,7 +3653,8 @@
       "Partial \u2013 Assessed but No Monitoring or Targets",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_206",
@@ -3465,7 +3670,8 @@
       "Partial \u2013 Key Roles Only or Gaps Exist",
       "No \u2013 Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_207",
@@ -3481,7 +3687,8 @@
       "Partial \u2013 Some Functions Under-Resourced",
       "No \u2013 Insufficient or No Formal Headcount Assigned"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_208",
@@ -3498,7 +3705,8 @@
       "Partial \u2013 Assigned but Authority Not Clearly Defined",
       "No \u2013 Not Assigned"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_209",
@@ -3514,7 +3722,8 @@
       "Partial \u2013 Minor Skill Gaps",
       "No \u2013 Significant Competency Deficiencies"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_210",
@@ -3530,7 +3739,8 @@
       "Partial \u2013 Gaps Identified but No Remediation Plan",
       "No \u2013 Gaps Not Formally Identified"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_211",
@@ -3547,7 +3757,8 @@
       "Partial \u2013 Key Contractors Only",
       "No \u2013 Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_212",
@@ -3563,7 +3774,8 @@
       "Partial \u2013 Major Changes Only",
       "No \u2013 No Formal Change Management"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_213",
@@ -3579,7 +3791,8 @@
       "Partial \u2013 Process Exists but Not Applied to All Systems",
       "No \u2013 No Formal Impact Assessment Process"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_214",
@@ -3595,7 +3808,8 @@
       "Partial \u2013 Pre-Deployment Only or Updates Inconsistent",
       "No \u2013 Not Conducted"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_215",
@@ -3611,7 +3825,8 @@
       "Partial \u2013 Criteria or Coverage Inconsistent",
       "No \u2013 Systems Not Categorized by Impact Severity"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_216",
@@ -3627,7 +3842,8 @@
       "Partial \u2013 Harm Assessed but Stakeholder Coverage Incomplete",
       "No \u2013 Individual Harm Not Explicitly Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_217",
@@ -3643,7 +3859,8 @@
       "Partial \u2013 Limited Scope Evaluated",
       "No \u2013 Not Evaluated"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_218",
@@ -3660,7 +3877,8 @@
       "Partial \u2013 Some Safeguards in Place",
       "No \u2013 No Enhanced Safeguards Implemented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_219",
@@ -3676,7 +3894,8 @@
       "Partial \u2013 Documented but Not Formally Approved or Assessed",
       "No \u2013 Residual Risks Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_220",
@@ -3692,7 +3911,8 @@
       "Partial \u2013 Scheduled Reviews Only or Triggers Incomplete",
       "No \u2013 No Periodic Review or Reassessment Triggers"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_221",
@@ -3708,7 +3928,8 @@
       "Partial \u2013 Informal Links Only",
       "No \u2013 Not Integrated"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_222",
@@ -3724,7 +3945,8 @@
       "Partial \u2013 Some Controls Missing",
       "No \u2013 Not Controlled"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_223",
@@ -3741,7 +3963,8 @@
       "Partial \u2013 Identified but Not Consulted",
       "No \u2013 Not Identified or Considered"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_224",
@@ -3757,7 +3980,8 @@
       "Partial \u2013 Ad Hoc Incorporation",
       "No \u2013 Not Incorporated"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_225",
@@ -3773,7 +3997,8 @@
       "Partial \u2013 Informal or Infrequent Comparison",
       "No \u2013 Not Compared or Monitored"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_226",
@@ -3790,7 +4015,8 @@
       "Partial \u2013 Limited Scope",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_227",
@@ -3806,7 +4032,8 @@
       "Partial \u2013 Some Dimensions Assessed",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_228",
@@ -3823,7 +4050,8 @@
       "Partial \u2013 Key Jurisdictions Only",
       "No \u2013 Not Evaluated"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_229",
@@ -3840,7 +4068,8 @@
       "Partial \u2013 Limited Scope",
       "No \u2013 Not Implemented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_230",
@@ -3856,7 +4085,8 @@
       "Partial \u2013 Framework Defined but Gaps in Coverage or Operationalization",
       "No \u2013 No Formal Lifecycle Framework"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_231",
@@ -3872,7 +4102,8 @@
       "Partial \u2013 Thresholds Defined but Not Technically Enforced",
       "No \u2013 No Materiality Thresholds Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_232",
@@ -3888,7 +4119,8 @@
       "Partial \u2013 Criteria Defined but Not Consistently Enforced",
       "No \u2013 No Formal Stage-Gate Criteria"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_233",
@@ -3904,7 +4136,8 @@
       "Partial \u2013 Informal Exception Handling Only",
       "No \u2013 No Exception Protocols"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_234",
@@ -3920,7 +4153,8 @@
       "Partial \u2013 Key Roles Missing or Insufficiently Documented",
       "No \u2013 Roles Not Assigned"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_235",
@@ -3936,7 +4170,8 @@
       "Partial \u2013 Some Dimensions Not Assessed",
       "No \u2013 No Formal Dataset Governance Assessment"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_236",
@@ -3952,7 +4187,8 @@
       "Partial \u2013 Review Conducted for Some Features Only",
       "No \u2013 No Independent Feature Review"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_237",
@@ -3968,7 +4204,8 @@
       "Partial \u2013 Key Reproducibility Gaps Exist",
       "No \u2013 Not Reproducible"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_238",
@@ -3984,7 +4221,8 @@
       "Partial \u2013 Partially Independent (Same Function, Separate Team)",
       "No \u2013 No Independent Validation (Same Team)"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_239",
@@ -4000,7 +4238,8 @@
       "Partial \u2013 Some Controls Missing or Inconsistent",
       "No \u2013 No Secure MLOps Controls"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_240",
@@ -4016,7 +4255,8 @@
       "Partial \u2013 Performance Monitoring Only or Fairness Metrics Absent",
       "No \u2013 No Continuous Monitoring"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_241",
@@ -4032,7 +4272,8 @@
       "Partial \u2013 Some Thresholds Defined but Incomplete",
       "No \u2013 No Intervention Thresholds Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_242",
@@ -4048,7 +4289,8 @@
       "Partial \u2013 Roles Defined but Authority or Logging Incomplete",
       "No \u2013 Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_243",
@@ -4065,7 +4307,8 @@
       "Partial \u2013 Some Controls Missing",
       "No \u2013 Retraining Not Governed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_244",
@@ -4081,7 +4324,8 @@
       "Partial \u2013 Classification Defined but No Formal Regulatory Scanning",
       "No \u2013 Neither Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_245",
@@ -4098,7 +4342,8 @@
       "Partial \u2013 Some Enhanced Controls Missing",
       "No \u2013 Not Applied"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_246",
@@ -4114,7 +4359,8 @@
       "Partial \u2013 Some Artifacts Required Inconsistently",
       "No \u2013 Not Required"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_247",
@@ -4131,7 +4377,8 @@
       "Partial \u2013 Partial Due Diligence Only",
       "No \u2013 No Formal Due Diligence"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_248",
@@ -4147,7 +4394,8 @@
       "Partial \u2013 Assessed for Major Updates Only",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_249",
@@ -4164,7 +4412,8 @@
       "Partial \u2013 Some Components Not Controlled",
       "No \u2013 Not Controlled"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_250",
@@ -4181,7 +4430,8 @@
       "Partial \u2013 Conducted for Some Systems Only",
       "No \u2013 Not Conducted"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_251",
@@ -4197,7 +4447,8 @@
       "Partial \u2013 Informal Approval or Assessment Incomplete",
       "No \u2013 No Governance Approval for Retirement"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_252",
@@ -4213,7 +4464,8 @@
       "Partial \u2013 Some Controls Missing or Inconsistently Applied",
       "No \u2013 Retirement Controls Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_253",
@@ -4229,7 +4481,8 @@
       "Partial \u2013 Partially Defined or Inconsistently Applied",
       "No \u2013 Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_254",
@@ -4245,7 +4498,8 @@
       "Partial \u2013 Defined but Gaps in Scope or Review",
       "No \u2013 Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_255",
@@ -4261,7 +4515,8 @@
       "Partial \u2013 Process Exists but Ownership or Data Categories Inadequately Governed",
       "No \u2013 No Formal AI Data Management Process"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_256",
@@ -4277,7 +4532,8 @@
       "Partial \u2013 Criteria Exist but External Data Assessment Incomplete",
       "No \u2013 No Formal Acquisition Criteria"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_257",
@@ -4293,7 +4549,8 @@
       "Partial \u2013 Requirements Defined but Validation or Escalation Incomplete",
       "No \u2013 No Formal Data Quality Requirements"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_258",
@@ -4309,7 +4566,8 @@
       "Partial \u2013 Process Defined but Relies on Manual Documentation",
       "No \u2013 No Provenance Process"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_259",
@@ -4325,7 +4583,8 @@
       "Partial \u2013 Some Elements Missing",
       "No \u2013 No Formal Data Preparation Governance"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_260",
@@ -4341,7 +4600,8 @@
       "Partial \u2013 Framework Exists but Controls Not Fully Proportional",
       "No \u2013 No Data Classification Framework"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_261",
@@ -4357,7 +4617,8 @@
       "Partial \u2013 Risks Assessed but Controls Partial or Documentation Only",
       "No \u2013 Not Assessed or Controlled"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_262",
@@ -4374,7 +4635,8 @@
       "Partial \u2013 Partially Documented or Validated",
       "No \u2013 Not Documented or Controlled"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_263",
@@ -4390,7 +4652,8 @@
       "Partial \u2013 Policy Exists but Inconsistently Applied",
       "No \u2013 No Retention or Disposal Policy"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_264",
@@ -4406,7 +4669,8 @@
       "Partial \u2013 Informal Controls Only",
       "No \u2013 No Mechanism to Detect Shadow Datasets"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_265",
@@ -4422,7 +4686,8 @@
       "Partial \u2013 Periodic Reviews Only, No Continuous Monitoring",
       "No \u2013 Not Monitored"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_266",
@@ -4438,7 +4703,8 @@
       "Partial \u2013 Checkpoint Exists but Not All Controls Re-Validated",
       "No \u2013 No Retraining Governance Checkpoint"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_267",
@@ -4455,7 +4721,8 @@
       "Partial \u2013 Documented but Not Periodically Reviewed",
       "No \u2013 Not Documented"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_268",
@@ -4471,7 +4738,8 @@
       "Partial \u2013 Applied Inconsistently",
       "No \u2013 Not Applied"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_269",
@@ -4488,7 +4756,8 @@
       "Partial \u2013 Some Standards Missing",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_270",
@@ -4505,7 +4774,8 @@
       "Partial \u2013 Partial Assessment Only",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_271",
@@ -4521,7 +4791,8 @@
       "Partial \u2013 Assessed but Not All Rights Addressed",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_272",
@@ -4537,7 +4808,8 @@
       "Partial \u2013 Some Assessment Conducted",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_273",
@@ -4553,7 +4825,8 @@
       "Partial \u2013 Logging Exists but No Periodic Review",
       "No \u2013 Not Logged or Reviewed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_274",
@@ -4570,7 +4843,8 @@
       "Partial \u2013 Criteria Partially Defined",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_275",
@@ -4587,7 +4861,8 @@
       "Partial \u2013 Some Controls Missing",
       "No \u2013 Not Governed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_276",
@@ -4603,7 +4878,8 @@
       "Partial \u2013 Framework or Documentation Incomplete or Audiences Not Differentiated",
       "No \u2013 No Formal User Information Framework"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_277",
@@ -4619,7 +4895,8 @@
       "Partial \u2013 Documented but Disclosed Reactively or Incompletely",
       "No \u2013 Limitations Not Formally Disclosed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_278",
@@ -4636,7 +4913,8 @@
       "Partial \u2013 Partial Disclosure Only",
       "No \u2013 Not Disclosed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_279",
@@ -4652,7 +4930,8 @@
       "Partial \u2013 Parties or Obligations Incompletely Identified or Rarely Updated",
       "No \u2013 Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_280",
@@ -4668,7 +4947,8 @@
       "Partial \u2013 Register Exists but Incomplete or Response Process Informal",
       "No \u2013 Neither Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_281",
@@ -4685,7 +4965,8 @@
       "Partial \u2013 Partially Addressed",
       "No \u2013 Not Addressed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_282",
@@ -4701,7 +4982,8 @@
       "Partial \u2013 Mechanism Exists but Monitoring, Investigation, or Trend Analysis Incomplete",
       "No \u2013 No Adverse Impact Reporting Mechanism"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_283",
@@ -4718,7 +5000,8 @@
       "Partial \u2013 Partial Explanations Only",
       "No \u2013 Not Provided"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_284",
@@ -4734,7 +5017,8 @@
       "Partial \u2013 Plan Exists but Tiering, Testing, or Maintenance Incomplete",
       "No \u2013 No Formal Incident Communication Plan"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_285",
@@ -4750,7 +5034,8 @@
       "Partial \u2013 Partially Defined",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_286",
@@ -4766,7 +5051,8 @@
       "Partial \u2013 Partial Disclosure Only",
       "No \u2013 Not Disclosed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_287",
@@ -4783,7 +5069,8 @@
       "Partial \u2013 Limited or Incomplete Disclosure",
       "No \u2013 Not Disclosed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_288",
@@ -4799,7 +5086,8 @@
       "Partial \u2013 Groups Identified but Materials Incomplete",
       "No \u2013 Not Identified or Addressed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_289",
@@ -4815,7 +5103,8 @@
       "Partial \u2013 Reviews Conducted but Inconsistently or Without Formal Approval",
       "No \u2013 No Formal Documentation Review Process"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_290",
@@ -4831,7 +5120,8 @@
       "Partial \u2013 Reviewed Inconsistently",
       "No \u2013 No Governance of Disclaimers"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_291",
@@ -4847,7 +5137,8 @@
       "Partial \u2013 Analysis Conducted Informally",
       "No \u2013 No Trend Analysis"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_292",
@@ -4863,7 +5154,8 @@
       "Partial \u2013 Process Informal or Records Not Retained",
       "No \u2013 No User Notification Obligation"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_293",
@@ -4879,7 +5171,8 @@
       "Partial \u2013 Reviews Conducted Inconsistently",
       "No \u2013 No Public Transparency Governance"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_294",
@@ -4896,7 +5189,8 @@
       "Partial \u2013 Partial Disclosure Only",
       "No \u2013 Not Disclosed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_295",
@@ -4912,7 +5206,8 @@
       "Partial \u2013 Partially Implemented",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_296",
@@ -4928,7 +5223,8 @@
       "Partial \u2013 Periodic Reviews but Informal",
       "No \u2013 No Cross-Channel Consistency Controls"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_297",
@@ -4944,7 +5240,8 @@
       "Partial \u2013 Processes Exist but Not Integrated or Poorly Maintained",
       "No \u2013 No Formal Responsible Use Processes"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_298",
@@ -4960,7 +5257,8 @@
       "Partial \u2013 Training Exists but Not Role-Differentiated or Completion Not Enforced",
       "No \u2013 No Responsible Use Training"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_299",
@@ -4976,7 +5274,8 @@
       "Partial \u2013 Process Exists but Incomplete or Informal",
       "No \u2013 No Misuse Reporting Process"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_300",
@@ -4992,7 +5291,8 @@
       "Partial \u2013 Objectives Defined but Aspirational or Rarely Updated",
       "No \u2013 No Responsible Use Objectives"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_301",
@@ -5008,7 +5308,8 @@
       "Partial \u2013 Intended Use Defined but Boundaries or Jurisdictions Incomplete",
       "No \u2013 Intended Use Not Formally Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_302",
@@ -5024,7 +5325,8 @@
       "Partial \u2013 Controls Exist but Monitoring Absent or Incomplete",
       "No \u2013 No Operational Controls or Monitoring"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_303",
@@ -5041,7 +5343,8 @@
       "Partial \u2013 Requirements Exist but Not Consistently Enforced",
       "No \u2013 No Contractual Requirements"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_304",
@@ -5057,7 +5360,8 @@
       "Partial \u2013 Informal or Infrequent Reviews Only",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_305",
@@ -5074,7 +5378,8 @@
       "Partial \u2013 Requirements Defined but Not Consistently Enforced",
       "No \u2013 Not Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_306",
@@ -5090,7 +5395,8 @@
       "Partial \u2013 Risk Assessed but Countermeasures Incomplete",
       "No \u2013 Not Assessed"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_307",
@@ -5106,7 +5412,8 @@
       "Partial \u2013 Policy Exists but Not Technically Enforced or Monitored",
       "No \u2013 No Unsanctioned AI Policy"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_308",
@@ -5123,7 +5430,8 @@
       "Partial \u2013 Assessed but Not Monitored or Approval Informal",
       "No \u2013 Not Governed as Distinct Object"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_309",
@@ -5141,7 +5449,8 @@
       "50\u201369% \u2013 Partial Coverage",
       "Below 50% \u2013 Insufficient Coverage"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_310",
@@ -5159,7 +5468,8 @@
       "50\u201369% \u2013 Partial Coverage",
       "Below 50% \u2013 Insufficient Coverage"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_311",
@@ -5175,7 +5485,8 @@
     "trigger_points": [
       "High Volume or Zero with No Confidence in Reporting"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_312",
@@ -5193,7 +5504,8 @@
       "50\u201369% \u2013 Partial Compliance",
       "Below 50% \u2013 Material Non-Compliance"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_313",
@@ -5210,7 +5522,8 @@
       "Some Objectives Met \u2013 Material Gaps Identified",
       "Most or All Objectives Not Met"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_314",
@@ -5226,7 +5539,8 @@
       "Partial \u2013 Framework Exists but Inconsistently Applied",
       "No \u2013 No Consequence Framework"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_315",
@@ -5242,7 +5556,8 @@
       "Partial \u2013 Mechanisms Exist but Not Formally Documented or Inconsistently Applied",
       "No \u2013 No Access Revocation Mechanism"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_316",
@@ -5259,7 +5574,8 @@
       "Partial \u2013 Criteria Defined but Authority or Communication Process Incomplete",
       "No \u2013 No Suspension Criteria Defined"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_317",
@@ -5276,7 +5592,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_318",
@@ -5293,7 +5610,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_319",
@@ -5310,7 +5628,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_320",
@@ -5327,7 +5646,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_321",
@@ -5344,7 +5664,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_322",
@@ -5361,7 +5682,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_323",
@@ -5378,7 +5700,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_324",
@@ -5395,7 +5718,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_325",
@@ -5412,7 +5736,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_326",
@@ -5429,7 +5754,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_327",
@@ -5446,7 +5772,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_328",
@@ -5463,7 +5790,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_329",
@@ -5480,7 +5808,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_330",
@@ -5497,7 +5826,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_331",
@@ -5514,7 +5844,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_332",
@@ -5531,7 +5862,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_333",
@@ -5548,7 +5880,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_334",
@@ -5565,7 +5898,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_335",
@@ -5582,7 +5916,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_336",
@@ -5599,7 +5934,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_337",
@@ -5616,7 +5952,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_338",
@@ -5633,7 +5970,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_339",
@@ -5650,7 +5988,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_340",
@@ -5667,7 +6006,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_341",
@@ -5684,7 +6024,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_342",
@@ -5701,7 +6042,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_343",
@@ -5718,7 +6060,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_344",
@@ -5735,7 +6078,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_345",
@@ -5752,7 +6096,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_346",
@@ -5769,7 +6114,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_347",
@@ -5786,7 +6132,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_348",
@@ -5803,7 +6150,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_349",
@@ -5820,7 +6168,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_350",
@@ -5837,7 +6186,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_351",
@@ -5854,7 +6204,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_352",
@@ -5871,7 +6222,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_353",
@@ -5888,7 +6240,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_354",
@@ -5905,7 +6258,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_355",
@@ -5922,7 +6276,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_356",
@@ -5939,7 +6294,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_357",
@@ -5956,7 +6312,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_358",
@@ -5973,7 +6330,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_359",
@@ -5990,7 +6348,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_360",
@@ -6007,7 +6366,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_361",
@@ -6024,7 +6384,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_362",
@@ -6041,7 +6402,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_363",
@@ -6058,7 +6420,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_364",
@@ -6075,7 +6438,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_365",
@@ -6092,7 +6456,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_366",
@@ -6109,7 +6474,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_367",
@@ -6126,7 +6492,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_368",
@@ -6143,7 +6510,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_369",
@@ -6160,7 +6528,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_370",
@@ -6177,7 +6546,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_371",
@@ -6194,7 +6564,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_372",
@@ -6211,7 +6582,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_373",
@@ -6228,7 +6600,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_374",
@@ -6245,7 +6618,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_375",
@@ -6262,7 +6636,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_376",
@@ -6279,7 +6654,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_377",
@@ -6296,7 +6672,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_378",
@@ -6313,7 +6690,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_379",
@@ -6330,7 +6708,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_380",
@@ -6347,7 +6726,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_381",
@@ -6364,7 +6744,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_382",
@@ -6381,7 +6762,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_383",
@@ -6398,7 +6780,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_384",
@@ -6415,7 +6798,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_385",
@@ -6432,7 +6816,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_386",
@@ -6449,7 +6834,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_387",
@@ -6466,7 +6852,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_388",
@@ -6483,7 +6870,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_389",
@@ -6500,7 +6888,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_390",
@@ -6517,7 +6906,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_391",
@@ -6534,7 +6924,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_392",
@@ -6551,7 +6942,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_393",
@@ -6568,7 +6960,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_394",
@@ -6585,7 +6978,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_395",
@@ -6602,7 +6996,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_396",
@@ -6619,7 +7014,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_397",
@@ -6636,7 +7032,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_398",
@@ -6653,7 +7050,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_399",
@@ -6670,7 +7068,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_400",
@@ -6687,7 +7086,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_401",
@@ -6704,7 +7104,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_402",
@@ -6721,7 +7122,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_403",
@@ -6738,7 +7140,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_404",
@@ -6755,7 +7158,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_405",
@@ -6772,7 +7176,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_406",
@@ -6789,7 +7194,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_407",
@@ -6806,7 +7212,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_408",
@@ -6823,7 +7230,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_409",
@@ -6840,7 +7248,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_410",
@@ -6857,7 +7266,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_411",
@@ -6874,7 +7284,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_412",
@@ -6891,7 +7302,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_413",
@@ -6908,7 +7320,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_414",
@@ -6925,7 +7338,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_415",
@@ -6942,7 +7356,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_416",
@@ -6959,7 +7374,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_417",
@@ -6976,7 +7392,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_418",
@@ -6993,7 +7410,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_419",
@@ -7010,7 +7428,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_420",
@@ -7027,7 +7446,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_421",
@@ -7044,7 +7464,8 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
   },
   {
     "qid": "AR_422",
@@ -7061,6 +7482,2131 @@
       "Partial",
       "No"
     ],
-    "is_universal": true
+    "is_universal": true,
+    "industry": "Universal"
+  },
+  {
+    "qid": "AR_HC_1",
+    "text": "Does the AI-powered clinical decision support system (CDSS) provide evidence-based recommendations with confidence scores and clearly flag uncertainty to clinicians?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_2",
+    "text": "Has the AI medical imaging analysis tool (radiology/pathology) been validated on demographically diverse datasets and is its performance monitored post-deployment?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_3",
+    "text": "Does the AI prescribing support tool check real-time drug-drug and drug-allergy interactions using up-to-date clinical databases?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_4",
+    "text": "Does the AI early warning system (sepsis, deterioration) generate alerts within clinically actionable timeframes with documented sensitivity and specificity metrics?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_5",
+    "text": "Are AI-assisted surgical systems subject to mandatory pre-procedure safety checks, intraoperative anomaly detection, and post-procedure performance logging?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_6",
+    "text": "Does the AI system integrated with the EHR use HL7 FHIR standards and enforce role-based access controls preventing unauthorised data access?",
+    "component_group": "security",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_7",
+    "text": "Are AI remote patient monitoring (RPM) systems validated for home-use accuracy and configured to alert clinicians when readings exceed safe thresholds?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_8",
+    "text": "Does the AI genomic data analysis platform implement differential privacy or anonymisation techniques before model training to protect patient genetic data?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_9",
+    "text": "Are AI mental health chatbots and support tools subject to clinical governance oversight, crisis escalation protocols, and regular safety reviews?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_10",
+    "text": "Is there a mandatory revalidation trigger for clinical AI models when underlying patient population, treatment protocols, or data distributions change significantly?",
+    "component_group": "model_training",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_11",
+    "text": "Does the healthcare organisation conduct AI-specific DPIAs for all AI systems processing Protected Health Information (PHI) or special category health data?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_12",
+    "text": "Has the organisation correctly classified all AI clinical decision support tools under MDR/IVDR or FDA SaMD guidance and registered them with the relevant regulatory authority?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_13",
+    "text": "Does the organisation achieve NHS Data Security & Protection Toolkit (DSPT) 'Standards Met' status (or HIPAA equivalent) for all AI systems handling patient data?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_14",
+    "text": "Are adverse events and near-misses involving AI clinical tools reported through national patient safety reporting systems (NRLS / FDA MAUDE)?",
+    "component_group": "incident_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_15",
+    "text": "Has an independent health equity audit been conducted to identify and remediate AI model performance disparities across age, ethnicity, gender, and socioeconomic groups?",
+    "component_group": "audit",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_16",
+    "text": "Are patients informed when AI is used in their clinical pathway and provided with a plain-language explanation of how the AI influenced their care decisions?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_17",
+    "text": "Have all clinicians using AI-assisted tools completed mandatory training on AI limitations, appropriate reliance, and escalation procedures?",
+    "component_group": "staff_training_skill",
+    "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_18",
+    "text": "Do clinical staff have a clearly documented, board-approved protocol to override AI recommendations and are all overrides logged for governance review?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_19",
+    "text": "Has the organisation established a clinical AI ethics committee with patient representation to review high-risk AI deployments?",
+    "component_group": "board_directors",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_20",
+    "text": "Does the organisation have a tested, AI-specific clinical incident response playbook covering model failure, misdiagnosis cascade, and data breach scenarios?",
+    "component_group": "incident_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_21",
+    "text": "Is there a formal clinical AI vendor due diligence process including clinical validation evidence review, data processing agreement, and exit strategy?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_HC_22",
+    "text": "Does the organisation operate a real-time clinical AI performance dashboard accessible to clinical governance, information governance, and patient safety teams?",
+    "component_group": "operations_model_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Healthcare"
+  },
+  {
+    "qid": "AR_B_1",
+    "text": "Does the bank's AI-powered chatbot resolve your query fully without escalation to a human agent?",
+    "component_group": "customer_reputational",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_2",
+    "text": "Does the AI personalise product recommendations (loans, savings, cards) based on your financial profile without bias?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_3",
+    "text": "Are AI-triaged complaints escalated to the correct human team within regulatory SLA timeframes?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_4",
+    "text": "Does the bank's AI interface meet accessibility standards (WCAG 2.1 AA) for customers with disabilities?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_5",
+    "text": "Does the AI fraud detection system notify customers in real-time and allow instant card freeze via app?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_6",
+    "text": "Does the bank maintain a living AI model inventory with version control, performance metrics, and retirement schedules?",
+    "component_group": "operations_model_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_7",
+    "text": "Are AI services integrated with Open Banking APIs secured with OAuth 2.0 and monitored for anomalous access patterns?",
+    "component_group": "security",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_8",
+    "text": "Can the bank's AI credit scoring model provide an explainable reason code for every declined application?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_9",
+    "text": "Does the AI-powered KYC process complete identity verification within regulatory timeframes while minimising false positives?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_10",
+    "text": "Is the use of Generative AI (e.g. LLMs for document summarisation, customer queries) subject to a formal AI acceptable use policy?",
+    "component_group": "policies_procedures_documentation",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_11",
+    "text": "Are AI/ML models deployed on cloud infrastructure using immutable pipelines with security scanning at every stage?",
+    "component_group": "deployment_maintenance",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_12",
+    "text": "Does the AI-powered transaction monitoring system produce audit-ready Suspicious Activity Reports (SARs) with explainable risk scores?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_13",
+    "text": "Does the bank conduct AI-specific Data Protection Impact Assessments (DPIAs) for all customer-facing AI systems?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_14",
+    "text": "Are all AI models subject to independent model validation including stress testing, sensitivity analysis, and out-of-sample performance review?",
+    "component_group": "model_training",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_15",
+    "text": "Does the bank ensure AI-generated financial guidance to customers meets FCA Consumer Duty fair outcomes obligations?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_16",
+    "text": "Does the AI sanctions and PEP screening tool achieve <0.5% false negative rate with audit-ready match disposition records?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_17",
+    "text": "Has the bank conducted an independent algorithmic bias audit across demographic groups for all AI lending models?",
+    "component_group": "audit",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_18",
+    "text": "Are AI-dependent banking services included in the bank's operational resilience important business service (IBS) mapping?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_19",
+    "text": "Have all customer-facing banking staff completed mandatory AI literacy training covering AI limitations, bias, and escalation protocols?",
+    "component_group": "staff_training_skill",
+    "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_20",
+    "text": "Do relationship managers and analysts have clear authority and documented procedures to override AI-generated credit or risk decisions?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_21",
+    "text": "Has the bank established an AI ethics framework embedded in performance objectives for relevant staff?",
+    "component_group": "ethical",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_22",
+    "text": "Does the bank have a tested AI-specific incident response playbook covering model failure, bias discovery, and data poisoning scenarios?",
+    "component_group": "incident_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_23",
+    "text": "Is there a formal AI-specific due diligence process for third-party AI vendors including model validation and exit strategy?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_B_24",
+    "text": "Does the bank operate a real-time AI performance monitoring dashboard visible to compliance, risk, and operations teams?",
+    "component_group": "operations_model_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Banking"
+  },
+  {
+    "qid": "AR_CX_1",
+    "text": "Does the AI recommendation engine clearly distinguish sponsored/paid placements from organic AI recommendations, and is this distinction disclosed to customers?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_2",
+    "text": "Is the AI search ranking algorithm monitored for demographic or category bias that may unfairly deprioritise products from minority or small sellers?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_3",
+    "text": "Does the AI dynamic pricing engine have guardrails preventing price discrimination based on protected characteristics (location, device, demographic proxy)?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_4",
+    "text": "Does the AI customer service chatbot clearly identify itself as an AI to customers before and during interactions, and offer seamless escalation to a human agent?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_5",
+    "text": "Does the platform deploy AI to detect and remove fake, incentivised, or AI-generated product reviews in compliance with DSA obligations?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_6",
+    "text": "Is AI-driven customer personalisation (browsing history, purchase patterns, behavioural profiling) strictly consent-based with granular opt-out controls?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_7",
+    "text": "Does the AI fraud detection system operate in real-time (sub-second decisioning) with false positive rates below 1% to avoid blocking legitimate customers?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_8",
+    "text": "Does the AI account takeover (ATO) prevention system use behavioural biometrics and device fingerprinting with step-up authentication for anomalous sessions?",
+    "component_group": "security",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_9",
+    "text": "Are all AI models processing, transmitting, or storing cardholder data scoped within the PCI-DSS v4 Cardholder Data Environment (CDE) with quarterly model access reviews?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_10",
+    "text": "Does the AI return fraud detection system accurately identify serial abusers without flagging legitimate customers, and are customers informed of AI-assisted return policy enforcement?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_11",
+    "text": "Does the platform use AI to continuously monitor seller behaviour for counterfeiting, listing manipulation, and price gouging with automated enforcement actions?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_12",
+    "text": "Does every AI model in production operate on the minimum customer data necessary for its purpose, with documented data minimisation justification?",
+    "component_group": "data_data_governance",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_13",
+    "text": "When AI makes solely automated decisions that significantly affect customers (credit for BNPL, account suspension), are customers provided with a meaningful explanation and right to appeal?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_14",
+    "text": "Does the AI age-assurance and content moderation system prevent minors from accessing age-restricted products or content, and is it tested regularly?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_15",
+    "text": "Is the AI-powered consent management platform (CMP) configured to honour all consent signals (IAB TCF, GPC) and does it block AI personalisation until valid consent is obtained?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_16",
+    "text": "Does the platform publish an accessible summary of how its AI recommendation and ranking algorithms work, as required by the EU Digital Services Act for VLOPs?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_17",
+    "text": "Is the AI demand forecasting model regularly retrained on recent sales data to account for seasonality, trends, and supply disruptions, with accuracy metrics tracked against actuals?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_18",
+    "text": "Does the AI last-mile route optimisation system account for driver welfare (hours of service limits) and is it audited to prevent discriminatory delivery coverage across postcodes?",
+    "component_group": "human_factors_social_psychographic",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_19",
+    "text": "Do AI-driven warehouse robotic systems include real-time worker proximity detection and emergency stop capabilities with documented safety validation?",
+    "component_group": "human_factors_social_psychographic",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_20",
+    "text": "Does the platform use AI to continuously monitor supplier financial health, ESG compliance, and geopolitical risk with automated escalation thresholds?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_21",
+    "text": "Have all staff interacting with or overseeing AI systems (merchandising, fraud ops, logistics, customer service) completed mandatory AI literacy training covering limitations, bias, and escalation?",
+    "component_group": "staff_training_skill",
+    "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_22",
+    "text": "Do merchandising, fraud operations, and logistics staff have documented authority and procedures to override AI decisions, with all overrides logged and reviewed?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_23",
+    "text": "Has the organisation published an AI ethics policy covering fairness, transparency, and accountability for its e-commerce AI systems, with staff accountability embedded in performance objectives?",
+    "component_group": "board_directors",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_24",
+    "text": "Does the organisation have a tested AI-specific incident response playbook covering fraud model failure, personalisation data breach, recommendation bias discovery, and logistics AI outage?",
+    "component_group": "incident_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_25",
+    "text": "Is there a formal AI-specific due diligence process for third-party AI vendors (recommendation engines, fraud tools, logistics AI) including model validation, data processing agreements, and exit strategy?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_CX_26",
+    "text": "Does the organisation operate a real-time AI performance monitoring dashboard covering fraud, recommendations, logistics, and pricing AI \u2014 accessible to operations, compliance, and senior management?",
+    "component_group": "operations_model_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "E-Commerce"
+  },
+  {
+    "qid": "AR_ED_1",
+    "text": "Does the AI adaptive learning platform adjust content and pacing based on individual student performance data, and are the personalisation logic and data sources disclosed to students and parents?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_2",
+    "text": "Are AI intelligent tutoring systems validated for accuracy and pedagogical effectiveness across different learning styles and ability levels before deployment to students?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_3",
+    "text": "Does the AI early intervention system identifying at-risk students use validated, bias-tested indicators and are referrals reviewed by a qualified professional before action is taken?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_4",
+    "text": "Has the institution published a clear, age-appropriate AI acceptable use policy for students covering permitted uses, academic integrity, privacy, and critical evaluation of AI outputs?",
+    "component_group": "policies_procedures_documentation",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_5",
+    "text": "Do all AI-powered learning tools meet WCAG 2.1 AA accessibility standards and have they been tested with students with SEND (Special Educational Needs and Disabilities)?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_6",
+    "text": "Does the institution use validated AI detection tools with documented false positive rates, and is there a fair appeals process for students flagged by AI academic misconduct tools?",
+    "component_group": "audit",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_7",
+    "text": "Has the institution implemented AI-resilient assessment design strategies (oral components, in-class tasks, reflective portfolios) to reduce over-reliance on AI detection?",
+    "component_group": "policies_procedures_documentation",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_8",
+    "text": "Is there a clear institutional policy governing educator use of AI in assessment design, marking, and feedback, with disclosure requirements when AI contributes to grading?",
+    "component_group": "policies_procedures_documentation",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_9",
+    "text": "Do AI content moderation systems on institution-managed platforms and learning tools meet the UK Online Safety Act / Children's Code requirements, with escalation to a designated safeguarding lead (DSL)?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_10",
+    "text": "Are AI-powered student mental health and wellbeing tools subject to clinical governance oversight, crisis escalation to a human counsellor within 5 minutes, and regular safety reviews?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_11",
+    "text": "Is any AI monitoring of student behaviour, attendance, or engagement subject to a DPIA, proportionality assessment, and clearly disclosed to students and parents?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_12",
+    "text": "Has an independent equity audit been conducted to identify AI model performance disparities across ethnicity, gender, disability, and socioeconomic background in assessment and progression tools?",
+    "component_group": "audit",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_13",
+    "text": "Does the AI SEND identification and support tool produce explainable recommendations, and are all AI-generated SEND referrals reviewed by a qualified SENCO before action?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_14",
+    "text": "Does the institution conduct AI-specific DPIAs for all AI systems processing student personal data, with DPO or data protection lead sign-off before deployment?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_15",
+    "text": "Is there a formal AI-specific due diligence process for EdTech vendors including data processing agreements, student data use restrictions, model validation evidence, and exit strategy?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_16",
+    "text": "Can the institution demonstrate to OfSTED/OfS inspectors that all high-risk AI systems (as defined by EU AI Act Annex III) are registered, governed, and subject to ongoing performance monitoring?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_17",
+    "text": "Are parents/guardians of under-18 students provided with clear, plain-language explanations of all AI systems used in their child's education, with meaningful consent and opt-out mechanisms?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_18",
+    "text": "Has the institution established a board-approved AI governance framework with a named AI lead, ethics review process for new AI deployments, and annual AI risk review?",
+    "component_group": "board_directors",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_19",
+    "text": "Have all teaching and support staff completed mandatory AI literacy training covering AI limitations, bias in educational AI, student data privacy, and escalation procedures?",
+    "component_group": "staff_training_skill",
+    "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_20",
+    "text": "Do educators and pastoral staff have documented authority and clear procedures to override AI-generated recommendations (learning plans, at-risk flags, SEND referrals), with all overrides logged?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_21",
+    "text": "Is AI-related CPD embedded in staff development plans, with educators supported to critically evaluate new AI tools and keep pace with evolving AI capabilities and risks in education?",
+    "component_group": "staff_training_skill",
+    "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_22",
+    "text": "Has the institution published a Responsible AI in Education policy covering student welfare, equity, academic integrity, and data privacy, with explicit board endorsement and staff accountability?",
+    "component_group": "ethical",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_23",
+    "text": "Does the institution have a tested AI-specific incident response playbook covering learning platform outage, AI assessment tool false accusation, student data breach via AI vendor, and AI safeguarding failure?",
+    "component_group": "incident_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_ED_24",
+    "text": "Does the institution operate a real-time AI performance monitoring dashboard covering learning AI, safeguarding tools, assessment AI, and administrative AI \u2014 accessible to academic leadership, DSL, and governors?",
+    "component_group": "operations_model_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Education"
+  },
+  {
+    "qid": "AR_RTL_1",
+    "text": "Are AI-powered smart fitting room or virtual try-on systems clearly disclosed to customers, and is biometric or body-scan data handled under explicit consent with defined retention limits?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_2",
+    "text": "Is AI-driven loyalty personalisation (offers, rewards, product nudges) based on explicit consent, with customers able to view, correct, and delete their profile data?",
+    "component_group": "privacy",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_3",
+    "text": "Does the retail AI chatbot or voice assistant clearly identify itself as AI at the start of every interaction and provide seamless escalation to a human agent within 2 minutes?",
+    "component_group": "explainability_transparency",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_4",
+    "text": "Do AI-powered retail interfaces (kiosks, apps, websites) meet WCAG 2.1 AA accessibility standards and are they tested with assistive technology users including those with visual and cognitive impairments?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_5",
+    "text": "Is the AI unified customer data platform (CDP) reconciling in-store and online behaviour subject to GDPR data minimisation, purpose limitation, and cross-channel consent management?",
+    "component_group": "data_data_governance",
+    "cluster": "Domain 2: \u2014 Data, Privacy & Information Assets",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_6",
+    "text": "Does the AI pricing engine include guardrails preventing price gouging during high-demand events, and is pricing parity monitored across in-store and online channels?",
+    "component_group": "ethical",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_7",
+    "text": "Are AI-generated promotional offers and marketing communications reviewed for compliance with ASA/FTC guidelines before customer delivery, and is AI authorship disclosed where required?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_8",
+    "text": "Has the AI pricing engine been audited to ensure it does not produce discriminatory pricing outcomes based on demographic proxies (postcode, device type, browsing behaviour)?",
+    "component_group": "audit",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_9",
+    "text": "Is AI-powered shoplifting detection CCTV subject to a DPIA, clearly signposted to customers, and configured to avoid racial or demographic profiling?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_10",
+    "text": "If facial recognition is used for loss prevention, has explicit legal basis been established, individuals been notified, and has the system been validated to meet ICO / EU AI Act high-risk requirements?",
+    "component_group": "legal_regulatory",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_11",
+    "text": "Does the AI self-checkout fraud detection system maintain a false accusation rate below 1% and is there a clear, dignified process for customers incorrectly flagged by the system?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_12",
+    "text": "Are AI fraud detection systems at point-of-sale integrated with PCI-DSS v4 controls, and is the false decline rate monitored to prevent legitimate customer transactions being blocked?",
+    "component_group": "fraud_defalcation",
+    "cluster": "Domain 7: \u2014 Business Impact & Sustainability",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_13",
+    "text": "Is the AI demand forecasting model retrained at least quarterly, with MAPE tracked against actuals and a human override process for exceptional events (bank holidays, weather, promotions)?",
+    "component_group": "reliability",
+    "cluster": "Domain 1: \u2014 AI Technical & Model Integrity",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_14",
+    "text": "Does the retailer use AI to continuously monitor supplier ESG scores, labour practice violations, and modern slavery indicators with automated escalation thresholds?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_15",
+    "text": "Is the AI fulfilment and returns routing system audited to ensure it does not create inequitable delivery coverage or extended return lead times for customers in lower-income postcodes?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_16",
+    "text": "Is AI used to screen new supplier product listings for safety compliance (CE/UKCA marking, recalls, hazardous materials) before they reach shelves or are listed online?",
+    "component_group": "third_party_supply_chain",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_17",
+    "text": "Have all retail staff interacting with AI systems (merchandising, loss prevention, customer service, pricing) completed mandatory AI literacy training covering limitations, bias, and escalation?",
+    "component_group": "staff_training_skill",
+    "cluster": "Domain 6: \u2014 Workforce & Organizational Change",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_18",
+    "text": "Do store managers and operations staff have documented authority and clear procedures to override AI decisions (pricing, loss prevention flags, staffing schedules), with all overrides logged and reviewed?",
+    "component_group": "human_oversight",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_19",
+    "text": "Is AI-powered staff scheduling audited for fairness across protected characteristics (age, gender, disability) and do employees have a transparent mechanism to flag scheduling concerns?",
+    "component_group": "bias_fairness",
+    "cluster": "Domain 3: \u2014 Responsible AI & Ethics",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_20",
+    "text": "Has the retailer published an AI ethics policy covering customer fairness, surveillance, and employment AI, with board approval and staff accountability in performance objectives?",
+    "component_group": "board_directors",
+    "cluster": "Domain 4: \u2014 Governance, Compliance & Legal",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_21",
+    "text": "Does the retailer have a tested AI-specific incident response playbook covering pricing engine failure, surveillance AI false accusation, loyalty data breach, and supply chain AI outage?",
+    "component_group": "incident_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
+  },
+  {
+    "qid": "AR_RTL_22",
+    "text": "Does the retailer operate a real-time AI performance monitoring dashboard covering pricing, loss prevention, supply chain, and customer service AI \u2014 accessible to operations, compliance, and senior management?",
+    "component_group": "operations_model_management",
+    "cluster": "Domain 5: \u2014 Operational & Infrastructure Risk",
+    "options": [
+      "Yes",
+      "No",
+      "Partial",
+      "Not Applicable"
+    ],
+    "trigger_points": [
+      "Partial",
+      "No"
+    ],
+    "is_universal": false,
+    "industry": "Retail"
   }
 ]
