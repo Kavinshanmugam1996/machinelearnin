@@ -1,0 +1,19 @@
+{
+  "id": "c_1773110680580",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "kavin",
+    "industry": "Healthcare",
+    "companySize": "medium",
+    "regulatory": "EU-CAN/QU",
+    "techMaturity": "2",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Decision support"
+      }
+    ]
+  },
+  "answers": {},
+  "currentQuestionIndex": 0
+}

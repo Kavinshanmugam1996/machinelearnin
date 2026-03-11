@@ -1,0 +1,27 @@
+{
+  "id": "c_1773111491283",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "k1",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "EU-CA/ON",
+    "techMaturity": "4",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Model training or fine-tuning"
+      },
+      {
+        "description": "",
+        "useCase": "Sensitive-data AI use case"
+      },
+      {
+        "description": "",
+        "useCase": "AI connected to internal systems"
+      }
+    ]
+  },
+  "answers": {},
+  "currentQuestionIndex": 0
+}

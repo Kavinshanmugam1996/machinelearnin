@@ -1,0 +1,27 @@
+{
+  "id": "c_1773165240145",
+  "name": "nu",
+  "profile": {
+    "companyName": "Jerry",
+    "industry": "Healthcare",
+    "companySize": "medium",
+    "regulatory": "EU-CA/ON",
+    "techMaturity": "1",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "AI used to prepare legal or regulatory reporting"
+      }
+    ]
+  },
+  "answers": {
+    "AR_53": "No",
+    "AR_54": "Yes",
+    "AR_55": "Yes",
+    "AR_57": "Yes",
+    "AR_58": "Yes",
+    "AR_67": "Yes",
+    "AR_68": "Yes"
+  },
+  "currentQuestionIndex": 7
+}

@@ -1,0 +1,29 @@
+{
+  "id": "c_1773067939089",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "Hugh",
+    "industry": "Banking",
+    "companySize": "medium",
+    "regulatory": "EU-CA/ON",
+    "techMaturity": "3",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Employee copilot"
+      },
+      {
+        "description": "",
+        "useCase": "Autonomous or multi-agent system"
+      },
+      {
+        "description": "",
+        "useCase": "Workflow automation"
+      }
+    ]
+  },
+  "answers": {
+    "AR_53": "Yes"
+  },
+  "currentQuestionIndex": 1
+}

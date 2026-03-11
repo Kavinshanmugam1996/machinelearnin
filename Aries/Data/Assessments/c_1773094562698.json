@@ -1,0 +1,19 @@
+{
+  "id": "c_1773094562698",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "Jerry",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "USA-CA",
+    "techMaturity": "3",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Recommendations or personalization"
+      }
+    ]
+  },
+  "answers": {},
+  "currentQuestionIndex": 0
+}

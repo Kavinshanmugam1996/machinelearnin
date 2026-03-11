@@ -1,0 +1,25 @@
+{
+  "id": "c_1773055450473",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "kavin",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "EU-CAN/QU",
+    "techMaturity": "",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "\"AI used in hiring"
+      }
+    ]
+  },
+  "answers": {
+    "AR_53": "Maybe",
+    "AR_55": "Non-applicable",
+    "AR_57": "Yes",
+    "AR_58": "Maybe",
+    "AR_63": "Yes"
+  },
+  "currentQuestionIndex": 5
+}

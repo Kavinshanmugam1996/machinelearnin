@@ -1,0 +1,19 @@
+{
+  "id": "c_1773110791168",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "mike",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "EU-CAN/OTHR",
+    "techMaturity": "1",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Workflow automation"
+      }
+    ]
+  },
+  "answers": {},
+  "currentQuestionIndex": 0
+}

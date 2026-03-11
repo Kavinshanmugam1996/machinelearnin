@@ -39,23 +39,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-ASSESSMENTS_DIR = Path("Assessments")
-ASSESSMENTS_DIR.mkdir(exist_ok=True)
+ASSESSMENTS_DIR = Path(__file__).parent.parent / "data" / "Assessments"
+ASSESSMENTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Mount static files directly
-app.mount("/Data", StaticFiles(directory="Data"), name="Data")
+app.mount("/Data", StaticFiles(directory=Path(__file__).parent.parent / "data"), name="Data")
 
 @app.get("/")
 @app.get("/risk_profiler.html")
 async def serve_frontend():
-    if not os.path.exists("risk_profiler.html"):
+    frontend_path = Path(__file__).parent.parent / "frontend" / "risk_profiler.html"
+    if not frontend_path.exists():
         raise HTTPException(status_code=404, detail="risk_profiler.html not found")
-    return FileResponse("risk_profiler.html")
+    return FileResponse(frontend_path)
 
 @app.get("/bizcom.jpg")
 async def serve_logo():
-    if os.path.exists("bizcom.jpg"):
-        return FileResponse("bizcom.jpg")
+    logo_path = Path(__file__).parent.parent / "frontend" / "bizcom.jpg"
+    if logo_path.exists():
+        return FileResponse(logo_path)
     raise HTTPException(status_code=404, detail="bizcom.jpg not found")
 
 @app.post("/api/save")
