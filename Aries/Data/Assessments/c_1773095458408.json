@@ -1,0 +1,26 @@
+{
+  "id": "c_1773095458408",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "AJay",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "EU",
+    "techMaturity": "1",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "AI used in hiring"
+      }
+    ]
+  },
+  "answers": {
+    "AR_121": "Yes",
+    "AR_122": "Yes",
+    "AR_123": "Yes",
+    "AR_124": "Yes",
+    "AR_125": "Yes",
+    "AR_126": "Yes"
+  },
+  "currentQuestionIndex": 6
+}

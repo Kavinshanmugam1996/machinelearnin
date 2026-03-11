@@ -1,0 +1,19 @@
+{
+  "id": "c_1773111752538",
+  "name": "Default Client",
+  "profile": {
+    "companyName": "mike",
+    "industry": "Healthcare",
+    "companySize": "small",
+    "regulatory": "USA-CA",
+    "techMaturity": "1",
+    "inventory": [
+      {
+        "description": "",
+        "useCase": "Email or communications assistant"
+      }
+    ]
+  },
+  "answers": {},
+  "currentQuestionIndex": 0
+}
