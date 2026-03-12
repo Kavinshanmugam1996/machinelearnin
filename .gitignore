@@ -1,7 +1,18 @@
+# General
 .venv/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
-Aries/Assessments/
-~$*.xlsx
-Aries/server.py
+.DS_Store
+Thumbs.db
+.env
+
+# Aries Project
+Aries/backend/aires.db
+Aries/Data/Assessments/c_*.json
+Aries/backend/.env
+
+# Clones
+aires_demo/
+aires_p1_clone/
+Bizcom/

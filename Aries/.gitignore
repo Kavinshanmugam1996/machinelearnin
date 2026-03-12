@@ -40,3 +40,8 @@ aires_p1_clone/
 
 # Data Lock files
 ~$*.xlsx
+
+# Databases and Secrets
+aires.db
+.env
+Data/Assessments/c_*.json
