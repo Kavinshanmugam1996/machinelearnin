@@ -24,6 +24,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r backend/requirements.txt
 
-    - name: Build Docker Image (Check)
+    - name: Run Core API Tests (Pytest)
+      run: |
+        cd backend
+        python -m pytest tests/
+
+    - name: Build Docker Image (Final Check)
+      if: success()
       run: |
         docker build -t aires-risk-profiler:latest backend/
