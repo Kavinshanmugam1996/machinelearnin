@@ -18,23 +18,21 @@ AIRES™ (AI Risk Evaluation System) is an enterprise-grade AI governance and ri
 - **Event Streaming**: Integration with Kafka for streaming assessment events to enterprise data lakes.
 
 ## 4. Technology Stack
-- **Backend**: Python 3.11, FastAPI (High-performance API framework).
-- **Frontend**: React 18, Babel (CDN-loaded for rapid development/iteration).
+- **Backend**: Python 3.11, FastAPI, SQLAlchemy (ORM).
+- **Frontend**: React 18 (Native ES Modules), HTM (Buildless rendering).
 - **Styling**: Vanilla CSS (Custom premium aesthetics).
-- **Data Layer**: JSON (Assessments), CSV/XLSX (Risk Models & QA DB).
+- **Data Layer**: Relational SQLite (aires.db), CSV/XLSX (Risk Models & QA DB).
 - **Messaging**: Kafka (Event-driven architecture).
 - **DevOps**: Docker (Containerization).
 
 ## 5. Deployment Architecture
-- **In-Browser Transformation**: Uses Babel Standalone to transform JSX in the browser, simplifying the build process.
-- **Stateless API**: FastAPI backend serves static files and handles data operations.
+- **Buildless ESM**: Uses native ES modules and HTM for a zero-build frontend environment, eliminating the need for Babel or Webpack.
+- **Relational Integration**: Backend utilizes SQLAlchemy for structured data persistence and robust assessment management.
 - **Containerized Environment**: Backend is optimized for deployment on AWS App Runner or ECS.
 
-## 6. Out of Scope (Initial Version)
 - **Interactive Dashboards**: Live radar charts and visual scorecards (Planned for Phase 2).
 - **External User Registration**: Self-service signup for non-admin users.
 - **Advanced Predictive Analytics**: AI-driven risk prediction (beyond framework-based scoring).
-- **Direct Database Integration**: Use of relational databases (PostgreSQL/MySQL) instead of file-based storage.
 - **Third-Party API Integrations**: Direct hooks into external CRM or ERP systems.
 
 ---
