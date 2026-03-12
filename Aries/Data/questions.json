@@ -5580,8 +5580,8 @@
   {
     "qid": "AR_317",
     "text": "Do you measure and report the energy and water usage associated with major AI training or fine-tuning runs, and consider ESG targets when approving large-scale training jobs or provider choices?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5598,8 +5598,8 @@
   {
     "qid": "AR_318",
     "text": "Before training or retraining models, do you check that training data (a) covers new regulations or business rules and (b) reflects realistic class balances, rather than over-representing rare events compared to production reality?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5616,8 +5616,8 @@
   {
     "qid": "AR_319",
     "text": "Do you regularly review whether key business definitions (e.g., churn, risk grades, product hierarchies) and underlying training data remain current, and update or retire models when those definitions or behaviours change materially?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5634,8 +5634,8 @@
   {
     "qid": "AR_320",
     "text": "Before training or retraining models, do you validate that target labels are not leaking into features and that synthetic or AI-generated data is used in a controlled way (e.g., capped proportions, quality checks) so that models still reflect real-world behaviour?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5652,8 +5652,8 @@
   {
     "qid": "AR_321",
     "text": "For AI-assisted development, do you enforce secure coding standards that prevent hardcoded secrets and detect auto-generated 'spaghetti code' that is difficult to maintain or review?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5670,8 +5670,8 @@
   {
     "qid": "AR_322",
     "text": "For AI-related code and controls, do you review AI-generated tests for substance (not trivial `assert true` cases) and periodically test key AI controls (e.g., monitoring, access, fairness checks) for ongoing effectiveness?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5688,8 +5688,8 @@
   {
     "qid": "AR_323",
     "text": "Do you operate a controlled model release process that tracks versions from testing to production and validates that disaster-recovery or backup models match the approved versions before failover?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5706,8 +5706,8 @@
   {
     "qid": "AR_324",
     "text": "Are AI APIs and orchestration platforms managed with strong secret management (e.g., short-lived tokens, vaults, key rotation) and hardened container/orchestrator configurations to reduce the blast radius if an AI container or key is compromised?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5724,8 +5724,8 @@
   {
     "qid": "AR_325",
     "text": "For AI systems involved in pricing or market recommendations, do you monitor for patterns that may indicate algorithmic collusion or unlawful price discrimination across customer segments or devices?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5742,8 +5742,8 @@
   {
     "qid": "AR_326",
     "text": "Do your contracts and vendor due diligence for AI development explicitly address downstream labour practices (e.g., data labeling, content moderation) to avoid unethical or hidden sub-contracting?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5760,8 +5760,8 @@
   {
     "qid": "AR_327",
     "text": "Do your onboarding and credit processes include controls specifically designed to detect synthetic or AI-generated identities (e.g., deepfake checks, cross-channel verification, device fingerprinting)?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5778,8 +5778,8 @@
   {
     "qid": "AR_328",
     "text": "For AI meeting assistants and knowledge-search tools, do you (a) obtain and record consent where required, and (b) enforce ethical walls so that restricted or conflict-of-interest matters are not surfaced to unauthorized staff?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5796,8 +5796,8 @@
   {
     "qid": "AR_329",
     "text": "Is there a persistent, tamper-evident log of all material AI-assisted decisions and actions, including timestamp, model/version, input summary and (where applicable) the human approver?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5814,8 +5814,8 @@
   {
     "qid": "AR_330",
     "text": "Can you identify the specific knowledge base version or RAG source document referenced by the model? If an AI-generated decision is challenged, can you trace that output back to specific datasets or sources?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5832,8 +5832,8 @@
   {
     "qid": "AR_331",
     "text": "For high-risk AI systems, is there a named owner and a regulatory-ready documentation pack (design, training data sources, testing results, monitoring, change history, and key decisions) kept current?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5850,8 +5850,8 @@
   {
     "qid": "AR_332",
     "text": "For AI that targets offers, discounts or pricing, do you review outcomes for geographic or demographic bias and ensure they do not systematically disadvantage protected groups or breach fair-trade or anti-discrimination laws?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5868,8 +5868,8 @@
   {
     "qid": "AR_333",
     "text": "Is there a documented AI governance structure (e.g., Board committee or equivalent) with a clear mandate that requires major AI initiatives to pass through ethics/oversight review rather than 'fast-track' routes, and that assigns unambiguous accountability for AI risk decisions?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5886,8 +5886,8 @@
   {
     "qid": "AR_334",
     "text": "Have you assessed and tested your models and RAG pipelines against adversarial threats, such as crafted inputs, malicious context documents, or poisoned training data designed to manipulate model behaviour?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5904,8 +5904,8 @@
   {
     "qid": "AR_335",
     "text": "When training and validating models, do you enforce clean separation between training and test sets (including leakage from logs or replayed traffic) and periodically re-check that no training data has contaminated evaluation datasets?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5922,8 +5922,8 @@
   {
     "qid": "AR_336",
     "text": "Do you manage risks from third-party or embedded AI components (e.g., SaaS plugins) and enforce policies for AI-generated content labelling and watermarking, including detecting or responding when users attempt to strip watermarks?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5940,8 +5940,8 @@
   {
     "qid": "AR_337",
     "text": "Do you run structured AI failure scenario analysis or stress testing (e.g., tabletop exercises, red-teaming) so the organization is prepared for outages, misbehaviour, or attacks rather than reacting ad hoc when issues occur?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5958,8 +5958,8 @@
   {
     "qid": "AR_338",
     "text": "For AI-enabled interfaces (web, mobile, kiosks, chat), do you assess and remediate accessibility against standards such as WCAG, including support for assistive technologies and alternative interaction modes?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5976,8 +5976,8 @@
   {
     "qid": "AR_339",
     "text": "Do you review and adjust AI-driven performance or productivity metrics to ensure they do not unfairly penalize certain roles or employees, and can staff challenge AI-generated evaluations?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -5994,8 +5994,8 @@
   {
     "qid": "AR_340",
     "text": "For AI systems that influence consumer decisions (e.g., credit scoring, offers, digital UI flows), do you test for discriminatory outcomes (e.g., redlining) and dark patterns, and ensure users can obtain meaningful explanations when they are denied key services?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6012,8 +6012,8 @@
   {
     "qid": "AR_341",
     "text": "Are there explicit policies AND technical controls preventing staff from using generative AI to create or alter evidence for audits, tests or regulatory submissions without independent verification?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6030,8 +6030,8 @@
   {
     "qid": "AR_342",
     "text": "When payment or other high-value actions are initiated based on voice/video instructions, do you require strong verification (e.g., call-back, multi-factor, out-of-band checks) to defend against deepfake impersonation?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6048,8 +6048,8 @@
   {
     "qid": "AR_343",
     "text": "Are AI systems that assist with billing codes or returns approvals monitored for abnormal patterns (e.g., systematic upcoding, unusually high refund approvals) with human review of exceptions?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6066,8 +6066,8 @@
   {
     "qid": "AR_344",
     "text": "Do you use controls (e.g., CAPTCHAs, device fingerprinting, velocity checks, identity verification) to detect and block automated creation of fake accounts or abuse of loyalty / sign-up bonuses?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6084,8 +6084,8 @@
   {
     "qid": "AR_345",
     "text": "For voice-based or call-centre authentication, do you use strong anti-spoofing and step-up verification (e.g., knowledge factors, device checks, callbacks) to protect against cloned or deepfaked voices?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6102,8 +6102,8 @@
   {
     "qid": "AR_346",
     "text": "Is there a clearly documented RACI (or equivalent) that specifies who is responsible, accountable, consulted and informed for high-impact AI decisions and for overriding model outputs?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6120,8 +6120,8 @@
   {
     "qid": "AR_347",
     "text": "Before approving or continuing a high-risk AI initiative, do you formally compare expected business benefits against compliance and governance costs (documentation, audits, monitoring)?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6138,8 +6138,8 @@
   {
     "qid": "AR_348",
     "text": "For custom or business-critical AI models, is technical and operational knowledge documented and distributed so that more than one named person can safely maintain and approve changes?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6156,8 +6156,8 @@
   {
     "qid": "AR_349",
     "text": "If you use AI to monitor employee behaviour (e.g., insider-threat analytics), have you explicitly tested and limited its impact on legitimate whistleblowing and protected activity, with clear escalation paths for concerns?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6174,8 +6174,8 @@
   {
     "qid": "AR_350",
     "text": "If AI systems provide content that could be perceived as legal, medical, or other regulated professional advice, do you enforce gating (e.g., disclaimers, jurisdiction checks, mandatory human review) before clients can rely on that advice?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6192,8 +6192,8 @@
   {
     "qid": "AR_351",
     "text": "For AI-driven monitoring and safety systems, do you regularly tune alert thresholds and policies to reduce false positives, group low-risk events, and ensure that important alerts are acted on rather than ignored due to alert or policy fatigue?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6210,8 +6210,8 @@
   {
     "qid": "AR_352",
     "text": "For customer-facing conversational AI used by vulnerable populations (e.g., financial hardship, mental health, chronic illness), have you assessed the risk of emotional dependence and put in place safeguards such as escalation to humans and limits on relationship-style interactions?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6228,8 +6228,8 @@
   {
     "qid": "AR_353",
     "text": "When AI chatbots or triage bots interact with people, do you clearly disclose that they are AI systems and provide appropriate notices or routing to human staff in contexts such as healthcare or sensitive services?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6246,8 +6246,8 @@
   {
     "qid": "AR_354",
     "text": "Do oversight bodies receive timely, comprehensible reporting on AI incidents and leading indicators, and do leaders have predefined criteria and authority to pause or shut down problematic AI systems even when there is commercial or political pressure not to?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6264,8 +6264,8 @@
   {
     "qid": "AR_355",
     "text": "When staff observe AI-related issues (e.g., unsafe behaviour, unfair outcomes, data leaks), do they know how and when to escalate, and is there a documented, non-retaliatory process for raising concerns outside normal line management?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6282,8 +6282,8 @@
   {
     "qid": "AR_356",
     "text": "Do you maintain a central register for AI systems and enforce policies that (a) block or regularize unapproved AI tools in production or client-facing channels, and (b) resolve conflicts between local business decisions and global AI governance?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6300,8 +6300,8 @@
   {
     "qid": "AR_357",
     "text": "When developers use AI-assisted coding tools, do you have policies and technical checks to prevent incorporation of GPL/Copyleft or incompatible open-source code into proprietary products?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6318,8 +6318,8 @@
   {
     "qid": "AR_358",
     "text": "Before launching AI-enabled features, do you perform IP review that covers both (a) rights to use training data (licenses, consents, fair-use analysis) and (b) patent clearance for key AI-driven functionality?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6336,8 +6336,8 @@
   {
     "qid": "AR_359",
     "text": "Do you enforce and monitor data-residency and routing rules (including backup, failover and analytics pipelines) to ensure personal and regulated data stays within approved jurisdictions, and are exceptions explicitly approved?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6354,8 +6354,8 @@
   {
     "qid": "AR_360",
     "text": "Before deploying foundation models or APIs, do you review and document license terms and regulatory limits (e.g., 'research only', prohibited AI Act categories) and enforce technical or policy controls to prevent banned or out-of-scope uses?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6372,8 +6372,8 @@
   {
     "qid": "AR_361",
     "text": "For AI systems operating across multiple jurisdictions, is there a single accountable owner or committee responsible for mapping applicable laws/regulations and ensuring consistent oversight across all regions?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6390,8 +6390,8 @@
   {
     "qid": "AR_362",
     "text": "For regulated communications (e.g., broker-dealer, FinRA), have AI-enabled systems such as chatbots, collaboration tools or auto-deletion rules been assessed to ensure required retention periods are met and logs are not deleted early?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6408,8 +6408,8 @@
   {
     "qid": "AR_363",
     "text": "Where AI software could qualify as a medical device or clinical decision support, do you have a documented determination of regulatory status (e.g., FDA/MDR) and, where applicable, evidence of clearance or a plan to obtain it before production use?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6426,8 +6426,8 @@
   {
     "qid": "AR_364",
     "text": "Before deploying significant AI systems, do you systematically review (a) AI-specific regulations, (b) model and tool license terms, and (c) client contract clauses on AI use, and implement controls to prevent non-compliant processing or service delivery?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6444,8 +6444,8 @@
   {
     "qid": "AR_365",
     "text": "When AI outputs conflict with human or consensus diagnoses, do you systematically track these disagreements and regularly review annotation quality (including error rates by annotator or vendor)?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6462,8 +6462,8 @@
   {
     "qid": "AR_366",
     "text": "For retrieval-augmented generation or search over client documents, do you have technical and contractual controls that prevent data sets of different classifcation levels and clients from being retrieved in responses to another client's queries?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6480,8 +6480,8 @@
   {
     "qid": "AR_367",
     "text": "Do you continuously monitor important AI models for performance or reasoning drift, and ensure that incidents (including regulatory reports drafted by AI) are reviewed with lessons translated into updated controls, playbooks, and training?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6498,8 +6498,8 @@
   {
     "qid": "AR_368",
     "text": "Where AI generates data or narratives used as evidence for financial reporting or controls (e.g., reconciliations, explanations, ICFR documentation), do you require human validation and maintain an audit trail to detect fabricated or unsupported outputs?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6516,8 +6516,8 @@
   {
     "qid": "AR_369",
     "text": "For AI recommender systems that suggest products or offers, do you monitor for patterns such as promoting out-of-stock items or low-margin products, and reconcile recommendations against actual inventory data?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6534,8 +6534,8 @@
   {
     "qid": "AR_370",
     "text": "Do you control and monitor situations where models are trained on their own or user-gamed outputs, and do you require human review or validation for AI-generated legal or regulatory content (e.g., citations, SAR narratives) to prevent fabricated references?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6552,8 +6552,8 @@
   {
     "qid": "AR_371",
     "text": "Do you monitor for technical failure modes such as code assistants importing non-existent or unsafe libraries, or models being repeatedly trained on their own or user-gamed outputs without quality controls?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6570,8 +6570,8 @@
   {
     "qid": "AR_372",
     "text": "For customer-facing assistants, do you monitor interactions to prevent aggressive or shaming responses to frustrated users and to ensure the system does not prioritize being agreeable over being accurate and transparent?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6588,8 +6588,8 @@
   {
     "qid": "AR_373",
     "text": "Where AI drafts contracts, policies, or other legally relevant documents, do you have controls (e.g., templates, human review, clause libraries) to detect hallucinated clauses or overconfident statements presented as fact?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6606,8 +6606,8 @@
   {
     "qid": "AR_374",
     "text": "When embedding models or vector databases are updated, do you follow a controlled process (e.g., re-indexing, validation queries, integrity checks) to prevent corrupted indexes and misaligned retrieval results?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6624,8 +6624,8 @@
   {
     "qid": "AR_375",
     "text": "Do you monitor and alert on API inference latency and upstream data-processing delays so that AI decisions are made within agreed SLAs and on up-to-date events, rather than acting on information that is already stale?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6642,8 +6642,8 @@
   {
     "qid": "AR_376",
     "text": "Do you monitor for stale or corrupted features in production (e.g., cached values, NaNs, or silent schema changes) and have automated checks to detect when upstream databases or feature stores change in ways that could break model inputs?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6660,8 +6660,8 @@
   {
     "qid": "AR_377",
     "text": "Do you manage AI infrastructure using Infrastructure-as-Code with drift detection, maintain secure and tested backups of models/data, and regularly assess serving platforms for critical vulnerabilities (including emergency patching and rollback plans)?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6678,8 +6678,8 @@
   {
     "qid": "AR_378",
     "text": "After AI controls are implemented, do you maintain an ongoing view of residual AI risk (e.g., metrics, dashboards, periodic reviews) rather than treating risk assessments as one-time exercises?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6696,8 +6696,8 @@
   {
     "qid": "AR_379",
     "text": "Do you routinely test important AI models for privacy attacks (e.g., model inversion which could allow an attacker to reverse engineer training data and indentify indivudal customers/patients.",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6714,8 +6714,8 @@
   {
     "qid": "AR_380",
     "text": "Where AI is trained or evaluated on identifiable personal or health data, do you maintain documented lawful bases and, where required, explicit consent and notices that clearly cover AI use, including cross-border processing?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6732,8 +6732,8 @@
   {
     "qid": "AR_381",
     "text": "Where AI is used to monitor employees (e.g., keystrokes, eye tracking, productivity scores), have you assessed necessity and proportionality, limited data collection to what is needed, and provided clear notices and opt-out/appeal mechanisms?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6750,8 +6750,8 @@
   {
     "qid": "AR_382",
     "text": "Do your AI training and inference pipelines support privacy-by-design controls such as (a) enforcing data minimization, (b) honouring deletion and right-to-be-forgotten requests, and (c) reducing re-identification risks when combining anonymized datasets?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6768,8 +6768,8 @@
   {
     "qid": "AR_383",
     "text": "For AI-enabled kiosks that use cameras or touchscreens, do you implement security and privacy controls for biometrics (e.g., anti-tampering, encryption, consent notices) and ensure accessibility features (e.g., voice or haptic modes) for disabled users?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6786,8 +6786,8 @@
   {
     "qid": "AR_384",
     "text": "Do you rely on a single AI provider or foundation-model family for most of your critical AI use cases without a tested fallback or exit strategy?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6804,8 +6804,8 @@
   {
     "qid": "AR_385",
     "text": "Do you monitor AI-driven pricing algorithms for unintended 'race to the bottom' behaviour (e.g., repeated undercutting, margin erosion) across products and channels?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6822,8 +6822,8 @@
   {
     "qid": "AR_386",
     "text": "Do you actively monitor AI models that influence markets or pricing (yours or competitors') for feedback-loop behaviour (e.g., sudden incoherence, cascading errors, or rapid price swings) and have documented triggers for human intervention or shutdown?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6840,8 +6840,8 @@
   {
     "qid": "AR_387",
     "text": "For critical AI services, do you both (a) assess dependency on any single provider/model and (b) maintain contracts that cover AI-specific errors (e.g., hallucinations, IP claims) and include a realistic migration/exit strategy?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6858,8 +6858,8 @@
   {
     "qid": "AR_388",
     "text": "Is there a single, up-to-date AI risk register with named owners for each major risk, and is it formally updated whenever models, vendors, or high-risk use cases change?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6876,8 +6876,8 @@
   {
     "qid": "AR_389",
     "text": "Have your cyber / professional liability policies and key customer contracts been reviewed to confirm whether AI-specific failures (e.g., hallucinated outputs, algorithmic decisions, indemnity clauses) are explicitly covered, excluded, or require additional endorsements?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6894,8 +6894,8 @@
   {
     "qid": "AR_390",
     "text": "For customer-facing chatbots that can discuss pricing, refunds, or contract terms, do you enforce rules and monitoring to prevent the bot from promising commitments that exceed policy (e.g., guardrail prompts, templates, human approval for exceptions)?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6912,8 +6912,8 @@
   {
     "qid": "AR_391",
     "text": "Are AI model assets (including weights and key configurations) stored in controlled, encrypted repositories and consistently referenced in a central AI risk register that is kept current when systems, risks or controls change?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6930,8 +6930,8 @@
   {
     "qid": "AR_392",
     "text": "Have you implemented controls and testing against adversarial prompt techniques (e.g., jailbreaks, prompt injection, resource-exhaustion \u201csponge\u201d inputs) that attempt to bypass safeguards or consume excessive compute?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6948,8 +6948,8 @@
   {
     "qid": "AR_393",
     "text": "Do you maintain an inventory and patching process for critical AI components (e.g., frameworks, libraries, GPU drivers), and assess the supply-chain risk of third-party packages used in your AI stack?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6966,8 +6966,8 @@
   {
     "qid": "AR_394",
     "text": "Are sensitive prompts and system instructions protected from exposure (e.g., redaction, access controls, log hygiene), and do you test against prompt-injection techniques that attempt to reveal or override hidden system prompts?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -6984,8 +6984,8 @@
   {
     "qid": "AR_395",
     "text": "Have you evaluated hardware-level and side-channel risks for AI workloads (e.g., GPU driver vulnerabilities, power/timing analysis) and applied mitigations such as hardened images, isolation, and monitoring of unusual access patterns?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7002,8 +7002,8 @@
   {
     "qid": "AR_396",
     "text": "Do you control what inference data and training artefacts persist in caches, logs, or monitoring systems, and scrub or protect any residual data or hyperparameter information that could leak sensitive context or aid model reverse-engineering?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7020,8 +7020,8 @@
   {
     "qid": "AR_397",
     "text": "For AI APIs and endpoints, have you assessed threats such as man-in-the-middle interception and model extraction, and implemented protections like strong encryption, authentication, rate limiting, and anomaly detection on query patterns?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7038,8 +7038,8 @@
   {
     "qid": "AR_398",
     "text": "Are internal and external AI endpoints managed with certificate lifecycle processes and endpoint inventories so that TLS certificates and legacy 'zombie' APIs do not quietly expire or remain exposed?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7056,8 +7056,8 @@
   {
     "qid": "AR_399",
     "text": "Do you test models and data pipelines for adversarial techniques such as poisoned training samples, multimodal payloads (e.g., steganographic images/audio), or AI-generated polymorphic malware that could act as hidden triggers or bypass traditional detection?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7074,8 +7074,8 @@
   {
     "qid": "AR_400",
     "text": "Have you implemented controls to prevent abuse of AI channels for replay-style attacks (e.g., resubmitting signed requests) and for highly personalized phishing campaigns that use AI to generate convincing messages at scale?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7092,8 +7092,8 @@
   {
     "qid": "AR_401",
     "text": "Do you enforce policies and technical controls that restrict staff from (a) using AI to hide or generate malicious code, (b) installing unvetted plugins or extensions, and (c) pasting sensitive or regulated data into unsanctioned consumer AI tools?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7110,8 +7110,8 @@
   {
     "qid": "AR_402",
     "text": "Beyond the official AI register, do you actively search for and bring into governance any shadow AI tools, workflows, or automations (e.g., unsanctioned bots, spreadsheets with LLM calls) that could impact customers or regulated processes?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7128,8 +7128,8 @@
   {
     "qid": "AR_403",
     "text": "Do frontline users receive training that (a) explains cultural and contextual limits of AI outputs and (b) explicitly encourages them to challenge or override AI suggestions when they appear inappropriate or wrong?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7146,8 +7146,8 @@
   {
     "qid": "AR_404",
     "text": "Have you formally assessed and addressed the workforce impacts of AI (e.g., communication, retraining, redeployment plans) and do you periodically measure morale or productivity impacts related to fear of AI replacement?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7164,8 +7164,8 @@
   {
     "qid": "AR_405",
     "text": "For AI systems that can generate or route public-facing content, do you (a) define high-risk topics, (b) apply additional human review or fact-checking, and (c) monitor for amplification of false or harmful narratives across channels?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7182,8 +7182,8 @@
   {
     "qid": "AR_406",
     "text": "Do you have a documented approach to AI-assisted work that includes guardrails to preserve core skills (e.g., training, rotation, limits on AI use for juniors) and checks that staff can still perform key tasks without AI support?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7200,8 +7200,8 @@
   {
     "qid": "AR_407",
     "text": "Before adopting or renewing critical AI services, do you assess vendor financial stability and maintain a contingency plan (e.g., alternative provider, internal fallback) if that vendor fails or exits the market?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7218,8 +7218,8 @@
   {
     "qid": "AR_408",
     "text": "For your AI vendors, do you map the chain of custody for data passed to AI sub-processors, ensuring no data helps train third-party foundation models without consent?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7236,8 +7236,8 @@
   {
     "qid": "AR_409",
     "text": "When AI influences important decisions, do your policies and disclosures clearly assign human accountability rather than suggesting that responsibility lies with the tool or vendor, and are escalation paths defined when outcomes are disputed?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7254,8 +7254,8 @@
   {
     "qid": "AR_410",
     "text": "Do you have controls to prevent staff from pasting client-identifying or confidential data into public or consumer AI tools, and to manage conflicts of interest when AI is used across multiple clients or matters?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7272,8 +7272,8 @@
   {
     "qid": "AR_411",
     "text": "Before using internal HR or sensitive datasets to train or fine-tune AI models, do you (a) obtain appropriate approvals, (b) complete any required DPIA / AI impact assessment, and (c) confirm lawful bases and cross-border transfer compliance for that data?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7290,8 +7290,8 @@
   {
     "qid": "AR_412",
     "text": "Where AI supports or automates insurance or benefit claims decisions, have you validated that rules do not systematically deny valid claims, and do you provide clear escalation and human appeal mechanisms?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7308,8 +7308,8 @@
   {
     "qid": "AR_413",
     "text": "When AI influences important decisions, can you provide a meaningful explanation of the main factors, and are responsibilities defined so that staff are not held personally liable for errors they cannot see or technically prevent?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7326,8 +7326,8 @@
   {
     "qid": "AR_414",
     "text": "For high-impact AI models (e.g., credit, hiring, customer treatment), do you test performance and error rates across key demographic groups and remediate when one group is consistently disadvantaged?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7344,8 +7344,8 @@
   {
     "qid": "AR_415",
     "text": "Are employees explicitly restricted and monitored from using AI tools (internal or external) with material non-public information (MNPI) or trade secrets, with training and surveillance designed to detect and respond to misuse?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7362,8 +7362,8 @@
   {
     "qid": "AR_416",
     "text": "For AI used in recruiting or triage (e.g., CV screening, case prioritization), do you test for disparate impact across protected groups and adjust models or decision rules when bias is detected?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7380,8 +7380,8 @@
   {
     "qid": "AR_417",
     "text": "Do AI oversight bodies (e.g., AI committee, ethics lead, model risk lead) have (a) clearly defined authority to pause or stop deployments, (b) sufficient resourcing to review high-risk systems, and (c) regular reporting into the Board or equivalent?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7398,8 +7398,8 @@
   {
     "qid": "AR_418",
     "text": "Has the Board formally approved an AI strategy and risk appetite, and does it receive regular, candid reporting on AI risk exposure, incidents, and remediation progress?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7416,8 +7416,8 @@
   {
     "qid": "AR_419",
     "text": "Are AI oversight roles and committees independent from product and growth incentives (e.g., separate reporting lines, conflict-of-interest rules), and are executive KPIs balanced between AI growth and safe, compliant deployment?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7434,8 +7434,8 @@
   {
     "qid": "AR_420",
     "text": "Before training or fine-tuning models on internal or customer data, do you require governance approval and confirm that third-party providers (e.g., API vendors) are contractually barred from using your inputs to train their public base models?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7452,8 +7452,8 @@
   {
     "qid": "AR_421",
     "text": "Do you have a defined process to identify AI-related incidents (e.g., safety, discrimination, privacy), assess reportability, and notify regulators or clients within required timelines, with links to DPIA / AI impact assessments where applicable?",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",
@@ -7470,8 +7470,8 @@
   {
     "qid": "AR_422",
     "text": "Are robotics incidents independently investigate from a safety, legal, technological, union and community perspective and are results transparently communicated to stakeholders and regulators, as required.",
-    "component_group": "nan",
-    "cluster": "nan",
+    "component_group": "",
+    "cluster": "",
     "options": [
       "Yes",
       "No",

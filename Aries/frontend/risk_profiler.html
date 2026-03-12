@@ -233,92 +233,20 @@
       "Domain 5: Operational & Infrastructure Risk": "Evaluates uptime and systemic resilience. Covers resource starvation (GPU/Token) prevention, multi-cloud failover strategies, chaos engineering for AI systems, and disaster recovery runbooks (RTO/RPO).",
     };
 
-    // ─── DATA ─────────────────────────────────────────────────────────────────────
+    // ─── DATA (BACKEND MANAGED) ──────────────────────────────────────────────────
     const MANDATORY_COMPONENT_GROUPS = ["privacy", "security", "reliability", "legal_regulatory"];
-
-    // These will be populated dynamically from CSV/JSON files
-    let AI_USE_CASES = [];
-    let QUESTION_MAPPER = {};
-    let ALL_QUESTIONS = [];
-    let RISK_DB = {};
-
-    // ─── CSV PARSER ───────────────────────────────────────────────────────────────
-    function parseCSV(text) {
-      const lines = text.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
-      if (lines.length === 0) return [];
-      const headers = lines[0].split(",").map(h => h.trim());
-      return lines.slice(1).map(line => {
-        const vals = line.split(",").map(v => v.trim().replace(/^"|"$/g, ""));
-        const obj = {};
-        headers.forEach((h, i) => { obj[h] = vals[i] || ""; });
-        return obj;
-      });
-    }
-
-    // ─── DATA LOADER ──────────────────────────────────────────────────────────────
-    async function loadAllData() {
-      // Load Question_mapper.csv → AI_USE_CASES + QUESTION_MAPPER (Added cache buster)
-      const mapperRes = await fetch(`Data/Question_mapper.csv?v=${Date.now()}`);
-      const mapperText = await mapperRes.text();
-      const mapperLines = mapperText.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
-      const componentHeaders = mapperLines[0].split(",").map(h => h.trim()).slice(1); // skip first col "AI systems"
-
-      AI_USE_CASES = [];
-      QUESTION_MAPPER = {};
-      for (let i = 1; i < mapperLines.length; i++) {
-        const vals = mapperLines[i].split(",").map(v => v.trim());
-        const useCase = vals[0].trim();
-        if (!useCase) continue;
-        AI_USE_CASES.push(useCase);
-        // Collect component groups where the weight is non-zero
-        const groups = [];
-        for (let j = 1; j < vals.length; j++) {
-          const weight = parseFloat(vals[j]);
-          if (weight && weight > 0 && componentHeaders[j - 1]) {
-            groups.push(componentHeaders[j - 1]);
-          }
-        }
-        QUESTION_MAPPER[useCase] = groups;
-      }
-
-      // Load questions.json → ALL_QUESTIONS (Added cache buster)
-      const questionsRes = await fetch(`Data/questions.json?v=${Date.now()}`);
-      ALL_QUESTIONS = await questionsRes.json();
-
-      // Load AR_Risk_DB.csv → RISK_DB (QID → array of risk descriptions) (Added cache buster)
-      const riskRes = await fetch(`Data/AR_Risk_DB.csv?v=${Date.now()}`);
-      const riskText = await riskRes.text();
-      const riskLines = riskText.trim().split("\n").map(l => l.trim().replace(/\r$/, ""));
-      RISK_DB = {};
-      for (let i = 1; i < riskLines.length; i++) {
-        // CSV may have commas inside quoted fields, simple parse for first 3 columns
-        const match = riskLines[i].match(/^([^,]+),([^,]+),"?(.*?)"?(?:,|$)/);
-        if (match) {
-          const qid = match[1].trim();
-          const riskId = match[2].trim();
-          const desc = match[3].trim();
-          if (!RISK_DB[qid]) RISK_DB[qid] = [];
-          RISK_DB[qid].push({ riskId, desc });
-        }
-      }
-
-
-    }
-
-    function getRelevantQuestions(aiInventory, industry) {
-      const allGroups = new Set(MANDATORY_COMPONENT_GROUPS);
-      aiInventory.forEach(({ useCase }) => {
-        (QUESTION_MAPPER[useCase] || []).forEach(g => allGroups.add(g));
-      });
-      return ALL_QUESTIONS.filter(q => {
-        const isUniversal = q.is_universal;
-        const belongsToIndustry = industry && q.industry === industry;
-        const matchesUseCase = allGroups.has(q.component_group);
-        
-        // Include if it's a universal question OR if it matches the industry and the user's selected use case groups
-        return isUniversal || (belongsToIndustry && matchesUseCase);
-      });
-    }
+    let AI_USE_CASES = [
+      "Customer Support Chatbot",
+      "Process Automation",
+      "Predictive Analytics",
+      "Content Generation (LLM)",
+      "Fraud Detection",
+      "Image/Video Recognition",
+      "Recommendation Engine",
+      "Expert System / Advisory"
+    ]; 
+    // AI_USE_CASES is still needed for the dropdown in CompanyProfile.
+    // In a real app, this would also come from the backend.
 
     function BizcomLogo({ size = 28, style = {} }) {
       return (
@@ -477,17 +405,27 @@
       const [error, setError] = useState("");
       const [loading, setLoading] = useState(false);
 
-      const doLogin = () => {
+      const doLogin = async () => {
         setLoading(true);
-        setTimeout(() => {
-          const emailLower = email.toLowerCase();
-          if ((emailLower === "kavin@bizcomgrp.com" || emailLower === "jerry@bizcomgrp.com" || emailLower === "asifa@bizcomgrp.com") && pw === "Bizcom@123") {
+        setError("");
+        try {
+          const res = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password: pw })
+          });
+          
+          if (res.ok) {
             onLogin();
           } else {
-            setError("Invalid email or password.");
+            const data = await res.json();
+            setError(data.detail || "Login failed");
           }
+        } catch (err) {
+          setError("Network error connecting to backend");
+        } finally {
           setLoading(false);
-        }, 700);
+        }
       };
 
       return (
@@ -930,8 +868,7 @@
     }
 
     // ─── PAGE 4: QUESTION FLOW ────────────────────────────────────────────────────
-    function QuestionFlow({ profile, onBack, onFinish, onExit, initialIndex, onIndexChange, initialAnswers, onAnswersChange, clients, activeClientId, onSwitchClient, onLogout }) {
-      const questions = getRelevantQuestions(profile.inventory, profile.industry);
+    function QuestionFlow({ questions, profile, onBack, onFinish, onExit, initialIndex, onIndexChange, initialAnswers, onAnswersChange, clients, activeClientId, onSwitchClient, onLogout }) {
       const [current, setCurrent] = useState(initialIndex);
 
       useEffect(() => {
@@ -1032,14 +969,16 @@
             }}>
               {/* Metadata row */}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-                <span style={{
-                  display: "inline-flex", alignItems: "center", gap: 5,
-                  padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600,
-                  background: clusterColor + "15", color: clusterColor, border: `1px solid ${clusterColor}33`
-                }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: clusterColor }} />
-                  {q?.cluster?.replace("Cluster ", "").replace(" — ", " · ")}
-                </span>
+                {q?.cluster && q?.cluster !== "nan" && (
+                  <span style={{
+                    display: "inline-flex", alignItems: "center", gap: 5,
+                    padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600,
+                    background: clusterColor + "15", color: clusterColor, border: `1px solid ${clusterColor}33`
+                  }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: clusterColor }} />
+                    {q?.cluster?.replace("Cluster ", "").replace(" — ", " · ")}
+                  </span>
+                )}
                 {isMandatory && (
                   <span style={{
                     padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 700,
@@ -1193,12 +1132,10 @@
         }
       };
 
-      // Initial load: Data + Clients
+      // Initial load: Clients
       useEffect(() => {
         const init = async () => {
           try {
-            await loadAllData();
-
             // Load clients from server
             const res = await fetch("/api/clients");
             const serverClients = await res.json();
@@ -1212,7 +1149,7 @@
             setPage("login");
           } catch (err) {
             console.error("[AIRES] Failed to initialize:", err);
-            setLoadError("Failed to load data. Make sure the server is running and you are accessing the correct URL.");
+            setLoadError("Failed to connect to backend. Make sure the server is running.");
           }
         };
         init();
@@ -1331,12 +1268,27 @@
             />
           )}
           {page === "profile" && <CompanyProfile
-            onNext={p => {
+            onNext={async p => {
               setProfile(p);
               if (p.companyName) {
                 setClients(prev => prev.map(c => c.id === activeClientId ? { ...c, name: p.companyName } : c));
               }
-              setPage("questions");
+              
+              // Fetch questions from backend
+              setPage("loading");
+              try {
+                const res = await fetch("/api/get-questions", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ inventory: p.inventory, industry: p.industry })
+                });
+                const qs = await res.json();
+                setQuestions(qs);
+                setPage("questions");
+              } catch (err) {
+                alert("Failed to fetch questions from server.");
+                setPage("profile");
+              }
             }}
             clients={clients}
             activeClientId={activeClientId}
@@ -1344,8 +1296,9 @@
             onLogout={logout}
             onHome={() => setPage("landing")}
           />}
-          {page === "questions" && profile && (
+          {page === "questions" && profile && questions.length > 0 && (
             <QuestionFlow
+              questions={questions}
               profile={profile}
               onBack={() => setPage("profile")}
               onFinish={(a, q) => {
