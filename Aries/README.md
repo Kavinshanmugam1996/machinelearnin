@@ -8,35 +8,35 @@ AIRES™ is an enterprise-grade AI governance and risk assessment platform devel
 
 This repository follows enterprise-grade best practices for scalability and organization:
 
-- **`backend/`**: FastAPI-based API server (Python 3.11).
-- **`frontend/`**: React-based assessment interface.
-- **`data/`**: Consolidated storage for risk models (JSON/CSV) and assessments.
-- **`docs/`**: Technical documentation and [Architecture Overview](docs/ARCHITECTURE.md).
+- **`backend/`**: FastAPI-based API server with SQLAlchemy ORM.
+- **`frontend/`**: Buildless React interface using native ES Modules and HTM.
+- **`data/`**: Consolidated storage for risk models (JSON/CSV) and relational SQLite data.
+- **`docs/`**: Technical documentation and [Scope Document](docs/SCOPE.md).
 - **`.github/`**: CI/CD workflows and issue/PR templates.
 
 ## Quick Start (Local Development)
 
 ### Direct Launch
 ```bash
-# Navigate to backend
+# 1. Navigate to backend
 cd backend/
 
-# Install dependencies
+# 2. Install dependencies
 pip install -r requirements.txt
 
-# Start Server
-python main.py
-```
-Access the profiler at: [http://localhost:3000](http://localhost:3000)
+# 3. Initialize/Migrate Data
+python scripts/migrate_data.py
 
-### via Docker
-```bash
-# Build the image from backend
-docker build -t aires-backend backend/
-
-# Run the container
-docker run -p 3000:3000 aires-backend
+# 4. Start Server
+uvicorn main:app --host 0.0.0.0 --port 3001 --reload
 ```
+Access the profiler at: [http://localhost:3001/risk_profiler.html](http://localhost:3001/risk_profiler.html)
+
+### Tech Stack
+- **Frontend**: Native ES Modules, [HTM](https://github.com/developit/htm) (Zero-build React), Vanilla CSS.
+- **Backend**: FastAPI (Python 3.11), SQLAlchemy (Async SQLite).
+- **Messaging**: Kafka (Optional event streaming).
+- **Security**: JWT-based Authentication.
 
 ## Contributing
 We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for our standards and branching strategy.
