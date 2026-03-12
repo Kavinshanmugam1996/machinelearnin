@@ -1,19 +1,88 @@
 import os
 import uuid
 import json
+import csv
 from datetime import datetime
 from pathlib import Path
+from typing import List, Dict, Any, Optional
 
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request, HTTPException, Body
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+
+# --- CONFIGURATION ---
+DATA_DIR = Path(__file__).parent.parent / "Data"
+ASSESSMENTS_DIR = DATA_DIR / "Assessments"
+ASSESSMENTS_DIR.mkdir(parents=True, exist_ok=True)
+
+# --- DATA STORAGE (IN-MEMORY CACHE) ---
+QUESTIONS = []
+QUESTION_MAPPER = {}
+RISK_DB = {}
+CREDENTIALS = {}
+
+def load_data():
+    global QUESTIONS, QUESTION_MAPPER, RISK_DB, CREDENTIALS
+    
+    # Load Questions
+    questions_path = DATA_DIR / "questions.json"
+    if questions_path.exists():
+        with open(questions_path, "r", encoding="utf-8") as f:
+            QUESTIONS = json.load(f)
+    
+    # Load Question Mapper
+    mapper_path = DATA_DIR / "Question_mapper.csv"
+    if mapper_path.exists():
+        with open(mapper_path, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            headers = next(reader)
+            component_headers = headers[1:]
+            for row in reader:
+                if not row: continue
+                use_case = row[0].strip()
+                groups = []
+                for i, val in enumerate(row[1:]):
+                    try:
+                        weight = float(val)
+                        if weight > 0:
+                            groups.append(component_headers[i].strip())
+                    except ValueError:
+                        continue
+                QUESTION_MAPPER[use_case] = groups
+
+    # Load Risk DB
+    risk_path = DATA_DIR / "AR_Risk_DB.csv"
+    if risk_path.exists():
+        with open(risk_path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                qid = row.get("QID")
+                if qid:
+                    if qid not in RISK_DB:
+                        RISK_DB[qid] = []
+                    RISK_DB[qid].append({
+                        "riskId": row.get("Risk ID"),
+                        "desc": row.get("Risk Description")
+                    })
+
+    # Load Credentials
+    creds_path = Path(__file__).parent / "credentials.csv"
+    if creds_path.exists():
+        with open(creds_path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                email = row.get("email", "").lower()
+                password = row.get("password")
+                if email and password:
+                    CREDENTIALS[email] = password
+
+load_data()
 
 # --- KAFKA PRODUCER SETUP (AWS READY) ---
 KAFKA_TOPIC = os.environ.get('KAFKA_TOPIC', 'AIRES-assessment-events')
 try:
     from kafka import KafkaProducer
-    # Defaults to localhost for dev, but configurable for AWS MSK via Env Var
     KAFKA_BROKERS = os.environ.get('KAFKA_BROKERS', 'localhost:9092')
     producer = KafkaProducer(
         bootstrap_servers=[b.strip() for b in KAFKA_BROKERS.split(',')],
@@ -24,13 +93,11 @@ except ImportError:
     print("WARNING: kafka-python library not installed. Event streaming disabled.")
     producer = None
 except Exception as e:
-    print(f"WARNING: Kafka connection error (Expected if broker is offline): {e}")
+    print(f"WARNING: Kafka connection error: {e}")
     producer = None
-# ----------------------------------------
 
 app = FastAPI(title="AIRES™ Risk Profiler Backend")
 
-# Allow CORS for external access if needed in prod
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -38,12 +105,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-ASSESSMENTS_DIR = Path(__file__).parent.parent / "data" / "Assessments"
-ASSESSMENTS_DIR.mkdir(parents=True, exist_ok=True)
-
-# Mount static files directly
-app.mount("/Data", StaticFiles(directory=Path(__file__).parent.parent / "data"), name="Data")
 
 @app.get("/")
 @app.get("/risk_profiler.html")
@@ -59,6 +120,40 @@ async def serve_logo():
     if logo_path.exists():
         return FileResponse(logo_path)
     raise HTTPException(status_code=404, detail="bizcom.jpg not found")
+
+@app.post("/api/login")
+async def login(credentials: dict = Body(...)):
+    email = credentials.get("email", "").lower()
+    password = credentials.get("password")
+    
+    if email in CREDENTIALS and CREDENTIALS[email] == password:
+        return {"status": "success", "user": email}
+    
+    raise HTTPException(status_code=401, detail="Invalid credentials")
+
+@app.post("/api/get-questions")
+async def get_questions(payload: dict = Body(...)):
+    inventory = payload.get("inventory", [])
+    industry = payload.get("industry")
+    
+    mandatory_groups = ["privacy", "security", "reliability", "legal_regulatory"]
+    all_groups = set(mandatory_groups)
+    
+    for item in inventory:
+        use_case = item.get("useCase")
+        if use_case in QUESTION_MAPPER:
+            all_groups.update(QUESTION_MAPPER[use_case])
+    
+    relevant = []
+    for q in QUESTIONS:
+        is_universal = q.get("is_universal", False)
+        belongs_to_industry = industry and q.get("industry") == industry
+        matches_group = q.get("component_group") in all_groups
+        
+        if is_universal or (belongs_to_industry and matches_group):
+            relevant.append(q)
+            
+    return relevant
 
 @app.post("/api/save")
 async def save_assessment(request: Request):
@@ -80,7 +175,6 @@ async def save_assessment(request: Request):
         print(f"ERROR: Failed to write file: {e}")
         raise HTTPException(status_code=500, detail="Failed to save data on server")
     
-    # --- PUBLISH TO KAFKA ---
     if producer is not None:
         kafka_event = {
             "event_id": str(uuid.uuid4()),
@@ -90,13 +184,10 @@ async def save_assessment(request: Request):
             "data": data
         }
         try:
-            # Asynchronously send message to the Kafka topic
             producer.send(KAFKA_TOPIC, value=kafka_event)
-            # Flush occasionally or rely on background thread
             print(f"[{datetime.utcnow().isoformat()}] PUBLISHED EVENT -> Kafka Topic: {KAFKA_TOPIC}")
         except Exception as e:
             print(f"ERROR: Failed to stream to Kafka: {e}")
-    # ------------------------
 
     return JSONResponse(content={"status": "success", "file": str(file_path)})
 
@@ -116,5 +207,4 @@ async def get_clients():
 
 if __name__ == "__main__":
     import uvicorn
-    # This runs the app locally when invoking "python main.py"
     uvicorn.run("main:app", host="0.0.0.0", port=3000, reload=True)
