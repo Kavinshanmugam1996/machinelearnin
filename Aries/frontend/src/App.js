@@ -53,7 +53,7 @@ export default function App() {
     const init = async () => {
       const token = localStorage.getItem("AIRES_token");
       if (!token) {
-        setPage("landing"); // Show landing page first
+        setPage("login"); // Show login page first
         return;
       }
 
@@ -68,7 +68,7 @@ export default function App() {
       } catch (err) {
         if (err.message === "UNAUTHORIZED") {
           localStorage.removeItem("AIRES_token");
-          setPage("landing"); // Still fallback to landing
+          setPage("login"); // Fallback to login
         } else {
           console.error("[AIRES] Failed to initialize:", err);
           setLoadError("Failed to connect to backend. Make sure the server is running.");
