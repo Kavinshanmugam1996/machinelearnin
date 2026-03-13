@@ -62,12 +62,23 @@ export default function App() {
         const serverClients = await api.getClients(token);
         if (serverClients.length > 0) {
           setClients(serverClients);
-          // Fallback: If current activeClientId is not in the list, pick the first one
+          
+          // Reconcile active clientId
+          let currentId = activeClientId;
           if (!serverClients.find(c => c.id === activeClientId)) {
-            setActiveClientId(serverClients[0].id);
+            currentId = serverClients[0].id;
+            setActiveClientId(currentId);
+          }
+
+          // Fetch data for the active ID
+          const assessment = await api.getAssessment(token, currentId);
+          if (assessment) {
+            setProfile(assessment.profile);
+            setAnswers(assessment.answers || {});
+            setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
           }
         } else {
-          setClients([{ id: "default", name: "Default Client" }]);
+          setClients([{ id: "default", name: "Default Client", progress: 0 }]);
           setActiveClientId("default");
         }
         setPage("landing");
@@ -86,18 +97,23 @@ export default function App() {
 
   // Load active client data when client switches
   useEffect(() => {
-    const pKey = `AIRES_client_${activeClientId}_profile`;
-    const aKey = `AIRES_client_${activeClientId}_answers`;
-    const iKey = `AIRES_client_${activeClientId}_q_index`;
+    const loadData = async () => {
+      const token = localStorage.getItem("AIRES_token");
+      if (!token) return;
 
-    const savedP = localStorage.getItem(pKey);
-    const savedA = localStorage.getItem(aKey);
-    const savedI = localStorage.getItem(iKey);
-
-    setProfile(savedP ? JSON.parse(savedP) : null);
-    setAnswers(savedA ? JSON.parse(savedA) : {});
-    setCurrentQuestionIndex(savedI ? parseInt(savedI) : 0);
-
+      try {
+        const assessment = await api.getAssessment(token, activeClientId);
+        if (assessment) {
+          setProfile(assessment.profile);
+          setAnswers(assessment.answers || {});
+          setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
+        }
+      } catch (err) {
+        console.error("[AIRES] Failed to fetch client data on switch:", err);
+      }
+    };
+    
+    loadData();
     localStorage.setItem("AIRES_active_client", activeClientId);
   }, [activeClientId]);
 

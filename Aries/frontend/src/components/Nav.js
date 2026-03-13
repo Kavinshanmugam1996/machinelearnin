@@ -72,9 +72,10 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
           }}
         >
           <div style=${{ width: 24, height: 24, borderRadius: "50%", background: B.red, display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: 12, fontWeight: 800 }}>
-            ${activeClient?.name?.[0] || "U"}
+            ${activeClient?.name?.[0] || "A"}
           </div>
-          <span style=${{ fontSize: 13, fontWeight: 600, color: B.black }}>${activeClient?.name || "Select Client"}</span>
+          <span style=${{ fontSize: 13, fontWeight: 600, color: B.black }}>${activeClient?.name || "Initialising..."}</span>
+
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style=${{ transform: showMenu ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>
             <path d="m6 9 6 6 6-6" />
           </svg>

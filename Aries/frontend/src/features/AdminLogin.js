@@ -26,7 +26,7 @@ export function AdminLogin({ onLogin }) {
         onLogin();
       } else {
         const data = await res.json();
-        setError(data.detail || "Login failed");
+        setError(typeof data.detail === 'string' ? data.detail : JSON.stringify(data.detail));
       }
     } catch (err) {
       setError("Network error connecting to backend");
