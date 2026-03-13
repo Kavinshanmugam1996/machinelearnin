@@ -18,7 +18,9 @@ export default function App() {
   // Client Management
   const [clients, setClients] = useState([]);
   const [activeClientId, setActiveClientId] = useState(() => {
-    return localStorage.getItem("AIRES_active_client") || "default";
+    const saved = localStorage.getItem("AIRES_active_client");
+    if (saved) console.log("%c[AIRES] Resuming session for client:", "color: #10B981; font-weight: bold", saved);
+    return saved || "default";
   });
 
   // Client-specific persistences
@@ -85,6 +87,7 @@ export default function App() {
           setActiveClientId("default");
         }
         setPage("landing");
+        console.log("%c[AIRES] SYSTEM v1.0.4-session-extended INITIALIZED", "color: #10B981; font-weight: bold; background: #ECFDF5; padding: 4px 8px; border-radius: 4px");
       } catch (err) {
         if (err.message === "UNAUTHORIZED") {
           localStorage.removeItem("AIRES_token");
