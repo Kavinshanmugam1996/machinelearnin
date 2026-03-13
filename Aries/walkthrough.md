@@ -15,13 +15,13 @@ I have completed the work to address the "None selected" use case and ensured th
 ### 3. Verification: Automated Tests
 - **Refined Filtering**: Updated `main.py` so that selecting "None" in the AI Inventory suppresses domain-specific questions but *keeps* core governance questions (Privacy, Security, etc.) for a baseline assessment.
 - **Login Fix**: Standardized the database connection path in `connection.py` to ensure the server finds the correct users table.
-- **Database Schema Sync**: Manually added the missing `total_questions` column to the `assessments` table.
-- **Verification: Continue Analysis**: Confirmed that progress (answering questions) is correctly saved to the backend and restored when clicking "Continue Analysis".
+- **Verification: Continue Analysis**: Fixed the redirection flow so clicking client cards takes users directly to the questionnaire.
+- **Race Condition Fix**: Refactored `App.js` to ensure the "Resume" button waits for server data to load on page refresh, preventing accidental redirection to the "Create Profile" screen.
 
 ### 4. Final Stability Verification
-Successfully resumed assessment on **Question 181** after exiting to the home screen.
+Resumed assessment on **Question 181** via both primary UI paths (Client Card and Hero Button).
 
-![Resume Verification](file:///C:/Users/shanm/.gemini/antigravity/brain/b6270a0f-602f-4e7f-bd34-671d5fef4534/resumed_question_verification_1773367154734.png)
+![Resume Verification](/C:/Users/shanm/.gemini/antigravity/brain/b6270a0f-602f-4e7f-bd34-671d5fef4534/resumed_questionnaire_verify_1773401306317.png)
 
 ### 5. Robust Server-Side Persistence
 - **Backend Component**: Added `GET /api/assessment/{client_id}` endpoint to allow the frontend to retrieve saved progress, not just save it.
