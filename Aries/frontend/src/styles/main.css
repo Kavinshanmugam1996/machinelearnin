@@ -137,6 +137,7 @@
 }
 
 .glass-card {
+  background: #0D1F3C; /* Solid fallback for older browsers */
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -149,6 +150,9 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  height: auto; /* Fallback for browsers without aspect-ratio support */
+  min-height: 300px;
+  background: #0D1F3C; /* Solid fallback */
   background: radial-gradient(circle at center, rgba(13, 31, 60, 0.6) 0%, rgba(10, 15, 29, 0.9) 100%);
   border-radius: 20px;
   overflow: hidden;
