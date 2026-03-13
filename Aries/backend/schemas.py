@@ -47,6 +47,7 @@ class ClientRead(BaseModel):
     id: str
     name: str
     progress: int = 0
+    totalQuestions: int = Field(0, alias="totalQuestions")
 
     model_config = ConfigDict(from_attributes=True)
 

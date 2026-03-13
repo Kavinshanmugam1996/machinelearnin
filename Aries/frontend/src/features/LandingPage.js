@@ -15,76 +15,109 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
       
       <div style=${{
         background: `linear-gradient(170deg, #0D1F3C 0%, #1a3a6e 55%, #0D1F3C 100%)`,
-        padding: "80px 40px 100px", textAlign: "center", position: "relative", overflow: "hidden"
+        padding: "100px 40px", position: "relative", overflow: "hidden",
+        borderBottom: "1px solid rgba(255,255,255,0.05)"
       }}>
-        <div style=${{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(59,155,200,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div className="hero-glow" style=${{ top: "0%", left: "10%", width: "40vh", height: "40vh", background: "rgba(59, 155, 200, 0.2)", animationDuration: "12s" }} />
-        <div className="hero-glow" style=${{ bottom: "10%", right: "10%", width: "50vh", height: "50vh", background: "rgba(200, 24, 30, 0.15)", animationDuration: "16s", animationDelay: "-3s" }} />
+        <div className="hero-grid-bg" />
+        <div className="hero-glow" style=${{ top: "-10%", left: "10%", width: "60vh", height: "60vh", background: "rgba(59, 155, 200, 0.15)", animationDuration: "15s" }} />
+        <div className="hero-glow" style=${{ bottom: "-10%", right: "5%", width: "70vh", height: "70vh", background: "rgba(200, 24, 30, 0.12)", animationDuration: "20s", animationDelay: "-5s" }} />
 
-        <div style=${{ position: "relative", zIndex: 10, width: "100%", maxWidth: "none", margin: "0", padding: "80px 40px", background: "rgba(255,255,255,0.02)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.06)", boxShadow: "0 30px 60px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)" }}>
-          <div style=${{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(200,24,30,0.1)", border: "1px solid rgba(200,24,30,0.3)",
-            borderRadius: 100, padding: "8px 20px", marginBottom: 32
+        <div style=${{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto" }}>
+          <div style=${{ 
+            display: "grid", 
+            gridTemplateColumns: "minmax(0, 1.2fr) minmax(0, 1fr)", 
+            gap: 64, 
+            alignItems: "center",
+            textAlign: "left"
           }}>
-            <div style=${{ width: 8, height: 8, borderRadius: "50%", background: B.red, boxShadow: `0 0 10px ${B.red}` }} />
-            <span style=${{ color: "#FCA5A5", fontSize: 13, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>AI GOVERNANCE DIAGNOSTIC</span>
-          </div>
-
-          <h1 style=${{ color: B.white, fontSize: 64, fontWeight: 800, margin: "0 0 8px", letterSpacing: "-1px", lineHeight: 1.1, fontFamily: DISPLAY }}>
-            Assess AI Risks Today
-          </h1>
-          <h2 style=${{ background: "linear-gradient(90deg, #3B9BC8, #89C4E1)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", fontSize: 56, fontWeight: 800, margin: "0 0 32px", letterSpacing: "-1px", lineHeight: 1.1, fontFamily: DISPLAY }}>
-            Avoid AI Failures Tomorrow
-          </h2>
-          <p style=${{ color: "rgba(255,255,255,0.7)", maxWidth: 640, margin: "0 auto 48px", fontSize: 18, lineHeight: 1.6, fontWeight: 400 }}>
-            Empower your organisation with a risk framework that is measurable, repeatable, and regulation-ready. Build AI that scales, excels, and is future-proof.
-          </p>
-
-          <div style=${{ display: "flex", gap: 16, justifyContent: "center", marginBottom: 56, flexWrap: "wrap" }}>
-            <button className="auth-btn" onClick=${() => { if (hasSaved && !confirm("Starting new will clear your previous progress. Continue?")) return; onBegin(); }} style=${{
-              padding: "16px 40px", fontSize: 16, marginTop: 0,
-              background: hasSaved ? "transparent" : B.red,
-              border: hasSaved ? `1.5px solid ${B.red}` : "none",
-              color: hasSaved ? B.red : B.white
-            }}>
-              ${hasSaved ? "START NEW ASSESSMENT" : "START AIRES™ AI RISK MAP →"}
-            </button>
-            ${hasSaved && html`
-              <button className="auth-btn" onClick=${onResume} style=${{
-                padding: "16px 40px", fontSize: 16, marginTop: 0
+            <div>
+              <div style=${{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                background: "rgba(200,24,30,0.15)", border: "1px solid rgba(200,24,30,0.4)",
+                borderRadius: 100, padding: "8px 24px", marginBottom: 32,
+                backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)"
               }}>
-                CONTINUE ASSESSMENT →
-              </button>
-            `}
-          </div>
-
-          <div style=${{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap", marginTop: 20 }}>
-            ${stats.map((s, i) => html`
-              <div key=${s.val} style=${{
-                textAlign: "center",
-                background: "rgba(255, 255, 255, 0.03)",
-                border: "1px solid rgba(255, 255, 255, 0.1)",
-                borderRadius: 16,
-                padding: "20px 32px",
-                minWidth: 160,
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                transition: "all 0.3s ease",
-                cursor: "default"
-              }}>
-                <div style=${{
-                  fontSize: 36,
-                  fontWeight: 800,
-                  background: i === 0 ? "linear-gradient(90deg, #FCA5A5, #C8181E)" : i === 1 ? "linear-gradient(90deg, #89C4E1, #3B9BC8)" : "linear-gradient(90deg, #E2E4E9, #FFF)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  fontFamily: DISPLAY,
-                  lineHeight: 1
-                }}>${s.val}</div>
-                <div style=${{ fontSize: 13, color: "rgba(255,255,255,0.9)", marginTop: 8, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>${s.label}</div>
+                <div style=${{ width: 8, height: 8, borderRadius: "50%", background: B.red, boxShadow: `0 0 12px ${B.red}` }} />
+                <span style=${{ color: "#FCA5A5", fontSize: 13, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>AI GOVERNANCE DIAGNOSTIC</span>
               </div>
-            `)}
+
+              <h1 style=${{ color: B.white, fontSize: 72, fontWeight: 800, margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.05, fontFamily: DISPLAY }}>
+                Assess AI Risks <br/> <span style=${{ color: "#3B9BC8" }}>Today</span>
+              </h1>
+              <h2 style=${{ color: "rgba(255,255,255,0.9)", fontSize: 56, fontWeight: 800, margin: "0 0 32px", letterSpacing: "-0.02em", lineHeight: 1.05, fontFamily: DISPLAY }}>
+                Avoid Failures <br/> <span style=${{ background: "linear-gradient(90deg, #FCA5A5, #C8181E)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Tomorrow</span>
+              </h2>
+              <p style=${{ color: "rgba(255,255,255,0.6)", maxWidth: 540, margin: "0 0 48px", fontSize: 20, lineHeight: 1.6, fontWeight: 400 }}>
+                Empower your organisation with a risk framework that is measurable, repeatable, and regulation-ready. Build AI that scales, excels, and is future-proof.
+              </p>
+
+              <div style=${{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+                <button className="auth-btn btn-glow" onClick=${() => { if (hasSaved && !confirm("Starting new will clear your previous progress. Continue?")) return; onBegin(); }} style=${{
+                  padding: "18px 44px", fontSize: 16, marginTop: 0,
+                  background: hasSaved ? "transparent" : B.red,
+                  border: hasSaved ? `2px solid ${B.red}` : "none",
+                  color: hasSaved ? B.red : B.white,
+                  borderRadius: 12
+                }}>
+                  ${hasSaved ? "START NEW ASSESSMENT" : "START AIRES™ RISK MAP →"}
+                </button>
+                ${hasSaved && html`
+                  <button className="auth-btn" onClick=${onResume} style=${{
+                    padding: "18px 44px", fontSize: 16, marginTop: 0,
+                    borderRadius: 12, background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(10px)"
+                  }}>
+                    CONTINUE ASSESSMENT →
+                  </button>
+                `}
+              </div>
+            </div>
+
+            <div style=${{ position: "relative" }}>
+               <div className="glass-card" style=${{ padding: 32, position: "relative", overflow: "hidden" }}>
+                  <div className="hero-visual-box">
+                    <div className="digital-grid" />
+                    <div className="hero-visual-line" />
+                    ${[...Array(12)].map((_, i) => html`
+                      <div className="data-particle" style=${{
+                        '--startX': `${(Math.random() * 200) - 100}px`,
+                        '--endX': `${(Math.random() * 200) - 100}px`,
+                        '--duration': `${3 + Math.random() * 4}s`,
+                        '--delay': `${Math.random() * -5}s`,
+                        left: `${Math.random() * 100}%`
+                      }} />
+                    `)}
+                    <div style=${{ textAlign: "center", zIndex: 10 }}>
+                      <div className="aires-text-glow">AIRES</div>
+                    </div>
+                  </div>
+                  
+                  <div style=${{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginTop: 24 }}>
+                    ${stats.slice(0, 2).map((s, i) => html`
+                      <div key=${s.val} className="stat-item" style=${{
+                        padding: "20px", background: "rgba(255,255,255,0.03)", 
+                        border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16,
+                        transition: "all 0.3s ease"
+                      }}>
+                        <div style=${{ 
+                          fontSize: 28, fontWeight: 800, color: i === 0 ? "#FCA5A5" : "#89C4E1",
+                          fontFamily: DISPLAY, lineHeight: 1 
+                        }}>${s.val}</div>
+                        <div style=${{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 6, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>${s.label}</div>
+                      </div>
+                    `)}
+                  </div>
+                  <div className="stat-item" style=${{
+                    padding: "16px 20px", background: "rgba(255,255,255,0.03)", 
+                    border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16,
+                    marginTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center",
+                    transition: "all 0.3s ease"
+                  }}>
+                    <div style=${{ fontSize: 12, color: "rgba(255,255,255,0.7)", fontWeight: 600 }}>${stats[2].label} Integrated</div>
+                    <div style=${{ fontSize: 20, fontWeight: 800, color: B.white, fontFamily: DISPLAY }}>${stats[2].val}</div>
+                  </div>
+               </div>
+            </div>
           </div>
         </div>
       </div>

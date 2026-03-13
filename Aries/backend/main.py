@@ -196,7 +196,11 @@ async def save_assessment(
     assessment.profile = assessment_data.profile
     assessment.answers = assessment_data.answers
     assessment.current_index = assessment_data.currentQuestionIndex
-    assessment.total_questions = assessment_data.totalQuestions
+    
+    # Only update total_questions if it's > 0 to avoid resetting progress 
+    # during initialization race conditions
+    if assessment_data.totalQuestions > 0:
+        assessment.total_questions = assessment_data.totalQuestions
     
     try:
         await db.commit()
@@ -265,7 +269,8 @@ async def get_clients(
         clients_data.append({
             "id": a.client_id, 
             "name": a.name or "Unnamed Assessment",
-            "progress": progress
+            "progress": progress,
+            "totalQuestions": a.total_questions or 0
         })
     return clients_data
 

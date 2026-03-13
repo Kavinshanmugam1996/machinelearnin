@@ -40,7 +40,7 @@ export default function App() {
         profile,
         answers,
         currentQuestionIndex,
-        totalQuestions: questions.length
+        totalQuestions: questions.length > 0 ? questions.length : (activeClient ? activeClient.totalQuestions : 0)
       };
       await api.saveAssessment(token, payload);
     } catch (err) {
@@ -128,14 +128,11 @@ export default function App() {
   }, [profile, activeClientId]);
 
   useEffect(() => {
+    if (!profile) return;
     localStorage.setItem(`AIRES_client_${activeClientId}_answers`, JSON.stringify(answers));
-    syncToServer();
-  }, [answers, activeClientId]);
-
-  useEffect(() => {
     localStorage.setItem(`AIRES_client_${activeClientId}_q_index`, currentQuestionIndex.toString());
     syncToServer();
-  }, [currentQuestionIndex, activeClientId]);
+  }, [answers, currentQuestionIndex, questions.length, activeClientId]);
 
   useEffect(() => {
     localStorage.setItem("AIRES_clients", JSON.stringify(clients));
