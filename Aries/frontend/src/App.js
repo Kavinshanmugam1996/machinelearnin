@@ -23,6 +23,32 @@ export default function App() {
     return saved || "default";
   });
 
+  // --- IDLE TIMEOUT LOGIC (15 MINS) ---
+  useEffect(() => {
+    if (page === "login" || page === "loading") return;
+
+    let timeoutId;
+    const IDLE_TIME = 15 * 60 * 1000; // 15 minutes
+
+    const resetTimer = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        console.warn("[AIRES] Idle timeout reached. Logging out...");
+        logout();
+      }, IDLE_TIME);
+    };
+
+    const events = ['mousemove', 'mousedown', 'keypress', 'scroll', 'touchstart'];
+    events.forEach(evt => window.addEventListener(evt, resetTimer));
+    
+    resetTimer(); // Start timer
+
+    return () => {
+      events.forEach(evt => window.removeEventListener(evt, resetTimer));
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [page]);
+
   // Client-specific persistences
   const [profile, setProfile] = useState(null);
   const [answers, setAnswers] = useState({});
@@ -87,7 +113,7 @@ export default function App() {
           setActiveClientId("default");
         }
         setPage("landing");
-        console.log("%c[AIRES] SYSTEM v1.0.4-session-extended INITIALIZED", "color: #10B981; font-weight: bold; background: #ECFDF5; padding: 4px 8px; border-radius: 4px");
+        console.log("%c[AIRES] SYSTEM v1.0.5-security-update INITIALIZED", "color: #10B981; font-weight: bold; background: #ECFDF5; padding: 4px 8px; border-radius: 4px");
       } catch (err) {
         if (err.message === "UNAUTHORIZED") {
           localStorage.removeItem("AIRES_token");
