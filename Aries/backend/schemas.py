@@ -39,12 +39,14 @@ class AssessmentBase(BaseModel):
     profile: Optional[Dict[str, Any]] = None
     answers: Optional[Dict[str, str]] = None
     currentQuestionIndex: int = Field(0, alias="currentQuestionIndex")
+    totalQuestions: int = Field(0, alias="totalQuestions")
 
     model_config = ConfigDict(populate_by_name=True, from_attributes=True)
 
 class ClientRead(BaseModel):
     id: str
     name: str
+    progress: int = 0
 
     model_config = ConfigDict(from_attributes=True)
 

@@ -39,7 +39,8 @@ export default function App() {
         name: activeClient ? activeClient.name : "Default Client",
         profile,
         answers,
-        currentQuestionIndex
+        currentQuestionIndex,
+        totalQuestions: questions.length
       };
       await api.saveAssessment(token, payload);
     } catch (err) {

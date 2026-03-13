@@ -46,3 +46,4 @@ class Assessment(Base):
     profile = Column(JSON) # Company profile details
     answers = Column(JSON) # Map of qid to answer
     current_index = Column(Integer, default=0)
+    total_questions = Column(Integer, default=0)
