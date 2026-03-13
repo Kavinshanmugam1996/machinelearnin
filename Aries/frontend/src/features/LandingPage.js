@@ -185,7 +185,7 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
             { n: "01", t: "Company Profile", d: "Tell us about your organisation, industry, and the assessor." },
             { n: "02", t: "AI Inventory", d: "Tell us about your AI use cases." },
             { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your AI risks." },
-            { n: "04", t: "Risk Insight", d: "Receive an automated risk profile with remediation roadmaps. bi automated risk profile" },
+            { n: "04", t: "Risk Insight", d: "Receive a risk profile with remediation roadmaps. bi risk profile" },
           ].map((s, i) => html`
             <div key=${s.n} style=${{
               background: B.white, border: `1px solid ${B.border}`, borderRadius: 16,
