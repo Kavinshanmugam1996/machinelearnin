@@ -61,8 +61,13 @@ export default function App() {
         const serverClients = await api.getClients(token);
         if (serverClients.length > 0) {
           setClients(serverClients);
+          // Fallback: If current activeClientId is not in the list, pick the first one
+          if (!serverClients.find(c => c.id === activeClientId)) {
+            setActiveClientId(serverClients[0].id);
+          }
         } else {
           setClients([{ id: "default", name: "Default Client" }]);
+          setActiveClientId("default");
         }
         setPage("landing");
       } catch (err) {
@@ -176,14 +181,30 @@ export default function App() {
     setPage("profile");
   };
 
-  const resume = () => {
+  const resume = async () => {
     const token = localStorage.getItem("AIRES_token");
     if (!token) {
       setPage("login");
       return;
     }
-    if (profile && Object.keys(answers).length > 0) setPage("questions");
-    else setPage("profile");
+
+    if (profile) {
+      if (questions.length === 0) {
+        setPage("loading");
+        try {
+          const qs = await api.getQuestions(token, profile.inventory, profile.industry);
+          setQuestions(qs);
+          setPage("questions");
+        } catch (err) {
+          console.error("Failed to fetch questions during resume:", err);
+          setPage("profile"); // Fallback if questions fail to load
+        }
+      } else {
+        setPage("questions");
+      }
+    } else {
+      setPage("profile");
+    }
   };
 
   return html`
@@ -237,9 +258,7 @@ export default function App() {
             setAnswers(a);
             setQuestions(q);
             setPage("results");
-            localStorage.removeItem(`AIRES_client_${activeClientId}_profile`);
-            localStorage.removeItem(`AIRES_client_${activeClientId}_answers`);
-            localStorage.removeItem(`AIRES_client_${activeClientId}_q_index`);
+            // NOTE: We no longer clear the draft immediately to allow for a more robust completion state
           }}
           onExit=${() => setPage("landing")}
           initialIndex=${currentQuestionIndex}
