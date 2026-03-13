@@ -159,20 +159,42 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
             </div>
           </div>
 
-          <div style=${{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
-            <button onClick=${() => current > 0 && setCurrent(c => c - 1)} disabled=${current === 0}
-              style=${{
-                padding: "10px 20px", background: "transparent",
-                border: `1px solid ${B.border}`, borderRadius: 8,
-                color: current === 0 ? B.gray300 : B.gray700, cursor: current === 0 ? "not-allowed" : "pointer",
-                fontSize: 13, fontWeight: 500
-              }}>
-              ← Back
-            </button>
+          <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 24, padding: "0 4px" }}>
+            <div style=${{ display: "flex", gap: 12 }}>
+              <button onClick=${prev} disabled=${current === 0 && !onBack}
+                style=${{
+                  padding: "10px 20px", background: B.white,
+                  border: `1px solid ${B.border}`, borderRadius: 8,
+                  color: (current === 0 && !onBack) ? B.gray300 : B.gray700, 
+                  cursor: (current === 0 && !onBack) ? "not-allowed" : "pointer",
+                  fontSize: 14, fontWeight: 600, boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
+                }}>
+                ← Back
+              </button>
+              
+              <button onClick=${() => {
+                if (answers[q?.qid]) {
+                  if (current < questions.length - 1) setCurrent(c => c + 1);
+                  else onFinish(answers, questions);
+                } else {
+                  alert("Please select an answer to proceed, or use 'Save & Return' to continue later.");
+                }
+              }}
+                style=${{
+                  padding: "10px 24px", background: answers[q?.qid] ? B.blue : B.gray100,
+                  border: "none", borderRadius: 8,
+                  color: answers[q?.qid] ? B.white : B.gray400, 
+                  cursor: answers[q?.qid] ? "pointer" : "not-allowed",
+                  fontSize: 14, fontWeight: 700, boxShadow: answers[q?.qid] ? B.shadowMd : "none"
+                }}>
+                Next Question →
+              </button>
+            </div>
+
             <button onClick=${() => onExit ? onExit() : null} style=${{
-              padding: "10px 20px", background: "transparent",
-              border: `1px solid ${B.border}`, borderRadius: 8,
-              color: B.red, cursor: "pointer", fontSize: 13, fontWeight: 700
+              padding: "10px 16px", background: "transparent",
+              border: "none", color: B.gray400, cursor: "pointer", 
+              fontSize: 13, fontWeight: 600, textDecoration: "underline"
             }}>
               Save & Return to Home
             </button>
