@@ -206,7 +206,7 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
         display: "flex", justifyContent: "space-between", alignItems: "center"
       }}>
         <img src="bizcom.jpg" style=${{ height: 32, width: "auto" }} alt="Bizcom" />
-        <span style=${{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>© 2026 Bizcom · AI Governance Platform</span>
+        <span style=${{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>© 2026, Bizcom – Building AI Governance Frameworks for Tomorrow. All Rights Reserved.</span>
       </footer>
     </div>
   `;
