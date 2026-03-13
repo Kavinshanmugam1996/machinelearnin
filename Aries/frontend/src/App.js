@@ -154,6 +154,45 @@ export default function App() {
     }
   };
 
+  const resumeClient = async (id) => {
+    // 1. Switch Active Client
+    setActiveClientId(id);
+    
+    // 2. Fetch data (Wait for it if needed)
+    const token = localStorage.getItem("AIRES_token");
+    if (!token) {
+      setPage("login");
+      return;
+    }
+
+    setPage("loading");
+    try {
+      const assessment = await api.getAssessment(token, id);
+      if (assessment) {
+        setProfile(assessment.profile);
+        setAnswers(assessment.answers || {});
+        setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
+
+        // Check if finished or need questions
+        const client = clients.find(c => c.id === id);
+        if (client && client.progress === 100) {
+          setPage("results");
+        } else if (assessment.profile) {
+          const qs = await api.getQuestions(token, assessment.profile.inventory, assessment.profile.industry);
+          setQuestions(qs);
+          setPage("questions");
+        } else {
+          setPage("profile");
+        }
+      } else {
+        setPage("profile"); // Fallback for new-ish clients with no server data
+      }
+    } catch (err) {
+      console.error("Resume client failed:", err);
+      setPage("landing");
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem("AIRES_token");
     setPage("login");
@@ -205,6 +244,13 @@ export default function App() {
       return;
     }
 
+    // Identify current progress if possible
+    const currentClient = clients.find(c => c.id === activeClientId);
+    if (currentClient && currentClient.progress === 100) {
+      setPage("results");
+      return;
+    }
+
     if (profile) {
       if (questions.length === 0) {
         setPage("loading");
@@ -214,13 +260,30 @@ export default function App() {
           setPage("questions");
         } catch (err) {
           console.error("Failed to fetch questions during resume:", err);
-          setPage("profile"); // Fallback if questions fail to load
+          setPage("profile"); 
         }
       } else {
         setPage("questions");
       }
     } else {
-      setPage("profile");
+      // Robust fallback: if no profile in state, try to re-fetch from server
+      setPage("loading");
+      try {
+        const assessment = await api.getAssessment(token, activeClientId);
+        if (assessment && assessment.profile) {
+          setProfile(assessment.profile);
+          setAnswers(assessment.answers || {});
+          setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
+          
+          const qs = await api.getQuestions(token, assessment.profile.inventory, assessment.profile.industry);
+          setQuestions(qs);
+          setPage("questions");
+        } else {
+          setPage("profile");
+        }
+      } catch (err) {
+        setPage("profile");
+      }
     }
   };
 
@@ -231,6 +294,7 @@ export default function App() {
         <${LandingPage}
           onBegin=${cleanReset}
           onResume=${resume}
+          onResumeClient=${resumeClient}
           hasSaved=${!!profile}
           clients=${clients}
           activeClientId=${activeClientId}

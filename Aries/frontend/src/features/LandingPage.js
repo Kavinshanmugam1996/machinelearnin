@@ -2,7 +2,7 @@ import React from 'react';
 import { Nav } from '../components/Nav.js';
 import { B, DISPLAY, BODY } from '../services/constants.js';
 
-export function LandingPage({ onBegin, onResume, hasSaved, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
+export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
   const stats = [
     { val: "500+", label: "Questions" },
     { val: "1000+", label: "Risks Mapped" },
@@ -103,11 +103,12 @@ export function LandingPage({ onBegin, onResume, hasSaved, clients, activeClient
 
           <div style=${{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
             ${clients.map(client => html`
-              <div key=${client.id} onClick=${() => onSwitchClient(client.id)} style=${{ 
+              <div key=${client.id} onClick=${() => onResumeClient ? onResumeClient(client.id) : onSwitchClient(client.id)} style=${{ 
                 background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: 24, 
                 cursor: "pointer", transition: "all 0.2s ease", position: "relative",
                 boxShadow: activeClientId === client.id ? B.shadowMd : "none",
-                borderColor: activeClientId === client.id ? B.blue : B.border
+                borderColor: activeClientId === client.id ? B.blue : B.border,
+                transform: activeClientId === client.id ? "translateY(-4px)" : "none"
               }}>
                 <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                    <div style=${{ fontSize: 12, fontWeight: 700, color: B.gray400 }}>ID: ${client.id.slice(0, 8)}...</div>
