@@ -1,6 +1,9 @@
 import React from 'react';
+import htm from 'htm';
 import { Nav } from '../components/Nav.js';
 import { B, DISPLAY, BODY } from '../services/constants.js';
+
+const html = htm.bind(React.createElement);
 
 export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
   const stats = [

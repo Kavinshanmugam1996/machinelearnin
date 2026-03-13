@@ -1,6 +1,9 @@
 import React from 'react';
+import htm from 'htm';
 import { Nav } from '../components/Nav.js';
 import { B, DISPLAY, BODY, CLUSTER_COLORS, MANDATORY_COMPONENT_GROUPS } from '../services/constants.js';
+
+const html = htm.bind(React.createElement);
 
 const { useState, useEffect } = React;
 

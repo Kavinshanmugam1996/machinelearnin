@@ -1,8 +1,11 @@
 import React from 'react';
+import htm from 'htm';
 import { Nav } from '../components/Nav.js';
 import { BizcomLogo } from '../components/BizcomLogo.js';
 import { api } from '../services/api.js';
 import { B, DISPLAY, BODY, CLUSTER_COLORS, CLUSTER_DESCRIPTIONS } from '../services/constants.js';
+
+const html = htm.bind(React.createElement);
 
 const { useEffect, useState, useRef, useMemo } = React;
 

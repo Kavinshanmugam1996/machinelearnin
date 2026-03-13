@@ -1,6 +1,9 @@
 import React from 'react';
+import htm from 'htm';
 import { Nav } from '../components/Nav.js';
 import { B, DISPLAY, BODY, AI_USE_CASES } from '../services/constants.js';
+
+const html = htm.bind(React.createElement);
 
 const { useState } = React;
 

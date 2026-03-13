@@ -1,3 +1,8 @@
+import React from 'react';
+import htm from 'htm';
+
+const html = htm.bind(React.createElement);
+
 export function BizcomLogo({ size = 28, style = {} }) {
   return html`
     <img
