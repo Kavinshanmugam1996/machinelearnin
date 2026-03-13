@@ -2,7 +2,7 @@ import os
 import uuid
 import json
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
 
@@ -27,7 +27,7 @@ import schemas
 class JSONFormatter(logging.Formatter):
     def format(self, record):
         log_entry = {
-            "timestamp": datetime.utcnow().isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "level": record.levelname,
             "message": record.getMessage(),
             "module": record.module,
@@ -60,7 +60,7 @@ def verify_password(plain_password, stored_password):
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     to_encode = data.copy()
-    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
+    expire = datetime.now(timezone.utc) + (expires_delta or timedelta(minutes=15))
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
@@ -147,7 +147,7 @@ async def login(creds: schemas.UserLogin, db: AsyncSession = Depends(get_db)):
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy", "timestamp": datetime.utcnow().isoformat()}
+    return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
 
 @app.post("/api/get-questions", response_model=List[schemas.QuestionBase])
 async def get_questions(
@@ -157,14 +157,20 @@ async def get_questions(
 ):
     mandatory_groups = ["privacy", "security", "reliability", "legal_regulatory"]
     all_groups = set(mandatory_groups)
+    all_groups.add("") # Include generic/universal questions
+    all_groups.add(None)
     
-    for item in req.inventory:
-        stmt = select(QuestionMapper).where(QuestionMapper.use_case == item.useCase)
-        mapper = (await db.execute(stmt)).scalar_one_or_none()
-        if mapper and mapper.component_groups:
-            all_groups.update([g.strip() for g in mapper.component_groups.split(",")])
+    is_none = any(item.useCase == "None of the above / No specific AI use cases" for item in req.inventory)
     
-    # Fetch questions: (Industry matches OR is Universal) AND (Group is in all_groups)
+    if not is_none:
+        for item in req.inventory:
+            stmt = select(QuestionMapper).where(QuestionMapper.use_case == item.useCase)
+            mapper = (await db.execute(stmt)).scalar_one_or_none()
+            if mapper and mapper.component_groups:
+                all_groups.update([g.strip() for g in mapper.component_groups.split(",")])
+    
+    # Fetch questions: (Industry matches OR is Universal)
+    # AND (component_group matches our calculated set)
     stmt = select(Question).where(
         ((Question.industry == req.industry) | (Question.industry == "Universal")) &
         (Question.component_group.in_(list(all_groups)))
@@ -202,7 +208,7 @@ async def save_assessment(
         try:
             kafka_event = {
                 "event_id": str(uuid.uuid4()),
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
                 "client_id": assessment_data.id,
                 "action": "assessment_updated",
                 "user": current_user,
@@ -214,6 +220,35 @@ async def save_assessment(
             
     logger.info(f"Assessment saved: {assessment_data.id} for {current_user}")
     return {"status": "success", "message": "Assessment data persisted successfully"}
+
+@app.get("/api/assessment/{client_id}", response_model=schemas.AssessmentBase)
+async def get_assessment(
+    client_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: str = Depends(get_current_user)
+):
+    stmt = select(Assessment).where(Assessment.client_id == client_id)
+    assessment = (await db.execute(stmt)).scalar_one_or_none()
+    
+    if not assessment:
+        # Return a blank structure if not found (expected for new clients)
+        return {
+            "id": client_id,
+            "name": "Unnamed Assessment",
+            "profile": None,
+            "answers": {},
+            "currentQuestionIndex": 0,
+            "totalQuestions": 0
+        }
+        
+    return {
+        "id": assessment.client_id,
+        "name": assessment.name,
+        "profile": assessment.profile,
+        "answers": assessment.answers,
+        "currentQuestionIndex": assessment.current_index,
+        "totalQuestions": assessment.total_questions
+    }
 
 @app.get("/api/clients", response_model=List[schemas.ClientRead])
 async def get_clients(

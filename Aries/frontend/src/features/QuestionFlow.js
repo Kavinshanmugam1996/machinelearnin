@@ -177,13 +177,13 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
                   if (current < questions.length - 1) setCurrent(c => c + 1);
                   else onFinish(answers, questions);
                 } else {
-                  alert("Please select an answer to proceed, or use 'Save & Return' to continue later.");
+                  alert("Please select an answer to proceed, or use 'Save & Return' to exit.");
                 }
               }}
                 style=${{
                   padding: "10px 24px", background: answers[q?.qid] ? B.blue : B.gray100,
-                  border: "none", borderRadius: 8,
-                  color: answers[q?.qid] ? B.white : B.gray400, 
+                  border: `1.5px solid ${answers[q?.qid] ? "transparent" : B.border}`, borderRadius: 8,
+                  color: answers[q?.qid] ? B.white : B.gray500, 
                   cursor: answers[q?.qid] ? "pointer" : "not-allowed",
                   fontSize: 14, fontWeight: 700, boxShadow: answers[q?.qid] ? B.shadowMd : "none"
                 }}>
@@ -196,7 +196,7 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
               border: "none", color: B.gray400, cursor: "pointer", 
               fontSize: 13, fontWeight: 600, textDecoration: "underline"
             }}>
-              Save & Return to Home
+              Save & Return to Home (Exit Assessment)
             </button>
           </div>
         </div>

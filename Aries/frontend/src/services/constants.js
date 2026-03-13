@@ -68,5 +68,5 @@ export const AI_USE_CASES = [
   "AI used to prepare legal or regulatory reporting",
   "AI used in hiring",
   "AI use case with high potential for human harm",
-  "Cloud/Other / not sure"
+  "None of the above / No specific AI use cases"
 ];

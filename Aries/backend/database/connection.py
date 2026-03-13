@@ -7,7 +7,7 @@ load_dotenv()
 
 # We use SQLite with aiosqlite locally as planned, 
 # but the code is ready for PostgreSQL via DATABASE_URL env var.
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./aires.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///backend/aires.db")
 
 # Handle DB URL and connect args
 connect_args = {}
