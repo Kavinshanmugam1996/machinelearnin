@@ -113,11 +113,21 @@ export function LandingPage({ onBegin, onResume, hasSaved, clients, activeClient
                    <div style=${{ fontSize: 12, fontWeight: 700, color: B.gray400 }}>ID: ${client.id.slice(0, 8)}...</div>
                    <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: B.gray50, color: B.gray700 }}>ACTIVE</div>
                 </div>
-                <div style=${{ fontSize: 18, fontWeight: 800, color: B.black, marginBottom: 8, fontFamily: DISPLAY }}>${client.name}</div>
-                <div style=${{ fontSize: 14, color: B.gray500, marginBottom: 20 }}>Enterprise Risk Assessment Profile</div>
+                <div style=${{ fontSize: 18, fontWeight: 800, color: B.black, marginBottom: 4, fontFamily: DISPLAY }}>${client.name}</div>
+                <div style=${{ fontSize: 14, color: B.gray500, marginBottom: 16 }}>Enterprise Risk Assessment Profile</div>
                 
+                <div style=${{ marginBottom: 20 }}>
+                  <div style=${{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                    <span style=${{ fontSize: 11, fontWeight: 700, color: B.gray400, textTransform: "uppercase" }}>Progress</span>
+                    <span style=${{ fontSize: 11, fontWeight: 800, color: client.progress === 100 ? "#16A34A" : B.blue }}>${client.progress}%</span>
+                  </div>
+                  <div style=${{ height: 6, background: B.gray100, borderRadius: 3, overflow: "hidden" }}>
+                    <div style=${{ width: `${client.progress}%`, height: "100%", background: client.progress === 100 ? "#16A34A" : B.blue, borderRadius: 3, transition: "width 0.4s ease" }} />
+                  </div>
+                </div>
+
                 <div style=${{ borderTop: `1px solid ${B.border}`, paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                   <span style=${{ fontSize: 12, fontWeight: 700, color: B.blue }}>VIEW ANALYSIS →</span>
+                   <span style=${{ fontSize: 12, fontWeight: 700, color: B.blue }}>${client.progress === 100 ? "VIEW RESULTS →" : "CONTINUE ANALYSIS →"}</span>
                    ${activeClientId === client.id && html`<div style=${{ width: 8, height: 8, borderRadius: "50%", background: B.blue, boxShadow: `0 0 8px ${B.blue}` }} />`}
                 </div>
               </div>

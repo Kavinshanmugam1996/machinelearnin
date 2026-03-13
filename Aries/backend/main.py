@@ -190,6 +190,7 @@ async def save_assessment(
     assessment.profile = assessment_data.profile
     assessment.answers = assessment_data.answers
     assessment.current_index = assessment_data.currentQuestionIndex
+    assessment.total_questions = assessment_data.totalQuestions
     
     try:
         await db.commit()
@@ -221,7 +222,17 @@ async def get_clients(
 ):
     stmt = select(Assessment).where(Assessment.owner_email == current_user)
     result = await db.execute(stmt)
-    return [{"id": a.client_id, "name": a.name or "Unnamed Assessment"} for a in result.scalars().all()]
+    clients_data = []
+    for a in result.scalars().all():
+        progress = 0
+        if a.total_questions and a.total_questions > 0:
+            progress = int((a.current_index / a.total_questions) * 100)
+        clients_data.append({
+            "id": a.client_id, 
+            "name": a.name or "Unnamed Assessment",
+            "progress": progress
+        })
+    return clients_data
 
 @app.get("/api/remediation/{client_id}")
 async def get_remediation(
