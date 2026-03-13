@@ -4,6 +4,7 @@ import { Nav } from '../components/Nav.js';
 import { B, DISPLAY, BODY } from '../services/constants.js';
 
 const html = htm.bind(React.createElement);
+console.log("[AIRES] LandingPage.js loaded - v1.0.2");
 
 export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
   const stats = [
@@ -209,7 +210,10 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
         display: "flex", justifyContent: "space-between", alignItems: "center"
       }}>
         <img src="bizcom.jpg" style=${{ height: 32, width: "auto" }} alt="Bizcom" />
-        <span style=${{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>© 2026, Bizcom – Building AI Governance Frameworks for Tomorrow. All Rights Reserved.</span>
+        <div style=${{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
+          <span style=${{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>© 2026, Bizcom – Building AI Governance Frameworks for Tomorrow. All Rights Reserved.</span>
+          <span style=${{ color: "rgba(255,255,255,0.2)", fontSize: 10 }}>v1.0.2-stable</span>
+        </div>
       </footer>
     </div>
   `;
