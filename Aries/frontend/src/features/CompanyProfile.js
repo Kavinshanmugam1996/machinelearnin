@@ -37,7 +37,7 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
   return html`
     <div style=${{ minHeight: "100vh", background: B.gray50, fontFamily: BODY }}>
       <${Nav}
-        steps=${["Company Profile", "AI Inventory", "Questions", "Risk Report"]}
+        steps=${["Company Profile", "AI Inventory", "Questions", "Complete"]}
         current=${0}
         clients=${clients}
         activeClientId=${activeClientId}
