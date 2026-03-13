@@ -94,12 +94,16 @@ export default function App() {
         if (serverClients.length > 0) {
           setClients(serverClients);
           
-          // Reconcile active clientId
-          let currentId = activeClientId;
-          if (!serverClients.find(c => c.id === activeClientId)) {
-            currentId = serverClients[0].id;
-            setActiveClientId(currentId);
-          }
+          // Prefer the previously saved activeClientId from localStorage.
+          // Only fall back to the first client if our saved ID genuinely doesn't
+          // exist on the server (e.g. was deleted).
+          const savedId = localStorage.getItem("AIRES_active_client");
+          let currentId = savedId && serverClients.find(c => c.id === savedId)
+            ? savedId
+            : serverClients[0].id;
+
+          setActiveClientId(currentId);
+          localStorage.setItem("AIRES_active_client", currentId);
 
           // Fetch data for the active ID
           const assessment = await api.getAssessment(token, currentId);
@@ -109,6 +113,21 @@ export default function App() {
             setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
           }
         } else {
+          // Server has no clients yet — try to restore from localStorage list
+          // so we don't wipe a previously created client.
+          const savedClients = localStorage.getItem("AIRES_clients");
+          if (savedClients) {
+            const parsed = JSON.parse(savedClients);
+            if (parsed.length > 0) {
+              setClients(parsed);
+              const savedId = localStorage.getItem("AIRES_active_client");
+              const validId = savedId && parsed.find(c => c.id === savedId)
+                ? savedId
+                : parsed[0].id;
+              setActiveClientId(validId);
+              return;
+            }
+          }
           setClients([{ id: "default", name: "Default Client", progress: 0 }]);
           setActiveClientId("default");
         }
