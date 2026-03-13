@@ -17,7 +17,13 @@ AIRES™ (AI Risk Evaluation System) is an enterprise-grade AI governance and ri
 - **Assessment Persistence**: Automatic saving and retrieval of assessment data in JSON format for expert review.
 - **Event Streaming**: Integration with Kafka for streaming assessment events to enterprise data lakes.
 
-## 4. Technology Stack
+## 4. Security & Session Management
+- **Extended Session Lifetime**: Authenticated sessions are valid for **30 days** to support long-term assessment workflows and "thinking" time.
+- **Auto-Logout (Idle Timeout)**: For security, the system automatically logs out after **15 minutes of inactivity** (no mouse moves, clicks, or keypresses).
+- **JWT-Based Authentication**: Secure token-based access with encrypted credentials.
+- **Security Headers**: Implementation of HSTS, CSP, and XSS protection via custom middleware.
+
+## 5. Technology Stack
 - **Backend**: Python 3.11, FastAPI, SQLAlchemy (ORM).
 - **Frontend**: React 18 (Native ES Modules), HTM (Buildless rendering).
 - **Styling**: Vanilla CSS (Custom premium aesthetics).
@@ -25,11 +31,12 @@ AIRES™ (AI Risk Evaluation System) is an enterprise-grade AI governance and ri
 - **Messaging**: Kafka (Event-driven architecture).
 - **DevOps**: Docker (Containerization).
 
-## 5. Deployment Architecture
+## 6. Deployment Architecture
 - **Buildless ESM**: Uses native ES modules and HTM for a zero-build frontend environment, eliminating the need for Babel or Webpack.
 - **Relational Integration**: Backend utilizes SQLAlchemy for structured data persistence and robust assessment management.
 - **Containerized Environment**: Backend is optimized for deployment on AWS App Runner or ECS.
 
+## 7. Out of Scope (Phase 1)
 - **Interactive Dashboards**: Live radar charts and visual scorecards (Planned for Phase 2).
 - **External User Registration**: Self-service signup for non-admin users.
 - **Advanced Predictive Analytics**: AI-driven risk prediction (beyond framework-based scoring).
