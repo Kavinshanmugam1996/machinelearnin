@@ -1,4 +1,5 @@
 import React from 'react';
+import htm from 'htm';
 import { AdminLogin } from './features/AdminLogin.js';
 import { LandingPage } from './features/LandingPage.js';
 import { CompanyProfile } from './features/CompanyProfile.js';
@@ -6,6 +7,8 @@ import { QuestionFlow } from './features/QuestionFlow.js';
 import { RiskReport } from './features/RiskReport.js';
 import { api } from './services/api.js';
 import { B, BODY, DISPLAY } from './services/constants.js';
+
+const html = htm.bind(React.createElement);
 
 const { useState, useEffect } = React;
 

@@ -1,6 +1,9 @@
 import React from 'react';
+import htm from 'htm';
 import { BizcomLogo } from './BizcomLogo.js';
 import { B, DISPLAY, BODY } from '../services/constants.js';
+
+const html = htm.bind(React.createElement);
 
 const { useState, useEffect } = React;
 
