@@ -172,9 +172,9 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
             <button onClick=${() => onExit ? onExit() : null} style=${{
               padding: "10px 20px", background: "transparent",
               border: `1px solid ${B.border}`, borderRadius: 8,
-              color: B.red, cursor: "pointer", fontSize: 13, fontWeight: 600
+              color: B.red, cursor: "pointer", fontSize: 13, fontWeight: 700
             }}>
-              Save & Exit
+              Save & Return to Home
             </button>
           </div>
         </div>
