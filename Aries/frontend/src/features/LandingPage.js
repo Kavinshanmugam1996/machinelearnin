@@ -212,7 +212,7 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
         <img src="bizcom.jpg" style=${{ height: 32, width: "auto" }} alt="Bizcom" />
         <div style=${{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
           <span style=${{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>© 2026, Bizcom – Building AI Governance Frameworks for Tomorrow. All Rights Reserved.</span>
-          <span style=${{ color: "rgba(255,255,255,0.2)", fontSize: 10 }}>v1.0.3-force-sync</span>
+          <span style=${{ color: "rgba(255,255,255,0.2)", fontSize: 10 }}>v1.0.4-session-fixed</span>
         </div>
       </footer>
     </div>
