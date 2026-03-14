@@ -56,7 +56,7 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
               </p>
 
               <div style=${{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                <button className="auth-btn btn-glow" onClick=${() => { if (hasSaved && !confirm("Starting new will clear your previous progress. Continue?")) return; onBegin(); }} style=${{
+                <button className="auth-btn btn-glow" onClick=${onBegin} style=${{
                   padding: "18px 44px", fontSize: 16, marginTop: 0,
                   background: hasSaved ? "transparent" : B.red,
                   border: hasSaved ? `2px solid ${B.red}` : "none",

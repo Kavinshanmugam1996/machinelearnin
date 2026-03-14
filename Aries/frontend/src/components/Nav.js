@@ -112,8 +112,7 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
 
               <div style=${{ marginTop: 8, paddingTop: 8, borderTop: `1px solid ${B.border}` }}>
                 <button onClick=${() => {
-                  const name = prompt("Enter Client Name:");
-                  if (name) onSwitchClient("new", name);
+                  onSwitchClient("new", "Draft Assessment");
                   setShowMenu(false);
                 }} style=${{
                   width: "100%", padding: "10px 12px", textAlign: "left", background: "none",

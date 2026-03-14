@@ -81,70 +81,69 @@ export default function App() {
   };
 
   // Initial load: Clients
+  const initData = async () => {
+    const token = localStorage.getItem("AIRES_token");
+    if (!token) {
+      setPage("login");
+      return;
+    }
+
+    try {
+      const serverClients = await api.getClients(token);
+      if (serverClients.length > 0) {
+        setClients(serverClients);
+        
+        const savedId = localStorage.getItem("AIRES_active_client");
+        let currentId = savedId && serverClients.find(c => c.id === savedId)
+          ? savedId
+          : serverClients[0].id;
+
+        setActiveClientId(currentId);
+        localStorage.setItem("AIRES_active_client", currentId);
+
+        const assessment = await api.getAssessment(token, currentId);
+        if (assessment) {
+          setProfile(assessment.profile);
+          setAnswers(assessment.answers || {});
+          setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
+        }
+      } else {
+        const savedClients = localStorage.getItem("AIRES_clients");
+        if (savedClients) {
+          const parsed = JSON.parse(savedClients);
+          if (parsed.length > 0) {
+            setClients(parsed);
+            const savedId = localStorage.getItem("AIRES_active_client");
+            const validId = savedId && parsed.find(c => c.id === savedId)
+              ? savedId
+              : parsed[0].id;
+            setActiveClientId(validId);
+            setPage("landing");
+            return;
+          }
+        }
+        setClients([{ id: "default", name: "Default Client", progress: 0 }]);
+        setActiveClientId("default");
+      }
+      setPage("landing");
+    } catch (err) {
+      if (err.message === "UNAUTHORIZED") {
+        localStorage.removeItem("AIRES_token");
+        setPage("login");
+      } else {
+        console.error("[AIRES] Failed to initialize:", err);
+        setLoadError("Failed to connect to backend. Make sure the server is running.");
+      }
+    }
+  };
+
   useEffect(() => {
-    const init = async () => {
-      const token = localStorage.getItem("AIRES_token");
-      if (!token) {
-        setPage("login"); // Show login page first
-        return;
-      }
-
-      try {
-        const serverClients = await api.getClients(token);
-        if (serverClients.length > 0) {
-          setClients(serverClients);
-          
-          // Prefer the previously saved activeClientId from localStorage.
-          // Only fall back to the first client if our saved ID genuinely doesn't
-          // exist on the server (e.g. was deleted).
-          const savedId = localStorage.getItem("AIRES_active_client");
-          let currentId = savedId && serverClients.find(c => c.id === savedId)
-            ? savedId
-            : serverClients[0].id;
-
-          setActiveClientId(currentId);
-          localStorage.setItem("AIRES_active_client", currentId);
-
-          // Fetch data for the active ID
-          const assessment = await api.getAssessment(token, currentId);
-          if (assessment) {
-            setProfile(assessment.profile);
-            setAnswers(assessment.answers || {});
-            setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
-          }
-        } else {
-          // Server has no clients yet — try to restore from localStorage list
-          // so we don't wipe a previously created client.
-          const savedClients = localStorage.getItem("AIRES_clients");
-          if (savedClients) {
-            const parsed = JSON.parse(savedClients);
-            if (parsed.length > 0) {
-              setClients(parsed);
-              const savedId = localStorage.getItem("AIRES_active_client");
-              const validId = savedId && parsed.find(c => c.id === savedId)
-                ? savedId
-                : parsed[0].id;
-              setActiveClientId(validId);
-              return;
-            }
-          }
-          setClients([{ id: "default", name: "Default Client", progress: 0 }]);
-          setActiveClientId("default");
-        }
-        setPage("landing");
-        console.log("%c[AIRES] SYSTEM v1.0.5-security-update INITIALIZED", "color: #10B981; font-weight: bold; background: #ECFDF5; padding: 4px 8px; border-radius: 4px");
-      } catch (err) {
-        if (err.message === "UNAUTHORIZED") {
-          localStorage.removeItem("AIRES_token");
-          setPage("login"); // Fallback to login
-        } else {
-          console.error("[AIRES] Failed to initialize:", err);
-          setLoadError("Failed to connect to backend. Make sure the server is running.");
-        }
-      }
-    };
-    init();
+    initData();
   }, []);
+
+  const onLoginSuccess = () => {
+    initData();
+  };
 
   // Load active client data when client switches
   useEffect(() => {
@@ -192,10 +191,13 @@ export default function App() {
   const switchClient = (id, name) => {
     if (id === "new") {
       const nid = "c_" + Date.now();
-      const updatedClients = [...clients, { id: nid, name }];
+      const updatedClients = [...clients, { id: nid, name: name || "Draft Assessment", progress: 0 }];
       setClients(updatedClients);
       setActiveClientId(nid);
-      setPage("landing");
+      setProfile(null);
+      setAnswers({});
+      setCurrentQuestionIndex(0);
+      setPage("profile");
     } else {
       setActiveClientId(id);
       setPage("landing");
@@ -276,13 +278,7 @@ export default function App() {
       setPage("login");
       return;
     }
-    localStorage.removeItem(`AIRES_client_${activeClientId}_profile`);
-    localStorage.removeItem(`AIRES_client_${activeClientId}_answers`);
-    localStorage.removeItem(`AIRES_client_${activeClientId}_q_index`);
-    setProfile(null);
-    setAnswers({});
-    setCurrentQuestionIndex(0);
-    setPage("profile");
+    switchClient("new", "Draft Assessment");
   };
 
   const resume = async () => {
@@ -337,7 +333,7 @@ export default function App() {
 
   return html`
     <div style=${{ fontFamily: BODY }}>
-      ${page === "login" && html`<${AdminLogin} onLogin=${() => setPage("landing")} />`}
+      ${page === "login" && html`<${AdminLogin} onLogin=${onLoginSuccess} />`}
       ${page === "landing" && html`
         <${LandingPage}
           onBegin=${cleanReset}
