@@ -38,6 +38,26 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
     }, 220);
   };
 
+  const skip = () => {
+    if (fade) return;
+    setFade(true);
+    setTimeout(() => {
+      // Find the next question. If we are at the end, look for unanswered ones.
+      if (current < questions.length - 1) {
+        setCurrent(c => c + 1);
+      } else {
+        // We reached the end. Are there any unanswered questions?
+        const unansweredIdx = questions.findIndex(q => !answers[q.qid]);
+        if (unansweredIdx !== -1) {
+          setCurrent(unansweredIdx);
+        } else {
+          onFinish(answers, questions);
+        }
+      }
+      setFade(false);
+    }, 220);
+  };
+
   const prev = () => {
     if (fade) return;
     setFade(true);
@@ -48,6 +68,34 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
     }, 220);
   };
 
+  const handleNext = () => {
+    if (answers[q?.qid]) {
+      // If answered, we proceed as normal (with save)
+      if (current < questions.length - 1) {
+        setFade(true);
+        setTimeout(() => {
+          setCurrent(c => c + 1);
+          setFade(false);
+        }, 220);
+      } else {
+        // At the end, check for other unanswered ones
+        const unansweredIdx = questions.findIndex(q => !answers[q.qid]);
+        if (unansweredIdx !== -1) {
+          setFade(true);
+          setTimeout(() => {
+            setCurrent(unansweredIdx);
+            setFade(false);
+          }, 220);
+        } else {
+          onFinish(answers, questions);
+        }
+      }
+    } else {
+      // If NOT answered, we just skip
+      skip();
+    }
+  };
+
   const customOpts = q?.options?.length > 0 ? q.options : ["Yes", "No", "Maybe", "Non-applicable"];
   const opts = customOpts.map(opt => {
     if (opt.startsWith("Partial") || opt.startsWith("Maybe")) return { label: opt, color: B.blue, bg: "#EFF6FF", border: "#93C5FD" };
@@ -55,6 +103,9 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
     if (opt.startsWith("Yes") || opt.startsWith("Compliant") || opt.startsWith("Full")) return { label: opt, color: "#16A34A", bg: "#F0FDF4", border: "#86EFAC" };
     return { label: opt, color: B.gray500, bg: B.gray50, border: B.gray300 };
   });
+
+  // Calculate if we have any unanswered questions
+  const unansweredCount = questions.filter(qu => !answers[qu.qid]).length;
 
   return html`
     <div style=${{ minHeight: "100vh", background: B.gray50, fontFamily: BODY }}>
@@ -84,6 +135,7 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
             <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
               <span style=${{ fontSize: 13, fontWeight: 600, color: B.black }}>
                 Question ${current + 1} <span style=${{ color: B.gray400 }}>of ${questions.length}</span>
+                ${unansweredCount > 0 && html`<span style=${{ marginLeft: 12, color: B.blue, fontSize: 11 }}>(${unansweredCount} skipped)</span>`}
               </span>
               <span style=${{ fontSize: 13, fontWeight: 700, color: B.red }}>${pct}% complete</span>
             </div>
@@ -164,33 +216,16 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
 
           <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 24, padding: "0 4px" }}>
             <div style=${{ display: "flex", gap: 12 }}>
-              <button onClick=${prev} disabled=${current === 0 && !onBack}
+              <button onClick=${handleNext}
+
                 style=${{
-                  padding: "10px 20px", background: B.white,
-                  border: `1px solid ${B.border}`, borderRadius: 8,
-                  color: (current === 0 && !onBack) ? B.gray300 : B.gray700, 
-                  cursor: (current === 0 && !onBack) ? "not-allowed" : "pointer",
-                  fontSize: 14, fontWeight: 600, boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
+                  padding: "10px 24px", background: B.blue,
+                  border: `1.5px solid transparent`, borderRadius: 8,
+                  color: B.white, 
+                  cursor: "pointer",
+                  fontSize: 14, fontWeight: 700, boxShadow: B.shadowMd
                 }}>
-                ← Back
-              </button>
-              
-              <button onClick=${() => {
-                if (answers[q?.qid]) {
-                  if (current < questions.length - 1) setCurrent(c => c + 1);
-                  else onFinish(answers, questions);
-                } else {
-                  alert("Please select an answer to proceed, or use 'Save & Return' to exit.");
-                }
-              }}
-                style=${{
-                  padding: "10px 24px", background: answers[q?.qid] ? B.blue : B.gray100,
-                  border: `1.5px solid ${answers[q?.qid] ? "transparent" : B.border}`, borderRadius: 8,
-                  color: answers[q?.qid] ? B.white : B.gray500, 
-                  cursor: answers[q?.qid] ? "pointer" : "not-allowed",
-                  fontSize: 14, fontWeight: 700, boxShadow: answers[q?.qid] ? B.shadowMd : "none"
-                }}>
-                Next Question →
+                ${answers[q?.qid] ? "Next Question →" : "Skip Question →"}
               </button>
             </div>
 
@@ -202,6 +237,7 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
               Save & Return to Home (Exit Assessment)
             </button>
           </div>
+
         </div>
       </div>
     </div>
