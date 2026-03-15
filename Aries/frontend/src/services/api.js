@@ -42,19 +42,36 @@ export const api = {
   },
 
   /**
-   * Fetch questions filtered by inventory and industry
+   * Fetch questions filtered by use cases and industry
    */
-  async getQuestions(token, inventory, industry) {
+  async getQuestions(token, useCases, industry) {
     const res = await fetch(`${API_BASE}/api/get-questions`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`
       },
-      body: JSON.stringify({ inventory, industry })
+      body: JSON.stringify({ use_cases: useCases, industry })
     });
     if (res.status === 401) throw new Error("UNAUTHORIZED");
     if (!res.ok) throw new Error("Failed to fetch questions");
+    return res.json();
+  },
+
+  /**
+   * Resolve use cases to component groups
+   */
+  async getComponents(token, useCases) {
+    const res = await fetch(`${API_BASE}/api/get-components`, {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ use_cases: useCases })
+    });
+    if (res.status === 401) throw new Error("UNAUTHORIZED");
+    if (!res.ok) throw new Error("Failed to fetch components");
     return res.json();
   },
 

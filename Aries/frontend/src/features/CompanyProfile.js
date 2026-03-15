@@ -15,11 +15,22 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
     regulatory: initialProfile?.regulatory || "",
     techMaturity: initialProfile?.techMaturity || ""
   });
-  const [inventory, setInventory] = useState([
-    { description: "", useCase: "" },
-    { description: "", useCase: "" },
-    { description: "", useCase: "" },
-  ]);
+  
+  const [inventory, setInventory] = useState(() => {
+    const initial = initialProfile?.inventory || [];
+    if (initial.length === 0) return [
+      { description: "", useCase: "" },
+      { description: "", useCase: "" },
+      { description: "", useCase: "" },
+    ];
+    // Always provide at least 3 slots if they have fewer
+    if (initial.length < 3) {
+      const needed = 3 - initial.length;
+      return [...initial, ...Array(needed).fill({ description: "", useCase: "" })];
+    }
+    return initial;
+  });
+
   const [errors, setErrors] = useState({});
 
   const f = (err) => ({
@@ -46,23 +57,51 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
     transition: "transform 0.2s ease"
   };
 
+  const autoMap = (text) => {
+    if (!text) return "";
+    const t = text.toLowerCase();
+    if (t.includes("chat") || t.includes("bot") || t.includes("support")) return "Customer chatbot";
+    if (t.includes("copilot") || t.includes("productivity") || t.includes("employee")) return "Employee copilot";
+    if (t.includes("code") || t.includes("dev") || t.includes("program")) return "Developer or coding assistant";
+    if (t.includes("summary") || t.includes("summarize") || t.includes("doc")) return "Document summarization";
+    if (t.includes("search") || t.includes("qa") || t.includes("find")) return "Search and question-answering";
+    if (t.includes("generate") || t.includes("write") || t.includes("content")) return "Content generation";
+    if (t.includes("email") || t.includes("message") || t.includes("comm")) return "Email or communications assistant";
+    if (t.includes("data") || t.includes("analy") || t.includes("insight")) return "Data analysis and insights";
+    if (t.includes("hiring") || t.includes("recruit") || t.includes("hr")) return "AI used in hiring";
+    if (t.includes("predict") || t.includes("forecast") || t.includes("decision")) return "Decision support";
+    if (t.includes("recommend") || t.includes("personal")) return "Recommendations or personalization";
+    if (t.includes("automation") || t.includes("workflow")) return "Workflow automation";
+    if (t.includes("train") || t.includes("model") || t.includes("tune")) return "Model training or fine-tuning";
+    if (t.includes("risk") || t.includes("harm") || t.includes("safe")) return "AI use case with high potential for human harm";
+    return "General AI assistant";
+  };
+
+  const upd = (i, k, v) => {
+    const n = [...inventory];
+    n[i] = { ...n[i], [k]: v };
+    if (k === "description" && !n[i].useCase) {
+      n[i].useCase = autoMap(v);
+    }
+    setInventory(n);
+  };
+
   const validate = () => {
     const e = {};
     if (!form.companyName.trim()) e.companyName = "Required";
     if (!form.industry) e.industry = "Required";
     if (!form.companySize) e.companySize = "Required";
     if (!form.regulatory) e.regulatory = "Required";
-    if (!inventory.some(i => i.useCase)) e.inventory = "Select at least one AI use case";
+    if (!form.techMaturity) e.techMaturity = "Required";
+    if (!inventory.some(i => i.description.trim())) e.inventory = "Describe at least one AI usage";
     setErrors(e);
     return !Object.keys(e).length;
   };
 
-  const upd = (i, k, v) => { const n = [...inventory]; n[i] = { ...n[i], [k]: v }; setInventory(n); };
-
   return html`
     <div style=${{ minHeight: "100vh", background: B.gray50, fontFamily: BODY }}>
       <${Nav}
-        steps=${["Company Profile", "AI Inventory", "Questions", "Complete"]}
+        steps=${["Profile", "Teams", "Questions", "Complete"]}
         current=${0}
         clients=${clients}
         activeClientId=${activeClientId}
@@ -180,6 +219,7 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
                 </svg>
               </div>
             </div>
+            ${errors.techMaturity && html`<span style=${{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>${errors.techMaturity}</span>`}
           </div>
         </div>
 
@@ -188,7 +228,7 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
             <div style=${{ width: 4, height: 20, background: B.blue, borderRadius: 2 }} />
             <span style=${{ fontSize: 13, fontWeight: 700, color: B.black, letterSpacing: "0.06em" }}>AI INVENTORY</span>
           </div>
-          <p style=${{ color: B.gray500, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>Describe how your organisation uses AI. Each entry drives targeted questions for your assessment.</p>
+          <p style=${{ color: B.gray500, fontSize: 13, margin: "0 0 24px", lineHeight: 1.6 }}>Describe how your organisation uses AI. Our system will automatically suggest the best Use Case categories.</p>
 
           ${errors.inventory && html`
             <div style=${{ background: "#FEF2F2", border: "1px solid #FECACA", borderRadius: 7, padding: "10px 12px", color: B.red, fontSize: 13, marginBottom: 16 }}>
@@ -202,17 +242,17 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
                 background: B.gray50, border: `1px solid ${B.border}`, borderRadius: 10, padding: "20px"
               }}>
                 <div style=${{ fontSize: 12, fontWeight: 700, color: i === 0 ? B.red : B.blue, marginBottom: 14, letterSpacing: "0.08em" }}>
-                  AI USE CASE ${i + 1}${i === 0 ? " *" : " (optional)"}
+                  AI USAGE DESCRIPTION ${i + 1}${i === 0 ? " *" : " (optional)"}
                 </div>
                 <div style=${{ display: "flex", flexDirection: "column", gap: 10 }}>
                   <div>
-                    <label style=${{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Description</label>
+                    <label style=${{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>What does this AI do?</label>
                     <input value=${item.description} onChange=${e => upd(i, "description", e.target.value)}
-                      placeholder="Briefly describe how your organisation uses this AI..."
+                      placeholder="e.g. We use a chatbot for customer support..."
                       style=${{ ...f(false), background: B.white }} />
                   </div>
                   <div>
-                    <label style=${{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Use Case Type</label>
+                    <label style=${{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Mapped Use Case</label>
                     <div className="select-wrapper" style=${selectWrapper(false)}>
                       <select value=${item.useCase} onChange=${e => upd(i, "useCase", e.target.value)}
                         style=${{ ...f(false), background: B.white, cursor: "pointer", paddingRight: 38 }}>
@@ -230,15 +270,35 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
               </div>
             `)}
           </div>
+          
+          <button onClick=${() => setInventory([...inventory, { description: "", useCase: "" }])}
+            style=${{
+              marginTop: 16, background: "none", border: `1.5px dashed ${B.blue}`, borderRadius: 10,
+              color: B.blue, padding: "12px", width: "100%", fontSize: 13, fontWeight: 700,
+              cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+              transition: "all 0.2s"
+            }}
+            onMouseEnter=${e => { e.currentTarget.style.background = `${B.blue}08`; }}
+            onMouseLeave=${e => { e.currentTarget.style.background = "none"; }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+            Add Another AI Usage
+          </button>
         </div>
-
+        
         <div style=${{ marginTop: 28, display: "flex", justifyContent: "flex-end" }}>
-          <button onClick=${() => validate() && onNext({ ...form, inventory: inventory.filter(i => i.useCase) })}
+          <button onClick=${() => {
+            if (validate()) {
+              const cleanedInventory = inventory.filter(i => i.description.trim() && i.useCase);
+              onNext({ ...form, inventory: cleanedInventory });
+            }
+          }}
             style=${{
               padding: "13px 36px", background: B.red, border: "none", borderRadius: 8,
               color: B.white, fontSize: 14, fontWeight: 700, cursor: "pointer", letterSpacing: "0.03em"
             }}>
-            Continue →
+            Continue to Team Selection →
           </button>
         </div>
       </div>

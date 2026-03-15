@@ -24,26 +24,25 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
     try {
       const token = localStorage.getItem("AIRES_token");
       if (!token) {
-        alert("Error: No authentication token found. Please logout and login again.");
+        console.error("Error: No authentication token found.");
         return;
       }
 
-      console.log("[AIRES] Calling API to delete...");
-      const apiService = (window.api || api);
-      const response = await apiService.deleteAssessment(token, client.id);
-      console.log("[AIRES] Delete response:", response);
+      console.log("[AIRES] LandingPage calling API to delete...", client.id);
+      const _api = (window.api || api);
+      const res = await _api.deleteAssessment(token, client.id);
+      console.log("[AIRES] LandingPage Delete response:", res);
+      
+      // Clear confirmation
+      setConfirmingId(null);
 
-      if (response && (response.status === "success" || response.message?.includes("success"))) {
-        localStorage.removeItem(`AIRES_client_${client.id}_profile`);
-        localStorage.removeItem(`AIRES_client_${client.id}_answers`);
-        alert("Assessment deleted successfully");
-        window.location.reload();
+      if (res && res.status === "success") {
+        onHome(); 
       } else {
-        alert("Failed to delete: " + JSON.stringify(response));
+        console.error("Failed to delete assessment.");
       }
     } catch (err) {
       console.error("Delete failed:", err);
-      alert(`Failed to delete assessment: ${err.message || JSON.stringify(err)}`);
     }
   };
 
@@ -96,7 +95,7 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
               </p>
 
               <div style=${{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                <button className="auth-btn btn-glow" onClick=${() => { if (hasSaved && !confirm("Starting new will clear your previous progress. Continue?")) return; onBegin(); }} style=${{
+                <button className="auth-btn btn-glow" onClick=${() => { onBegin(); }} style=${{
                   padding: "18px 44px", fontSize: 16, marginTop: 0,
                   background: hasSaved ? "transparent" : B.red,
                   border: hasSaved ? `2px solid ${B.red}` : "none",
@@ -178,61 +177,97 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
             </button>
           </div>
 
-          <div style=${{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
+          <div style=${{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 28 }}>
             ${clients.filter(c => c.name !== "Default Client").map(client => html`
-              <div key=${client.id} onClick=${() => onResumeClient ? onResumeClient(client.id) : onSwitchClient(client.id)} style=${{ 
-                background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: 24, 
-                cursor: "pointer", transition: "all 0.2s ease", position: "relative",
-                boxShadow: activeClientId === client.id ? B.shadowMd : "none",
-                borderColor: activeClientId === client.id ? B.blue : B.border,
-                transform: activeClientId === client.id ? "translateY(-4px)" : "none"
-              }}>
-                <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
-                   <div style=${{ fontSize: 12, fontWeight: 700, color: B.gray400 }}>ID: ${client.id.slice(0, 8)}...</div>
+              <div key=${client.id} 
+                onClick=${() => onResumeClient ? onResumeClient(client.id) : onSwitchClient(client.id)} 
+                onMouseEnter=${(e) => {
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.1)";
+                  e.currentTarget.style.borderColor = B.blue;
+                }}
+                onMouseLeave=${(e) => {
+                  if (activeClientId !== client.id) {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.borderColor = B.border;
+                  }
+                }}
+                style=${{ 
+                  background: activeClientId === client.id ? B.white : "rgba(255,255,255,0.7)", 
+                  border: `2px solid ${activeClientId === client.id ? B.blue : B.border}`, 
+                  borderRadius: 24, 
+                  padding: 32, 
+                  cursor: "pointer", 
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)", 
+                  position: "relative",
+                  boxShadow: activeClientId === client.id ? B.shadowMd : "none",
+                  transform: activeClientId === client.id ? "translateY(-8px)" : "none",
+                  backdropFilter: "blur(12px)"
+                }}>
+                
+                <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+                   <div style=${{ 
+                     padding: "6px 12px", borderRadius: 8, fontSize: 10, fontWeight: 800, 
+                     background: B.gray100, color: B.gray500, letterSpacing: "0.05em" 
+                   }}>
+                     ID: ${String(client.id).slice(0, 8)}
+                   </div>
                    <div style=${{ display: "flex", alignItems: "center", gap: 12 }}>
-                     <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: client.progress === 100 ? "#DCFCE7" : B.gray50, color: client.progress === 100 ? "#16A34A" : B.gray700 }}>
-                       ${client.progress === 100 ? "COMPLETED" : "IN PROGRESS"}
+                     <div style=${{ 
+                       padding: "6px 12px", borderRadius: 8, fontSize: 10, fontWeight: 800, 
+                       background: client.progress === 100 ? "#DCFCE7" : "#DBEAFE", 
+                       color: client.progress === 100 ? "#16A34A" : B.blue,
+                       letterSpacing: "0.05em"
+                     }}>
+                       ${client.progress === 100 ? "COMPLETED" : "IN ANALYSIS"}
                      </div>
                       <div style=${{ display: "flex", alignItems: "center", gap: 8 }}>
                         ${confirmingId === client.id ? html`
-                          <div style=${{ display: "flex", gap: 4 }}>
-                            <button onClick=${(e) => { e.stopPropagation(); setConfirmingId(null); }} style=${{ background: B.gray100, border: "none", color: B.gray700, padding: "4px 8px", borderRadius: 4, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>CANCEL</button>
-                            <button onClick=${(e) => handleDelete(e, client)} style=${{ background: B.red, border: "none", color: "white", padding: "4px 8px", borderRadius: 4, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>SURE?</button>
+                          <div style=${{ display: "flex", gap: 6 }}>
+                            <button onClick=${(e) => { e.stopPropagation(); setConfirmingId(null); }} style=${{ background: B.gray100, border: "none", color: B.gray700, padding: "6px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>CANCEL</button>
+                            <button onClick=${(e) => handleDelete(e, client)} style=${{ background: B.red, border: "none", color: "white", padding: "6px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, cursor: "pointer" }}>SURE?</button>
                           </div>
                         ` : html`
                           <button onClick=${(e) => handleDelete(e, client)} style=${{ 
                             background: "transparent", border: "none", cursor: "pointer", 
-                            color: B.gray400, padding: "4px", display: "flex", alignItems: "center", 
-                            justifyContent: "center", transition: "color 0.2s",
-                            opacity: 0.6
-                          }} onMouseEnter=${(e) => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.color = B.red; }} onMouseLeave=${(e) => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.color = B.gray400; }}>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style=${{ pointerEvents: "none" }}>
+                            color: B.gray300, padding: "6px", display: "flex", alignItems: "center", 
+                            justifyContent: "center", transition: "all 0.2s"
+                          }} onMouseEnter=${(e) => e.currentTarget.style.color = B.red} onMouseLeave=${(e) => e.currentTarget.style.color = B.gray300}>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <polyline points="3 6 5 6 21 6"></polyline>
                               <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                              <line x1="10" y1="11" x2="10" y2="17"></line>
-                              <line x1="14" y1="11" x2="14" y2="17"></line>
                             </svg>
                           </button>
                         `}
                       </div>
                    </div>
                 </div>
-                <div style=${{ fontSize: 18, fontWeight: 800, color: B.black, marginBottom: 4, fontFamily: DISPLAY }}>${client.name}</div>
-                <div style=${{ fontSize: 14, color: B.gray500, marginBottom: 16 }}>Enterprise Risk Assessment Profile</div>
+
+                <div style=${{ fontSize: 22, fontWeight: 800, color: B.black, marginBottom: 8, fontFamily: DISPLAY, letterSpacing: "-0.5px" }}>
+                  ${String(client.name)}
+                </div>
+                <div style=${{ fontSize: 14, color: B.gray500, marginBottom: 28, fontWeight: 500 }}>
+                  Strategic AI Risk Assessment
+                </div>
                 
-                <div style=${{ marginBottom: 20 }}>
-                  <div style=${{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                    <span style=${{ fontSize: 11, fontWeight: 700, color: B.gray400, textTransform: "uppercase" }}>Progress</span>
-                    <span style=${{ fontSize: 11, fontWeight: 800, color: client.progress === 100 ? "#16A34A" : B.blue }}>${client.progress}%</span>
+                <div style=${{ marginBottom: 24 }}>
+                  <div style=${{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+                    <span style=${{ fontSize: 12, fontWeight: 700, color: B.gray400, textTransform: "uppercase", letterSpacing: "0.05em" }}>Analysis Progress</span>
+                    <span style=${{ fontSize: 12, fontWeight: 800, color: client.progress === 100 ? "#16A34A" : B.blue }}>${client.progress}%</span>
                   </div>
-                  <div style=${{ height: 6, background: B.gray100, borderRadius: 3, overflow: "hidden" }}>
-                    <div style=${{ width: `${client.progress}%`, height: "100%", background: client.progress === 100 ? "#16A34A" : B.blue, borderRadius: 3, transition: "width 0.4s ease" }} />
+                  <div style=${{ height: 8, background: B.gray100, borderRadius: 4, overflow: "hidden" }}>
+                    <div style=${{ width: `${client.progress}%`, height: "100%", background: client.progress === 100 ? "#16A34A" : B.blue, borderRadius: 4, transition: "width 0.6s cubic-bezier(0.4, 0, 0.2, 1)" }} />
                   </div>
                 </div>
 
-                <div style=${{ borderTop: `1px solid ${B.border}`, paddingTop: 16, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                   <span style=${{ fontSize: 12, fontWeight: 700, color: B.blue }}>${client.progress === 100 ? "VIEW RESULTS →" : "CONTINUE ANALYSIS →"}</span>
-                   ${activeClientId === client.id && html`<div style=${{ width: 8, height: 8, borderRadius: "50%", background: B.blue, boxShadow: `0 0 8px ${B.blue}` }} />`}
+                <div style=${{ borderTop: `1px solid ${B.border}`, paddingTop: 20, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                   <span style=${{ fontSize: 13, fontWeight: 800, color: B.blue, letterSpacing: "0.02em" }}>
+                     ${client.progress === 100 ? "VIEW RESULTS →" : "CONTINUE ANALYSIS →"}
+                   </span>
+                   ${activeClientId === client.id && html`
+                     <div style=${{ width: 10, height: 10, borderRadius: "50%", background: B.blue, boxShadow: `0 0 12px ${B.blue}` }} />
+                   `}
                 </div>
               </div>
             `)}
@@ -252,10 +287,10 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
         </div>
         <div style=${{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, maxWidth: 1100, margin: "0 auto" }}>
           ${[
-            { n: "01", t: "Company Profile", d: "Tell us about your organisation, industry, and the assessor." },
-            { n: "02", t: "AI Inventory", d: "Tell us about your AI use cases." },
-            { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your AI risks." },
-            { n: "04", t: "Risk Insight", d: "Receive a risk profile with remediation roadmaps." },
+            { n: "01", t: "Company Profile", d: "Tell us about your organisation, industry, and AI inventory." },
+            { n: "02", t: "Expert Teams", d: "Identify the departments and stakeholders for your assessment." },
+            { n: "03", t: "Targeted Questions", d: "Answer only questions relevant to your specific AI risks." },
+            { n: "04", t: "Risk Insight", d: "Receive a comprehensive risk profile and remediation roadmap." },
           ].map((s, i) => html`
             <div key=${s.n} style=${{
               background: B.white, border: `1px solid ${B.border}`, borderRadius: 16,

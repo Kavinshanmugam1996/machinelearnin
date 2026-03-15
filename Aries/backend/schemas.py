@@ -21,6 +21,7 @@ class QuestionBase(BaseModel):
     component_group: Optional[str] = Field(None, alias="component_group")
     industry: Optional[str] = None
     is_universal: bool = Field(False, alias="is_universal")
+    department: Optional[str] = None
     options: List[str] = []
 
     model_config = ConfigDict(populate_by_name=True, from_attributes=True)
@@ -30,8 +31,16 @@ class InventoryItem(BaseModel):
     useCase: str
 
 class QuestionRequest(BaseModel):
-    inventory: List[InventoryItem]
+    use_cases: List[str] = []
     industry: Optional[str] = None
+    # Legacy support: accept old inventory format and extract use cases
+    inventory: Optional[List[InventoryItem]] = None
+
+class ComponentRequest(BaseModel):
+    use_cases: List[str]
+
+class ComponentResponse(BaseModel):
+    component_groups: List[str]
 
 class AssessmentBase(BaseModel):
     id: str = Field(..., alias="id")

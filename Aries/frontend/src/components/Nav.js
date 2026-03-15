@@ -25,26 +25,25 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
     try {
       const token = localStorage.getItem("AIRES_token");
       if (!token) {
-        alert("Error: No authentication token found. Please logout and login again.");
+        console.error("Error: No authentication token found. Please logout and login again.");
         return;
       }
 
-      console.log("[AIRES] Calling API to delete...");
-      const apiService = (window.api || api);
-      const response = await apiService.deleteAssessment(token, client.id);
-      console.log("[AIRES] Delete response:", response);
-
-      if (response && (response.status === "success" || response.message?.includes("success"))) {
-        localStorage.removeItem(`AIRES_client_${client.id}_profile`);
-        localStorage.removeItem(`AIRES_client_${client.id}_answers`);
-        alert("Assessment deleted successfully");
-        window.location.reload();
+      console.log("[AIRES] Nav calling API to delete...", client.id);
+      const _api = (window.api || api);
+      const res = await _api.deleteAssessment(token, client.id);
+      console.log("[AIRES] Nav Delete response:", res);
+      
+      // Clear confirmation
+      setConfirmingId(null);
+      
+      if (res && res.status === "success") {
+        onHome();
       } else {
-        alert("Failed to delete: " + JSON.stringify(response));
+        console.error("Failed to delete assessment. Server responded with an error.");
       }
     } catch (err) {
       console.error("Delete failed:", err);
-      alert(`Failed to delete assessment: ${err.message || JSON.stringify(err)}`);
     }
   };
 
@@ -148,9 +147,9 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
           }}
         >
           <div style=${{ width: 24, height: 24, borderRadius: "50%", background: B.red, display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: 12, fontWeight: 800 }}>
-            ${activeClient?.name?.[0] || "A"}
+            ${String(activeClient?.name?.[0] || "A")}
           </div>
-          <span style=${{ fontSize: 13, fontWeight: 600, color: B.black }}>${activeClient?.name || "Initialising..."}</span>
+          <span style=${{ fontSize: 13, fontWeight: 600, color: B.black }}>${String(activeClient?.name || "Initialising...")}</span>
 
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style=${{ transform: showDropdown ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>
             <path d="m6 9 6 6 6-6" />
@@ -167,7 +166,7 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
             }}>
               <div style=${{ padding: "8px 12px 12px", borderBottom: `1px solid ${B.border}`, marginBottom: 8 }}>
                 <div style=${{ fontSize: 11, fontWeight: 700, color: B.gray400, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>Assessing Client</div>
-                <div style=${{ fontSize: 14, fontWeight: 700, color: B.black }}>${activeClient?.name || "None Selected"}</div>
+                <div style=${{ fontSize: 14, fontWeight: 700, color: B.black }}>${String(activeClient?.name || "None Selected")}</div>
               </div>
 
               <div style=${{ maxHeight: 200, overflowY: "auto" }}>
@@ -213,8 +212,7 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
 
               <div style=${{ marginTop: 8, paddingTop: 8, borderTop: `1px solid ${B.border}` }}>
                 <button onClick=${() => {
-                  const name = prompt("Enter Client Name:");
-                  if (name) onSwitchClient("new", name);
+                  onSwitchClient("new", "New Assessment");
                   setShowDropdown(false);
                 }} style=${{
                   width: "100%", padding: "10px 12px", textAlign: "left", background: "none",
@@ -264,7 +262,7 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
                   marginBottom: 6
                 }}>
                   <div style=${{ width: 10, height: 10, borderRadius: "50%", background: c.id === activeClientId ? B.blue : B.gray300 }} />
-                  ${escapeOutput(c.name)}
+                  ${String(escapeOutput(c.name))}
                 </button>
               `)}
             ` : html`

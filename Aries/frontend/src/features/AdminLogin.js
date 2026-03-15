@@ -4,18 +4,18 @@ import { BizcomLogo } from '../components/BizcomLogo.js';
 import { B, DISPLAY, BODY } from '../services/constants.js';
 
 const html = htm.bind(React.createElement);
-
-const { useState } = React;
+const { useState, useEffect } = React;
 
 export function AdminLogin({ onLogin }) {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(() => localStorage.getItem("AIRES_saved_email") || "");
   const [pw, setPw] = useState("");
+  const [rememberMe, setRememberMe] = useState(!!localStorage.getItem("AIRES_saved_email"));
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -31,16 +31,35 @@ export function AdminLogin({ onLogin }) {
         body: JSON.stringify({ email, password: pw })
       });
       
+      const data = await res.json();
+
       if (res.ok) {
-        const data = await res.json();
         localStorage.setItem("AIRES_token", data.access_token);
+        if (rememberMe) {
+          localStorage.setItem("AIRES_saved_email", email);
+        } else {
+          localStorage.removeItem("AIRES_saved_email");
+        }
         onLogin();
       } else {
-        const data = await res.json();
-        setError(typeof data.detail === 'string' ? data.detail : JSON.stringify(data.detail));
+        let msg = "Invalid email or password";
+        if (data.detail) {
+          if (typeof data.detail === 'string') {
+            msg = data.detail;
+          } else if (Array.isArray(data.detail)) {
+            const first = data.detail[0];
+            // Catch Pydantic email validation specifically
+            if (first.loc && first.loc.includes("email")) {
+              msg = "Invalid email format. Please check the address.";
+            } else {
+              msg = first.msg || "Authentication failed";
+            }
+          }
+        }
+        setError(msg);
       }
     } catch (err) {
-      setError("Network error connecting to backend");
+      setError("Network error: Please check your connection or server status.");
     } finally {
       setLoading(false);
     }
@@ -155,6 +174,17 @@ export function AdminLogin({ onLogin }) {
                 </button>
               </div>
             </div>
+            
+            <label style=${{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer", userSelect: "none" }}>
+              <input 
+                type="checkbox" 
+                checked=${rememberMe} 
+                onChange=${e => setRememberMe(e.target.checked)}
+                style=${{ width: 16, height: 16, cursor: "pointer" }}
+              />
+              <span style=${{ fontSize: 13, fontWeight: 500, color: B.gray600 }}>Remember my email</span>
+            </label>
+
             ${error && html`
               <div style=${{
                 background: "#FEF2F2", border: "1px solid #FECACA",

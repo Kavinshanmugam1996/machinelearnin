@@ -1,14 +1,21 @@
 import React from 'react';
 import htm from 'htm';
 import { Nav } from '../components/Nav.js';
+import { BizcomLogo } from '../components/BizcomLogo.js';
 import { B, DISPLAY, BODY, CLUSTER_COLORS, MANDATORY_COMPONENT_GROUPS } from '../services/constants.js';
 
 const html = htm.bind(React.createElement);
-
 const { useState, useEffect } = React;
 
-export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, initialIndex, onIndexChange, initialAnswers, onAnswersChange, clients, activeClientId, onSwitchClient, onLogout }) {
-  const [current, setCurrent] = useState(initialIndex);
+export function QuestionFlow({ 
+  questions = [], profile, onBack, onFinish, onExit, 
+  initialIndex = 0, onIndexChange, initialAnswers = {}, onAnswersChange, 
+  clients, activeClientId, onSwitchClient, onLogout, departmentName 
+}) {
+  const [current, setCurrent] = useState(() => {
+    const startIdx = (typeof initialIndex === 'number' && !isNaN(initialIndex)) ? initialIndex : 0;
+    return Math.min(Math.max(0, startIdx), Math.max(0, questions.length - 1));
+  });
 
   useEffect(() => {
     if (onIndexChange) onIndexChange(current);
@@ -21,45 +28,53 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
     if (onAnswersChange) onAnswersChange(answers);
   }, [answers]);
 
-  const q = questions[current];
-  const pct = Math.round(((current + 1) / questions.length) * 100);
+  const q = questions[current] || questions[0];
+  const pct = questions.length > 0 ? Math.round(((current + 1) / questions.length) * 100) : 0;
   const clusterColor = CLUSTER_COLORS[q?.cluster] || B.blue;
   const isMandatory = MANDATORY_COMPONENT_GROUPS.includes(q?.component_group);
 
-  const go = (val) => {
+  const handleSelection = (val) => {
     if (fade) return;
     const next = { ...answers, [q.qid]: val };
     setAnswers(next);
+    
     setFade(true);
     setTimeout(() => {
-      if (current < questions.length - 1) setCurrent(c => c + 1);
-      else onFinish(next, questions);
-      setFade(false);
-    }, 220);
+      if (current < questions.length - 1) {
+        setCurrent(c => c + 1);
+        setFade(false);
+      } else {
+        onFinish(next, questions);
+      }
+    }, 250);
   };
 
-  const prev = () => {
+  const goPrev = () => {
     if (fade) return;
     setFade(true);
     setTimeout(() => {
-      if (current > 0) setCurrent(c => c - 1);
-      else onBack();
-      setFade(false);
-    }, 220);
+      if (current > 0) {
+        setCurrent(c => c - 1);
+        setFade(false);
+      } else {
+        onBack();
+      }
+    }, 250);
   };
 
   const customOpts = q?.options?.length > 0 ? q.options : ["Yes", "No", "Maybe", "Non-applicable"];
   const opts = customOpts.map(opt => {
-    if (opt.startsWith("Partial") || opt.startsWith("Maybe")) return { label: opt, color: B.blue, bg: "#EFF6FF", border: "#93C5FD" };
-    if (opt.startsWith("No") || opt.startsWith("Non-compliant") || opt.startsWith("Not-compliant")) return { label: opt, color: B.red, bg: "#FEF2F2", border: "#FECACA" };
-    if (opt.startsWith("Yes") || opt.startsWith("Compliant") || opt.startsWith("Full")) return { label: opt, color: "#16A34A", bg: "#F0FDF4", border: "#86EFAC" };
+    const l = opt.toLowerCase();
+    if (l.startsWith("yes") || l.startsWith("compliant") || l.startsWith("full")) return { label: opt, color: "#16A34A", bg: "#F0FDF4", border: "#86EFAC" };
+    if (l.startsWith("no") || l.startsWith("non-compliant") || l.startsWith("not-compliant")) return { label: opt, color: B.red, bg: "#FEF2F2", border: "#FECACA" };
+    if (l.startsWith("partial") || l.startsWith("maybe") || l.startsWith("some")) return { label: opt, color: B.blue, bg: "#EFF6FF", border: "#93C5FD" };
     return { label: opt, color: B.gray500, bg: B.gray50, border: B.gray300 };
   });
 
   return html`
-    <div style=${{ minHeight: "100vh", background: B.gray50, fontFamily: BODY }}>
-      <${Nav}
-        steps=${["Company Profile", "AI Inventory", "Questions", "Complete"]}
+    <div style=${{ minHeight: "100vh", background: B.gray50, fontFamily: BODY, paddingBottom: 100 }}>
+       <${Nav}
+        steps=${["Profile", "Teams", "Questions", "Complete"]}
         current=${2}
         clients=${clients}
         activeClientId=${activeClientId}
@@ -68,93 +83,103 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
         onHome=${onExit}
       />
 
-      <div style=${{ background: B.white, borderBottom: `1px solid ${B.border}`, padding: "16px 40px" }}>
-        <div style=${{ maxWidth: 760, margin: "0 auto", display: "flex", alignItems: "center", gap: 20 }}>
-          <button onClick=${prev} style=${{
-            background: "none", border: `1.5px solid ${B.border}`, borderRadius: 8,
-            padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
-            fontSize: 13, fontWeight: 600, color: B.gray600, transition: "all 0.2s"
-          }}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Back
-          </button>
-          <div style=${{ flex: 1 }}>
-            <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <span style=${{ fontSize: 13, fontWeight: 600, color: B.black }}>
-                Question ${current + 1} <span style=${{ color: B.gray400 }}>of ${questions.length}</span>
-              </span>
-              <span style=${{ fontSize: 13, fontWeight: 700, color: B.red }}>${pct}% complete</span>
+      <div style=${{ maxWidth: 840, margin: "40px auto", padding: "0 24px" }}>
+        
+        <!-- Question Header / Context -->
+        <div style=${{ 
+          display: "flex", justifyContent: "space-between", alignItems: "flex-end", 
+          marginBottom: 20, padding: "0 8px"
+        }}>
+          <div>
+            <div style=${{ 
+              display: "flex", alignItems: "center", gap: 8, 
+              fontSize: 12, fontWeight: 700, color: B.blue, letterSpacing: "0.1em", marginBottom: 8 
+            }}>
+              <span style=${{ width: 8, height: 8, borderRadius: "50%", background: B.blue }} />
+              ${departmentName?.toUpperCase() || "DEPARTMENT ASSESSMENT"}
             </div>
-            <div style=${{ height: 6, background: B.gray100, borderRadius: 4, overflow: "hidden" }}>
-              <div style=${{
-                height: "100%", width: `${pct}%`,
-                background: `linear-gradient(90deg, ${B.red}, #E85558)`,
-                borderRadius: 4, transition: "width 0.4s ease"
-              }} />
+            <div style=${{ fontSize: 13, color: B.gray500, fontWeight: 600 }}>
+              Question ${current + 1} of ${questions.length}
             </div>
+          </div>
+          <div style=${{ textAlign: "right" }}>
+            <span style=${{ fontSize: 13, fontWeight: 800, color: B.black }}>${pct}% Complete</span>
           </div>
         </div>
-      </div>
 
-      <div style=${{ maxWidth: 760, margin: "40px auto", padding: "0 24px" }}>
+        <!-- Main Question Container -->
         <div style=${{
-          opacity: fade ? 0 : 1, transform: fade ? "translateY(6px)" : "translateY(0)",
-          transition: "opacity 0.2s, transform 0.2s"
+          opacity: fade ? 0 : 1, 
+          transform: fade ? "scale(0.98) translateY(10px)" : "scale(1) translateY(0)",
+          transition: "all 0.25s cubic-bezier(0.4, 0, 0.2, 1)",
+          background: B.white,
+          borderRadius: 24,
+          boxShadow: B.shadowLg,
+          overflow: "hidden",
+          border: `1px solid ${B.border}`
         }}>
-          <div style=${{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
-            ${q?.cluster && q?.cluster !== "nan" && html`
-              <span style=${{
-                display: "inline-flex", alignItems: "center", gap: 5,
-                padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 600,
-                background: clusterColor + "15", color: clusterColor, border: `1px solid ${clusterColor}33`
-              }}>
-                <span style=${{ width: 6, height: 6, borderRadius: "50%", background: clusterColor }} />
-                ${q?.cluster?.replace("Cluster ", "").replace(" — ", " · ")}
-              </span>
-            `}
-            ${isMandatory && html`
-              <span style=${{
-                padding: "4px 10px", borderRadius: 20, fontSize: 11, fontWeight: 700,
-                background: "#FEF9C3", color: "#A16207", border: "1px solid #FDE047"
-              }}>⚡ Mandatory</span>
-            `}
-            <span style=${{ padding: "4px 10px", borderRadius: 20, fontSize: 11, background: B.gray100, color: B.gray500, border: `1px solid ${B.border}` }}>
-              ${q?.qid}
-            </span>
-          </div>
+          <!-- Cluster Banner -->
+          <div style=${{ 
+            height: 6, width: "100%", background: clusterColor,
+            opacity: 0.8
+          }} />
 
-          <div style=${{
-            background: B.white, border: `1px solid ${B.border}`, borderRadius: 14,
-            padding: "36px 36px 28px", boxShadow: B.shadowMd,
-            borderLeft: `4px solid ${clusterColor}`
-          }}>
-            <p style=${{ fontSize: 19, fontWeight: 600, color: B.black, lineHeight: 1.6, margin: "0 0 32px", letterSpacing: "-0.1px" }}>
+          <div style=${{ padding: "44px 48px" }}>
+            <div style=${{ display: "flex", gap: 10, marginBottom: 28, flexWrap: "wrap" }}>
+              ${q?.cluster && q?.cluster !== "nan" && html`
+                <span style=${{
+                  padding: "6px 14px", borderRadius: 30, fontSize: 11, fontWeight: 700,
+                  background: clusterColor + "15", color: clusterColor, border: `1px solid ${clusterColor}22`
+                }}>
+                  ${q?.cluster.split(":")[0]}
+                </span>
+              `}
+              ${isMandatory && html`
+                <span style=${{
+                  padding: "6px 14px", borderRadius: 30, fontSize: 11, fontWeight: 700,
+                  background: "#FEF9C3", color: "#A16207", border: "1px solid #FDE047"
+                }}>⚡ CRITICAL CONTROL</span>
+              `}
+            </div>
+
+            <h2 style=${{ 
+              fontSize: 22, fontWeight: 700, color: B.black, lineHeight: 1.5, 
+              margin: "0 0 40px", letterSpacing: "-0.3px", fontFamily: DISPLAY 
+            }}>
               ${q?.text}
-            </p>
+            </h2>
 
-            <div style=${{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            <!-- Options Grid -->
+            <div style=${{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               ${opts.map(opt => {
                 const selected = answers[q?.qid] === opt.label;
                 return html`
-                  <button key=${opt.label} onClick=${() => go(opt.label)} style=${{
-                    padding: "14px 20px", cursor: "pointer",
-                    background: selected ? opt.bg : B.white,
-                    border: `1.5px solid ${selected ? opt.color : B.border}`,
-                    borderRadius: 10, fontSize: 14, fontWeight: selected ? 700 : 500,
-                    color: selected ? opt.color : B.gray700,
-                    transition: "all 0.12s", textAlign: "left",
-                    display: "flex", alignItems: "center", gap: 10
-                  }}>
-                    <span style=${{
-                      width: 18, height: 18, borderRadius: "50%", flexShrink: 0,
+                  <button 
+                    key=${opt.label} 
+                    onClick=${() => handleSelection(opt.label)} 
+                    style=${{
+                      padding: "20px 24px", cursor: "pointer",
+                      background: selected ? opt.bg : B.gray50,
+                      border: `2px solid ${selected ? opt.color : "transparent"}`,
+                      borderRadius: 16, 
+                      fontSize: 15, fontWeight: selected ? 700 : 600,
+                      color: selected ? opt.color : B.gray700,
+                      transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)", 
+                      textAlign: "left",
+                      display: "flex", alignItems: "center", gap: 14,
+                      boxShadow: selected ? `0 8px 20px ${opt.color}22` : "none",
+                      transform: selected ? "translateY(-2px)" : "none"
+                    }}
+                  >
+                    <div style=${{
+                      width: 22, height: 22, borderRadius: "50%", flexShrink: 0,
                       border: `2px solid ${selected ? opt.color : B.gray300}`,
                       background: selected ? opt.color : "transparent",
-                      display: "flex", alignItems: "center", justifyContent: "center"
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      transition: "all 0.2s"
                     }}>
-                      ${selected && html`<span style=${{ width: 7, height: 7, borderRadius: "50%", background: B.white }} />`}
-                    </span>
+                      ${selected && html`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`}
+                    </div>
                     ${opt.label}
                   </button>
                 `;
@@ -162,46 +187,41 @@ export function QuestionFlow({ questions, profile, onBack, onFinish, onExit, ini
             </div>
           </div>
 
-          <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 24, padding: "0 4px" }}>
-            <div style=${{ display: "flex", gap: 12 }}>
-              <button onClick=${prev} disabled=${current === 0 && !onBack}
-                style=${{
-                  padding: "10px 20px", background: B.white,
-                  border: `1px solid ${B.border}`, borderRadius: 8,
-                  color: (current === 0 && !onBack) ? B.gray300 : B.gray700, 
-                  cursor: (current === 0 && !onBack) ? "not-allowed" : "pointer",
-                  fontSize: 14, fontWeight: 600, boxShadow: "0 1px 2px rgba(0,0,0,0.05)"
-                }}>
-                ← Back
-              </button>
-              
-              <button onClick=${() => {
-                if (answers[q?.qid]) {
-                  if (current < questions.length - 1) setCurrent(c => c + 1);
-                  else onFinish(answers, questions);
-                } else {
-                  alert("Please select an answer to proceed, or use 'Save & Return' to exit.");
-                }
-              }}
-                style=${{
-                  padding: "10px 24px", background: answers[q?.qid] ? B.blue : B.gray100,
-                  border: `1.5px solid ${answers[q?.qid] ? "transparent" : B.border}`, borderRadius: 8,
-                  color: answers[q?.qid] ? B.white : B.gray500, 
-                  cursor: answers[q?.qid] ? "pointer" : "not-allowed",
-                  fontSize: 14, fontWeight: 700, boxShadow: answers[q?.qid] ? B.shadowMd : "none"
-                }}>
-                Next Question →
-              </button>
+          <!-- Card Footer Progress -->
+          <div style=${{ 
+            background: B.gray50, padding: "20px 48px", borderTop: `1px solid ${B.border}`,
+            display: "flex", alignItems: "center", justifyContent: "space-between"
+          }}>
+            <div style=${{ flex: 1, marginRight: 40 }}>
+              <div style=${{ height: 6, background: B.gray200, borderRadius: 3, overflow: "hidden" }}>
+                <div style=${{ 
+                  height: "100%", width: `${pct}%`, background: B.blue,
+                  transition: "width 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+                }} />
+              </div>
             </div>
-
-            <button onClick=${() => onExit ? onExit() : null} style=${{
-              padding: "10px 16px", background: "transparent",
-              border: "none", color: B.gray400, cursor: "pointer", 
-              fontSize: 13, fontWeight: 600, textDecoration: "underline"
-            }}>
-              Save & Return to Home (Exit Assessment)
-            </button>
+            <span style=${{ fontSize: 11, fontWeight: 700, color: B.gray400, letterSpacing: "0.05em" }}>SECTION PROGRESS</span>
           </div>
+        </div>
+
+        <!-- Navigation Actions -->
+        <div style=${{ display: "flex", justifyContent: "space-between", marginTop: 32 }}>
+          <button onClick=${goPrev}
+            style=${{
+              padding: "12px 24px", background: "none", border: `1.5px solid ${B.border}`, borderRadius: 10,
+              color: B.gray600, fontSize: 14, fontWeight: 700, cursor: "pointer", transition: "all 0.2s"
+            }}>
+            ← Previous Question
+          </button>
+
+          <button onClick=${onExit}
+            style=${{
+              padding: "12px 24px", background: "none", border: "none",
+              color: B.gray400, fontSize: 13, fontWeight: 700, cursor: "pointer", 
+              textDecoration: "underline", transition: "all 0.2s"
+            }}>
+            Save & Exit to Dashboard
+          </button>
         </div>
       </div>
     </div>
