@@ -26,7 +26,7 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
     width: "100%", padding: "11px 14px",
     border: `1.5px solid ${err ? B.red : B.border}`,
     borderRadius: 8, fontSize: 14, color: B.black, background: B.white,
-    outline: "none", boxSizing: "border-box", fontFamily: "inherit",
+    outline: "none", boxSizing: "border-box", fontFamily: BODY,
     appearance: "none", WebkitAppearance: "none"
   });
 

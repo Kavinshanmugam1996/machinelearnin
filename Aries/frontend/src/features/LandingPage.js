@@ -151,7 +151,9 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
                 <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                    <div style=${{ fontSize: 12, fontWeight: 700, color: B.gray400 }}>ID: ${client.id.slice(0, 8)}...</div>
                    <div style=${{ display: "flex", alignItems: "center", gap: 12 }}>
-                     <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: B.gray50, color: B.gray700 }}>ACTIVE</div>
+                     <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: client.progress === 100 ? "#DCFCE7" : B.gray50, color: client.progress === 100 ? "#16A34A" : B.gray700 }}>
+                       ${client.progress === 100 ? "COMPLETED" : "IN PROGRESS"}
+                     </div>
                      <button onClick=${(e) => {
                        e.stopPropagation();
                        if (confirm(`Delete assessment "${client.name}"? This cannot be undone.`)) {

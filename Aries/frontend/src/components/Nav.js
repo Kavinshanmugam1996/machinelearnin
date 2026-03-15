@@ -15,11 +15,18 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
     return !hasVisited && clients.length > 0;
   });
   
+  const [width, setWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     // Mark that user has visited after first render
     if (showFirstTimeModal) {
       localStorage.setItem('aires_visited', 'true');
     }
+    
+    // Responsive handling
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
   
   const activeClient = clients.find(c => c.id === activeClientId);
@@ -52,7 +59,7 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
         <${BizcomLogo} size=${56} />
         <div style=${{ width: 1, height: 40, background: B.border }} />
         <div style=${{ display: "flex", flexDirection: "column" }}>
-          <div style=${{ fontSize: 20, fontWeight: 900, color: B.black, letterSpacing: "-0.5px", lineHeight: 1, fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <div style=${{ fontSize: 20, fontWeight: 900, color: B.black, letterSpacing: "-0.5px", lineHeight: 1, fontFamily: DISPLAY }}>
             AIRES™
           </div>
           <div style=${{ fontSize: 12, fontWeight: 700, color: B.red, letterSpacing: "0.05em", textTransform: "uppercase", marginTop: 4 }}>
@@ -80,7 +87,7 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
                 <span style=${{
                   fontSize: 12, fontWeight: i === current ? 700 : 500,
                   color: i === current ? B.black : B.gray400,
-                  display: window.innerWidth < 1000 && i !== current ? "none" : "block"
+                  display: width < 1000 && i !== current ? "none" : "block"
                 }}>${s}</span>
               </div>
               ${i < steps.length - 1 && html`
@@ -132,6 +139,45 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
                   }}>
                     <div style=${{ width: 8, height: 8, borderRadius: "50%", background: c.id === activeClientId ? B.blue : B.gray300 }} />
                     ${c.name}
+                    <div style=${{ display: "flex", alignItems: "center", gap: 12, marginLeft: "auto" }}>
+                     <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: c.progress === 100 ? "#DCFCE7" : B.gray50, color: c.progress === 100 ? "#16A34A" : B.gray700 }}>
+                       ${c.progress === 100 ? "COMPLETED" : "IN PROGRESS"}
+                     </div>
+                     <button onClick=${(e) => {
+                       e.stopPropagation();
+                       if (confirm(`Delete assessment "${c.name}"? This cannot be undone.`)) {
+                         (async () => {
+                           try {
+                             const token = localStorage.getItem("AIRES_token");
+                             const response = await api.deleteAssessment(token, c.id);
+                             if (response.status === "success") {
+                               // Remove from localStorage
+                               localStorage.removeItem(`AIRES_client_${c.id}_profile`);
+                               localStorage.removeItem(`AIRES_client_${c.id}_answers`);
+                               // Trigger a refresh by reloading page
+                               alert("Assessment deleted successfully");
+                               window.location.reload();
+                             }
+                           } catch (err) {
+                             console.error("Delete failed:", err);
+                             alert(`Failed to delete assessment: ${err.message}`);
+                           }
+                         })();
+                       }
+                     }} style=${{ 
+                       background: "transparent", border: "none", cursor: "pointer", 
+                       color: B.gray400, padding: "4px", display: "flex", alignItems: "center", 
+                       justifyContent: "center", transition: "color 0.2s",
+                       opacity: 0.6
+                     }} onMouseEnter=${(e) => e.target.style.opacity = "1"} onMouseLeave=${(e) => e.target.style.opacity = "0.6"}>
+                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                         <polyline points="3 6 5 6 21 6"></polyline>
+                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                         <line x1="10" y1="11" x2="10" y2="17"></line>
+                         <line x1="14" y1="11" x2="14" y2="17"></line>
+                       </svg>
+                     </button>
+                    </div>
                   </button>
                 `)}
               </div>
