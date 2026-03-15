@@ -18,6 +18,7 @@ class Question(Base):
     component_group = Column(String, index=True)
     industry = Column(String, index=True)
     is_universal = Column(Boolean, default=False)
+    department = Column(String, index=True)
     options = Column(JSON) # List of strings
 
     risks = relationship("Risk", back_populates="question", cascade="all, delete-orphan")

@@ -147,27 +147,32 @@ export default function App() {
         setActiveClientId("default");
       }
       console.log("%c[AIRES] Data Synced", "color: #10B981; font-weight: bold;");
+      return true;
     } catch (err) {
       if (err.message === "UNAUTHORIZED") {
         localStorage.removeItem("AIRES_token");
         setPage("login");
       } else {
         console.error("[AIRES] Sync failed:", err);
+        setLoadError("Unable to connect to service. Please check your network connection and retry.");
       }
+      return false;
     }
   };
 
-  const navigateToHome = () => {
-    setPage("landing");
-    initData();
+  const navigateToHome = async () => {
+    setPage("loading");
+    const success = await initData();
+    if (success) setPage("landing");
   };
 
   useEffect(() => {
     const start = async () => {
       const token = localStorage.getItem("AIRES_token");
       if (token) {
-        await initData();
-        setPage("landing");
+        setPage("loading");
+        const success = await initData();
+        if (success) setPage("landing");
       } else {
         setPage("login");
       }
@@ -243,19 +248,21 @@ export default function App() {
   const switchClient = async (id, name) => {
     const _api = (window.api || api);
     if (id === "new") {
+      setPage("loading");
       const nid = "c_" + Date.now();
       console.log("[AIRES] Creating new client:", nid, name);
       const newClient = { id: nid, name: name || "New Client", progress: 0 };
-      const updatedClients = [...clients, newClient];
-      setClients(updatedClients);
+      setClients(prev => [...prev, newClient]);
       
       // Clear data for NEW client
-      setProfile({ companyName: name || "", industry: "", companySize: "", regulatory: "", techMaturity: "" });
+      const newProfile = { companyName: name || "", industry: "", companySize: "", regulatory: "", techMaturity: "" };
+      setProfile(newProfile);
       setUseCases([]);
       setAnswers({});
       setQuestions([]);
       setCurrentQuestionIndex(0);
       setActiveClientId(nid);
+      localStorage.setItem("AIRES_active_client", nid);
       
       // Save new client to server
       try {
@@ -519,9 +526,10 @@ export default function App() {
         </div>
       ` : null}
 
-      ${page === "login" ? html`<${AdminLogin} onLogin=${() => {
-        initData();
-        setPage("landing");
+      ${page === "login" ? html`<${AdminLogin} onLogin=${async () => {
+        setPage("loading");
+        const success = await initData();
+        if (success) setPage("landing");
       }} />` : null}
       ${page === "landing" ? html`
         <${LandingPage}
