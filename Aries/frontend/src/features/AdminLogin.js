@@ -13,6 +13,13 @@ export function AdminLogin({ onLogin }) {
   const [showPw, setShowPw] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  React.useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const doLogin = async () => {
     setLoading(true);
@@ -164,6 +171,11 @@ export function AdminLogin({ onLogin }) {
             >
               ${loading ? "Signing in..." : "Sign In →"}
             </button>
+            <div style=${{ marginTop: 16, textAlign: "center" }}>
+              <p style=${{ fontSize: 13, color: B.gray500 }}>
+                Don't have an admin account? <a href="mailto:support@bizcom.ai" style=${{ color: B.blue, fontWeight: 700, textDecoration: "none" }}>Contact IT Support</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
