@@ -2,6 +2,7 @@ import os
 import uuid
 import json
 import logging
+import csv
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
@@ -18,7 +19,7 @@ from sqlalchemy import select, delete
 
 # Import internal modules
 from database.connection import get_db
-from database.models import User, Question, QuestionMapper, Assessment
+from database.models import User, Question, QuestionMapper, Assessment, Risk
 from services.remediation import RemediationService
 from middleware import SecurityHeadersMiddleware, RequestLoggingMiddleware
 import schemas
@@ -107,6 +108,135 @@ app.add_middleware(
 # Add custom security and logging middlewares
 app.add_middleware(SecurityHeadersMiddleware)
 app.add_middleware(RequestLoggingMiddleware)
+
+# --- STARTUP EVENT: Seed Users and Load Data ---
+@app.on_event("startup")
+async def startup_event():
+    """Create tables, seed test users, and load question data on startup."""
+    from database.connection import engine
+    from database.models import Base
+    
+    # Create all tables
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    
+    # Seed test users and load data
+    db_generator = get_db()
+    db = await db_generator.__anext__()
+    
+    try:
+        # 1. Seed test users
+        credentials_path = Path(__file__).parent / "credentials.csv"
+        if credentials_path.exists():
+            with open(credentials_path, 'r') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    email = row['email'].lower()
+                    password = row['password']
+                    
+                    # Check if user already exists
+                    stmt = select(User).where(User.email == email)
+                    existing_user = (await db.execute(stmt)).scalar_one_or_none()
+                    
+                    if not existing_user:
+                        new_user = User(
+                            email=email,
+                            hashed_password=password  # Stored as plain text for now
+                        )
+                        db.add(new_user)
+                        logger.info(f"Seeded user: {email}")
+                
+                await db.commit()
+        else:
+            logger.warning(f"credentials.csv not found at {credentials_path}")
+        
+        # 2. Load Questions
+        data_dir = Path(__file__).parent.parent / "Data"
+        questions_path = data_dir / "questions.json"
+        if questions_path.exists():
+            logger.info("Loading questions from questions.json...")
+            with open(questions_path, 'r', encoding='utf-8') as f:
+                questions_data = json.load(f)
+                for q_data in questions_data:
+                    qid = q_data.get("qid")
+                    stmt = select(Question).where(Question.qid == qid)
+                    existing = (await db.execute(stmt)).scalar_one_or_none()
+                    if not existing:
+                        db.add(Question(
+                            qid=qid,
+                            text=q_data.get("text"),
+                            cluster=q_data.get("cluster"),
+                            component_group=q_data.get("component_group"),
+                            industry=q_data.get("industry"),
+                            is_universal=q_data.get("is_universal", False),
+                            options=q_data.get("options", [])
+                        ))
+                await db.commit()
+                logger.info(f"Loaded questions")
+        
+        # 3. Load Question Mapper
+        mapper_path = data_dir / "Question_mapper.csv"
+        if mapper_path.exists():
+            logger.info("Loading question mapper from Question_mapper.csv...")
+            with open(mapper_path, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f)
+                headers = next(reader)
+                comp_headers = headers[1:]
+                for row in reader:
+                    if not row:
+                        continue
+                    use_case = row[0].strip()
+                    groups = []
+                    for i, val in enumerate(row[1:]):
+                        try:
+                            if float(val) > 0:
+                                groups.append(comp_headers[i].strip())
+                        except:
+                            pass
+                    
+                    stmt = select(QuestionMapper).where(QuestionMapper.use_case == use_case)
+                    existing = (await db.execute(stmt)).scalar_one_or_none()
+                    if not existing and groups:
+                        db.add(QuestionMapper(
+                            use_case=use_case,
+                            component_groups=",".join(groups)
+                        ))
+                await db.commit()
+                logger.info(f"Loaded question mapper")
+        
+        # 4. Load Risks
+        risk_path = data_dir / "AR_Risk_DB.csv"
+        if risk_path.exists():
+            logger.info("Loading risks from AR_Risk_DB.csv...")
+            # Get all questions first
+            stmt = select(Question)
+            result = await db.execute(stmt)
+            q_map = {q.qid: q.id for q in result.scalars().all()}
+            
+            with open(risk_path, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    qid = row.get("QID")
+                    if qid in q_map:
+                        stmt = select(Risk).where(
+                            (Risk.risk_id == row.get("Risk ID")) & 
+                            (Risk.question_id == q_map[qid])
+                        )
+                        existing = (await db.execute(stmt)).scalar_one_or_none()
+                        if not existing:
+                            db.add(Risk(
+                                risk_id=row.get("Risk ID"),
+                                description=row.get("Risk Description"),
+                                question_id=q_map[qid]
+                            ))
+                await db.commit()
+                logger.info(f"Loaded risks")
+        
+    except Exception as e:
+        logger.error(f"Failed to seed data: {e}")
+        await db.rollback()
+    finally:
+        await db.close()
 
 # --- STATIC FILES ---
 # Mount the frontend directory to serve JS, CSS, and Images
@@ -231,7 +361,9 @@ async def get_assessment(
     db: AsyncSession = Depends(get_db),
     current_user: str = Depends(get_current_user)
 ):
-    stmt = select(Assessment).where(Assessment.client_id == client_id)
+    stmt = select(Assessment).where(
+        (Assessment.client_id == client_id) & (Assessment.owner_email == current_user)
+    )
     assessment = (await db.execute(stmt)).scalar_one_or_none()
     
     if not assessment:
@@ -265,7 +397,7 @@ async def get_clients(
     for a in result.scalars().all():
         progress = 0
         if a.total_questions and a.total_questions > 0:
-            progress = int((a.current_index / a.total_questions) * 100)
+            progress = int(((a.current_index + 1) / a.total_questions) * 100)
         clients_data.append({
             "id": a.client_id, 
             "name": a.name or "Unnamed Assessment",
@@ -292,6 +424,37 @@ async def get_remediation(
     
     advice = RemediationService.get_advice(questions, assessment.answers or {})
     return advice
+
+@app.delete("/api/assessment/{client_id}", response_model=schemas.SaveResponse)
+async def delete_assessment(
+    client_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: str = Depends(get_current_user)
+):
+    try:
+        stmt = select(Assessment).where(
+            (Assessment.client_id == client_id) & (Assessment.owner_email == current_user)
+        )
+        assessment = (await db.execute(stmt)).scalar_one_or_none()
+        
+        if not assessment:
+            raise HTTPException(status_code=404, detail="Assessment not found")
+        
+        # Delete using delete statement
+        delete_stmt = delete(Assessment).where(
+            (Assessment.client_id == client_id) & (Assessment.owner_email == current_user)
+        )
+        result = await db.execute(delete_stmt)
+        await db.commit()
+        
+        logger.info(f"Assessment deleted: {client_id} by {current_user}")
+        return {"status": "success", "message": "Assessment deleted successfully"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        await db.rollback()
+        logger.error(f"Failed to delete assessment {client_id}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to delete assessment: {str(e)}")
 
 if __name__ == "__main__":
     import uvicorn

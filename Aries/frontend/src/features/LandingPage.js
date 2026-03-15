@@ -2,6 +2,7 @@ import React from 'react';
 import htm from 'htm';
 import { Nav } from '../components/Nav.js';
 import { B, DISPLAY, BODY } from '../services/constants.js';
+import { api } from '../services/api.js';
 
 const html = htm.bind(React.createElement);
 console.log("[AIRES] LandingPage.js loaded - v1.0.2");
@@ -56,7 +57,7 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
               </p>
 
               <div style=${{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                <button className="auth-btn btn-glow" onClick=${onBegin} style=${{
+                <button className="auth-btn btn-glow" onClick=${() => { if (hasSaved && !confirm("Starting new will clear your previous progress. Continue?")) return; onBegin(); }} style=${{
                   padding: "18px 44px", fontSize: 16, marginTop: 0,
                   background: hasSaved ? "transparent" : B.red,
                   border: hasSaved ? `2px solid ${B.red}` : "none",
@@ -139,7 +140,7 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
           </div>
 
           <div style=${{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
-            ${clients.map(client => html`
+            ${clients.filter(c => c.name !== "Default Client").map(client => html`
               <div key=${client.id} onClick=${() => onResumeClient ? onResumeClient(client.id) : onSwitchClient(client.id)} style=${{ 
                 background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: 24, 
                 cursor: "pointer", transition: "all 0.2s ease", position: "relative",
@@ -149,7 +150,43 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
               }}>
                 <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
                    <div style=${{ fontSize: 12, fontWeight: 700, color: B.gray400 }}>ID: ${client.id.slice(0, 8)}...</div>
-                   <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: B.gray50, color: B.gray700 }}>ACTIVE</div>
+                   <div style=${{ display: "flex", alignItems: "center", gap: 12 }}>
+                     <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: B.gray50, color: B.gray700 }}>ACTIVE</div>
+                     <button onClick=${(e) => {
+                       e.stopPropagation();
+                       if (confirm(`Delete assessment "${client.name}"? This cannot be undone.`)) {
+                         (async () => {
+                           try {
+                             const token = localStorage.getItem("AIRES_token");
+                             const response = await api.deleteAssessment(token, client.id);
+                             if (response.status === "success") {
+                               // Remove from localStorage
+                               localStorage.removeItem(`AIRES_client_${client.id}_profile`);
+                               localStorage.removeItem(`AIRES_client_${client.id}_answers`);
+                               // Trigger a refresh by reloading page
+                               alert("Assessment deleted successfully");
+                               window.location.reload();
+                             }
+                           } catch (err) {
+                             console.error("Delete failed:", err);
+                             alert(`Failed to delete assessment: ${err.message}`);
+                           }
+                         })();
+                       }
+                     }} style=${{ 
+                       background: "transparent", border: "none", cursor: "pointer", 
+                       color: B.gray400, padding: "4px", display: "flex", alignItems: "center", 
+                       justifyContent: "center", transition: "color 0.2s",
+                       opacity: 0.6
+                     }} onMouseEnter=${(e) => e.target.style.opacity = "1"} onMouseLeave=${(e) => e.target.style.opacity = "0.6"}>
+                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                         <polyline points="3 6 5 6 21 6"></polyline>
+                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                         <line x1="10" y1="11" x2="10" y2="17"></line>
+                         <line x1="14" y1="11" x2="14" y2="17"></line>
+                       </svg>
+                     </button>
+                   </div>
                 </div>
                 <div style=${{ fontSize: 18, fontWeight: 800, color: B.black, marginBottom: 4, fontFamily: DISPLAY }}>${client.name}</div>
                 <div style=${{ fontSize: 14, color: B.gray500, marginBottom: 16 }}>Enterprise Risk Assessment Profile</div>

@@ -48,24 +48,26 @@
   letter-spacing: 0.03em;
   transition: all 0.2s ease;
   box-shadow: 0 6px 16px rgba(200, 24, 30, 0.2);
+  width: 100%;
 }
 
 .auth-btn:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(200, 24, 30, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(200, 24, 30, 0.35);
   background: linear-gradient(135deg, #dc1a21 0%, #b81218 100%);
 }
 
 .auth-btn:active:not(:disabled) {
-  transform: translateY(1px);
-  box-shadow: 0 2px 8px rgba(200, 24, 30, 0.2);
+  transform: translateY(0px);
+  box-shadow: 0 4px 12px rgba(200, 24, 30, 0.25);
 }
 
 .auth-btn:disabled {
-  background: #C4C4C4;
-  box-shadow: none;
+  background: linear-gradient(135deg, #E5BEBC 0%, #D9A9A6 100%);
+  box-shadow: 0 4px 12px rgba(200, 24, 30, 0.1);
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.85;
+  transform: none;
 }
 
 /* Left Panel Styles */
@@ -243,4 +245,27 @@
   background: rgba(255, 255, 255, 0.08) !important;
   border-color: rgba(255, 255, 255, 0.2) !important;
   transform: translateY(-5px);
+}
+
+/* Dropdown Arrow Animation */
+@keyframes dropdownArrowRotate {
+  0%, 100% { transform: translateY(-50%) rotateZ(0deg); }
+  50% { transform: translateY(-50%) rotateZ(5deg); }
+}
+
+.select-wrapper:has(select:focus) .dropdown-arrow {
+  animation: dropdownArrowRotate 0.6s ease-in-out infinite;
+}
+
+.dropdown-arrow {
+  transition: transform 0.2s ease;
+}
+
+.select-wrapper:has(select:focus) .dropdown-arrow svg {
+  color: #3B9BC8;
+  stroke-width: 2.8;
+}
+
+.select-wrapper:has(select:hover) .dropdown-arrow {
+  opacity: 1;
 }

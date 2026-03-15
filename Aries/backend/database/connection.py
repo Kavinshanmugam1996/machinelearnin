@@ -5,11 +5,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# We use SQLite with aiosqlite locally.
-# We ensure the database is always in a consistent location relative to this file.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite+aiosqlite:///{os.path.join(BASE_DIR, 'aires.db')}")
-
+# We use SQLite with aiosqlite locally as planned, 
+# but the code is ready for PostgreSQL via DATABASE_URL env var.
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///aires.db")
 
 # Handle DB URL and connect args
 connect_args = {}

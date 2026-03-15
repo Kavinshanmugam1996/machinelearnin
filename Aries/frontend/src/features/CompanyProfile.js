@@ -7,8 +7,14 @@ const html = htm.bind(React.createElement);
 
 const { useState } = React;
 
-export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
-  const [form, setForm] = useState({ companyName: "", industry: "", companySize: "", regulatory: "", techMaturity: "" });
+export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient, onLogout, onHome, initialProfile }) {
+  const [form, setForm] = useState({
+    companyName: initialProfile?.companyName || "",
+    industry: initialProfile?.industry || "",
+    companySize: initialProfile?.companySize || "",
+    regulatory: initialProfile?.regulatory || "",
+    techMaturity: initialProfile?.techMaturity || ""
+  });
   const [inventory, setInventory] = useState([
     { description: "", useCase: "" },
     { description: "", useCase: "" },
@@ -23,6 +29,22 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
     outline: "none", boxSizing: "border-box", fontFamily: "inherit",
     appearance: "none", WebkitAppearance: "none"
   });
+
+  const selectWrapper = (err) => ({
+    position: "relative",
+    width: "100%"
+  });
+
+  const selectArrow = {
+    position: "absolute",
+    right: 12,
+    top: "50%",
+    transform: "translateY(-50%)",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    transition: "transform 0.2s ease"
+  };
 
   const validate = () => {
     const e = {};
@@ -70,21 +92,35 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
             <div style=${{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <div>
                 <label style=${{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Industry *</label>
-                <select value=${form.industry} onChange=${e => setForm({ ...form, industry: e.target.value })} style=${{ ...f(errors.industry), cursor: "pointer" }}>
-                  <option value="">Select industry...</option>
-                  ${["Healthcare", "Banking", "Retail", "E-Commerce", "Education", "Other"].map(i => html`<option key=${i}>${i}</option>`)}
-                </select>
+                <div className="select-wrapper" style=${selectWrapper(errors.industry)}>
+                  <select value=${form.industry} onChange=${e => setForm({ ...form, industry: e.target.value })} style=${{ ...f(errors.industry), cursor: "pointer", paddingRight: 38 }}>
+                    <option value="">Select industry...</option>
+                    ${["Healthcare", "Banking", "Retail", "E-Commerce", "Education", "Other"].map(i => html`<option key=${i}>${i}</option>`)}
+                  </select>
+                  <div className="dropdown-arrow" style=${selectArrow}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style=${{ color: "#9CA3AF" }}>
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </div>
+                </div>
                 ${errors.industry && html`<span style=${{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>${errors.industry}</span>`}
               </div>
               <div>
                 <label style=${{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Company Size *</label>
-                <select value=${form.companySize} onChange=${e => setForm({ ...form, companySize: e.target.value })} style=${{ ...f(errors.companySize), cursor: "pointer" }}>
-                  <option value="">Select size...</option>
-                  <option value="small">Small (1–100 employees)</option>
-                  <option value="medium">Medium (100–1,000 employees)</option>
-                  <option value="large">Large (1,000–2,500 employees)</option>
-                  <option value="enterprise">Enterprise (2,500+ employees)</option>
-                </select>
+                <div className="select-wrapper" style=${selectWrapper(errors.companySize)}>
+                  <select value=${form.companySize} onChange=${e => setForm({ ...form, companySize: e.target.value })} style=${{ ...f(errors.companySize), cursor: "pointer", paddingRight: 38 }}>
+                    <option value="">Select size...</option>
+                    <option value="small">Small (1–100 employees)</option>
+                    <option value="medium">Medium (100–1,000 employees)</option>
+                    <option value="large">Large (1,000–2,500 employees)</option>
+                    <option value="enterprise">Enterprise (2,500+ employees)</option>
+                  </select>
+                  <div className="dropdown-arrow" style=${selectArrow}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style=${{ color: "#9CA3AF" }}>
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </div>
+                </div>
                 ${errors.companySize && html`<span style=${{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>${errors.companySize}</span>`}
               </div>
             </div>
@@ -99,17 +135,24 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
           <div>
             <label style=${{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Select Jurisdiction *</label>
             <p style=${{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>Choose the primary regulatory framework applicable to your organisation's AI use.</p>
-            <select value=${form.regulatory} onChange=${e => setForm({ ...form, regulatory: e.target.value })} style=${{ ...f(errors.regulatory), cursor: "pointer", maxWidth: 400 }}>
-              <option value="">Select jurisdiction...</option>
-              <option value="EU-CA/ON">Canada / Ontario</option>
-              <option value="EU-CAN/QU">Canada / Quebec</option>
-              <option value="EU-CAN/OTHR">Canada / Other</option>
-              <option value="USA-CA">USA – California</option>
-              <option value="USA-IL">USA – Illinois</option>
-              <option value="USA-A">USA – Framework A</option>
-              <option value="USA-B">USA – Framework B</option>
-              <option value="EU">EU (AI Act)</option>
-            </select>
+            <div className="select-wrapper" style=${{ ...selectWrapper(errors.regulatory), maxWidth: 400 }}>
+              <select value=${form.regulatory} onChange=${e => setForm({ ...form, regulatory: e.target.value })} style=${{ ...f(errors.regulatory), cursor: "pointer", paddingRight: 38 }}>
+                <option value="">Select jurisdiction...</option>
+                <option value="EU-CA/ON">Canada / Ontario</option>
+                <option value="EU-CAN/QU">Canada / Quebec</option>
+                <option value="EU-CAN/OTHR">Canada / Other</option>
+                <option value="USA-CA">USA – California</option>
+                <option value="USA-IL">USA – Illinois</option>
+                <option value="USA-A">USA – Framework A</option>
+                <option value="USA-B">USA – Framework B</option>
+                <option value="EU">EU (AI Act)</option>
+              </select>
+              <div className="dropdown-arrow" style=${selectArrow}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style=${{ color: "#9CA3AF" }}>
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </div>
+            </div>
             ${errors.regulatory && html`<span style=${{ fontSize: 12, color: B.red, marginTop: 4, display: "block" }}>${errors.regulatory}</span>`}
           </div>
         </div>
@@ -122,14 +165,21 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
           <div>
             <label style=${{ fontSize: 13, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 6 }}>Technological Maturity Level</label>
             <p style=${{ fontSize: 12, color: B.gray500, margin: "0 0 12px", lineHeight: 1.5 }}>What is your organisation's technological maturity? (1 = Generic → 5 = Very sophisticated)</p>
-            <select value=${form.techMaturity} onChange=${e => setForm({ ...form, techMaturity: e.target.value })} style=${{ ...f(errors.techMaturity), cursor: "pointer", maxWidth: 320 }}>
-              <option value="">Select level...</option>
-              <option value="1">1 – Generic</option>
-              <option value="2">2 – Good</option>
-              <option value="3">3 – Strong</option>
-              <option value="4">4 – Advanced</option>
-              <option value="5">5 – Very Sophisticated</option>
-            </select>
+            <div className="select-wrapper" style=${{ ...selectWrapper(errors.techMaturity), maxWidth: 320 }}>
+              <select value=${form.techMaturity} onChange=${e => setForm({ ...form, techMaturity: e.target.value })} style=${{ ...f(errors.techMaturity), cursor: "pointer", paddingRight: 38 }}>
+                <option value="">Select level...</option>
+                <option value="1">1 – Generic</option>
+                <option value="2">2 – Good</option>
+                <option value="3">3 – Strong</option>
+                <option value="4">4 – Advanced</option>
+                <option value="5">5 – Very Sophisticated</option>
+              </select>
+              <div className="dropdown-arrow" style=${selectArrow}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style=${{ color: "#9CA3AF" }}>
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -163,11 +213,18 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
                   </div>
                   <div>
                     <label style=${{ fontSize: 12, fontWeight: 600, color: B.gray700, display: "block", marginBottom: 5 }}>Use Case Type</label>
-                    <select value=${item.useCase} onChange=${e => upd(i, "useCase", e.target.value)}
-                      style=${{ ...f(false), background: B.white, cursor: "pointer" }}>
-                      <option value="">Select type...</option>
-                      ${AI_USE_CASES.map(uc => html`<option key=${uc} value=${uc}>${uc}</option>`)}
-                    </select>
+                    <div className="select-wrapper" style=${selectWrapper(false)}>
+                      <select value=${item.useCase} onChange=${e => upd(i, "useCase", e.target.value)}
+                        style=${{ ...f(false), background: B.white, cursor: "pointer", paddingRight: 38 }}>
+                        <option value="">Select type...</option>
+                        ${AI_USE_CASES.map(uc => html`<option key=${uc} value=${uc}>${uc}</option>`)}
+                      </select>
+                      <div className="dropdown-arrow" style=${selectArrow}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style=${{ color: "#9CA3AF" }}>
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

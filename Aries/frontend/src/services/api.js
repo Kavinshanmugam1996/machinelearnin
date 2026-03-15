@@ -90,6 +90,19 @@ export const api = {
     if (res.status === 401) throw new Error("UNAUTHORIZED");
     if (!res.ok) throw new Error("Failed to fetch assessment");
     return res.json();
+  },
+
+  /**
+   * Delete an assessment
+   */
+  async deleteAssessment(token, clientId) {
+    const res = await fetch(`${API_BASE}/api/assessment/${clientId}`, {
+      method: "DELETE",
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+    if (res.status === 401) throw new Error("UNAUTHORIZED");
+    if (!res.ok) throw new Error("Failed to delete assessment");
+    return res.json();
   }
 };
 

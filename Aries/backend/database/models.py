@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Text, JSON
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Text, JSON, UniqueConstraint
 from sqlalchemy.orm import relationship, declarative_base
 
 Base = declarative_base()
@@ -40,10 +40,12 @@ class Risk(Base):
 class Assessment(Base):
     __tablename__ = "assessments"
     id = Column(Integer, primary_key=True, index=True)
-    client_id = Column(String, unique=True, index=True, nullable=False)
+    client_id = Column(String, index=True, nullable=False)
     name = Column(String)
     owner_email = Column(String, index=True)
     profile = Column(JSON) # Company profile details
     answers = Column(JSON) # Map of qid to answer
     current_index = Column(Integer, default=0)
     total_questions = Column(Integer, default=0)
+    
+    __table_args__ = (UniqueConstraint('client_id', 'owner_email', name='unique_client_per_user'),)
