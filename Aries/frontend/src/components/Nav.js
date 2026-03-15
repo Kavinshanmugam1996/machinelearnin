@@ -2,12 +2,52 @@ import React from 'react';
 import htm from 'htm';
 import { BizcomLogo } from './BizcomLogo.js';
 import { B, DISPLAY, BODY } from '../services/constants.js';
+import { api } from '../services/api.js';
 
 const html = htm.bind(React.createElement);
 
 const { useState, useEffect } = React;
 
 export function Nav({ steps, current, clients = [], activeClientId, onSwitchClient, onLogout, onHome }) {
+  const [confirmingId, setConfirmingId] = useState(null);
+
+  const handleDelete = async (e, client) => {
+    e.stopPropagation();
+    console.log("[AIRES] Nav handleDelete triggered for:", client.id, client.name);
+    
+    // Step 1: Show confirmation state if not already confirming
+    if (confirmingId !== client.id) {
+      setConfirmingId(client.id);
+      return;
+    }
+
+    // Step 2: Proceed with deletion
+    try {
+      const token = localStorage.getItem("AIRES_token");
+      if (!token) {
+        alert("Error: No authentication token found. Please logout and login again.");
+        return;
+      }
+
+      console.log("[AIRES] Calling API to delete...");
+      const apiService = (window.api || api);
+      const response = await apiService.deleteAssessment(token, client.id);
+      console.log("[AIRES] Delete response:", response);
+
+      if (response && (response.status === "success" || response.message?.includes("success"))) {
+        localStorage.removeItem(`AIRES_client_${client.id}_profile`);
+        localStorage.removeItem(`AIRES_client_${client.id}_answers`);
+        alert("Assessment deleted successfully");
+        window.location.reload();
+      } else {
+        alert("Failed to delete: " + JSON.stringify(response));
+      }
+    } catch (err) {
+      console.error("Delete failed:", err);
+      alert(`Failed to delete assessment: ${err.message || JSON.stringify(err)}`);
+    }
+  };
+
   const [showDropdown, setShowDropdown] = useState(false);
   const [showFirstTimeModal, setShowFirstTimeModal] = useState(() => {
     // Show welcome modal on first visit only if clients exist
@@ -132,53 +172,42 @@ export function Nav({ steps, current, clients = [], activeClientId, onSwitchClie
 
               <div style=${{ maxHeight: 200, overflowY: "auto" }}>
                 ${clients.map(c => html`
-                  <button key=${c.id} onClick=${() => { onSwitchClient(c.id); setShowDropdown(false); }} style=${{
+                  <div key=${c.id} onClick=${() => { onSwitchClient(c.id); setShowDropdown(false); }} style=${{
                     width: "100%", padding: "10px 12px", textAlign: "left", background: c.id === activeClientId ? B.gray50 : "none",
                     border: "none", borderRadius: 8, cursor: "pointer", fontSize: 13, fontWeight: c.id === activeClientId ? 700 : 500,
-                    display: "flex", alignItems: "center", gap: 10, color: c.id === activeClientId ? B.blue : B.gray700
+                    display: "flex", alignItems: "center", gap: 10, color: c.id === activeClientId ? B.blue : B.gray700,
+                    boxSizing: "border-box"
                   }}>
                     <div style=${{ width: 8, height: 8, borderRadius: "50%", background: c.id === activeClientId ? B.blue : B.gray300 }} />
-                    ${c.name}
+                    <span style=${{ flex: 1, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>${c.name}</span>
                     <div style=${{ display: "flex", alignItems: "center", gap: 12, marginLeft: "auto" }}>
                      <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: c.progress === 100 ? "#DCFCE7" : B.gray50, color: c.progress === 100 ? "#16A34A" : B.gray700 }}>
                        ${c.progress === 100 ? "COMPLETED" : "IN PROGRESS"}
                      </div>
-                     <button onClick=${(e) => {
-                       e.stopPropagation();
-                       if (confirm(`Delete assessment "${c.name}"? This cannot be undone.`)) {
-                         (async () => {
-                           try {
-                             const token = localStorage.getItem("AIRES_token");
-                             const response = await api.deleteAssessment(token, c.id);
-                             if (response.status === "success") {
-                               // Remove from localStorage
-                               localStorage.removeItem(`AIRES_client_${c.id}_profile`);
-                               localStorage.removeItem(`AIRES_client_${c.id}_answers`);
-                               // Trigger a refresh by reloading page
-                               alert("Assessment deleted successfully");
-                               window.location.reload();
-                             }
-                           } catch (err) {
-                             console.error("Delete failed:", err);
-                             alert(`Failed to delete assessment: ${err.message}`);
-                           }
-                         })();
-                       }
-                     }} style=${{ 
-                       background: "transparent", border: "none", cursor: "pointer", 
-                       color: B.gray400, padding: "4px", display: "flex", alignItems: "center", 
-                       justifyContent: "center", transition: "color 0.2s",
-                       opacity: 0.6
-                     }} onMouseEnter=${(e) => e.target.style.opacity = "1"} onMouseLeave=${(e) => e.target.style.opacity = "0.6"}>
-                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                         <polyline points="3 6 5 6 21 6"></polyline>
-                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                         <line x1="10" y1="11" x2="10" y2="17"></line>
-                         <line x1="14" y1="11" x2="14" y2="17"></line>
-                       </svg>
-                     </button>
+                      <div style=${{ display: "flex", alignItems: "center", gap: 8 }}>
+                        ${confirmingId === c.id ? html`
+                          <div style=${{ display: "flex", gap: 4 }}>
+                            <button onClick=${(e) => { e.stopPropagation(); setConfirmingId(null); }} style=${{ background: B.gray100, border: "none", color: B.gray700, padding: "3px 6px", borderRadius: 4, fontSize: 9, fontWeight: 700, cursor: "pointer" }}>NO</button>
+                            <button onClick=${(e) => handleDelete(e, c)} style=${{ background: B.red, border: "none", color: "white", padding: "3px 6px", borderRadius: 4, fontSize: 9, fontWeight: 700, cursor: "pointer" }}>YES</button>
+                          </div>
+                        ` : html`
+                          <button onClick=${(e) => handleDelete(e, c)} style=${{ 
+                            background: "transparent", border: "none", cursor: "pointer", 
+                            color: B.gray400, padding: "4px", display: "flex", alignItems: "center", 
+                            justifyContent: "center", transition: "color 0.2s",
+                            opacity: 0.6
+                          }} onMouseEnter=${(e) => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.color = B.red; }} onMouseLeave=${(e) => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.color = B.gray400; }}>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style=${{ pointerEvents: "none" }}>
+                              <polyline points="3 6 5 6 21 6"></polyline>
+                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                              <line x1="10" y1="11" x2="10" y2="17"></line>
+                              <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
+                          </button>
+                        `}
+                      </div>
                     </div>
-                  </button>
+                  </div>
                 `)}
               </div>
 
