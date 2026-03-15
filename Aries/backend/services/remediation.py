@@ -11,46 +11,6 @@ REMEDIATION_DATABASE = {
         "advice": "Deploy real-time drift detection and automated re-training triggers for safety-critical models.",
         "standard": "ISO 42001"
     },
-    "ai_technical": {
-        "advice": "Implement formal MLOps pipelines with automated model signing and weight integrity checks.",
-        "standard": "NIST AI RMF 1.0"
-    },
-    "security": {
-        "advice": "Enhance model-layer security with adversarial testing and robust output filtering.",
-        "standard": "OWASP Top 10 for LLM"
-    },
-    "privacy": {
-        "advice": "Implement PII redaction and differential privacy for training and inference data.",
-        "standard": "GDPR / HIPAA"
-    },
-    "data_data_governance": {
-        "advice": "Establish an automated data provenance graph and clear data lifecycle policies.",
-        "standard": "EU AI Act Art. 10"
-    },
-    "legal_regulatory": {
-        "advice": "Conduct a comprehensive legal review of AI use cases and maintain a regulatory compliance matrix.",
-        "standard": "EU AI Act / Local Regulations"
-    },
-    "reliability": {
-        "advice": "Implement circuit breakers and redundancy for critical AI services.",
-        "standard": "SRE Reliability Standards"
-    },
-    "policies_procedures_documentation": {
-        "advice": "Formalize AI usage policies and maintain detailed documentation for all model versions.",
-        "standard": "ISO 42001 / NIST"
-    },
-    "bias_fairness": {
-        "advice": "Conduct formal disparate impact analysis and use fairness-aware training techniques.",
-        "standard": "IEEE P7003"
-    },
-    "explainability_transparency": {
-        "advice": "Develop and document model cards and implement local/global explanation methods.",
-        "standard": "NIST AI RMF"
-    },
-    "human_oversight": {
-        "advice": "Define clear 'Human-in-the-loop' protocols for high-confidence AI decisions.",
-        "standard": "EU AI Act Art. 14"
-    },
     # Domain 2: Data & Privacy
     "data_lineage": {
         "advice": "Establish an automated data provenance graph using tools like OpenLineage to ensure training data integrity.",
@@ -100,20 +60,15 @@ class RemediationService:
         # Simple mapping logic: If answer is 'No', provide advice.
         # In a real scenario, this would use a more sophisticated tag-based lookup.
         for q in questions:
-            # Check if answer is 'No'
-            answer = answers.get(q.qid)
-            if answer == "No":
-                # Match by component_group first (stronger match)
+            # Check if we have advice for this specific question ID or a generic mapping
+            # For this MVP, we match by common keywords in qid or cluster
+            if answers.get(q.qid) == "No":
+                # Fallback logic to find best matching advice
                 matched_key = None
-                if q.component_group and q.component_group in REMEDIATION_DATABASE:
-                    matched_key = q.component_group
-                else:
-                    # Fallback: search for keywords in text and cluster
-                    search_text = f"{q.text} {q.cluster or ''}".lower()
-                    for key in REMEDIATION_DATABASE.keys():
-                        if key.replace('_', ' ') in search_text or key in q.qid.lower():
-                            matched_key = key
-                            break
+                for key in REMEDIATION_DATABASE.keys():
+                    if key in q.qid.lower():
+                        matched_key = key
+                        break
                 
                 if matched_key:
                     advice_item = REMEDIATION_DATABASE[matched_key]
@@ -123,6 +78,5 @@ class RemediationService:
                         "advice": advice_item["advice"],
                         "standard": advice_item["standard"]
                     })
-
         
         return recommendations
