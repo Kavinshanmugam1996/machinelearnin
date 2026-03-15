@@ -7,6 +7,7 @@ env/
 venv/
 .env
 .venv
+aires.db
 Assessments/
 node_modules/
 .git/

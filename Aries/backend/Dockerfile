@@ -14,8 +14,9 @@ COPY . .
 # Ensure the Assessments directory exists and has correct permissions
 RUN mkdir -p Assessments && chmod 777 Assessments
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Expose the port (default 3000, but can be overridden by cloud providers)
+ENV PORT=3000
+EXPOSE $PORT
 
 # Command to run the production server
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]

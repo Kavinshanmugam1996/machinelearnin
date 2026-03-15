@@ -16,6 +16,24 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
     techMaturity: initialProfile?.techMaturity || ""
   });
   
+  // Sync with initialProfile if it changes (e.g. after async load)
+  React.useEffect(() => {
+    if (initialProfile) {
+      setForm(prev => ({
+        ...prev,
+        companyName: initialProfile.companyName || prev.companyName,
+        industry: initialProfile.industry || prev.industry,
+        companySize: initialProfile.companySize || prev.companySize,
+        regulatory: initialProfile.regulatory || prev.regulatory,
+        techMaturity: initialProfile.techMaturity || prev.techMaturity
+      }));
+      
+      if (initialProfile.inventory) {
+        setInventory(initialProfile.inventory);
+      }
+    }
+  }, [initialProfile, activeClientId]);
+
   const [inventory, setInventory] = useState(() => {
     const initial = initialProfile?.inventory || [];
     if (initial.length === 0) return [

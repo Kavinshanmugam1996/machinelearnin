@@ -11,6 +11,7 @@ from fastapi import FastAPI, Request, HTTPException, Body, Depends, status
 from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from dotenv import load_dotenv
@@ -104,6 +105,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 # Add custom security and logging middlewares
 app.add_middleware(SecurityHeadersMiddleware)
@@ -275,6 +277,11 @@ async def serve_root_logo():
     if logo_path.exists():
         return FileResponse(logo_path)
     raise HTTPException(status_code=404, detail="Logo not found")
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint for AWS/Load Balancer."""
+    return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
 
 @app.post("/api/login", response_model=schemas.Token)
 async def login(creds: schemas.UserLogin, db: AsyncSession = Depends(get_db)):
@@ -504,4 +511,5 @@ async def delete_assessment(
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=3000, reload=True)
+    port = int(os.getenv("PORT", 3000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)

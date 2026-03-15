@@ -17,7 +17,7 @@ AIRES™ (AI Risk Evaluation System) is designed for enterprise-scale AI governa
 
 ### 3. Data Layer
 - **Core DB**: `AR_Risk_DB.csv` and `questions.json` define the assessment logic.
-- **Mappings**: `Question_mapper.csv` links industry sectors to specific risk profiles.
+- **Mappings**: `Question_mapper_final.csv` links industry sectors to specific risk profiles.
 
 ## Deployment
 - **Containerization**: Fully Dockerized for AWS ECS/App Runner.
