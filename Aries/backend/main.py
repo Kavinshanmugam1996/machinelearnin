@@ -161,7 +161,18 @@ async def startup_event():
                     qid = q_data.get("qid")
                     stmt = select(Question).where(Question.qid == qid)
                     existing = (await db.execute(stmt)).scalar_one_or_none()
-                    if not existing:
+                    
+                    if existing:
+                        # Update existing question
+                        existing.text = q_data.get("text")
+                        existing.cluster = q_data.get("cluster")
+                        existing.component_group = q_data.get("component_group")
+                        existing.industry = q_data.get("industry")
+                        existing.is_universal = q_data.get("is_universal", False)
+                        existing.department = q_data.get("department")
+                        existing.options = q_data.get("options", [])
+                    else:
+                        # Add new question
                         db.add(Question(
                             qid=qid,
                             text=q_data.get("text"),
@@ -169,15 +180,16 @@ async def startup_event():
                             component_group=q_data.get("component_group"),
                             industry=q_data.get("industry"),
                             is_universal=q_data.get("is_universal", False),
+                            department=q_data.get("department"),
                             options=q_data.get("options", [])
                         ))
                 await db.commit()
-                logger.info(f"Loaded questions")
+                logger.info(f"Loaded/Updated questions")
         
         # 3. Load Question Mapper
-        mapper_path = data_dir / "Question_mapper.csv"
+        mapper_path = data_dir / "Question_mapper_final.csv"
         if mapper_path.exists():
-            logger.info("Loading question mapper from Question_mapper.csv...")
+            logger.info("Loading question mapper from Question_mapper_final.csv...")
             with open(mapper_path, 'r', encoding='utf-8') as f:
                 reader = csv.reader(f)
                 headers = next(reader)
@@ -196,13 +208,15 @@ async def startup_event():
                     
                     stmt = select(QuestionMapper).where(QuestionMapper.use_case == use_case)
                     existing = (await db.execute(stmt)).scalar_one_or_none()
-                    if not existing and groups:
+                    if existing:
+                        existing.component_groups = ",".join(groups)
+                    elif groups:
                         db.add(QuestionMapper(
                             use_case=use_case,
                             component_groups=",".join(groups)
                         ))
                 await db.commit()
-                logger.info(f"Loaded question mapper")
+                logger.info(f"Loaded/Updated question mapper")
         
         # 4. Load Risks
         risk_path = data_dir / "AR_Risk_DB.csv"
@@ -216,21 +230,24 @@ async def startup_event():
             with open(risk_path, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    qid = row.get("QID")
+                    qid = row.get("QID Code")
                     if qid in q_map:
+                        risk_id = row.get("Risk ID")
                         stmt = select(Risk).where(
-                            (Risk.risk_id == row.get("Risk ID")) & 
+                            (Risk.risk_id == risk_id) & 
                             (Risk.question_id == q_map[qid])
                         )
                         existing = (await db.execute(stmt)).scalar_one_or_none()
-                        if not existing:
+                        if existing:
+                            existing.description = row.get("Risk Description")
+                        else:
                             db.add(Risk(
-                                risk_id=row.get("Risk ID"),
+                                risk_id=risk_id,
                                 description=row.get("Risk Description"),
                                 question_id=q_map[qid]
                             ))
                 await db.commit()
-                logger.info(f"Loaded risks")
+                logger.info(f"Loaded/Updated risks")
         
     except Exception as e:
         logger.error(f"Failed to seed data: {e}")
@@ -290,23 +307,46 @@ async def get_questions(
     all_groups.add("") # Include generic/universal questions
     all_groups.add(None)
     
-    is_none = any(item.useCase == "None of the above / No specific AI use cases" for item in req.inventory)
+    # Build the use_cases list: prefer the new field, fall back to legacy inventory
+    use_cases = req.use_cases or []
+    if not use_cases and req.inventory:
+        use_cases = [item.useCase for item in req.inventory if item.useCase]
+    
+    is_none = any(uc == "None of the above / No specific AI use cases" for uc in use_cases)
     
     if not is_none:
-        for item in req.inventory:
-            stmt = select(QuestionMapper).where(QuestionMapper.use_case == item.useCase)
+        for uc in use_cases:
+            stmt = select(QuestionMapper).where(QuestionMapper.use_case == uc)
             mapper = (await db.execute(stmt)).scalar_one_or_none()
             if mapper and mapper.component_groups:
                 all_groups.update([g.strip() for g in mapper.component_groups.split(",")])
     
     # Fetch questions: (Industry matches OR is Universal)
     # AND (component_group matches our calculated set)
-    stmt = select(Question).where(
-        ((Question.industry == req.industry) | (Question.industry == "Universal")) &
+    # Department filter removed — frontend handles grouping
+    filters = [
+        ((Question.industry == req.industry) | (Question.industry == "Universal")),
         (Question.component_group.in_(list(all_groups)))
-    )
+    ]
+        
+    stmt = select(Question).where(*filters)
     result = await db.execute(stmt)
     return result.scalars().all()
+
+@app.post("/api/get-components", response_model=schemas.ComponentResponse)
+async def get_components(
+    req: schemas.ComponentRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: str = Depends(get_current_user)
+):
+    """Given a list of use case names, return the union of their component groups."""
+    groups = set()
+    for uc in req.use_cases:
+        stmt = select(QuestionMapper).where(QuestionMapper.use_case == uc)
+        mapper = (await db.execute(stmt)).scalar_one_or_none()
+        if mapper and mapper.component_groups:
+            groups.update([g.strip() for g in mapper.component_groups.split(",")])
+    return {"component_groups": sorted(groups)}
 
 @app.post("/api/save", response_model=schemas.SaveResponse)
 async def save_assessment(
@@ -346,7 +386,7 @@ async def save_assessment(
                 "client_id": assessment_data.id,
                 "action": "assessment_updated",
                 "user": current_user,
-                "data": assessment_data.dict(by_alias=True)
+                "data": assessment_data.model_dump(by_alias=True)
             }
             producer.send(KAFKA_TOPIC, value=kafka_event)
         except Exception as e:
@@ -397,7 +437,8 @@ async def get_clients(
     for a in result.scalars().all():
         progress = 0
         if a.total_questions and a.total_questions > 0:
-            progress = int(((a.current_index + 1) / a.total_questions) * 100)
+            answered_count = len(a.answers) if a.answers else 0
+            progress = int((answered_count / a.total_questions) * 100)
         clients_data.append({
             "id": a.client_id, 
             "name": a.name or "Unnamed Assessment",
@@ -453,8 +494,13 @@ async def delete_assessment(
         raise
     except Exception as e:
         await db.rollback()
-        logger.error(f"Failed to delete assessment {client_id}: {e}")
-        raise HTTPException(status_code=500, detail=f"Failed to delete assessment: {str(e)}")
+        import traceback
+        error_msg = traceback.format_exc()
+        logger.error(f"Failed to delete assessment {client_id}: {error_msg}")
+        raise HTTPException(
+            status_code=500, 
+            detail=f"Deletion failed. Error: {str(e)}"
+        )
 
 if __name__ == "__main__":
     import uvicorn

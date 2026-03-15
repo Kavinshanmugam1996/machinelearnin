@@ -3,21 +3,23 @@ import htm from 'htm';
 console.log("%c[AIRES] App.js Booting v1.0.6", "color: #3B9BC8; font-weight: bold");
 import { AdminLogin } from './features/AdminLogin.js?v=1.0.6';
 import { LandingPage } from './features/LandingPage.js?v=1.0.6';
-import { CompanyProfile } from './features/CompanyProfile.js?v=1.0.6';
-import { QuestionFlow } from './features/QuestionFlow.js?v=1.0.6';
-import { RiskReport } from './features/RiskReport.js?v=1.0.6';
-import { api } from './services/api.js?v=1.0.6';
+import { CompanyProfile } from './features/CompanyProfile.js?v=1.0.7';
+import { QuestionFlow } from './features/QuestionFlow.js?v=1.0.7';
+import { TeamSelection } from './features/TeamSelection.js?v=1.0.7';
+import { RiskReport } from './features/RiskReport.js?v=1.0.7';
+import { api } from './services/api.js?v=1.0.7';
 import { B, BODY, DISPLAY } from './services/constants.js?v=1.0.6';
 
 // Expose API globally for debugging and robust access across components
 window.api = api;
+console.log("%c[AIRES] Constants:", "color: #3B9BC8", { B, DISPLAY, BODY });
 
 const html = htm.bind(React.createElement);
 
 const { useState, useEffect } = React;
 
 export default function App() {
-  const [page, setPage] = useState("loading"); // login, landing, profile, questions, results
+  const [page, setPage] = useState("loading"); // login, landing, profile, team, questions, results
   const [showDefaultClientModal, setShowDefaultClientModal] = useState(false);
   const [newAssessmentName, setNewAssessmentName] = useState("");
   
@@ -55,8 +57,21 @@ export default function App() {
     };
   }, [page]);
 
-  // Client-specific persistences
+  // --- AUTH PERSISTENCE ---
+  useEffect(() => {
+    const token = localStorage.getItem("AIRES_token");
+    if (token) {
+      console.log("%c[AIRES] Cached token found. Logging in...","color: #10B981; font-weight: bold");
+      setPage("landing");
+    } else {
+      setPage("login");
+    }
+  }, []);
+
   const [profile, setProfile] = useState(null);
+  const [useCases, setUseCases] = useState([]);
+  const [department, setDepartment] = useState("");
+  const [activeDepartment, setActiveDepartment] = useState("");
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
@@ -91,7 +106,8 @@ export default function App() {
     if (questions.length > 0 && activeClientId) {
       setClients(prev => prev.map(c => {
         if (c.id === activeClientId) {
-          const progress = Math.round(((currentQuestionIndex + 1) / questions.length) * 100);
+          const answeredCount = Object.keys(answers).length;
+          const progress = questions.length > 0 ? Math.round((answeredCount / questions.length) * 100) : 0;
           return { ...c, progress };
         }
         return c;
@@ -99,70 +115,64 @@ export default function App() {
     }
   }, [currentQuestionIndex, questions.length, activeClientId]);
 
-  // Initial load: Clients
-  useEffect(() => {
-    const init = async () => {
-      const token = localStorage.getItem("AIRES_token");
-      if (!token) {
-        setPage("login"); // Show login page first
-        return;
+  const initData = async () => {
+    const token = localStorage.getItem("AIRES_token");
+    if (!token) {
+      setPage("login");
+      return;
+    }
+
+    try {
+      const serverClients = await api.getClients(token);
+      if (serverClients.length > 0) {
+        // Calculate dynamic progress based on answers if we have them cached or just loaded
+        setClients(serverClients);
+        const savedId = localStorage.getItem("AIRES_active_client");
+        let currentId = savedId && serverClients.find(c => c.id === savedId)
+          ? savedId
+          : serverClients[0].id;
+
+        setActiveClientId(currentId);
+        localStorage.setItem("AIRES_active_client", currentId);
+
+        const assessment = await api.getAssessment(token, currentId);
+        if (assessment) {
+          setProfile(assessment.profile);
+          setUseCases(assessment.profile?.use_cases || []);
+          setAnswers(assessment.answers || {});
+          setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
+        }
+      } else {
+        setClients([{ id: "default", name: "Default Client", progress: 0 }]);
+        setActiveClientId("default");
       }
+      console.log("%c[AIRES] Data Synced", "color: #10B981; font-weight: bold;");
+    } catch (err) {
+      if (err.message === "UNAUTHORIZED") {
+        localStorage.removeItem("AIRES_token");
+        setPage("login");
+      } else {
+        console.error("[AIRES] Sync failed:", err);
+      }
+    }
+  };
 
-      try {
-        const serverClients = await api.getClients(token);
-        if (serverClients.length > 0) {
-          setClients(serverClients);
-          
-          // Prefer the previously saved activeClientId from localStorage.
-          // Only fall back to the first client if our saved ID genuinely doesn't
-          // exist on the server (e.g. was deleted).
-          const savedId = localStorage.getItem("AIRES_active_client");
-          let currentId = savedId && serverClients.find(c => c.id === savedId)
-            ? savedId
-            : serverClients[0].id;
+  const navigateToHome = () => {
+    setPage("landing");
+    initData();
+  };
 
-          setActiveClientId(currentId);
-          localStorage.setItem("AIRES_active_client", currentId);
-
-          // Fetch data for the active ID
-          const assessment = await api.getAssessment(token, currentId);
-          if (assessment) {
-            setProfile(assessment.profile);
-            setAnswers(assessment.answers || {});
-            setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
-          }
-        } else {
-          // Server has no clients yet — try to restore from localStorage list
-          // so we don't wipe a previously created client.
-          const savedClients = localStorage.getItem("AIRES_clients");
-          if (savedClients) {
-            const parsed = JSON.parse(savedClients);
-            if (parsed.length > 0) {
-              setClients(parsed);
-              const savedId = localStorage.getItem("AIRES_active_client");
-              const validId = savedId && parsed.find(c => c.id === savedId)
-                ? savedId
-                : parsed[0].id;
-              setActiveClientId(validId);
-              return;
-            }
-          }
-          setClients([{ id: "default", name: "Default Client", progress: 0 }]);
-          setActiveClientId("default");
-        }
+  useEffect(() => {
+    const start = async () => {
+      const token = localStorage.getItem("AIRES_token");
+      if (token) {
+        await initData();
         setPage("landing");
-        console.log("%c[AIRES] SYSTEM v1.0.5-security-update INITIALIZED", "color: #10B981; font-weight: bold; background: #ECFDF5; padding: 4px 8px; border-radius: 4px");
-      } catch (err) {
-        if (err.message === "UNAUTHORIZED") {
-          localStorage.removeItem("AIRES_token");
-          setPage("login"); // Fallback to login
-        } else {
-          console.error("[AIRES] Failed to initialize:", err);
-          setLoadError("Failed to connect to backend. Make sure the server is running.");
-        }
+      } else {
+        setPage("login");
       }
     };
-    init();
+    start();
   }, []);
 
   // Load active client data when client switches
@@ -175,6 +185,7 @@ export default function App() {
         const assessment = await api.getAssessment(token, activeClientId);
         if (assessment) {
           setProfile(assessment.profile);
+          setUseCases(assessment.profile?.use_cases || []);
           setAnswers(assessment.answers || {});
           setCurrentQuestionIndex(assessment.currentQuestionIndex || 0);
         }
@@ -225,41 +236,43 @@ export default function App() {
            prof.companyName && 
            prof.industry && 
            prof.companySize && 
-           prof.regulatory;
+           prof.regulatory &&
+           prof.techMaturity;
   };
 
   const switchClient = async (id, name) => {
+    const _api = (window.api || api);
     if (id === "new") {
       const nid = "c_" + Date.now();
-      const newClient = { id: nid, name, progress: 0 };
+      console.log("[AIRES] Creating new client:", nid, name);
+      const newClient = { id: nid, name: name || "New Client", progress: 0 };
       const updatedClients = [...clients, newClient];
       setClients(updatedClients);
-      setActiveClientId(nid);
       
-      // Pre-fill company name and clear other data
-      const newProfile = { companyName: name, industry: "", companySize: "", regulatory: "", techMaturity: "" };
-      setProfile(newProfile);
+      // Clear data for NEW client
+      setProfile({ companyName: name || "", industry: "", companySize: "", regulatory: "", techMaturity: "" });
+      setUseCases([]);
       setAnswers({});
       setQuestions([]);
       setCurrentQuestionIndex(0);
+      setActiveClientId(nid);
       
       // Save new client to server
       try {
         const token = localStorage.getItem("AIRES_token");
         if (token) {
-          await api.saveAssessment(token, {
+          await _api.saveAssessment(token, {
             id: nid,
-            name,
-            profile: {},
+            name: name || "New Client",
+            profile: { companyName: name || "" },
             answers: {},
             currentQuestionIndex: 0,
             totalQuestions: 0
           });
         }
       } catch (err) {
-        console.error("Failed to save new client to server:", err);
+        console.error("[AIRES] Create assessment failed:", err);
       }
-      
       setPage("profile");
     } else {
       // Switching to existing client - FIRST clear all previous data
@@ -277,7 +290,7 @@ export default function App() {
 
       setPage("loading");
       try {
-        const assessment = await api.getAssessment(token, id);
+        const assessment = await _api.getAssessment(token, id);
         if (assessment) {
           setProfile(assessment.profile);
           setAnswers(assessment.answers || {});
@@ -288,9 +301,14 @@ export default function App() {
           if (client && client.progress === 100) {
             setPage("results");
           } else if (isProfileComplete(assessment.profile)) {
-            const qs = await api.getQuestions(token, assessment.profile.inventory, assessment.profile.industry);
-            setQuestions(qs);
-            setPage("questions");
+            if (assessment.profile.use_cases && assessment.profile.use_cases.length > 0) {
+              setPage("loading");
+              const qs = await _api.getQuestions(token, assessment.profile.use_cases, assessment.profile.industry);
+              setQuestions(qs);
+              setPage("team");
+            } else {
+              setPage("profile");
+            }
           } else {
             // Profile incomplete - redirect to fill it
             setPage("profile");
@@ -306,6 +324,7 @@ export default function App() {
   };
 
   const resumeClient = async (id) => {
+    const _api = (window.api || api);
     // FIRST: Clear all previous data
     setProfile(null);
     setAnswers({});
@@ -321,7 +340,7 @@ export default function App() {
 
     setPage("loading");
     try {
-      const assessment = await api.getAssessment(token, id);
+      const assessment = await _api.getAssessment(token, id);
       if (assessment) {
         setProfile(assessment.profile);
         setAnswers(assessment.answers || {});
@@ -332,9 +351,14 @@ export default function App() {
         if (client && client.progress === 100) {
           setPage("results");
         } else if (isProfileComplete(assessment.profile)) {
-          const qs = await api.getQuestions(token, assessment.profile.inventory, assessment.profile.industry);
-          setQuestions(qs);
-          setPage("questions");
+          if (assessment.profile.use_cases && assessment.profile.use_cases.length > 0) {
+            setPage("loading");
+            const qs = await _api.getQuestions(token, assessment.profile.use_cases, assessment.profile.industry);
+            setQuestions(qs);
+            setPage("team");
+          } else {
+            setPage("profile");
+          }
         } else {
           // Profile incomplete - redirect to fill it
           setPage("profile");
@@ -343,7 +367,7 @@ export default function App() {
         setPage("profile"); // Fallback for new-ish clients with no server data
       }
     } catch (err) {
-      console.error("Resume client failed:", err);
+      console.error("[AIRES] Resume client failed:", err);
       setPage("landing");
     }
   };
@@ -383,13 +407,8 @@ export default function App() {
       setPage("login");
       return;
     }
-    localStorage.removeItem(`AIRES_client_${activeClientId}_profile`);
-    localStorage.removeItem(`AIRES_client_${activeClientId}_answers`);
-    localStorage.removeItem(`AIRES_client_${activeClientId}_q_index`);
-    setProfile(null);
-    setAnswers({});
-    setCurrentQuestionIndex(0);
-    setPage("profile");
+    // Remove prompt() and create a seamless experience
+    switchClient("new", "New Assessment");
   };
 
   const resume = async () => {
@@ -407,18 +426,10 @@ export default function App() {
     }
 
     if (isProfileComplete(profile)) {
-      if (questions.length === 0) {
-        setPage("loading");
-        try {
-          const qs = await api.getQuestions(token, profile.inventory, profile.industry);
-          setQuestions(qs);
-          setPage("questions");
-        } catch (err) {
-          console.error("Failed to fetch questions during resume:", err);
-          setPage("profile"); 
-        }
+      if (useCases.length > 0) {
+        setPage("team");
       } else {
-        setPage("questions");
+        setPage("profile");
       }
     } else {
       // Profile incomplete - redirect to fill it
@@ -426,14 +437,13 @@ export default function App() {
     }
   };
 
+  console.log("%c[AIRES] Rendering App Page:", "color: #10B981; font-weight: bold", page, { profile, questionsCount: questions.length, answersCount: Object.keys(answers).length });
+
   return html`
     <div style=${{ fontFamily: BODY }}>
-      ${showDefaultClientModal && html`
+      ${showDefaultClientModal ? html`
         <div style=${{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, background: "rgba(0,0,0,0.6)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 3000 }}>
-          <div style=${{
-            background: "white", borderRadius: 16, padding: "32px", width: "90%", maxWidth: 450,
-            boxShadow: "0 25px 50px rgba(0,0,0,0.3)", border: `2px solid ${B.red}`
-          }}>
+          <div style=${{ background: "white", borderRadius: 16, padding: "32px", width: "90%", maxWidth: 450, boxShadow: "0 25px 50px rgba(0,0,0,0.3)", border: `2px solid ${B.red}` }}>
             <div style=${{ marginBottom: 28 }}>
               <div style=${{ fontSize: 16, fontWeight: 900, color: B.red, marginBottom: 8 }}>⚠️ Default Client</div>
               <div style=${{ fontSize: 20, fontWeight: 900, color: B.black, marginBottom: 12 }}>Create a new assessment to get started</div>
@@ -445,8 +455,8 @@ export default function App() {
             <div style=${{ display: "flex", flexDirection: "column", gap: 14 }}>
               <div style=${{ padding: "20px", background: B.gray50, borderRadius: 10, border: `1px solid ${B.border}` }}>
                 <label style=${{ fontSize: 12, fontWeight: 700, color: B.gray600, textTransform: "uppercase", display: "block", marginBottom: 8 }}>Create New Assessment</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value=${newAssessmentName}
                   onInput=${(e) => setNewAssessmentName(e.target.value)}
                   placeholder="Enter company name"
@@ -458,58 +468,62 @@ export default function App() {
                       if (btn) btn.click();
                     }
                   }}
-                  style=${{
-                    width: "100%", padding: "10px 12px", border: `1px solid ${B.border}`, borderRadius: 8,
-                    fontSize: 14, fontFamily: BODY, boxSizing: "border-box", marginBottom: 12
-                  }}
+                  style=${{ width: "100%", padding: "10px 12px", border: `1px solid ${B.border}`, borderRadius: 8, fontSize: 14, fontFamily: BODY, boxSizing: "border-box", marginBottom: 12 }}
                 />
-                <button onClick=${async () => {
-                  if (newAssessmentName.trim()) {
-                    try {
-                      const token = localStorage.getItem("AIRES_token");
-                      const newClientId = "client_" + Date.now();
-                      const newClient = { id: newClientId, name: newAssessmentName, progress: 0 };
-                      
-                      // Save to server immediately
-                      await api.saveAssessment(token, {
-                        id: newClientId,
-                        name: newAssessmentName,
-                        profile: {},
-                        answers: {},
-                        currentQuestionIndex: 0,
-                        totalQuestions: 0
-                      });
-                      
-                      // Update local state
-                      setClients(prev => [...prev, newClient]);
-                      setActiveClientId(newClientId);
-                      setShowDefaultClientModal(false);
-                      setNewAssessmentName("");
-                      setPage("profile");
-                    } catch (err) {
-                      alert("Failed to create new assessment");
-                      console.error("Create failed:", err);
+                <button 
+                  onClick=${async () => {
+                    const _api = (window.api || api);
+                    if (newAssessmentName.trim()) {
+                      try {
+                        const token = localStorage.getItem("AIRES_token");
+                        const newClientId = "c_" + Date.now();
+                        const newClient = { id: newClientId, name: newAssessmentName, progress: 0 };
+                        
+                        // Save to server immediately
+                        await _api.saveAssessment(token, {
+                          id: newClientId,
+                          name: newAssessmentName,
+                          profile: { companyName: newAssessmentName },
+                          answers: {},
+                          currentQuestionIndex: 0,
+                          totalQuestions: 0
+                        });
+
+                        // Update local state
+                        setClients(prev => [...prev, newClient]);
+                        setActiveClientId(newClientId);
+                        setShowDefaultClientModal(false);
+                        setNewAssessmentName("");
+                        setPage("profile");
+                      } catch (err) {
+                        alert("Failed to create new assessment");
+                        console.error("Create failed:", err);
+                      }
+                    } else {
+                      alert("Please enter a company name");
                     }
-                  } else {
-                    alert("Please enter a company name");
-                  }
-                }} style=${{
-                  width: "100%", background: B.red, color: "white", border: "none",
-                  padding: "10px 16px", borderRadius: 8, fontWeight: 700, fontSize: 13,
-                  cursor: newAssessmentName.trim() ? "pointer" : "not-allowed",
-                  opacity: newAssessmentName.trim() ? 1 : 0.5,
-                  transition: "all 0.2s"
-                }}>
+                  }}
+                  style=${{
+                    width: "100%", background: B.red, color: "white", border: "none",
+                    padding: "10px 16px", borderRadius: 8, fontWeight: 700, fontSize: 13,
+                    cursor: newAssessmentName.trim() ? "pointer" : "not-allowed",
+                    opacity: newAssessmentName.trim() ? 1 : 0.5,
+                    transition: "all 0.2s"
+                  }}
+                >
                   ➕ Create New Assessment
                 </button>
               </div>
             </div>
           </div>
         </div>
-      `}
+      ` : null}
 
-      ${page === "login" && html`<${AdminLogin} onLogin=${() => setPage("landing")} />`}
-      ${page === "landing" && html`
+      ${page === "login" ? html`<${AdminLogin} onLogin=${() => {
+        initData();
+        setPage("landing");
+      }} />` : null}
+      ${page === "landing" ? html`
         <${LandingPage}
           onBegin=${cleanReset}
           onResume=${resume}
@@ -519,49 +533,76 @@ export default function App() {
           activeClientId=${activeClientId}
           onSwitchClient=${switchClient}
           onLogout=${logout}
-          onHome=${() => setPage("landing")}
+          onHome=${navigateToHome}
         />
-      `}
-      ${page === "profile" && html`<${CompanyProfile}
+      ` : null}
+      ${page === "profile" ? html`<${CompanyProfile}
+        key=${activeClientId}
         initialProfile=${profile}
         onNext=${async p => {
           setProfile(p);
           if (p.companyName) {
             setClients(prev => prev.map(c => c.id === activeClientId ? { ...c, name: p.companyName } : c));
           }
-          
+          // Pre-populate useCases from auto-mapped inventory
+          const mappedCases = p.inventory?.map(i => i.useCase).filter(Boolean) || [];
+          const finalUseCases = [...new Set([...useCases, ...mappedCases])];
+          setUseCases(finalUseCases);
+
+          const updatedProfile = { ...p, use_cases: finalUseCases };
+          setProfile(updatedProfile);
+
+          // Fetch questions and go to team selection
           setPage("loading");
           try {
+            const _api = (window.api || api);
             const token = localStorage.getItem("AIRES_token");
-            const qs = await api.getQuestions(token, p.inventory, p.industry);
+            const qs = await _api.getQuestions(token, finalUseCases, p.industry);
             setQuestions(qs);
-            setPage("questions");
+            setPage("team");
           } catch (err) {
-            if (err.message === "UNAUTHORIZED") logout();
-            else {
-              alert("Failed to fetch questions from server.");
-              setPage("profile");
-            }
+            console.error("Failed to fetch questions:", err);
+            setPage("profile");
           }
         }}
         clients=${clients}
         activeClientId=${activeClientId}
         onSwitchClient=${switchClient}
         onLogout=${logout}
-        onHome=${() => setPage("landing")}
-      />`}
-      ${page === "questions" && profile && questions.length > 0 && html`
+        onHome=${navigateToHome}
+      />` : null}
+
+
+      ${page === "team" ? html`<${TeamSelection}
+        questions=${questions}
+        answers=${answers}
+        onBack=${() => setPage("profile")}
+        onNext=${dept => {
+          setActiveDepartment(dept);
+          const deptQs = questions.filter(q => (q.department || "Other") === dept);
+          const firstUnanswered = deptQs.findIndex(q => !answers[q.qid]);
+          setCurrentQuestionIndex(firstUnanswered === -1 ? 0 : firstUnanswered);
+          setPage("questions");
+        }}
+        onFinish=${() => setPage("results")}
+        clients=${clients}
+        activeClientId=${activeClientId}
+        onSwitchClient=${switchClient}
+        onLogout=${logout}
+        onHome=${navigateToHome}
+      />` : null}
+
+      ${(page === "questions" && profile && questions.length > 0) ? html`
         <${QuestionFlow}
-          questions=${questions}
+          questions=${questions.filter(q => (q.department || "Other") === activeDepartment)}
+          departmentName=${activeDepartment}
           profile=${profile}
-          onBack=${() => setPage("profile")}
-          onFinish=${(a, q) => {
+          onBack=${() => setPage("team")}
+          onFinish=${(a) => {
             setAnswers(a);
-            setQuestions(q);
-            setPage("results");
-            // NOTE: We no longer clear the draft immediately to allow for a more robust completion state
+            setPage("team");
           }}
-          onExit=${() => setPage("landing")}
+          onExit=${navigateToHome}
           initialIndex=${currentQuestionIndex}
           onIndexChange=${setCurrentQuestionIndex}
           initialAnswers=${answers}
@@ -571,8 +612,9 @@ export default function App() {
           onSwitchClient=${switchClient}
           onLogout=${logout}
         />
-      `}
-      ${page === "results" && profile && html`
+      ` : null}
+
+      ${(page === "results" && profile) ? html`
         <${RiskReport}
           profile=${profile}
           answers=${answers}
@@ -581,9 +623,9 @@ export default function App() {
           activeClientId=${activeClientId}
           onSwitchClient=${switchClient}
           onLogout=${logout}
-          onHome=${() => setPage("landing")}
+          onHome=${navigateToHome}
         />
-      `}
+      ` : null}
     </div>
   `;
 }
