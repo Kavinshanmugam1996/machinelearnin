@@ -133,7 +133,7 @@ export function AdminLogin({ onLogin }) {
                 type="email" value=${email}
                 onChange=${e => { setEmail(e.target.value); setError(""); }}
                 onKeyDown=${e => e.key === "Enter" && doLogin()}
-                placeholder="kavin@bizcomgrp.com"
+                placeholder="Enter your email"
                 style=${{ width: "100%", boxSizing: "border-box" }}
               />
             </div>
