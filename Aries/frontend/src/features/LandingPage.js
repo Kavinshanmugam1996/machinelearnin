@@ -8,6 +8,45 @@ const html = htm.bind(React.createElement);
 console.log("[AIRES] LandingPage.js loaded - v1.0.2");
 
 export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clients, activeClientId, onSwitchClient, onLogout, onHome }) {
+  const [confirmingId, setConfirmingId] = React.useState(null);
+
+  const handleDelete = async (e, client) => {
+    e.stopPropagation();
+    console.log("[AIRES] handleDelete triggered for:", client.id, client.name);
+    
+    // Step 1: Show confirmation state if not already confirming
+    if (confirmingId !== client.id) {
+      setConfirmingId(client.id);
+      return;
+    }
+
+    // Step 2: Proceed with deletion
+    try {
+      const token = localStorage.getItem("AIRES_token");
+      if (!token) {
+        alert("Error: No authentication token found. Please logout and login again.");
+        return;
+      }
+
+      console.log("[AIRES] Calling API to delete...");
+      const apiService = (window.api || api);
+      const response = await apiService.deleteAssessment(token, client.id);
+      console.log("[AIRES] Delete response:", response);
+
+      if (response && (response.status === "success" || response.message?.includes("success"))) {
+        localStorage.removeItem(`AIRES_client_${client.id}_profile`);
+        localStorage.removeItem(`AIRES_client_${client.id}_answers`);
+        alert("Assessment deleted successfully");
+        window.location.reload();
+      } else {
+        alert("Failed to delete: " + JSON.stringify(response));
+      }
+    } catch (err) {
+      console.error("Delete failed:", err);
+      alert(`Failed to delete assessment: ${err.message || JSON.stringify(err)}`);
+    }
+  };
+
   const stats = [
     { val: "500+", label: "Questions" },
     { val: "1000+", label: "Risks Mapped" },
@@ -154,40 +193,28 @@ export function LandingPage({ onBegin, onResume, onResumeClient, hasSaved, clien
                      <div style=${{ padding: "4px 10px", borderRadius: 6, fontSize: 10, fontWeight: 800, background: client.progress === 100 ? "#DCFCE7" : B.gray50, color: client.progress === 100 ? "#16A34A" : B.gray700 }}>
                        ${client.progress === 100 ? "COMPLETED" : "IN PROGRESS"}
                      </div>
-                     <button onClick=${(e) => {
-                       e.stopPropagation();
-                       if (confirm(`Delete assessment "${client.name}"? This cannot be undone.`)) {
-                         (async () => {
-                           try {
-                             const token = localStorage.getItem("AIRES_token");
-                             const response = await api.deleteAssessment(token, client.id);
-                             if (response.status === "success") {
-                               // Remove from localStorage
-                               localStorage.removeItem(`AIRES_client_${client.id}_profile`);
-                               localStorage.removeItem(`AIRES_client_${client.id}_answers`);
-                               // Trigger a refresh by reloading page
-                               alert("Assessment deleted successfully");
-                               window.location.reload();
-                             }
-                           } catch (err) {
-                             console.error("Delete failed:", err);
-                             alert(`Failed to delete assessment: ${err.message}`);
-                           }
-                         })();
-                       }
-                     }} style=${{ 
-                       background: "transparent", border: "none", cursor: "pointer", 
-                       color: B.gray400, padding: "4px", display: "flex", alignItems: "center", 
-                       justifyContent: "center", transition: "color 0.2s",
-                       opacity: 0.6
-                     }} onMouseEnter=${(e) => e.target.style.opacity = "1"} onMouseLeave=${(e) => e.target.style.opacity = "0.6"}>
-                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                         <polyline points="3 6 5 6 21 6"></polyline>
-                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                         <line x1="10" y1="11" x2="10" y2="17"></line>
-                         <line x1="14" y1="11" x2="14" y2="17"></line>
-                       </svg>
-                     </button>
+                      <div style=${{ display: "flex", alignItems: "center", gap: 8 }}>
+                        ${confirmingId === client.id ? html`
+                          <div style=${{ display: "flex", gap: 4 }}>
+                            <button onClick=${(e) => { e.stopPropagation(); setConfirmingId(null); }} style=${{ background: B.gray100, border: "none", color: B.gray700, padding: "4px 8px", borderRadius: 4, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>CANCEL</button>
+                            <button onClick=${(e) => handleDelete(e, client)} style=${{ background: B.red, border: "none", color: "white", padding: "4px 8px", borderRadius: 4, fontSize: 10, fontWeight: 700, cursor: "pointer" }}>SURE?</button>
+                          </div>
+                        ` : html`
+                          <button onClick=${(e) => handleDelete(e, client)} style=${{ 
+                            background: "transparent", border: "none", cursor: "pointer", 
+                            color: B.gray400, padding: "4px", display: "flex", alignItems: "center", 
+                            justifyContent: "center", transition: "color 0.2s",
+                            opacity: 0.6
+                          }} onMouseEnter=${(e) => { e.currentTarget.style.opacity = "1"; e.currentTarget.style.color = B.red; }} onMouseLeave=${(e) => { e.currentTarget.style.opacity = "0.6"; e.currentTarget.style.color = B.gray400; }}>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style=${{ pointerEvents: "none" }}>
+                              <polyline points="3 6 5 6 21 6"></polyline>
+                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                              <line x1="10" y1="11" x2="10" y2="17"></line>
+                              <line x1="14" y1="11" x2="14" y2="17"></line>
+                            </svg>
+                          </button>
+                        `}
+                      </div>
                    </div>
                 </div>
                 <div style=${{ fontSize: 18, fontWeight: 800, color: B.black, marginBottom: 4, fontFamily: DISPLAY }}>${client.name}</div>

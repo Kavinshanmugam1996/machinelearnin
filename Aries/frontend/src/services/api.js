@@ -6,10 +6,16 @@
 const API_BASE = ""; // Relative to host
 
 export const api = {
+  // Debug helper to log all API calls
+  _log(method, ...args) {
+    console.log(`%c[API CALL] ${method}`, "background: #1e293b; color: #38bdf8; padding: 2px 5px; border-radius: 3px", ...args);
+  },
+
   /**
    * Login to obtain a JWT token
    */
   async login(email, password) {
+    this._log("login", email);
     const res = await fetch(`${API_BASE}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -26,6 +32,7 @@ export const api = {
    * Fetch all clients (assessments)
    */
   async getClients(token) {
+    this._log("getClients");
     const res = await fetch(`${API_BASE}/api/clients`, {
       headers: { "Authorization": `Bearer ${token}` }
     });
@@ -96,6 +103,7 @@ export const api = {
    * Delete an assessment
    */
   async deleteAssessment(token, clientId) {
+    this._log("deleteAssessment", clientId);
     const res = await fetch(`${API_BASE}/api/assessment/${clientId}`, {
       method: "DELETE",
       headers: { "Authorization": `Bearer ${token}` }
@@ -105,4 +113,6 @@ export const api = {
     return res.json();
   }
 };
+
+window.api = api;
 

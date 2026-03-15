@@ -1,12 +1,16 @@
 import React from 'react';
 import htm from 'htm';
-import { AdminLogin } from './features/AdminLogin.js';
-import { LandingPage } from './features/LandingPage.js';
-import { CompanyProfile } from './features/CompanyProfile.js';
-import { QuestionFlow } from './features/QuestionFlow.js';
-import { RiskReport } from './features/RiskReport.js';
-import { api } from './services/api.js';
-import { B, BODY, DISPLAY } from './services/constants.js';
+console.log("%c[AIRES] App.js Booting v1.0.6", "color: #3B9BC8; font-weight: bold");
+import { AdminLogin } from './features/AdminLogin.js?v=1.0.6';
+import { LandingPage } from './features/LandingPage.js?v=1.0.6';
+import { CompanyProfile } from './features/CompanyProfile.js?v=1.0.6';
+import { QuestionFlow } from './features/QuestionFlow.js?v=1.0.6';
+import { RiskReport } from './features/RiskReport.js?v=1.0.6';
+import { api } from './services/api.js?v=1.0.6';
+import { B, BODY, DISPLAY } from './services/constants.js?v=1.0.6';
+
+// Expose API globally for debugging and robust access across components
+window.api = api;
 
 const html = htm.bind(React.createElement);
 
