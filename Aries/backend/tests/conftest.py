@@ -1,5 +1,6 @@
 import asyncio
 import pytest
+import shutil
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
@@ -10,6 +11,10 @@ import os
 
 # Add backend to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Test-safe runtime defaults
+os.environ.setdefault("ALLOW_INSECURE_DEV", "true")
+os.environ.setdefault("ASSESSMENTS_DIR", os.path.join(os.path.dirname(__file__), "_snapshots"))
 
 from main import app
 from database.connection import get_db
@@ -43,6 +48,15 @@ async def setup_db():
 
 @pytest.fixture
 async def db_session(setup_db):
+    snapshots_dir = os.environ.get("ASSESSMENTS_DIR")
+    if snapshots_dir:
+        shutil.rmtree(snapshots_dir, ignore_errors=True)
+        os.makedirs(snapshots_dir, exist_ok=True)
+
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+        await conn.run_sync(Base.metadata.create_all)
+
     async with TestingSessionLocal() as session:
         yield session
         await session.rollback()

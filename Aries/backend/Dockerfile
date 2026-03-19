@@ -11,8 +11,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application files
 COPY . .
 
-# Ensure the Assessments directory exists and has correct permissions
-RUN mkdir -p Assessments && chmod 777 Assessments
+# Use dedicated writable snapshot path and drop root privileges
+ENV ASSESSMENTS_DIR=/app/Assessments
+RUN mkdir -p /app/Assessments && adduser --disabled-password --gecos "" appuser && chown -R appuser:appuser /app
+USER appuser
 
 # Expose the port (default 3000, but can be overridden by cloud providers)
 ENV PORT=3000

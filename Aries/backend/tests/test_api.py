@@ -1,9 +1,78 @@
 import pytest
 from httpx import AsyncClient
-from database.models import User, Question, QuestionMapper
-from passlib.context import CryptContext
+from database.models import (
+    User,
+    Question,
+    Domain,
+    Department,
+    Cluster,
+    Category,
+    UseCase,
+    UseCaseCategoryWeight,
+)
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+async def _seed_question_graph(db_session):
+    domain_general = Domain(id=1, name="General")
+    domain_retail = Domain(id=2, name="Retail")
+    dept = Department(id=1, name="Cybersecurity")
+    cluster = Cluster(id=1, code=1, name="AI Technical & Model Integrity")
+    category_security = Category(id=1, slug="ai_system_security_adversarial_risk", question_count=1)
+    category_tech = Category(id=2, slug="agents_and_agent_orchestration", question_count=1)
+
+    use_case = UseCase(id=1, name="Customer chatbot")
+    weight_security = UseCaseCategoryWeight(use_case_id=1, category_id=1, weight=1)
+    weight_tech = UseCaseCategoryWeight(use_case_id=1, category_id=2, weight=1)
+
+    q1 = Question(
+        id=1,
+        qid_code="Q_SEC_1",
+        question_text="Security Question",
+        domain_id=2,
+        dept_id=1,
+        category_id=1,
+        cluster_id=1,
+        response_type="Yes|No|Partial|Not Applicable",
+        is_universal=False,
+    )
+    q2 = Question(
+        id=2,
+        qid_code="Q_AI_1",
+        question_text="AI Tech Question",
+        domain_id=2,
+        dept_id=1,
+        category_id=2,
+        cluster_id=1,
+        response_type="Yes|No|Partial|Not Applicable",
+        is_universal=False,
+    )
+    q3 = Question(
+        id=3,
+        qid_code="Q_CORE_1",
+        question_text="Core Universal Question",
+        domain_id=1,
+        dept_id=1,
+        category_id=1,
+        cluster_id=1,
+        response_type="Yes|No|Partial|Not Applicable",
+        is_universal=True,
+    )
+
+    db_session.add_all([
+        domain_general,
+        domain_retail,
+        dept,
+        cluster,
+        category_security,
+        category_tech,
+        use_case,
+        weight_security,
+        weight_tech,
+        q1,
+        q2,
+        q3,
+    ])
+    await db_session.commit()
 
 @pytest.mark.asyncio
 async def test_health_check(client: AsyncClient):
@@ -82,6 +151,8 @@ async def test_save_assessment(client: AsyncClient, db_session):
 
 @pytest.mark.asyncio
 async def test_get_questions_none_selected(client: AsyncClient, db_session):
+    await _seed_question_graph(db_session)
+
     # Setup user and login
     test_user = User(email="tester@example.com", hashed_password="password123")
     db_session.add(test_user)
@@ -108,22 +179,12 @@ async def test_get_questions_none_selected(client: AsyncClient, db_session):
     assert response.status_code == 200
     questions = response.json()
     
-    # Verify that mandatory groups or generic questions are returned
-    mandatory_groups = ["privacy", "security", "reliability", "legal_regulatory"]
-    for q in questions:
-        group = q.get("component_group")
-        assert group in mandatory_groups or group == "" or group is None
+    assert len(questions) > 0
+    assert all(q.get("industry") in ("Retail", "General", None) for q in questions)
 
 @pytest.mark.asyncio
 async def test_get_questions_mixed_inventory(client: AsyncClient, db_session):
-    # Setup seed data
-    mapper = QuestionMapper(use_case="Customer chatbot", component_groups="security, ai_technical")
-    db_session.add(mapper)
-    
-    q1 = Question(qid="Q_SEC_1", text="Security Question", component_group="security", industry="Universal", options=[])
-    q2 = Question(qid="Q_AI_1", text="AI Tech Question", component_group="ai_technical", industry="Retail", options=[])
-    q3 = Question(qid="Q_CORE_1", text="Core Question", component_group="", industry="Universal", options=[])
-    db_session.add_all([q1, q2, q3])
+    await _seed_question_graph(db_session)
     
     # Setup user and login
     test_user = User(email="tester2@example.com", hashed_password="password123")
@@ -150,6 +211,7 @@ async def test_get_questions_mixed_inventory(client: AsyncClient, db_session):
     assert response.status_code == 200
     questions = response.json()
     assert len(questions) > 0
+    assert any(q.get("component_group") == "agents_and_agent_orchestration" for q in questions)
 
 @pytest.mark.asyncio
 async def test_get_assessment(client: AsyncClient, db_session):

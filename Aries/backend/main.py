@@ -52,48 +52,80 @@ class JSONFormatter(logging.Formatter):
 
 logger = logging.getLogger("aires")
 logger.setLevel(logging.INFO)
-handler = logging.StreamHandler()
-handler.setFormatter(JSONFormatter())
-logger.addHandler(handler)
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(JSONFormatter())
+    logger.addHandler(handler)
 
-ASSESSMENTS_DIR = Path(__file__).parent.parent / "Data" / "Assessments"
+ASSESSMENTS_DIR = Path(
+    os.getenv("ASSESSMENTS_DIR", str(Path(__file__).parent.parent / "Data" / "Assessments"))
+)
 ASSESSMENTS_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def _assessment_snapshot_path(client_id: str) -> Path:
+def _sanitize_for_path(value: str) -> str:
+    return "".join(ch for ch in value if ch.isalnum() or ch in ("-", "_", ".", "@"))
+
+
+def _assessment_snapshot_path(owner_email: str, client_id: str) -> Path:
+    safe_owner = _sanitize_for_path(owner_email.lower() if owner_email else "unknown")
     safe_client_id = "".join(ch for ch in client_id if ch.isalnum() or ch in ("-", "_"))
-    return ASSESSMENTS_DIR / f"{safe_client_id}.json"
+    owner_dir = ASSESSMENTS_DIR / safe_owner
+    owner_dir.mkdir(parents=True, exist_ok=True)
+    return owner_dir / f"{safe_client_id}.json"
 
 
 def _write_assessment_snapshot(payload: dict) -> None:
     client_id = payload.get("id")
-    if not client_id:
+    owner_email = payload.get("owner_email")
+    if not client_id or not owner_email:
         return
-    snapshot_path = _assessment_snapshot_path(client_id)
+    snapshot_path = _assessment_snapshot_path(owner_email, client_id)
     with open(snapshot_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
 
 
-def _read_assessment_snapshot(client_id: str) -> Optional[dict]:
-    snapshot_path = _assessment_snapshot_path(client_id)
+def _read_assessment_snapshot(owner_email: str, client_id: str) -> Optional[dict]:
+    snapshot_path = _assessment_snapshot_path(owner_email, client_id)
     if not snapshot_path.exists():
         return None
     with open(snapshot_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+
+def _is_password_hash(value: str) -> bool:
+    return isinstance(value, str) and value.startswith("$")
+
+
+def _parse_cors_origins() -> List[str]:
+    raw = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000")
+    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+
 # --- CONFIGURATION ---
 load_dotenv()
-SECRET_KEY = os.getenv("SECRET_KEY", "change-at-least-32-character-very-secret-key")
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    if os.getenv("ALLOW_INSECURE_DEV", "false").lower() == "true":
+        SECRET_KEY = "dev-insecure-key-change-me"
+        logger.warning("Running with insecure development SECRET_KEY")
+    else:
+        raise RuntimeError("SECRET_KEY is required. Set environment variable SECRET_KEY.")
 ALGORITHM = os.getenv("ALGORITHM", "HS256")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 43200))
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 60))
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 ALREADY_HASHED = True # Set to False if migrating strictly from plain-text
 
 # --- SECURITY HELPERS ---
 def verify_password(plain_password, stored_password):
-    # In this phase, we still check for plain text match for migration ease,
-    # but the infrastructure is ready for full hashing.
+    if not stored_password:
+        return False
+    if _is_password_hash(stored_password):
+        try:
+            return pwd_context.verify(plain_password, stored_password)
+        except Exception:
+            return False
+    # Backward compatibility for legacy plain-text users; upgraded on successful login.
     return plain_password == stored_password
 
 def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
@@ -136,7 +168,7 @@ app = FastAPI(title="AIRES™ Risk Profiler Backend (SQL)")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_parse_cors_origins(),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -154,7 +186,10 @@ async def startup_event():
     from database.connection import engine
     from database.models import Base
 
-    # If an old questions schema exists, reset normalized data tables so Option B can load cleanly.
+    # In production, never drop data automatically. Allow optional explicit reset only.
+    reset_legacy_schema = os.getenv("RESET_LEGACY_SCHEMA", "false").lower() == "true"
+
+    has_legacy_schema = False
     async with engine.begin() as conn:
         def _has_legacy_questions_schema(sync_conn):
             inspector = inspect(sync_conn)
@@ -164,7 +199,7 @@ async def startup_event():
             return "qid_code" not in cols
 
         has_legacy_schema = await conn.run_sync(_has_legacy_questions_schema)
-        if has_legacy_schema:
+        if has_legacy_schema and reset_legacy_schema:
             for table_name in [
                 "risks",
                 "question_mapper",
@@ -177,6 +212,9 @@ async def startup_event():
                 "domains",
             ]:
                 await conn.execute(text(f"DROP TABLE IF EXISTS {table_name}"))
+            logger.warning("RESET_LEGACY_SCHEMA enabled: dropped legacy schema tables")
+        elif has_legacy_schema:
+            logger.error("Legacy questions schema detected. Set RESET_LEGACY_SCHEMA=true to reset in controlled environments.")
 
     # Create current tables
     async with engine.begin() as conn:
@@ -203,10 +241,13 @@ async def startup_event():
                     if not existing_user:
                         new_user = User(
                             email=email,
-                            hashed_password=password  # Stored as plain text for now
+                            hashed_password=pwd_context.hash(password)
                         )
                         db.add(new_user)
                         logger.info(f"Seeded user: {email}")
+                    elif not _is_password_hash(existing_user.hashed_password):
+                        existing_user.hashed_password = pwd_context.hash(password)
+                        logger.info(f"Upgraded legacy password hash for user: {email}")
                 
                 await db.commit()
         else:
@@ -219,7 +260,7 @@ async def startup_event():
         if sql_path:
             # Avoid replaying non-idempotent INSERT script on every restart.
             has_questions = (await db.execute(select(Question.id).limit(1))).first() is not None
-            if not has_questions:
+            if not has_questions and not has_legacy_schema:
                 logger.info(f"Loading normalized dataset from {sql_path.name}...")
                 with open(sql_path, 'r', encoding='utf-8') as f:
                     raw_sql = f.read()
@@ -289,6 +330,9 @@ async def login(creds: schemas.UserLogin, db: AsyncSession = Depends(get_db)):
     user = (await db.execute(stmt)).scalar_one_or_none()
     
     if user and verify_password(creds.password, user.hashed_password):
+        if not _is_password_hash(user.hashed_password):
+            user.hashed_password = pwd_context.hash(creds.password)
+            await db.commit()
         access_token = create_access_token(
             data={"sub": user.email}, 
             expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -298,11 +342,6 @@ async def login(creds: schemas.UserLogin, db: AsyncSession = Depends(get_db)):
     
     logger.warning(f"Failed login attempt: {creds.email}")
     raise HTTPException(status_code=401, detail="Invalid credentials")
-
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
-
 
 OTHER_INDUSTRY_VALUES = {
     "other",
@@ -386,7 +425,7 @@ async def _fetch_filtered_questions(req: schemas.QuestionRequest, db: AsyncSessi
         stmt = stmt.where(Category.slug.in_(component_tags))
 
     # De-duplicate questions and keep department-wise ordering for next-step clustering.
-    stmt = stmt.distinct(Question.id).order_by(Department.name.asc(), Question.qid_code.asc())
+    stmt = stmt.distinct().order_by(Department.name.asc(), Question.qid_code.asc())
     result = await db.execute(stmt)
     return result.scalars().all()
 
@@ -463,7 +502,9 @@ async def save_assessment(
     current_user: str = Depends(get_current_user)
 ):
     # Upsert logic
-    stmt = select(Assessment).where(Assessment.client_id == assessment_data.id)
+    stmt = select(Assessment).where(
+        (Assessment.client_id == assessment_data.id) & (Assessment.owner_email == current_user)
+    )
     assessment = (await db.execute(stmt)).scalar_one_or_none()
     
     if not assessment:
@@ -491,6 +532,7 @@ async def save_assessment(
     try:
         snapshot_payload = {
             "id": assessment_data.id,
+            "owner_email": current_user,
             "name": assessment_data.name,
             "profile": assessment_data.profile,
             "answers": assessment_data.answers or {},
@@ -531,7 +573,7 @@ async def get_assessment(
     assessment = (await db.execute(stmt)).scalar_one_or_none()
     
     if not assessment:
-        snapshot = _read_assessment_snapshot(client_id)
+        snapshot = _read_assessment_snapshot(current_user, client_id)
         if snapshot:
             return {
                 "id": snapshot.get("id", client_id),
@@ -588,7 +630,9 @@ async def get_remediation(
     db: AsyncSession = Depends(get_db),
     current_user: str = Depends(get_current_user)
 ):
-    stmt = select(Assessment).where(Assessment.client_id == client_id)
+    stmt = select(Assessment).where(
+        (Assessment.client_id == client_id) & (Assessment.owner_email == current_user)
+    )
     assessment = (await db.execute(stmt)).scalar_one_or_none()
     
     if not assessment:
@@ -629,6 +673,12 @@ async def delete_assessment(
         await db.commit()
         
         logger.info(f"Assessment deleted: {client_id} by {current_user}")
+        try:
+            snapshot_path = _assessment_snapshot_path(current_user, client_id)
+            if snapshot_path.exists():
+                snapshot_path.unlink()
+        except Exception as e:
+            logger.error(f"Failed to delete snapshot {client_id}: {e}")
         return {"status": "success", "message": "Assessment deleted successfully"}
     except HTTPException:
         raise
