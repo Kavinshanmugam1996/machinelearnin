@@ -34,7 +34,8 @@ export const api = {
   async getClients(token) {
     this._log("getClients");
     const res = await fetch(`${API_BASE}/api/clients`, {
-      headers: { "Authorization": `Bearer ${token}` }
+      headers: { "Authorization": `Bearer ${token}` },
+      cache: "no-store"
     });
     if (res.status === 401) throw new Error("UNAUTHORIZED");
     if (!res.ok) throw new Error("Failed to fetch clients");
@@ -97,7 +98,8 @@ export const api = {
    */
   async getRemediation(token, clientId) {
     const res = await fetch(`${API_BASE}/api/remediation/${clientId}`, {
-      headers: { "Authorization": `Bearer ${token}` }
+      headers: { "Authorization": `Bearer ${token}` },
+      cache: "no-store"
     });
     if (res.status === 401) throw new Error("UNAUTHORIZED");
     if (!res.ok) throw new Error("Failed to fetch remediation");
@@ -109,7 +111,8 @@ export const api = {
    */
   async getAssessment(token, clientId) {
     const res = await fetch(`${API_BASE}/api/assessment/${clientId}`, {
-      headers: { "Authorization": `Bearer ${token}` }
+      headers: { "Authorization": `Bearer ${token}` },
+      cache: "no-store"
     });
     if (res.status === 401) throw new Error("UNAUTHORIZED");
     if (!res.ok) throw new Error("Failed to fetch assessment");
