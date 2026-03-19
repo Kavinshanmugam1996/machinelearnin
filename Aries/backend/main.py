@@ -3,6 +3,7 @@ import uuid
 import json
 import logging
 import csv
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
@@ -45,6 +46,8 @@ handler = logging.StreamHandler()
 handler.setFormatter(JSONFormatter())
 logger.addHandler(handler)
 
+ASSESSMENTS_DIR = Path(__file__).parent.parent / "Data" / "Assessments"
+
 # --- CONFIGURATION ---
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY", "change-at-least-32-character-very-secret-key")
@@ -65,6 +68,29 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     expire = datetime.now(timezone.utc) + (expires_delta or timedelta(minutes=15))
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+
+def build_assessment_snapshot(assessment_data: schemas.AssessmentBase) -> dict:
+    return {
+        "id": assessment_data.id,
+        "name": assessment_data.name,
+        "profile": assessment_data.profile,
+        "answers": assessment_data.answers or {},
+        "currentQuestionIndex": assessment_data.currentQuestionIndex,
+        "totalQuestions": assessment_data.totalQuestions,
+    }
+
+
+def get_assessment_export_path(client_id: str) -> Path:
+    safe_client_id = re.sub(r"[^A-Za-z0-9._-]", "_", client_id.strip()) or "assessment"
+    return ASSESSMENTS_DIR / f"{safe_client_id}.json"
+
+
+def export_assessment_snapshot(snapshot: dict) -> Path:
+    ASSESSMENTS_DIR.mkdir(parents=True, exist_ok=True)
+    export_path = get_assessment_export_path(snapshot["id"])
+    export_path.write_text(json.dumps(snapshot, indent=2, ensure_ascii=False), encoding="utf-8")
+    return export_path
 
 async def get_current_user(token: str = Depends(schemas.oauth2_scheme)):
     credentials_exception = HTTPException(
@@ -229,7 +255,7 @@ async def startup_event():
             result = await db.execute(stmt)
             q_map = {q.qid: q.id for q in result.scalars().all()}
             
-            with open(risk_path, 'r', encoding='utf-8') as f:
+            with open(risk_path, 'r', encoding='utf-8-sig') as f:
                 reader = csv.DictReader(f)
                 for row in reader:
                     qid = row.get("QID Code")
@@ -361,6 +387,8 @@ async def save_assessment(
     db: AsyncSession = Depends(get_db),
     current_user: str = Depends(get_current_user)
 ):
+    snapshot = build_assessment_snapshot(assessment_data)
+
     # Upsert logic
     stmt = select(Assessment).where(Assessment.client_id == assessment_data.id)
     assessment = (await db.execute(stmt)).scalar_one_or_none()
@@ -384,6 +412,13 @@ async def save_assessment(
     except Exception as e:
         logger.error(f"Failed to save assessment {assessment_data.id}: {e}")
         raise HTTPException(status_code=500, detail="Database save failed")
+
+    try:
+        export_path = export_assessment_snapshot(snapshot)
+        logger.info(f"Assessment JSON exported: {export_path.name}")
+    except Exception as e:
+        logger.error(f"Failed to export assessment JSON {assessment_data.id}: {e}")
+        raise HTTPException(status_code=500, detail="Assessment saved but JSON export failed")
         
     if producer:
         try:
@@ -393,7 +428,7 @@ async def save_assessment(
                 "client_id": assessment_data.id,
                 "action": "assessment_updated",
                 "user": current_user,
-                "data": assessment_data.model_dump(by_alias=True)
+                "data": snapshot
             }
             producer.send(KAFKA_TOPIC, value=kafka_event)
         except Exception as e:

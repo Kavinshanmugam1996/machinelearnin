@@ -1,7 +1,9 @@
 import pytest
+import json
 from httpx import AsyncClient
 from database.models import User, Question, QuestionMapper
 from passlib.context import CryptContext
+import main as main_module
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -44,7 +46,9 @@ async def test_protected_route_unauthorized(client: AsyncClient):
     assert response.status_code == 401
 
 @pytest.mark.asyncio
-async def test_save_assessment(client: AsyncClient, db_session):
+async def test_save_assessment(client: AsyncClient, db_session, tmp_path, monkeypatch):
+    monkeypatch.setattr(main_module, "ASSESSMENTS_DIR", tmp_path)
+
     # Setup user and login to get token
     test_user = User(email="user@example.com", hashed_password="password123")
     db_session.add(test_user)
@@ -72,6 +76,33 @@ async def test_save_assessment(client: AsyncClient, db_session):
     )
     assert response.status_code == 200
     assert response.json()["status"] == "success"
+
+    export_file = tmp_path / "client-123.json"
+    assert export_file.exists()
+    exported = json.loads(export_file.read_text(encoding="utf-8"))
+    assert exported["id"] == "client-123"
+    assert exported["name"] == "Test Client"
+    assert exported["profile"] == {"industry": "Tech"}
+    assert exported["answers"] == {"q1": "yes"}
+    assert exported["currentQuestionIndex"] == 5
+
+    updated_assessment_data = {
+        **assessment_data,
+        "answers": {"q1": "yes", "q2": "no"},
+        "currentQuestionIndex": 6,
+        "totalQuestions": 10,
+    }
+    update_response = await client.post(
+        "/api/save",
+        json=updated_assessment_data,
+        headers=headers
+    )
+    assert update_response.status_code == 200
+
+    updated_export = json.loads(export_file.read_text(encoding="utf-8"))
+    assert updated_export["answers"] == {"q1": "yes", "q2": "no"}
+    assert updated_export["currentQuestionIndex"] == 6
+    assert updated_export["totalQuestions"] == 10
 
     # Verify retrieval
     res_clients = await client.get("/api/clients", headers=headers)

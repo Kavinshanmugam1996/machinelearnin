@@ -1,0 +1,12 @@
+{
+  "id": "new-client",
+  "name": "Sync Test",
+  "profile": {
+    "companyName": "Sync Corp"
+  },
+  "answers": {
+    "q1": "Yes"
+  },
+  "currentQuestionIndex": 5,
+  "totalQuestions": 10
+}

@@ -60,6 +60,7 @@ async def migrate():
                             component_group=q_data.get("component_group"),
                             industry=q_data.get("industry"),
                             is_universal=q_data.get("is_universal", False),
+                            department=q_data.get("department"),
                             options=q_data.get("options", [])
                         ))
             await session.commit() # Commit questions so we can link risks
@@ -72,20 +73,38 @@ async def migrate():
             stmt = select(Question)
             result = await session.execute(stmt)
             q_map = {q.qid: q.id for q in result.scalars().all()}
+            inserted_risks = 0
+            skipped_risks = 0
             
-            with open(risk_path, "r", encoding="utf-8") as f:
+            with open(risk_path, "r", encoding="utf-8-sig") as f:
                 reader = csv.DictReader(f)
                 for row in reader:
-                    qid = row.get("QID")
+                    qid = (row.get("QID Code") or "").strip()
                     if qid in q_map:
+                        risk_id = (row.get("Risk ID") or "").strip()
+                        if not risk_id:
+                            continue
+
+                        # Idempotent load: don't duplicate an already-migrated risk.
+                        exists_stmt = select(Risk).where(
+                            (Risk.risk_id == risk_id) &
+                            (Risk.question_id == q_map[qid])
+                        )
+                        existing = (await session.execute(exists_stmt)).scalars().first()
+                        if existing:
+                            skipped_risks += 1
+                            continue
+
                         session.add(Risk(
-                            risk_id=row.get("Risk ID"),
-                            description=row.get("Risk Description"),
+                            risk_id=risk_id,
+                            description=(row.get("Risk Description") or "").strip(),
                             question_id=q_map[qid]
                         ))
+                        inserted_risks += 1
+            print(f"Risks inserted: {inserted_risks}, skipped existing: {skipped_risks}")
         
         # 4. Migrate Question Mapper
-        mapper_path = DATA_DIR / "Question_mapper.csv"
+        mapper_path = DATA_DIR / "Question_mapper_final.csv"
         if mapper_path.exists():
             print(f"Migrating question mapper from {mapper_path.name}...")
             with open(mapper_path, "r", encoding="utf-8") as f:
