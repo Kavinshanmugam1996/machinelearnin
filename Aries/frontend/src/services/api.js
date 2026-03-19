@@ -120,6 +120,23 @@ export const api = {
   },
 
   /**
+   * Fetch department-wise completion and final-page readiness.
+   */
+  async getDepartmentProgress(token, clientId, useCases, industry) {
+    const res = await fetch(`${API_BASE}/api/assessment/${clientId}/department-progress`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ use_cases: useCases || [], industry })
+    });
+    if (res.status === 401) throw new Error("UNAUTHORIZED");
+    if (!res.ok) throw new Error("Failed to fetch department progress");
+    return res.json();
+  },
+
+  /**
    * Delete an assessment
    */
   async deleteAssessment(token, clientId) {

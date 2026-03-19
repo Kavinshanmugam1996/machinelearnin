@@ -16,11 +16,21 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, delete
+from sqlalchemy import select, delete, text, inspect, or_
+from sqlalchemy.orm import selectinload
 
 # Import internal modules
 from database.connection import get_db
-from database.models import User, Question, QuestionMapper, Assessment, Risk
+from database.models import (
+    User,
+    Domain,
+    Department,
+    Category,
+    UseCase,
+    UseCaseCategoryWeight,
+    Question,
+    Assessment,
+)
 from services.remediation import RemediationService
 from middleware import SecurityHeadersMiddleware, RequestLoggingMiddleware
 import schemas
@@ -114,11 +124,35 @@ app.add_middleware(RequestLoggingMiddleware)
 # --- STARTUP EVENT: Seed Users and Load Data ---
 @app.on_event("startup")
 async def startup_event():
-    """Create tables, seed test users, and load question data on startup."""
+    """Create tables, seed test users, and load normalized SQL dataset on startup."""
     from database.connection import engine
     from database.models import Base
-    
-    # Create all tables
+
+    # If an old questions schema exists, reset normalized data tables so Option B can load cleanly.
+    async with engine.begin() as conn:
+        def _has_legacy_questions_schema(sync_conn):
+            inspector = inspect(sync_conn)
+            if "questions" not in inspector.get_table_names():
+                return False
+            cols = {c["name"] for c in inspector.get_columns("questions")}
+            return "qid_code" not in cols
+
+        has_legacy_schema = await conn.run_sync(_has_legacy_questions_schema)
+        if has_legacy_schema:
+            for table_name in [
+                "risks",
+                "question_mapper",
+                "questions",
+                "use_case_category_weights",
+                "use_cases",
+                "categories",
+                "clusters",
+                "departments",
+                "domains",
+            ]:
+                await conn.execute(text(f"DROP TABLE IF EXISTS {table_name}"))
+
+    # Create current tables
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     
@@ -152,104 +186,44 @@ async def startup_event():
         else:
             logger.warning(f"credentials.csv not found at {credentials_path}")
         
-        # 2. Load Questions
+        # 2. Load normalized dataset (Option B)
         data_dir = Path(__file__).parent.parent / "Data"
-        questions_path = data_dir / "questions.json"
-        if questions_path.exists():
-            logger.info("Loading questions from questions.json...")
-            with open(questions_path, 'r', encoding='utf-8') as f:
-                questions_data = json.load(f)
-                for q_data in questions_data:
-                    qid = q_data.get("qid")
-                    stmt = select(Question).where(Question.qid == qid)
-                    existing = (await db.execute(stmt)).scalar_one_or_none()
-                    
-                    if existing:
-                        # Update existing question
-                        existing.text = q_data.get("text")
-                        existing.cluster = q_data.get("cluster")
-                        existing.component_group = q_data.get("component_group")
-                        existing.industry = q_data.get("industry")
-                        existing.is_universal = q_data.get("is_universal", False)
-                        existing.department = q_data.get("department")
-                        existing.options = q_data.get("options", [])
-                    else:
-                        # Add new question
-                        db.add(Question(
-                            qid=qid,
-                            text=q_data.get("text"),
-                            cluster=q_data.get("cluster"),
-                            component_group=q_data.get("component_group"),
-                            industry=q_data.get("industry"),
-                            is_universal=q_data.get("is_universal", False),
-                            department=q_data.get("department"),
-                            options=q_data.get("options", [])
-                        ))
-                await db.commit()
-                logger.info(f"Loaded/Updated questions")
-        
-        # 3. Load Question Mapper
-        mapper_path = data_dir / "Question_mapper_final.csv"
-        if mapper_path.exists():
-            logger.info("Loading question mapper from Question_mapper_final.csv...")
-            with open(mapper_path, 'r', encoding='utf-8') as f:
-                reader = csv.reader(f)
-                headers = next(reader)
-                comp_headers = headers[1:]
-                for row in reader:
-                    if not row:
+        sql_candidates = [data_dir / "Aires_DBA.sql", data_dir / "aries_rds.sql"]
+        sql_path = next((p for p in sql_candidates if p.exists()), None)
+        if sql_path:
+            # Avoid replaying non-idempotent INSERT script on every restart.
+            has_questions = (await db.execute(select(Question.id).limit(1))).first() is not None
+            if not has_questions:
+                logger.info(f"Loading normalized dataset from {sql_path.name}...")
+                with open(sql_path, 'r', encoding='utf-8') as f:
+                    raw_sql = f.read()
+
+                buffer = []
+                statements = []
+                for line in raw_sql.splitlines():
+                    stripped = line.strip()
+                    if not stripped or stripped.startswith("--"):
                         continue
-                    use_case = row[0].strip()
-                    groups = []
-                    for i, val in enumerate(row[1:]):
-                        try:
-                            if float(val) > 0:
-                                groups.append(comp_headers[i].strip())
-                        except:
-                            pass
-                    
-                    stmt = select(QuestionMapper).where(QuestionMapper.use_case == use_case)
-                    existing = (await db.execute(stmt)).scalar_one_or_none()
-                    if existing:
-                        existing.component_groups = ",".join(groups)
-                    elif groups:
-                        db.add(QuestionMapper(
-                            use_case=use_case,
-                            component_groups=",".join(groups)
-                        ))
+                    buffer.append(line)
+                    if stripped.endswith(";"):
+                        stmt = "\n".join(buffer).strip()
+                        buffer = []
+                        stmt = stmt[:-1].strip() if stmt.endswith(";") else stmt
+                        if stmt.upper() in {"BEGIN", "COMMIT"}:
+                            continue
+                        # Skip PostgreSQL-only sequence statements when running locally.
+                        if "pg_get_serial_sequence" in stmt.lower() or stmt.lower().startswith("select setval("):
+                            continue
+                        statements.append(stmt)
+
+                for stmt in statements:
+                    await db.execute(text(stmt))
                 await db.commit()
-                logger.info(f"Loaded/Updated question mapper")
-        
-        # 4. Load Risks
-        risk_path = data_dir / "AR_Risk_DB.csv"
-        if risk_path.exists():
-            logger.info("Loading risks from AR_Risk_DB.csv...")
-            # Get all questions first
-            stmt = select(Question)
-            result = await db.execute(stmt)
-            q_map = {q.qid: q.id for q in result.scalars().all()}
-            
-            with open(risk_path, 'r', encoding='utf-8') as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    qid = row.get("QID Code")
-                    if qid in q_map:
-                        risk_id = row.get("Risk ID")
-                        stmt = select(Risk).where(
-                            (Risk.risk_id == risk_id) & 
-                            (Risk.question_id == q_map[qid])
-                        )
-                        existing = (await db.execute(stmt)).scalar_one_or_none()
-                        if existing:
-                            existing.description = row.get("Risk Description")
-                        else:
-                            db.add(Risk(
-                                risk_id=risk_id,
-                                description=row.get("Risk Description"),
-                                question_id=q_map[qid]
-                            ))
-                await db.commit()
-                logger.info(f"Loaded/Updated risks")
+                logger.info(f"Loaded normalized SQL dataset from {sql_path.name}")
+            else:
+                logger.info("Normalized dataset already loaded; skipping SQL seed")
+        else:
+            logger.warning(f"No SQL dataset found in {data_dir}; expected Aires_DBA.sql or aries_rds.sql")
         
     except Exception as e:
         logger.error(f"Failed to seed data: {e}")
@@ -303,42 +277,97 @@ async def login(creds: schemas.UserLogin, db: AsyncSession = Depends(get_db)):
 async def health_check():
     return {"status": "healthy", "timestamp": datetime.now(timezone.utc).isoformat()}
 
+
+OTHER_INDUSTRY_VALUES = {
+    "other",
+    "other industry",
+    "others",
+    "other industries",
+}
+
+
+def _normalized_industry(industry: Optional[str]) -> str:
+    return (industry or "").strip().lower()
+
+
+def _is_other_industry(industry: Optional[str]) -> bool:
+    return _normalized_industry(industry) in OTHER_INDUSTRY_VALUES
+
+
+async def _resolve_use_cases(req: schemas.QuestionRequest) -> List[str]:
+    use_cases = req.use_cases or []
+    if not use_cases and req.inventory:
+        use_cases = [item.useCase for item in req.inventory if item.useCase]
+    # Keep original order while removing duplicates.
+    return list(dict.fromkeys([u.strip() for u in use_cases if u and u.strip()]))
+
+
+async def _resolve_component_tags(db: AsyncSession, use_cases: List[str]) -> List[str]:
+    if not use_cases:
+        return []
+
+    stmt = (
+        select(Category.slug)
+        .join(UseCaseCategoryWeight, UseCaseCategoryWeight.category_id == Category.id)
+        .join(UseCase, UseCase.id == UseCaseCategoryWeight.use_case_id)
+        .where(UseCase.name.in_(use_cases), UseCaseCategoryWeight.weight > 0)
+    )
+    result = await db.execute(stmt)
+    tags = [slug for slug in result.scalars().all() if slug]
+    return sorted(set(tags))
+
+
+async def _fetch_filtered_questions(req: schemas.QuestionRequest, db: AsyncSession) -> List[Question]:
+    use_cases = await _resolve_use_cases(req)
+    is_none = any(uc == "None of the above / No specific AI use cases" for uc in use_cases)
+
+    stmt = (
+        select(Question)
+        .options(
+            selectinload(Question.cluster_rel),
+            selectinload(Question.category),
+            selectinload(Question.domain),
+            selectinload(Question.department_rel),
+        )
+        .join(Category, Question.category_id == Category.id)
+        .join(Domain, Question.domain_id == Domain.id, isouter=True)
+        .join(Department, Question.dept_id == Department.id, isouter=True)
+    )
+
+    # Step 1: Industry-first selection.
+    if req.industry:
+        if _is_other_industry(req.industry):
+            # "Other" should not pull industry-specific questions.
+            stmt = stmt.where(or_(Domain.name == "General", Question.is_universal.is_(True)))
+        else:
+            stmt = stmt.where(
+                or_(
+                    Domain.name == req.industry,
+                    Domain.name == "General",
+                    Question.is_universal.is_(True),
+                )
+            )
+
+    # Step 2: Use-case component tag filtering via weighted mapper table.
+    if use_cases and not is_none:
+        component_tags = await _resolve_component_tags(db, use_cases)
+        if not component_tags:
+            return []
+        stmt = stmt.where(Category.slug.in_(component_tags))
+
+    # De-duplicate questions and keep department-wise ordering for next-step clustering.
+    stmt = stmt.distinct(Question.id).order_by(Department.name.asc(), Question.qid_code.asc())
+    result = await db.execute(stmt)
+    return result.scalars().all()
+
 @app.post("/api/get-questions", response_model=List[schemas.QuestionBase])
 async def get_questions(
     req: schemas.QuestionRequest, 
     db: AsyncSession = Depends(get_db),
     current_user: str = Depends(get_current_user)
 ):
-    mandatory_groups = ["privacy", "security", "reliability", "legal_regulatory"]
-    all_groups = set(mandatory_groups)
-    all_groups.add("") # Include generic/universal questions
-    all_groups.add(None)
-    
-    # Build the use_cases list: prefer the new field, fall back to legacy inventory
-    use_cases = req.use_cases or []
-    if not use_cases and req.inventory:
-        use_cases = [item.useCase for item in req.inventory if item.useCase]
-    
-    is_none = any(uc == "None of the above / No specific AI use cases" for uc in use_cases)
-    
-    if not is_none:
-        for uc in use_cases:
-            stmt = select(QuestionMapper).where(QuestionMapper.use_case == uc)
-            mapper = (await db.execute(stmt)).scalar_one_or_none()
-            if mapper and mapper.component_groups:
-                all_groups.update([g.strip() for g in mapper.component_groups.split(",")])
-    
-    # Fetch questions: (Industry matches OR is Universal)
-    # AND (component_group matches our calculated set)
-    # Department filter removed — frontend handles grouping
-    filters = [
-        ((Question.industry == req.industry) | (Question.industry == "Universal")),
-        (Question.component_group.in_(list(all_groups)))
-    ]
-        
-    stmt = select(Question).where(*filters)
-    result = await db.execute(stmt)
-    return result.scalars().all()
+    questions = await _fetch_filtered_questions(req, db)
+    return questions
 
 @app.post("/api/get-components", response_model=schemas.ComponentResponse)
 async def get_components(
@@ -346,14 +375,56 @@ async def get_components(
     db: AsyncSession = Depends(get_db),
     current_user: str = Depends(get_current_user)
 ):
-    """Given a list of use case names, return the union of their component groups."""
-    groups = set()
-    for uc in req.use_cases:
-        stmt = select(QuestionMapper).where(QuestionMapper.use_case == uc)
-        mapper = (await db.execute(stmt)).scalar_one_or_none()
-        if mapper and mapper.component_groups:
-            groups.update([g.strip() for g in mapper.component_groups.split(",")])
-    return {"component_groups": sorted(groups)}
+    """Given use case names, return the union of mapped category slugs."""
+    groups = await _resolve_component_tags(db, req.use_cases or [])
+    return {"component_groups": groups}
+
+
+@app.post("/api/assessment/{client_id}/department-progress", response_model=schemas.DepartmentProgressResponse)
+async def get_department_progress(
+    client_id: str,
+    req: schemas.QuestionRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: str = Depends(get_current_user)
+):
+    stmt = select(Assessment).where(
+        (Assessment.client_id == client_id) & (Assessment.owner_email == current_user)
+    )
+    assessment = (await db.execute(stmt)).scalar_one_or_none()
+
+    answers = assessment.answers or {} if assessment else {}
+    answered_qids = {qid for qid, ans in answers.items() if ans is not None and str(ans).strip() != ""}
+
+    questions = await _fetch_filtered_questions(req, db)
+
+    per_department = {}
+    for q in questions:
+        dept = q.department or "Unassigned"
+        if dept not in per_department:
+            per_department[dept] = {"answered": 0, "total": 0}
+        per_department[dept]["total"] += 1
+        if q.qid in answered_qids:
+            per_department[dept]["answered"] += 1
+
+    departments = []
+    for dept_name in sorted(per_department.keys()):
+        answered = per_department[dept_name]["answered"]
+        total = per_department[dept_name]["total"]
+        progress = int((answered / total) * 100) if total > 0 else 0
+        departments.append(
+            {
+                "department": dept_name,
+                "answered": answered,
+                "total": total,
+                "progress": progress,
+            }
+        )
+
+    all_departments_complete = bool(departments) and all(d["progress"] == 100 for d in departments)
+    return {
+        "departments": departments,
+        "all_departments_complete": all_departments_complete,
+    }
 
 @app.post("/api/save", response_model=schemas.SaveResponse)
 async def save_assessment(
@@ -467,7 +538,12 @@ async def get_remediation(
         raise HTTPException(status_code=404, detail="Assessment not found")
         
     # We also need the questions to match against
-    stmt_q = select(Question)
+    stmt_q = select(Question).options(
+        selectinload(Question.cluster_rel),
+        selectinload(Question.category),
+        selectinload(Question.domain),
+        selectinload(Question.department_rel),
+    )
     questions = (await db.execute(stmt_q)).scalars().all()
     
     advice = RemediationService.get_advice(questions, assessment.answers or {})
