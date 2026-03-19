@@ -1,3 +1,4 @@
+
 import os
 import uuid
 import json
@@ -54,6 +55,31 @@ logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 handler.setFormatter(JSONFormatter())
 logger.addHandler(handler)
+
+ASSESSMENTS_DIR = Path(__file__).parent.parent / "Data" / "Assessments"
+ASSESSMENTS_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _assessment_snapshot_path(client_id: str) -> Path:
+    safe_client_id = "".join(ch for ch in client_id if ch.isalnum() or ch in ("-", "_"))
+    return ASSESSMENTS_DIR / f"{safe_client_id}.json"
+
+
+def _write_assessment_snapshot(payload: dict) -> None:
+    client_id = payload.get("id")
+    if not client_id:
+        return
+    snapshot_path = _assessment_snapshot_path(client_id)
+    with open(snapshot_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+
+
+def _read_assessment_snapshot(client_id: str) -> Optional[dict]:
+    snapshot_path = _assessment_snapshot_path(client_id)
+    if not snapshot_path.exists():
+        return None
+    with open(snapshot_path, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 # --- CONFIGURATION ---
 load_dotenv()
@@ -319,7 +345,11 @@ async def _resolve_component_tags(db: AsyncSession, use_cases: List[str]) -> Lis
 
 async def _fetch_filtered_questions(req: schemas.QuestionRequest, db: AsyncSession) -> List[Question]:
     use_cases = await _resolve_use_cases(req)
-    is_none = any(uc == "None of the above / No specific AI use cases" for uc in use_cases)
+    none_labels = {
+        "None of the above / No specific AI use cases",
+        "None of the above / No AI use cases",
+    }
+    is_none = any(uc in none_labels for uc in use_cases)
 
     stmt = (
         select(Question)
@@ -442,7 +472,8 @@ async def save_assessment(
     
     assessment.name = assessment_data.name
     assessment.profile = assessment_data.profile
-    assessment.answers = assessment_data.answers
+    # Persist every answer the user provided, regardless of trigger-point metadata.
+    assessment.answers = assessment_data.answers or {}
     assessment.current_index = assessment_data.currentQuestionIndex
     
     # Only update total_questions if it's > 0 to avoid resetting progress 
@@ -455,6 +486,21 @@ async def save_assessment(
     except Exception as e:
         logger.error(f"Failed to save assessment {assessment_data.id}: {e}")
         raise HTTPException(status_code=500, detail="Database save failed")
+
+    # Write a durable JSON snapshot in addition to DB persistence.
+    try:
+        snapshot_payload = {
+            "id": assessment_data.id,
+            "name": assessment_data.name,
+            "profile": assessment_data.profile,
+            "answers": assessment_data.answers or {},
+            "currentQuestionIndex": assessment_data.currentQuestionIndex,
+            "totalQuestions": assessment_data.totalQuestions,
+            "savedAt": datetime.now(timezone.utc).isoformat(),
+        }
+        _write_assessment_snapshot(snapshot_payload)
+    except Exception as e:
+        logger.error(f"Failed to write assessment snapshot {assessment_data.id}: {e}")
         
     if producer:
         try:
@@ -485,6 +531,17 @@ async def get_assessment(
     assessment = (await db.execute(stmt)).scalar_one_or_none()
     
     if not assessment:
+        snapshot = _read_assessment_snapshot(client_id)
+        if snapshot:
+            return {
+                "id": snapshot.get("id", client_id),
+                "name": snapshot.get("name", "Unnamed Assessment"),
+                "profile": snapshot.get("profile"),
+                "answers": snapshot.get("answers", {}),
+                "currentQuestionIndex": snapshot.get("currentQuestionIndex", 0),
+                "totalQuestions": snapshot.get("totalQuestions", 0),
+            }
+
         # Return a blank structure if not found (expected for new clients)
         return {
             "id": client_id,
