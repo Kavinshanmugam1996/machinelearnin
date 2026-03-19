@@ -42,6 +42,18 @@ class ComponentRequest(BaseModel):
 class ComponentResponse(BaseModel):
     component_groups: List[str]
 
+
+class DepartmentProgressItem(BaseModel):
+    department: str
+    answered: int
+    total: int
+    progress: int
+
+
+class DepartmentProgressResponse(BaseModel):
+    departments: List[DepartmentProgressItem]
+    all_departments_complete: bool
+
 class AssessmentBase(BaseModel):
     id: str = Field(..., alias="id")
     name: Optional[str] = None
