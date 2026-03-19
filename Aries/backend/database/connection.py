@@ -5,9 +5,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# We use SQLite with aiosqlite locally as planned, 
-# but the code is ready for PostgreSQL via DATABASE_URL env var.
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///aires.db")
+# Require explicit DATABASE_URL in production environments.
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    if os.getenv("ALLOW_INSECURE_DEV", "false").lower() == "true":
+        DATABASE_URL = "sqlite+aiosqlite:///aires.db"
+    else:
+        raise RuntimeError("DATABASE_URL is required. Set environment variable DATABASE_URL.")
 
 # Handle DB URL and connect args
 connect_args = {}
