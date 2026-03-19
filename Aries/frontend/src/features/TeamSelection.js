@@ -12,9 +12,26 @@ export function TeamSelection({ questions = [], answers = {}, onNext, onBack, on
   if (!questions || questions.length === 0) {
     return html`
       <div style=${{ minHeight: '100vh', background: B.gray50, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px', fontFamily: BODY }}>
-        <div style=${{ textAlign: 'center' }}>
-          <div style=${{ width: 48, height: 48, border: '4px solid rgba(0,0,0,0.05)', borderTopColor: B.blue, borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 24px' }} />
-          <p style=${{ color: B.gray500, fontWeight: 600 }}>Assembling your expert teams...</p>
+        <div style=${{ textAlign: 'center', maxWidth: 560, background: B.white, border: `1px solid ${B.border}`, borderRadius: 16, padding: '28px', boxShadow: B.shadow }}>
+          <h2 style=${{ margin: '0 0 10px', fontSize: 22, fontWeight: 800, color: B.black, fontFamily: DISPLAY }}>No Questions Found</h2>
+          <p style=${{ color: B.gray500, fontWeight: 500, margin: '0 0 18px', lineHeight: 1.6 }}>
+            We could not map any questions for the current selection. Please review AI Usage Description and Mapped Use Case values, then try again.
+          </p>
+          <button
+            onClick=${onBack}
+            style=${{
+              padding: '11px 20px',
+              background: B.red,
+              border: 'none',
+              borderRadius: 10,
+              color: B.white,
+              fontSize: 14,
+              fontWeight: 700,
+              cursor: 'pointer'
+            }}
+          >
+            Back to AI Inventory
+          </button>
         </div>
       </div>
     `;

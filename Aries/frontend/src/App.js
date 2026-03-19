@@ -18,6 +18,13 @@ const html = htm.bind(React.createElement);
 
 const { useState, useEffect } = React;
 
+const NONE_USE_CASE_LABELS = new Set([
+  "None of the above / No specific AI use cases",
+  "None of the above / No AI use cases"
+]);
+
+const CANONICAL_NONE_USE_CASE = "None of the above / No specific AI use cases";
+
 export default function App() {
   const [page, setPage] = useState("loading"); // login, landing, profile, team, questions, results
   const [showDefaultClientModal, setShowDefaultClientModal] = useState(false);
@@ -552,9 +559,16 @@ export default function App() {
           if (p.companyName) {
             setClients(prev => prev.map(c => c.id === activeClientId ? { ...c, name: p.companyName } : c));
           }
-          // Pre-populate useCases from auto-mapped inventory
-          const mappedCases = p.inventory?.map(i => i.useCase).filter(Boolean) || [];
-          const finalUseCases = [...new Set([...useCases, ...mappedCases])];
+          // Use only current inventory selections and normalize "None of the above" labels.
+          const mappedCases = (p.inventory || [])
+            .map(i => (i.useCase || "").trim())
+            .filter(Boolean);
+
+          const hasNoneCase = mappedCases.some(uc => NONE_USE_CASE_LABELS.has(uc));
+          const finalUseCases = hasNoneCase
+            ? [CANONICAL_NONE_USE_CASE]
+            : [...new Set(mappedCases)];
+
           setUseCases(finalUseCases);
 
           const updatedProfile = { ...p, use_cases: finalUseCases };
