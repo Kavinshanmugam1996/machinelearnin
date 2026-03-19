@@ -76,8 +76,8 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
   };
 
   const autoMap = (text) => {
-    if (!text) return "";
-    const t = text.toLowerCase();
+    const t = (text || "").toLowerCase().trim();
+    if (!t) return "";
     if (t.includes("chat") || t.includes("bot") || t.includes("support")) return "Customer chatbot";
     if (t.includes("copilot") || t.includes("productivity") || t.includes("employee")) return "Employee copilot";
     if (t.includes("code") || t.includes("dev") || t.includes("program")) return "Developer or coding assistant";
@@ -98,7 +98,8 @@ export function CompanyProfile({ onNext, clients, activeClientId, onSwitchClient
   const upd = (i, k, v) => {
     const n = [...inventory];
     n[i] = { ...n[i], [k]: v };
-    if (k === "description" && !n[i].useCase) {
+    if (k === "description") {
+      // Recompute mapping on every keystroke so keyword detection is immediate.
       n[i].useCase = autoMap(v);
     }
     setInventory(n);
