@@ -5,11 +5,16 @@ FROM python:3.11-slim
 WORKDIR /app
 
 # Copy dependency list and install them
-COPY requirements.txt .
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application files
-COPY . .
+# Copy backend, frontend and data files
+COPY backend/ ./backend/
+COPY frontend/ ./frontend/
+COPY Data/ ./Data/
+
+# Set working directory to backend where main.py lives
+WORKDIR /app/backend
 
 # Use dedicated writable snapshot path and drop root privileges
 ENV ASSESSMENTS_DIR=/app/Assessments

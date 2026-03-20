@@ -13,3 +13,5 @@ node_modules/
 .git/
 .vscode/
 server.py
+# Never ship plaintext passwords in the image
+credentials.csv

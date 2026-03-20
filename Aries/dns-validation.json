@@ -1,0 +1,30 @@
+{
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "_a308cfc1a04e899d95a2395109d321c5.aires-risk.com.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_3a66d880e432c5a6420ff90486852256.jkddzztszm.acm-validations.aws."
+          }
+        ]
+      }
+    },
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "_024ea75b24d3d2041dbe41339f48a1ab.www.aires-risk.com.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_5167a7f0942ea873e672737e8cdc7c22.jkddzztszm.acm-validations.aws."
+          }
+        ]
+      }
+    }
+  ]
+}

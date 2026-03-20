@@ -1,0 +1,42 @@
+{
+  "family": "aires-api",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::543444658305:role/aires-task-execution-role",
+  "taskRoleArn": "arn:aws:iam::543444658305:role/aires-task-execution-role",
+  "containerDefinitions": [
+    {
+      "name": "aires-api",
+      "image": "543444658305.dkr.ecr.ca-central-1.amazonaws.com/aires-api:latest",
+      "portMappings": [
+        {
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "PORT", "value": "8080" },
+        { "name": "ALGORITHM", "value": "HS256" },
+        { "name": "ACCESS_TOKEN_EXPIRE_MINUTES", "value": "60" },
+        { "name": "AWS_DEFAULT_REGION", "value": "ca-central-1" },
+        { "name": "S3_BUCKET", "value": "aires-assessments-prod" },
+        { "name": "CORS_ORIGINS", "value": "https://aires-risk.com,https://www.aires-risk.com" }
+      ],
+      "secrets": [
+        { "name": "SECRET_KEY", "valueFrom": "arn:aws:ssm:ca-central-1:543444658305:parameter/aires/SECRET_KEY" },
+        { "name": "DATABASE_URL", "valueFrom": "arn:aws:ssm:ca-central-1:543444658305:parameter/aires/DATABASE_URL" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/aires-api",
+          "awslogs-region": "ca-central-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "essential": true
+    }
+  ]
+}

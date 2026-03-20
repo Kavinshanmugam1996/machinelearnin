@@ -45,3 +45,6 @@ aires_p1_clone/
 aires.db
 .env
 Data/Assessments/c_*.json
+
+# Claude Code session files
+.claude/

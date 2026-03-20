@@ -4,6 +4,8 @@ import uuid
 import json
 import logging
 import csv
+import boto3
+from botocore.exceptions import ClientError
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
@@ -62,6 +64,9 @@ ASSESSMENTS_DIR = Path(
 )
 ASSESSMENTS_DIR.mkdir(parents=True, exist_ok=True)
 
+S3_BUCKET = os.getenv("S3_BUCKET")
+s3 = boto3.client("s3") if S3_BUCKET else None
+
 
 def _sanitize_for_path(value: str) -> str:
     return "".join(ch for ch in value if ch.isalnum() or ch in ("-", "_", ".", "@"))
@@ -80,17 +85,32 @@ def _write_assessment_snapshot(payload: dict) -> None:
     owner_email = payload.get("owner_email")
     if not client_id or not owner_email:
         return
-    snapshot_path = _assessment_snapshot_path(owner_email, client_id)
-    with open(snapshot_path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2)
+
+    if S3_BUCKET:
+        key = f"snapshots/{_sanitize_for_path(owner_email.lower())}/{client_id}.json"
+        s3.put_object(Bucket=S3_BUCKET, Key=key, Body=json.dumps(payload, indent=2))
+    else:
+        snapshot_path = _assessment_snapshot_path(owner_email, client_id)
+        with open(snapshot_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
 
 
 def _read_assessment_snapshot(owner_email: str, client_id: str) -> Optional[dict]:
-    snapshot_path = _assessment_snapshot_path(owner_email, client_id)
-    if not snapshot_path.exists():
-        return None
-    with open(snapshot_path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    if S3_BUCKET:
+        key = f"snapshots/{_sanitize_for_path(owner_email.lower())}/{client_id}.json"
+        try:
+            response = s3.get_object(Bucket=S3_BUCKET, Key=key)
+            return json.loads(response["Body"].read())
+        except ClientError as e:
+            if e.response["Error"]["Code"] == "NoSuchKey":
+                return None
+            raise
+    else:
+        snapshot_path = _assessment_snapshot_path(owner_email, client_id)
+        if not snapshot_path.exists():
+            return None
+        with open(snapshot_path, "r", encoding="utf-8") as f:
+            return json.load(f)
 
 
 def _is_password_hash(value: str) -> bool:
@@ -424,10 +444,17 @@ async def _fetch_filtered_questions(req: schemas.QuestionRequest, db: AsyncSessi
             return []
         stmt = stmt.where(Category.slug.in_(component_tags))
 
-    # De-duplicate questions and keep department-wise ordering for next-step clustering.
-    stmt = stmt.distinct().order_by(Department.name.asc(), Question.qid_code.asc())
+    # Order by department and question code. Deduplicate in Python to avoid
+    # PostgreSQL's restriction that ORDER BY columns must appear in SELECT DISTINCT list.
+    stmt = stmt.order_by(Department.name.asc(), Question.qid_code.asc())
     result = await db.execute(stmt)
-    return result.scalars().all()
+    seen = set()
+    questions = []
+    for q in result.scalars().all():
+        if q.id not in seen:
+            seen.add(q.id)
+            questions.append(q)
+    return questions
 
 @app.post("/api/get-questions", response_model=List[schemas.QuestionBase])
 async def get_questions(

@@ -1,0 +1,28 @@
+{
+  "Changes": [
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "aires-risk.com",
+        "Type": "A",
+        "AliasTarget": {
+          "HostedZoneId": "ZQSVJUPU6J1EY",
+          "DNSName": "aires-alb-1420489428.ca-central-1.elb.amazonaws.com",
+          "EvaluateTargetHealth": true
+        }
+      }
+    },
+    {
+      "Action": "CREATE",
+      "ResourceRecordSet": {
+        "Name": "www.aires-risk.com",
+        "Type": "A",
+        "AliasTarget": {
+          "HostedZoneId": "ZQSVJUPU6J1EY",
+          "DNSName": "aires-alb-1420489428.ca-central-1.elb.amazonaws.com",
+          "EvaluateTargetHealth": true
+        }
+      }
+    }
+  ]
+}
