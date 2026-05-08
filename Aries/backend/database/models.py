@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Text, JSON, UniqueConstraint, Numeric
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Text, JSON, UniqueConstraint, Numeric, DateTime
 from sqlalchemy.orm import relationship, declarative_base
+from datetime import datetime, timezone
 
 Base = declarative_base()
 
@@ -8,6 +9,13 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
+    email_verified = Column(Boolean, default=False, nullable=False)
+    verification_token = Column(String, nullable=True)
+    verification_token_expires = Column(DateTime(timezone=True), nullable=True)
+    reset_token = Column(String, nullable=True)
+    reset_token_expires = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)
+    last_login = Column(DateTime(timezone=True), nullable=True)
 
 
 class Domain(Base):
