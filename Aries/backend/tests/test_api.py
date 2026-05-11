@@ -86,7 +86,7 @@ async def test_login_success(client: AsyncClient, db_session):
     # Note: main.py currently does plain text check, but models are ready for hashing.
     # Our test should match the implementation in main.py.
     # main.py verify_password returns plain_password == stored_password
-    test_user = User(email="test@example.com", hashed_password="password123", email_verified=True)
+    test_user = User(email="test@example.com", hashed_password="password123")
     db_session.add(test_user)
     await db_session.commit()
 
@@ -115,7 +115,7 @@ async def test_protected_route_unauthorized(client: AsyncClient):
 @pytest.mark.asyncio
 async def test_save_assessment(client: AsyncClient, db_session):
     # Setup user and login to get token
-    test_user = User(email="user@example.com", hashed_password="password123", email_verified=True)
+    test_user = User(email="user@example.com", hashed_password="password123")
     db_session.add(test_user)
     await db_session.commit()
 
@@ -154,7 +154,7 @@ async def test_get_questions_none_selected(client: AsyncClient, db_session):
     await _seed_question_graph(db_session)
 
     # Setup user and login
-    test_user = User(email="tester@example.com", hashed_password="password123", email_verified=True)
+    test_user = User(email="tester@example.com", hashed_password="password123")
     db_session.add(test_user)
     await db_session.commit()
 
@@ -187,7 +187,7 @@ async def test_get_questions_mixed_inventory(client: AsyncClient, db_session):
     await _seed_question_graph(db_session)
     
     # Setup user and login
-    test_user = User(email="tester2@example.com", hashed_password="password123", email_verified=True)
+    test_user = User(email="tester2@example.com", hashed_password="password123")
     db_session.add(test_user)
     await db_session.commit()
 
@@ -216,7 +216,7 @@ async def test_get_questions_mixed_inventory(client: AsyncClient, db_session):
 @pytest.mark.asyncio
 async def test_get_assessment(client: AsyncClient, db_session):
     # Setup user and login
-    test_user = User(email="sync@example.com", hashed_password="password123", email_verified=True)
+    test_user = User(email="sync@example.com", hashed_password="password123")
     db_session.add(test_user)
     await db_session.commit()
 

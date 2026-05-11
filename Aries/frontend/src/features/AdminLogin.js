@@ -6,7 +6,7 @@ import { B, DISPLAY, BODY } from '../services/constants.js';
 const html = htm.bind(React.createElement);
 const { useState, useEffect } = React;
 
-export function AdminLogin({ onLogin, onRegister, onForgotPassword }) {
+export function AdminLogin({ onLogin }) {
   const [email, setEmail] = useState(() => localStorage.getItem("AIRES_saved_email") || "");
   const [pw, setPw] = useState("");
   const [rememberMe, setRememberMe] = useState(!!localStorage.getItem("AIRES_saved_email"));
@@ -175,30 +175,15 @@ export function AdminLogin({ onLogin, onRegister, onForgotPassword }) {
               </div>
             </div>
             
-            <div style=${{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <label style=${{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer", userSelect: "none" }}>
-                <input
-                  type="checkbox"
-                  checked=${rememberMe}
-                  onChange=${e => setRememberMe(e.target.checked)}
-                  style=${{ width: 16, height: 16, cursor: "pointer" }}
-                />
-                <span style=${{ fontSize: 13, fontWeight: 500, color: B.gray600 }}>Remember my email</span>
-              </label>
-              ${onForgotPassword ? html`
-                <button
-                  onClick=${onForgotPassword}
-                  style=${{
-                    background: "none", border: "none", color: B.blue, fontSize: 13,
-                    fontWeight: 700, cursor: "pointer", textDecoration: "underline",
-                    fontFamily: BODY
-                  }}
-                  type="button"
-                >
-                  Forgot password?
-                </button>
-              ` : null}
-            </div>
+            <label style=${{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer", userSelect: "none" }}>
+              <input 
+                type="checkbox" 
+                checked=${rememberMe} 
+                onChange=${e => setRememberMe(e.target.checked)}
+                style=${{ width: 16, height: 16, cursor: "pointer" }}
+              />
+              <span style=${{ fontSize: 13, fontWeight: 500, color: B.gray600 }}>Remember my email</span>
+            </label>
 
             ${error && html`
               <div style=${{
@@ -218,22 +203,7 @@ export function AdminLogin({ onLogin, onRegister, onForgotPassword }) {
             </button>
             <div style=${{ marginTop: 16, textAlign: "center" }}>
               <p style=${{ fontSize: 13, color: B.gray500 }}>
-                Don't have an account?
-                ${onRegister ? html`
-                  <button
-                    onClick=${onRegister}
-                    style=${{
-                      background: "none", border: "none", color: B.blue,
-                      fontWeight: 700, cursor: "pointer", marginLeft: 6,
-                      textDecoration: "underline", fontFamily: BODY, fontSize: 13
-                    }}
-                    type="button"
-                  >
-                    Register
-                  </button>
-                ` : html`
-                  <a href="mailto:support@bizcom.ai" style=${{ color: B.blue, fontWeight: 700, textDecoration: "none", marginLeft: 4 }}>Contact IT Support</a>
-                `}
+                Don't have an admin account? <a href="mailto:support@bizcom.ai" style=${{ color: B.blue, fontWeight: 700, textDecoration: "none" }}>Contact IT Support</a>
               </p>
             </div>
           </div>

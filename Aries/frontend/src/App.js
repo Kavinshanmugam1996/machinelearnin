@@ -1,11 +1,7 @@
 import React from 'react';
 import htm from 'htm';
-console.log("%c[AIRES] App.js Booting v2.0.0", "color: #3B9BC8; font-weight: bold");
-import { AdminLogin } from './features/AdminLogin.js?v=2.0.0';
-import { Register } from './features/Register.js?v=2.0.0';
-import { VerifyEmail } from './features/VerifyEmail.js?v=2.0.0';
-import { ForgotPassword } from './features/ForgotPassword.js?v=2.0.0';
-import { ResetPassword } from './features/ResetPassword.js?v=2.0.0';
+console.log("%c[AIRES] App.js Booting v1.0.6", "color: #3B9BC8; font-weight: bold");
+import { AdminLogin } from './features/AdminLogin.js?v=1.0.6';
 import { LandingPage } from './features/LandingPage.js?v=1.0.6';
 import { CompanyProfile } from './features/CompanyProfile.js?v=1.0.7';
 import { QuestionFlow } from './features/QuestionFlow.js?v=1.0.7';
@@ -30,7 +26,7 @@ const NONE_USE_CASE_LABELS = new Set([
 const CANONICAL_NONE_USE_CASE = "None of the above / No specific AI use cases";
 
 export default function App() {
-  const [page, setPage] = useState("loading"); // login, register, verify-email, forgot-password, reset-password, landing, profile, team, questions, results
+  const [page, setPage] = useState("loading"); // login, landing, profile, team, questions, results
   const [showDefaultClientModal, setShowDefaultClientModal] = useState(false);
   const [newAssessmentName, setNewAssessmentName] = useState("");
   
@@ -44,7 +40,7 @@ export default function App() {
 
   // --- IDLE TIMEOUT LOGIC (15 MINS) ---
   useEffect(() => {
-    if (page === "login" || page === "register" || page === "verify-email" || page === "forgot-password" || page === "reset-password" || page === "loading") return;
+    if (page === "login" || page === "loading") return;
 
     let timeoutId;
     const IDLE_TIME = 15 * 60 * 1000; // 15 minutes
@@ -68,26 +64,8 @@ export default function App() {
     };
   }, [page]);
 
-  // --- AUTH PERSISTENCE & URL-BASED ROUTING ---
+  // --- AUTH PERSISTENCE ---
   useEffect(() => {
-    // Check for special auth routes in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const verifyToken = urlParams.get('token');
-    const pathName = window.location.pathname;
-
-    // If verify-email token in URL, go to verify page
-    if (verifyToken && (pathName.includes('verify') || urlParams.get('verify'))) {
-      setPage("verify-email");
-      return;
-    }
-
-    // If reset-password token in URL, go to reset page
-    if (verifyToken && (pathName.includes('reset') || urlParams.get('reset'))) {
-      setPage("reset-password");
-      return;
-    }
-
-    // Otherwise check for existing auth token
     const token = localStorage.getItem("AIRES_token");
     if (token) {
       console.log("%c[AIRES] Cached token found. Logging in...","color: #10B981; font-weight: bold");
@@ -555,32 +533,11 @@ export default function App() {
         </div>
       ` : null}
 
-      ${page === "login" ? html`<${AdminLogin}
-        onLogin=${async () => {
-          setPage("loading");
-          const success = await initData();
-          if (success) setPage("landing");
-        }}
-        onRegister=${() => setPage("register")}
-        onForgotPassword=${() => setPage("forgot-password")}
-      />` : null}
-
-      ${page === "register" ? html`<${Register}
-        onBack=${() => setPage("login")}
-        onSuccess=${() => setPage("login")}
-      />` : null}
-
-      ${page === "verify-email" ? html`<${VerifyEmail}
-        onSuccess=${() => setPage("login")}
-      />` : null}
-
-      ${page === "forgot-password" ? html`<${ForgotPassword}
-        onBack=${() => setPage("login")}
-      />` : null}
-
-      ${page === "reset-password" ? html`<${ResetPassword}
-        onSuccess=${() => setPage("login")}
-      />` : null}
+      ${page === "login" ? html`<${AdminLogin} onLogin=${async () => {
+        setPage("loading");
+        const success = await initData();
+        if (success) setPage("landing");
+      }} />` : null}
       ${page === "landing" ? html`
         <${LandingPage}
           onBegin=${cleanReset}

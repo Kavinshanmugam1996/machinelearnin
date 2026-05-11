@@ -348,203 +348,20 @@ async def health_check():
 async def login(creds: schemas.UserLogin, db: AsyncSession = Depends(get_db)):
     stmt = select(User).where(User.email == creds.email.lower())
     user = (await db.execute(stmt)).scalar_one_or_none()
-
+    
     if user and verify_password(creds.password, user.hashed_password):
-        # Check if email is verified (allow legacy users without this field)
-        if hasattr(user, 'email_verified') and not user.email_verified:
-            raise HTTPException(status_code=403, detail="Please verify your email before logging in")
-
         if not _is_password_hash(user.hashed_password):
             user.hashed_password = pwd_context.hash(creds.password)
             await db.commit()
-
-        # Update last login
-        user.last_login = datetime.now(timezone.utc)
-        await db.commit()
-
         access_token = create_access_token(
-            data={"sub": user.email},
+            data={"sub": user.email}, 
             expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
         )
         logger.info(f"User logged in: {user.email}")
         return {"access_token": access_token, "token_type": "bearer"}
-
+    
     logger.warning(f"Failed login attempt: {creds.email}")
     raise HTTPException(status_code=401, detail="Invalid credentials")
-
-@app.post("/api/register", response_model=schemas.MessageResponse)
-async def register(user_data: schemas.UserRegister, db: AsyncSession = Depends(get_db)):
-    # Check if user already exists
-    stmt = select(User).where(User.email == user_data.email.lower())
-    existing_user = (await db.execute(stmt)).scalar_one_or_none()
-    if existing_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
-
-    # Hash password
-    hashed_password = pwd_context.hash(user_data.password)
-
-    # Generate verification token
-    verification_token = str(uuid.uuid4())
-    verification_expires = datetime.now(timezone.utc) + timedelta(hours=24)
-
-    # Create new user
-    new_user = User(
-        email=user_data.email.lower(),
-        hashed_password=hashed_password,
-        email_verified=False,
-        verification_token=verification_token,
-        verification_token_expires=verification_expires
-    )
-    db.add(new_user)
-    await db.commit()
-
-    # Send verification email
-    frontend_url = os.getenv("FRONTEND_URL", "https://aires-risk.com")
-    verification_link = f"{frontend_url}/verify-email?token={verification_token}"
-
-    if s3:  # Only send email if SES is configured
-        try:
-            ses = boto3.client('ses', region_name='ca-central-1')
-            ses.send_email(
-                Source=os.getenv("SES_FROM_EMAIL", "no-reply@aires-risk.com"),
-                Destination={'ToAddresses': [user_data.email]},
-                Message={
-                    'Subject': {'Data': 'Verify your AIRES account'},
-                    'Body': {
-                        'Html': {
-                            'Data': f'''
-                            <html>
-                            <body style="font-family: Arial, sans-serif;">
-                                <h2>Welcome to AIRES™ Risk Profiler!</h2>
-                                <p>Thank you for registering. Please verify your email address by clicking the link below:</p>
-                                <p><a href="{verification_link}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Verify Email</a></p>
-                                <p>Or copy and paste this link: {verification_link}</p>
-                                <p>This link will expire in 24 hours.</p>
-                                <p>If you didn't create this account, please ignore this email.</p>
-                            </body>
-                            </html>
-                            '''
-                        }
-                    }
-                }
-            )
-            logger.info(f"Verification email sent to: {user_data.email}")
-        except Exception as e:
-            logger.error(f"Failed to send verification email: {e}")
-
-    return {"message": "Registration successful. Please check your email to verify your account."}
-
-@app.get("/api/verify-email", response_model=schemas.MessageResponse)
-async def verify_email(token: str, db: AsyncSession = Depends(get_db)):
-    stmt = select(User).where(User.verification_token == token)
-    user = (await db.execute(stmt)).scalar_one_or_none()
-
-    if not user:
-        raise HTTPException(status_code=400, detail="Invalid verification token")
-
-    if user.email_verified:
-        return {"message": "Email already verified. You can now log in."}
-
-    if user.verification_token_expires < datetime.now(timezone.utc):
-        raise HTTPException(status_code=400, detail="Verification token expired. Please register again.")
-
-    user.email_verified = True
-    user.verification_token = None
-    user.verification_token_expires = None
-    await db.commit()
-
-    logger.info(f"Email verified: {user.email}")
-    return {"message": "Email verified successfully! You can now log in."}
-
-@app.post("/api/forgot-password", response_model=schemas.MessageResponse)
-async def forgot_password(request: schemas.ForgotPasswordRequest, db: AsyncSession = Depends(get_db)):
-    stmt = select(User).where(User.email == request.email.lower())
-    user = (await db.execute(stmt)).scalar_one_or_none()
-
-    # Always return success to prevent email enumeration
-    if not user:
-        return {"message": "If that email exists, a password reset link has been sent."}
-
-    # Generate reset token
-    reset_token = str(uuid.uuid4())
-    reset_expires = datetime.now(timezone.utc) + timedelta(hours=1)
-
-    user.reset_token = reset_token
-    user.reset_token_expires = reset_expires
-    await db.commit()
-
-    # Send reset email
-    frontend_url = os.getenv("FRONTEND_URL", "https://aires-risk.com")
-    reset_link = f"{frontend_url}/reset-password?token={reset_token}"
-
-    if s3:  # Only send email if SES is configured
-        try:
-            ses = boto3.client('ses', region_name='ca-central-1')
-            ses.send_email(
-                Source=os.getenv("SES_FROM_EMAIL", "no-reply@aires-risk.com"),
-                Destination={'ToAddresses': [user.email]},
-                Message={
-                    'Subject': {'Data': 'Reset your AIRES password'},
-                    'Body': {
-                        'Html': {
-                            'Data': f'''
-                            <html>
-                            <body style="font-family: Arial, sans-serif;">
-                                <h2>Password Reset Request</h2>
-                                <p>You requested to reset your password. Click the link below to create a new password:</p>
-                                <p><a href="{reset_link}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Reset Password</a></p>
-                                <p>Or copy and paste this link: {reset_link}</p>
-                                <p>This link will expire in 1 hour.</p>
-                                <p>If you didn't request this, please ignore this email.</p>
-                            </body>
-                            </html>
-                            '''
-                        }
-                    }
-                }
-            )
-            logger.info(f"Password reset email sent to: {user.email}")
-        except Exception as e:
-            logger.error(f"Failed to send reset email: {e}")
-
-    return {"message": "If that email exists, a password reset link has been sent."}
-
-@app.post("/api/reset-password", response_model=schemas.MessageResponse)
-async def reset_password(request: schemas.ResetPasswordRequest, db: AsyncSession = Depends(get_db)):
-    stmt = select(User).where(User.reset_token == request.token)
-    user = (await db.execute(stmt)).scalar_one_or_none()
-
-    if not user:
-        raise HTTPException(status_code=400, detail="Invalid reset token")
-
-    if user.reset_token_expires < datetime.now(timezone.utc):
-        raise HTTPException(status_code=400, detail="Reset token expired. Please request a new one.")
-
-    user.hashed_password = pwd_context.hash(request.new_password)
-    user.reset_token = None
-    user.reset_token_expires = None
-    await db.commit()
-
-    logger.info(f"Password reset for: {user.email}")
-    return {"message": "Password reset successfully. You can now log in."}
-
-@app.post("/api/change-password", response_model=schemas.MessageResponse)
-async def change_password(
-    request: schemas.ChangePasswordRequest,
-    current_user_email: str = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db)
-):
-    stmt = select(User).where(User.email == current_user_email)
-    user = (await db.execute(stmt)).scalar_one_or_none()
-
-    if not user or not verify_password(request.current_password, user.hashed_password):
-        raise HTTPException(status_code=400, detail="Current password is incorrect")
-
-    user.hashed_password = pwd_context.hash(request.new_password)
-    await db.commit()
-
-    logger.info(f"Password changed for: {user.email}")
-    return {"message": "Password changed successfully"}
 
 OTHER_INDUSTRY_VALUES = {
     "other",
