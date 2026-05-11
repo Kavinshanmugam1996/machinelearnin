@@ -25,5 +25,5 @@ USER appuser
 ENV PORT=3000
 EXPOSE $PORT
 
-# Command to run the production server
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
+# Command to run migrations then start the production server
+CMD ["sh", "-c", "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port $PORT"]
