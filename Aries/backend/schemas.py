@@ -10,9 +10,25 @@ class UserBase(BaseModel):
 class UserLogin(UserBase):
     password: str
 
+class UserRegister(BaseModel):
+    email: EmailStr
+    password: str
+    confirm_password: str
+
 class Token(BaseModel):
     access_token: str
     token_type: str
+
+class MessageResponse(BaseModel):
+    message: str
+
+class PasswordResetRequest(BaseModel):
+    email: EmailStr
+
+class PasswordReset(BaseModel):
+    token: str
+    new_password: str
+    confirm_password: str
 
 class QuestionBase(BaseModel):
     qid: str

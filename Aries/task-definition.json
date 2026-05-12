@@ -22,7 +22,10 @@
         { "name": "ACCESS_TOKEN_EXPIRE_MINUTES", "value": "60" },
         { "name": "AWS_DEFAULT_REGION", "value": "ca-central-1" },
         { "name": "S3_BUCKET", "value": "aires-assessments-prod" },
-        { "name": "CORS_ORIGINS", "value": "https://aires-risk.com,https://www.aires-risk.com" }
+        { "name": "CORS_ORIGINS", "value": "https://aires-risk.com,https://www.aires-risk.com" },
+        { "name": "REGISTRATION_ENABLED", "value": "false" },
+        { "name": "FRONTEND_URL", "value": "https://aires-risk.com" },
+        { "name": "SES_FROM_EMAIL", "value": "noreply@aires-risk.com" }
       ],
       "secrets": [
         { "name": "SECRET_KEY", "valueFrom": "arn:aws:ssm:ca-central-1:543444658305:parameter/aires/SECRET_KEY" },

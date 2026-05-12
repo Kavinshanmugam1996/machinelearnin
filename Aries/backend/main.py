@@ -4,6 +4,7 @@ import uuid
 import json
 import logging
 import csv
+import secrets
 import boto3
 from botocore.exceptions import ClientError
 from datetime import datetime, timedelta, timezone
@@ -35,8 +36,11 @@ from database.models import (
     Assessment,
 )
 from services.remediation import RemediationService
+from services.email_service import send_verification_email, send_password_reset_email
 from middleware import SecurityHeadersMiddleware, RequestLoggingMiddleware
 import schemas
+
+REGISTRATION_ENABLED = os.getenv("REGISTRATION_ENABLED", "false").lower() == "true"
 
 # --- ENTERPRISE LOGGING ---
 class JSONFormatter(logging.Formatter):
@@ -348,20 +352,134 @@ async def health_check():
 async def login(creds: schemas.UserLogin, db: AsyncSession = Depends(get_db)):
     stmt = select(User).where(User.email == creds.email.lower())
     user = (await db.execute(stmt)).scalar_one_or_none()
-    
+
     if user and verify_password(creds.password, user.hashed_password):
+        if REGISTRATION_ENABLED and not user.email_verified:
+            raise HTTPException(
+                status_code=403,
+                detail="Email not verified. Please check your inbox for a verification link."
+            )
         if not _is_password_hash(user.hashed_password):
             user.hashed_password = pwd_context.hash(creds.password)
             await db.commit()
+        user.last_login = datetime.now(timezone.utc)
+        await db.commit()
         access_token = create_access_token(
-            data={"sub": user.email}, 
+            data={"sub": user.email},
             expires_delta=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
         )
         logger.info(f"User logged in: {user.email}")
         return {"access_token": access_token, "token_type": "bearer"}
-    
+
     logger.warning(f"Failed login attempt: {creds.email}")
     raise HTTPException(status_code=401, detail="Invalid credentials")
+
+
+@app.post("/api/register", response_model=schemas.MessageResponse)
+async def register(req: schemas.UserRegister, db: AsyncSession = Depends(get_db)):
+    if not REGISTRATION_ENABLED:
+        raise HTTPException(status_code=503, detail="Registration is not currently available.")
+    if req.password != req.confirm_password:
+        raise HTTPException(status_code=400, detail="Passwords do not match.")
+    if len(req.password) < 8:
+        raise HTTPException(status_code=400, detail="Password must be at least 8 characters.")
+
+    email = req.email.lower()
+    stmt = select(User).where(User.email == email)
+    existing = (await db.execute(stmt)).scalar_one_or_none()
+    if existing:
+        # Don't reveal whether the account exists — generic response
+        return {"message": "If that email is not already registered, a verification link has been sent."}
+
+    token = secrets.token_urlsafe(32)
+    expires = datetime.now(timezone.utc) + timedelta(hours=24)
+    user = User(
+        email=email,
+        hashed_password=pwd_context.hash(req.password),
+        email_verified=False,
+        verification_token=token,
+        verification_token_expires=expires,
+    )
+    db.add(user)
+    await db.commit()
+
+    send_verification_email(email, token)
+    logger.info(f"New user registered: {email}")
+    return {"message": "If that email is not already registered, a verification link has been sent."}
+
+
+@app.get("/api/verify-email", response_model=schemas.MessageResponse)
+async def verify_email(token: str, db: AsyncSession = Depends(get_db)):
+    stmt = select(User).where(User.verification_token == token)
+    user = (await db.execute(stmt)).scalar_one_or_none()
+
+    if not user or not user.verification_token_expires:
+        raise HTTPException(status_code=400, detail="Invalid or expired verification link.")
+    if datetime.now(timezone.utc) > user.verification_token_expires:
+        raise HTTPException(status_code=400, detail="Verification link has expired. Please request a new one.")
+
+    user.email_verified = True
+    user.verification_token = None
+    user.verification_token_expires = None
+    await db.commit()
+    logger.info(f"Email verified: {user.email}")
+    return {"message": "Email verified successfully. You can now log in."}
+
+
+@app.post("/api/resend-verification", response_model=schemas.MessageResponse)
+async def resend_verification(req: schemas.PasswordResetRequest, db: AsyncSession = Depends(get_db)):
+    if not REGISTRATION_ENABLED:
+        raise HTTPException(status_code=503, detail="Registration is not currently available.")
+
+    stmt = select(User).where(User.email == req.email.lower())
+    user = (await db.execute(stmt)).scalar_one_or_none()
+
+    if user and not user.email_verified:
+        token = secrets.token_urlsafe(32)
+        user.verification_token = token
+        user.verification_token_expires = datetime.now(timezone.utc) + timedelta(hours=24)
+        await db.commit()
+        send_verification_email(user.email, token)
+
+    return {"message": "If your account exists and is unverified, a new verification link has been sent."}
+
+
+@app.post("/api/request-password-reset", response_model=schemas.MessageResponse)
+async def request_password_reset(req: schemas.PasswordResetRequest, db: AsyncSession = Depends(get_db)):
+    stmt = select(User).where(User.email == req.email.lower())
+    user = (await db.execute(stmt)).scalar_one_or_none()
+
+    if user:
+        token = secrets.token_urlsafe(32)
+        user.reset_token = token
+        user.reset_token_expires = datetime.now(timezone.utc) + timedelta(hours=1)
+        await db.commit()
+        send_password_reset_email(user.email, token)
+
+    return {"message": "If an account with that email exists, a password reset link has been sent."}
+
+
+@app.post("/api/reset-password", response_model=schemas.MessageResponse)
+async def reset_password(req: schemas.PasswordReset, db: AsyncSession = Depends(get_db)):
+    if req.new_password != req.confirm_password:
+        raise HTTPException(status_code=400, detail="Passwords do not match.")
+    if len(req.new_password) < 8:
+        raise HTTPException(status_code=400, detail="Password must be at least 8 characters.")
+
+    stmt = select(User).where(User.reset_token == req.token)
+    user = (await db.execute(stmt)).scalar_one_or_none()
+
+    if not user or not user.reset_token_expires:
+        raise HTTPException(status_code=400, detail="Invalid or expired reset link.")
+    if datetime.now(timezone.utc) > user.reset_token_expires:
+        raise HTTPException(status_code=400, detail="Reset link has expired. Please request a new one.")
+
+    user.hashed_password = pwd_context.hash(req.new_password)
+    user.reset_token = None
+    user.reset_token_expires = None
+    await db.commit()
+    logger.info(f"Password reset completed: {user.email}")
+    return {"message": "Password reset successfully. You can now log in with your new password."}
 
 OTHER_INDUSTRY_VALUES = {
     "other",
