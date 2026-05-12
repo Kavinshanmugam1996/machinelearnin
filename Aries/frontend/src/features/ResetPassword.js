@@ -50,7 +50,7 @@ export function ResetPassword({ onSuccess }) {
       const res = await fetch("/api/reset-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token, new_password: newPassword })
+        body: JSON.stringify({ token, new_password: newPassword, confirm_password: confirmPassword })
       });
 
       const data = await res.json();

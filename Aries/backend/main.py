@@ -343,6 +343,20 @@ async def serve_root_logo():
         return FileResponse(logo_path)
     raise HTTPException(status_code=404, detail="Logo not found")
 
+@app.get("/verify-email.html")
+async def serve_verify_email():
+    page_path = frontend_dir / "verify-email.html"
+    if page_path.exists():
+        return FileResponse(page_path)
+    raise HTTPException(status_code=404, detail="Page not found")
+
+@app.get("/reset-password.html")
+async def serve_reset_password():
+    page_path = frontend_dir / "reset-password.html"
+    if page_path.exists():
+        return FileResponse(page_path)
+    raise HTTPException(status_code=404, detail="Page not found")
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint for AWS/Load Balancer."""

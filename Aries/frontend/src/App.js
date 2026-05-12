@@ -1,7 +1,9 @@
 import React from 'react';
 import htm from 'htm';
 console.log("%c[AIRES] App.js Booting v1.0.6", "color: #3B9BC8; font-weight: bold");
-import { AdminLogin } from './features/AdminLogin.js?v=1.0.6';
+import { AdminLogin } from './features/AdminLogin.js?v=1.0.9';
+import { Register } from './features/Register.js?v=1.0.9';
+import { ForgotPassword } from './features/ForgotPassword.js?v=1.0.9';
 import { LandingPage } from './features/LandingPage.js?v=1.0.6';
 import { CompanyProfile } from './features/CompanyProfile.js?v=1.0.7';
 import { QuestionFlow } from './features/QuestionFlow.js?v=1.0.7';
@@ -453,6 +455,19 @@ export default function App() {
 
   console.log("%c[AIRES] Rendering App Page:", "color: #10B981; font-weight: bold", page, { profile, questionsCount: questions.length, answersCount: Object.keys(answers).length });
 
+  if (page === "register") {
+    return html`<${Register}
+      onBack=${() => setPage("login")}
+      onSuccess=${() => setPage("login")}
+    />`;
+  }
+
+  if (page === "forgot-password") {
+    return html`<${ForgotPassword}
+      onBack=${() => setPage("login")}
+    />`;
+  }
+
   return html`
     <div style=${{ fontFamily: BODY }}>
       ${showDefaultClientModal ? html`
@@ -533,11 +548,15 @@ export default function App() {
         </div>
       ` : null}
 
-      ${page === "login" ? html`<${AdminLogin} onLogin=${async () => {
-        setPage("loading");
-        const success = await initData();
-        if (success) setPage("landing");
-      }} />` : null}
+      ${page === "login" ? html`<${AdminLogin}
+        onLogin=${async () => {
+          setPage("loading");
+          const success = await initData();
+          if (success) setPage("landing");
+        }}
+        onRegister=${() => setPage("register")}
+        onForgotPassword=${() => setPage("forgot-password")}
+      />` : null}
       ${page === "landing" ? html`
         <${LandingPage}
           onBegin=${cleanReset}

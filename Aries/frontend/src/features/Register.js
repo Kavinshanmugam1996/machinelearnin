@@ -43,7 +43,7 @@ export function Register({ onBack, onSuccess }) {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password, confirm_password: confirmPassword })
       });
 
       const data = await res.json();
