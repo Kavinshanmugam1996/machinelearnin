@@ -23,7 +23,7 @@
         { "name": "AWS_DEFAULT_REGION", "value": "ca-central-1" },
         { "name": "S3_BUCKET", "value": "aires-assessments-prod" },
         { "name": "CORS_ORIGINS", "value": "https://aires-risk.com,https://www.aires-risk.com" },
-        { "name": "REGISTRATION_ENABLED", "value": "false" },
+        { "name": "REGISTRATION_ENABLED", "value": "true" },
         { "name": "FRONTEND_URL", "value": "https://aires-risk.com" },
         { "name": "SES_FROM_EMAIL", "value": "noreply@aires-risk.com" }
       ],
